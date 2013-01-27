@@ -11,7 +11,7 @@ widgets.
 ## Example Usage
 
 ``` js
-var Program = require('blessed').Program
+var Program = require('blessed')
   , program = new Program;
 
 program.on('key', function(ch, key) {
