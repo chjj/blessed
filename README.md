@@ -32,9 +32,7 @@ program.alternateBuffer();
 program.clear();
 
 program.bg('white');
-program.fg('blue');
-program.write('Hello world');
-program.fg('!blue');
+program.write('Hello world', 'blue fg');
 program.setx(1);
 program.down(5);
 program.write('Hi again!');
