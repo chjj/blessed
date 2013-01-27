@@ -1,0 +1,13 @@
+{
+  "name": "blessed",
+  "description": "A curses-like library for node.js.",
+  "author": "Christopher Jeffrey",
+  "version": "0.0.1",
+  "main": "./lib/program.js",
+  "repository": "git://github.com/chjj/blessed.git",
+  "homepage": "https://github.com/chjj/blessed",
+  "bugs": { "url": "http://github.com/chjj/blessed/issues" },
+  "keywords": ["curses", "tui"],
+  "tags": ["curses", "tui"],
+  "scripts": { "test": "node test", "bench": "node test --bench" }
+}
