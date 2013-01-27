@@ -41,8 +41,10 @@ program.write('Hi again!');
 program.bg('!white');
 program.feed();
 
-program.getCursor(function(data) {
-  console.log('Cursor is at: %s, %s.', data.x, data.y);
+program.getCursor(function(err, data) {
+  if (!err) {
+    console.log('Cursor is at: %s, %s.', data.x, data.y);
+  }
 
   program.charset('SCLD');
   program.write('abcdefghijklmnopqrstuvwxyz0123456789');
