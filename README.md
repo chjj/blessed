@@ -22,7 +22,7 @@ program.on('key', function(ch, key) {
 
 program.setMouse({ normalMouse: true });
 
-program.mouse('mouse', function(data) {
+program.on('mouse', function(data) {
   console.log('Mouse event received:');
   console.log(data.button, data.x, data.y);
 });
