@@ -1,20 +1,13 @@
-# blessed
+/**
+ * Example Program for Blessed
+ * Copyright (c) 2013, Christopher Jeffrey (MIT License).
+ * https://github.com/chjj/blessed
+ */
 
-A curses-like library for node.js.
-
-As of right now, it does not read all terminfo. It was designed for one
-terminal's terminfo: **xterm**, but if you understand the differences between
-the three popular vt100-based terminals (xterm, screen, rxvt), you should be
-able to use it for any terminal.
-
-I want this library to eventually become a high-level library for terminal
-widgets.
-
-## Example Usage
-
-``` js
 var blessed = require('blessed')
   , program = blessed();
+
+process.title = 'blessed';
 
 program.on('keypress', function(ch, key) {
   if (key.name === 'q') {
@@ -82,10 +75,3 @@ program.getCursor(function(err, data) {
   program.charset('US');
   program.setx(1);
 });
-```
-
-## License
-
-Copyright (c) 2013, Christopher Jeffrey. (MIT License)
-
-See LICENSE for more info.
