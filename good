@@ -1,0 +1,630 @@
+{ header: 
+   { dataSize: 3270,
+     headerSize: 12,
+     magicNumber: 282,
+     namesSize: 48,
+     boolCount: 38,
+     numCount: 15,
+     strCount: 413,
+     strTableSize: 1388,
+     total: 2342 },
+  name: 'xterm',
+  desc: 'xterm terminal emulator (X Window System)',
+  bools: 
+   { auto_left_margin: false,
+     auto_right_margin: true,
+     no_esc_ctlc: false,
+     ceol_standout_glitch: false,
+     eat_newline_glitch: true,
+     erase_overstrike: false,
+     generic_type: false,
+     hard_copy: false,
+     has_meta_key: true,
+     has_status_line: false,
+     insert_null_glitch: false,
+     memory_above: false,
+     memory_below: false,
+     move_insert_mode: true,
+     move_standout_mode: true,
+     over_strike: false,
+     status_line_esc_ok: false,
+     dest_tabs_magic_smso: false,
+     tilde_glitch: false,
+     transparent_underline: false,
+     xon_xoff: false,
+     needs_xon_xoff: false,
+     prtr_silent: true,
+     hard_cursor: false,
+     non_rev_rmcup: false,
+     no_pad_char: true,
+     non_dest_scroll_region: false,
+     can_change: false,
+     back_color_erase: true,
+     hue_lightness_saturation: false,
+     col_addr_glitch: false,
+     cr_cancels_micro_mode: false,
+     has_print_wheel: false,
+     row_addr_glitch: false,
+     semi_auto_right_margin: false,
+     cpi_changes_res: false,
+     lpi_changes_res: false,
+     backspaces_with_bs: true },
+  numbers: 
+   { columns: 80,
+     init_tabs: 8,
+     lines: 24,
+     lines_of_memory: -1,
+     magic_cookie_glitch: -1,
+     padding_baud_rate: -1,
+     virtual_terminal: -1,
+     width_status_line: -1,
+     num_labels: -1,
+     label_height: -1,
+     label_width: -1,
+     max_attributes: -1,
+     maximum_windows: -1,
+     max_colors: 8,
+     max_pairs: 64 },
+  strings: 
+   { back_tab: '\u001b[Z',
+     bell: '\u0007',
+     carriage_return: '\r',
+     change_scroll_region: '\u001b[%i%p1%d;%p2%dr',
+     clear_all_tabs: '\u001b[3g',
+     clear_screen: '\u001b[H\u001b[2J',
+     clr_eol: '\u001b[K',
+     clr_eos: '\u001b[J',
+     column_address: '\u001b[%i%p1%dG',
+     cursor_address: '\u001b[%i%p1%d;%p2%dH',
+     cursor_down: '\n',
+     cursor_home: '\u001b[H',
+     cursor_invisible: '\u001b[?25l',
+     cursor_left: '\b',
+     cursor_normal: '\u001b[?12l\u001b[?25h',
+     cursor_right: '\u001b[C',
+     cursor_up: '\u001b[A',
+     cursor_visible: '\u001b[?12;25h',
+     delete_character: '\u001b[P',
+     delete_line: '\u001b[M',
+     enter_alt_charset_mode: '\u001b(0',
+     enter_blink_mode: '\u001b[5m',
+     enter_bold_mode: '\u001b[1m',
+     enter_ca_mode: '\u001b[?1049h',
+     enter_insert_mode: '\u001b[4h',
+     enter_secure_mode: '\u001b[8m',
+     enter_reverse_mode: '\u001b[7m',
+     enter_standout_mode: '\u001b[7m',
+     enter_underline_mode: '\u001b[4m',
+     erase_chars: '\u001b[%p1%dX',
+     exit_alt_charset_mode: '\u001b(B',
+     exit_attribute_mode: '\u001b(B\u001b[m',
+     exit_ca_mode: '\u001b[?1049l',
+     exit_insert_mode: '\u001b[4l',
+     exit_standout_mode: '\u001b[27m',
+     exit_underline_mode: '\u001b[24m',
+     flash_screen: '\u001b[?5h$<100/>\u001b[?5l',
+     init_2string: '\u001b[!p\u001b[?3;4l\u001b[4l\u001b>',
+     insert_line: '\u001b[L',
+     key_backspace: '\b',
+     key_dc: '\u001b[3~',
+     key_down: '\u001bOB',
+     key_f1: '\u001bOP',
+     key_f10: '\u001b[21~',
+     key_f2: '\u001bOQ',
+     key_f3: '\u001bOR',
+     key_f4: '\u001bOS',
+     key_f5: '\u001b[15~',
+     key_f6: '\u001b[17~',
+     key_f7: '\u001b[18~',
+     key_f8: '\u001b[19~',
+     key_f9: '\u001b[20~',
+     key_home: '\u001bOH',
+     key_ic: '\u001b[2~',
+     key_left: '\u001bOD',
+     key_npage: '\u001b[6~',
+     key_ppage: '\u001b[5~',
+     key_right: '\u001bOC',
+     key_sf: '\u001b[1;2B',
+     key_sr: '\u001b[1;2A',
+     key_up: '\u001bOA',
+     keypad_local: '\u001b[?1l\u001b>',
+     keypad_xmit: '\u001b[?1h\u001b=',
+     meta_off: '\u001b[?1034l',
+     meta_on: '\u001b[?1034h',
+     parm_dch: '\u001b[%p1%dP',
+     parm_delete_line: '\u001b[%p1%dM',
+     parm_down_cursor: '\u001b[%p1%dB',
+     parm_ich: '\u001b[%p1%d@',
+     parm_index: '\u001b[%p1%dS',
+     parm_insert_line: '\u001b[%p1%dL',
+     parm_left_cursor: '\u001b[%p1%dD',
+     parm_right_cursor: '\u001b[%p1%dC',
+     parm_rindex: '\u001b[%p1%dT',
+     parm_up_cursor: '\u001b[%p1%dA',
+     print_screen: '\u001b[i',
+     prtr_off: '\u001b[4i',
+     prtr_on: '\u001b[5i',
+     reset_1string: '\u001bc',
+     reset_2string: '\u001b[!p\u001b[?3;4l\u001b[4l\u001b>',
+     restore_cursor: '\u001b8',
+     row_address: '\u001b[%i%p1%dd',
+     save_cursor: '\u001b7',
+     scroll_forward: '\n',
+     scroll_reverse: '\u001bM',
+     set_attributes: '%?%p9%t\u001b(0%e\u001b(B%;\u001b[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m',
+     set_tab: '\u001bH',
+     tab: '\t',
+     key_b2: '\u001bOE',
+     acs_chars: '``aaffggiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~',
+     key_btab: '\u001b[Z',
+     enter_am_mode: '\u001b[?7h',
+     exit_am_mode: '\u001b[?7l',
+     key_end: '\u001bOF',
+     key_enter: '\u001bOM',
+     key_sdc: '\u001b[3;2~',
+     key_send: '\u001b[1;2F',
+     key_shome: '\u001b[1;2H',
+     key_sic: '\u001b[2;2~',
+     key_sleft: '\u001b[1;2D',
+     key_snext: '\u001b[6;2~',
+     key_sprevious: '\u001b[5;2~',
+     key_sright: '\u001b[1;2C',
+     key_f11: '\u001b[23~',
+     key_f12: '\u001b[24~',
+     key_f13: '\u001b[1;2P',
+     key_f14: '\u001b[1;2Q',
+     key_f15: '\u001b[1;2R',
+     key_f16: '\u001b[1;2S',
+     key_f17: '\u001b[15;2~',
+     key_f18: '\u001b[17;2~',
+     key_f19: '\u001b[18;2~',
+     key_f20: '\u001b[19;2~',
+     key_f21: '\u001b[20;2~',
+     key_f22: '\u001b[21;2~',
+     key_f23: '\u001b[23;2~',
+     key_f24: '\u001b[24;2~',
+     key_f25: '\u001b[1;5P',
+     key_f26: '\u001b[1;5Q',
+     key_f27: '\u001b[1;5R',
+     key_f28: '\u001b[1;5S',
+     key_f29: '\u001b[15;5~',
+     key_f30: '\u001b[17;5~',
+     key_f31: '\u001b[18;5~',
+     key_f32: '\u001b[19;5~',
+     key_f33: '\u001b[20;5~',
+     key_f34: '\u001b[21;5~',
+     key_f35: '\u001b[23;5~',
+     key_f36: '\u001b[24;5~',
+     key_f37: '\u001b[1;6P',
+     key_f38: '\u001b[1;6Q',
+     key_f39: '\u001b[1;6R',
+     key_f40: '\u001b[1;6S',
+     key_f41: '\u001b[15;6~',
+     key_f42: '\u001b[17;6~',
+     key_f43: '\u001b[18;6~',
+     key_f44: '\u001b[19;6~',
+     key_f45: '\u001b[20;6~',
+     key_f46: '\u001b[21;6~',
+     key_f47: '\u001b[23;6~',
+     key_f48: '\u001b[24;6~',
+     key_f49: '\u001b[1;3P',
+     key_f50: '\u001b[1;3Q',
+     key_f51: '\u001b[1;3R',
+     key_f52: '\u001b[1;3S',
+     key_f53: '\u001b[15;3~',
+     key_f54: '\u001b[17;3~',
+     key_f55: '\u001b[18;3~',
+     key_f56: '\u001b[19;3~',
+     key_f57: '\u001b[20;3~',
+     key_f58: '\u001b[21;3~',
+     key_f59: '\u001b[23;3~',
+     key_f60: '\u001b[24;3~',
+     key_f61: '\u001b[1;4P',
+     key_f62: '\u001b[1;4Q',
+     key_f63: '\u001b[1;4R',
+     clr_bol: '\u001b[1K',
+     user6: '\u001b[%i%d;%dR',
+     user7: '\u001b[6n',
+     user8: '\u001b[?1;2c',
+     user9: '\u001b[c',
+     orig_pair: '\u001b[39;49m',
+     set_foreground: '\u001b[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m',
+     set_background: '\u001b[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m',
+     key_mouse: '\u001b[M',
+     set_a_foreground: '\u001b[3%p1%dm',
+     set_a_background: '\u001b[4%p1%dm',
+     memory_lock: '\u001bl',
+     memory_unlock: '\u001bm' } }
+Compiling auto_left_margin: false
+Compiling auto_right_margin: true
+Compiling no_esc_ctlc: false
+Compiling ceol_standout_glitch: false
+Compiling eat_newline_glitch: true
+Compiling erase_overstrike: false
+Compiling generic_type: false
+Compiling hard_copy: false
+Compiling has_meta_key: true
+Compiling has_status_line: false
+Compiling insert_null_glitch: false
+Compiling memory_above: false
+Compiling memory_below: false
+Compiling move_insert_mode: true
+Compiling move_standout_mode: true
+Compiling over_strike: false
+Compiling status_line_esc_ok: false
+Compiling dest_tabs_magic_smso: false
+Compiling tilde_glitch: false
+Compiling transparent_underline: false
+Compiling xon_xoff: false
+Compiling needs_xon_xoff: false
+Compiling prtr_silent: true
+Compiling hard_cursor: false
+Compiling non_rev_rmcup: false
+Compiling no_pad_char: true
+Compiling non_dest_scroll_region: false
+Compiling can_change: false
+Compiling back_color_erase: true
+Compiling hue_lightness_saturation: false
+Compiling col_addr_glitch: false
+Compiling cr_cancels_micro_mode: false
+Compiling has_print_wheel: false
+Compiling row_addr_glitch: false
+Compiling semi_auto_right_margin: false
+Compiling cpi_changes_res: false
+Compiling lpi_changes_res: false
+Compiling backspaces_with_bs: true
+Compiling columns: 80
+Compiling init_tabs: 8
+Compiling lines: 24
+Compiling lines_of_memory: -1
+Compiling magic_cookie_glitch: -1
+Compiling padding_baud_rate: -1
+Compiling virtual_terminal: -1
+Compiling width_status_line: -1
+Compiling num_labels: -1
+Compiling label_height: -1
+Compiling label_width: -1
+Compiling max_attributes: -1
+Compiling maximum_windows: -1
+Compiling max_colors: 8
+Compiling max_pairs: 64
+Compiling back_tab: "\u001b[Z"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[Z");return out.join("");
+Compiling bell: "\u0007"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("");return out.join("");
+Compiling carriage_return: "\r"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\");return out.join("");
+Compiling change_scroll_region: "\u001b[%i%p1%d;%p2%dr"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),o(stack.pop()),o(";"),(stack.push(v = params[1]), v),o(stack.pop()),o("r");return out.join("");
+Compiling clear_all_tabs: "\u001b[3g"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[3g");return out.join("");
+Compiling clear_screen: "\u001b[H\u001b[2J"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[H\x1b[2J");return out.join("");
+Compiling clr_eol: "\u001b[K"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[K");return out.join("");
+Compiling clr_eos: "\u001b[J"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[J");return out.join("");
+Compiling column_address: "\u001b[%i%p1%dG"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),o(stack.pop()),o("G");return out.join("");
+Compiling cursor_address: "\u001b[%i%p1%d;%p2%dH"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),o(stack.pop()),o(";"),(stack.push(v = params[1]), v),o(stack.pop()),o("H");return out.join("");
+Compiling cursor_down: "\n"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\
+");return out.join("");
+Compiling cursor_home: "\u001b[H"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[H");return out.join("");
+Compiling cursor_invisible: "\u001b[?25l"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?25l");return out.join("");
+Compiling cursor_left: "\b"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("");return out.join("");
+Compiling cursor_normal: "\u001b[?12l\u001b[?25h"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?12l\x1b[?25h");return out.join("");
+Compiling cursor_right: "\u001b[C"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[C");return out.join("");
+Compiling cursor_up: "\u001b[A"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[A");return out.join("");
+Compiling cursor_visible: "\u001b[?12;25h"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?12;25h");return out.join("");
+Compiling delete_character: "\u001b[P"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[P");return out.join("");
+Compiling delete_line: "\u001b[M"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[M");return out.join("");
+Compiling enter_alt_charset_mode: "\u001b(0"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b(0");return out.join("");
+Compiling enter_blink_mode: "\u001b[5m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[5m");return out.join("");
+Compiling enter_bold_mode: "\u001b[1m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1m");return out.join("");
+Compiling enter_ca_mode: "\u001b[?1049h"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?1049h");return out.join("");
+Compiling enter_insert_mode: "\u001b[4h"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[4h");return out.join("");
+Compiling enter_secure_mode: "\u001b[8m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[8m");return out.join("");
+Compiling enter_reverse_mode: "\u001b[7m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[7m");return out.join("");
+Compiling enter_standout_mode: "\u001b[7m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[7m");return out.join("");
+Compiling enter_underline_mode: "\u001b[4m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[4m");return out.join("");
+Compiling erase_chars: "\u001b[%p1%dX"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("X");return out.join("");
+Compiling exit_alt_charset_mode: "\u001b(B"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b(B");return out.join("");
+Compiling exit_attribute_mode: "\u001b(B\u001b[m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b(B\x1b[m");return out.join("");
+Compiling exit_ca_mode: "\u001b[?1049l"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?1049l");return out.join("");
+Compiling exit_insert_mode: "\u001b[4l"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[4l");return out.join("");
+Compiling exit_standout_mode: "\u001b[27m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[27m");return out.join("");
+Compiling exit_underline_mode: "\u001b[24m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[24m");return out.join("");
+Compiling flash_screen: "\u001b[?5h$<100/>\u001b[?5l"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?5h$<100/>\x1b[?5l");return out.join("");
+Compiling init_2string: "\u001b[!p\u001b[?3;4l\u001b[4l\u001b>"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[!p\x1b[?3;4l\x1b[4l\x1b>");return out.join("");
+Compiling insert_line: "\u001b[L"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[L");return out.join("");
+Compiling key_backspace: "\b"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("");return out.join("");
+Compiling key_dc: "\u001b[3~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[3~");return out.join("");
+Compiling key_down: "\u001bOB"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOB");return out.join("");
+Compiling key_f1: "\u001bOP"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOP");return out.join("");
+Compiling key_f10: "\u001b[21~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[21~");return out.join("");
+Compiling key_f2: "\u001bOQ"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOQ");return out.join("");
+Compiling key_f3: "\u001bOR"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOR");return out.join("");
+Compiling key_f4: "\u001bOS"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOS");return out.join("");
+Compiling key_f5: "\u001b[15~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[15~");return out.join("");
+Compiling key_f6: "\u001b[17~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[17~");return out.join("");
+Compiling key_f7: "\u001b[18~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[18~");return out.join("");
+Compiling key_f8: "\u001b[19~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[19~");return out.join("");
+Compiling key_f9: "\u001b[20~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[20~");return out.join("");
+Compiling key_home: "\u001bOH"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOH");return out.join("");
+Compiling key_ic: "\u001b[2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[2~");return out.join("");
+Compiling key_left: "\u001bOD"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOD");return out.join("");
+Compiling key_npage: "\u001b[6~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[6~");return out.join("");
+Compiling key_ppage: "\u001b[5~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[5~");return out.join("");
+Compiling key_right: "\u001bOC"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOC");return out.join("");
+Compiling key_sf: "\u001b[1;2B"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;2B");return out.join("");
+Compiling key_sr: "\u001b[1;2A"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;2A");return out.join("");
+Compiling key_up: "\u001bOA"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOA");return out.join("");
+Compiling keypad_local: "\u001b[?1l\u001b>"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?1l\x1b>");return out.join("");
+Compiling keypad_xmit: "\u001b[?1h\u001b="
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?1h\x1b=");return out.join("");
+Compiling meta_off: "\u001b[?1034l"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?1034l");return out.join("");
+Compiling meta_on: "\u001b[?1034h"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?1034h");return out.join("");
+Compiling parm_dch: "\u001b[%p1%dP"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("P");return out.join("");
+Compiling parm_delete_line: "\u001b[%p1%dM"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("M");return out.join("");
+Compiling parm_down_cursor: "\u001b[%p1%dB"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("B");return out.join("");
+Compiling parm_ich: "\u001b[%p1%d@"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("@");return out.join("");
+Compiling parm_index: "\u001b[%p1%dS"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("S");return out.join("");
+Compiling parm_insert_line: "\u001b[%p1%dL"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("L");return out.join("");
+Compiling parm_left_cursor: "\u001b[%p1%dD"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("D");return out.join("");
+Compiling parm_right_cursor: "\u001b[%p1%dC"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("C");return out.join("");
+Compiling parm_rindex: "\u001b[%p1%dT"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("T");return out.join("");
+Compiling parm_up_cursor: "\u001b[%p1%dA"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(stack.push(v = params[0]), v),o(stack.pop()),o("A");return out.join("");
+Compiling print_screen: "\u001b[i"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[i");return out.join("");
+Compiling prtr_off: "\u001b[4i"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[4i");return out.join("");
+Compiling prtr_on: "\u001b[5i"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[5i");return out.join("");
+Compiling reset_1string: "\u001bc"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bc");return out.join("");
+Compiling reset_2string: "\u001b[!p\u001b[?3;4l\u001b[4l\u001b>"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[!p\x1b[?3;4l\x1b[4l\x1b>");return out.join("");
+Compiling restore_cursor: "\u001b8"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b8");return out.join("");
+Compiling row_address: "\u001b[%i%p1%dd"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),o(stack.pop()),o("d");return out.join("");
+Compiling save_cursor: "\u001b7"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b7");return out.join("");
+Compiling scroll_forward: "\n"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\
+");return out.join("");
+Compiling scroll_reverse: "\u001bM"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bM");return out.join("");
+Compiling set_attributes: "%?%p9%t\u001b(0%e\u001b(B%;\u001b[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a};if ((stack.push(v = params[8]), v)) {o("\x1b(0")} else {o("\x1b(B")}o("\x1b[0");if ((stack.push(v = params[5]), v)) {o(";1")};if ((stack.push(v = params[1]), v)) {o(";4")};if ((stack.push(v = params[0]), v),(stack.push(v = params[2]), v),(stack.push(v = (stack.pop() | stack.pop())), v)) {o(";7")};if ((stack.push(v = params[3]), v)) {o(";5")};if ((stack.push(v = params[6]), v)) {o(";8")}o("m");return out.join("");
+Compiling set_tab: "\u001bH"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bH");return out.join("");
+Compiling tab: "\t"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("	");return out.join("");
+Compiling key_b2: "\u001bOE"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOE");return out.join("");
+Compiling acs_chars: "``aaffggiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("``aaffggiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~");return out.join("");
+Compiling key_btab: "\u001b[Z"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[Z");return out.join("");
+Compiling enter_am_mode: "\u001b[?7h"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?7h");return out.join("");
+Compiling exit_am_mode: "\u001b[?7l"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?7l");return out.join("");
+Compiling key_end: "\u001bOF"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOF");return out.join("");
+Compiling key_enter: "\u001bOM"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bOM");return out.join("");
+Compiling key_sdc: "\u001b[3;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[3;2~");return out.join("");
+Compiling key_send: "\u001b[1;2F"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;2F");return out.join("");
+Compiling key_shome: "\u001b[1;2H"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;2H");return out.join("");
+Compiling key_sic: "\u001b[2;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[2;2~");return out.join("");
+Compiling key_sleft: "\u001b[1;2D"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;2D");return out.join("");
+Compiling key_snext: "\u001b[6;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[6;2~");return out.join("");
+Compiling key_sprevious: "\u001b[5;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[5;2~");return out.join("");
+Compiling key_sright: "\u001b[1;2C"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;2C");return out.join("");
+Compiling key_f11: "\u001b[23~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[23~");return out.join("");
+Compiling key_f12: "\u001b[24~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[24~");return out.join("");
+Compiling key_f13: "\u001b[1;2P"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;2P");return out.join("");
+Compiling key_f14: "\u001b[1;2Q"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;2Q");return out.join("");
+Compiling key_f15: "\u001b[1;2R"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;2R");return out.join("");
+Compiling key_f16: "\u001b[1;2S"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;2S");return out.join("");
+Compiling key_f17: "\u001b[15;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[15;2~");return out.join("");
+Compiling key_f18: "\u001b[17;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[17;2~");return out.join("");
+Compiling key_f19: "\u001b[18;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[18;2~");return out.join("");
+Compiling key_f20: "\u001b[19;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[19;2~");return out.join("");
+Compiling key_f21: "\u001b[20;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[20;2~");return out.join("");
+Compiling key_f22: "\u001b[21;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[21;2~");return out.join("");
+Compiling key_f23: "\u001b[23;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[23;2~");return out.join("");
+Compiling key_f24: "\u001b[24;2~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[24;2~");return out.join("");
+Compiling key_f25: "\u001b[1;5P"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;5P");return out.join("");
+Compiling key_f26: "\u001b[1;5Q"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;5Q");return out.join("");
+Compiling key_f27: "\u001b[1;5R"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;5R");return out.join("");
+Compiling key_f28: "\u001b[1;5S"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;5S");return out.join("");
+Compiling key_f29: "\u001b[15;5~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[15;5~");return out.join("");
+Compiling key_f30: "\u001b[17;5~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[17;5~");return out.join("");
+Compiling key_f31: "\u001b[18;5~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[18;5~");return out.join("");
+Compiling key_f32: "\u001b[19;5~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[19;5~");return out.join("");
+Compiling key_f33: "\u001b[20;5~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[20;5~");return out.join("");
+Compiling key_f34: "\u001b[21;5~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[21;5~");return out.join("");
+Compiling key_f35: "\u001b[23;5~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[23;5~");return out.join("");
+Compiling key_f36: "\u001b[24;5~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[24;5~");return out.join("");
+Compiling key_f37: "\u001b[1;6P"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;6P");return out.join("");
+Compiling key_f38: "\u001b[1;6Q"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;6Q");return out.join("");
+Compiling key_f39: "\u001b[1;6R"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;6R");return out.join("");
+Compiling key_f40: "\u001b[1;6S"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;6S");return out.join("");
+Compiling key_f41: "\u001b[15;6~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[15;6~");return out.join("");
+Compiling key_f42: "\u001b[17;6~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[17;6~");return out.join("");
+Compiling key_f43: "\u001b[18;6~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[18;6~");return out.join("");
+Compiling key_f44: "\u001b[19;6~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[19;6~");return out.join("");
+Compiling key_f45: "\u001b[20;6~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[20;6~");return out.join("");
+Compiling key_f46: "\u001b[21;6~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[21;6~");return out.join("");
+Compiling key_f47: "\u001b[23;6~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[23;6~");return out.join("");
+Compiling key_f48: "\u001b[24;6~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[24;6~");return out.join("");
+Compiling key_f49: "\u001b[1;3P"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;3P");return out.join("");
+Compiling key_f50: "\u001b[1;3Q"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;3Q");return out.join("");
+Compiling key_f51: "\u001b[1;3R"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;3R");return out.join("");
+Compiling key_f52: "\u001b[1;3S"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;3S");return out.join("");
+Compiling key_f53: "\u001b[15;3~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[15;3~");return out.join("");
+Compiling key_f54: "\u001b[17;3~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[17;3~");return out.join("");
+Compiling key_f55: "\u001b[18;3~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[18;3~");return out.join("");
+Compiling key_f56: "\u001b[19;3~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[19;3~");return out.join("");
+Compiling key_f57: "\u001b[20;3~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[20;3~");return out.join("");
+Compiling key_f58: "\u001b[21;3~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[21;3~");return out.join("");
+Compiling key_f59: "\u001b[23;3~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[23;3~");return out.join("");
+Compiling key_f60: "\u001b[24;3~"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[24;3~");return out.join("");
+Compiling key_f61: "\u001b[1;4P"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;4P");return out.join("");
+Compiling key_f62: "\u001b[1;4Q"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;4Q");return out.join("");
+Compiling key_f63: "\u001b[1;4R"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1;4R");return out.join("");
+Compiling clr_bol: "\u001b[1K"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[1K");return out.join("");
+Compiling user6: "\u001b[%i%d;%dR"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b["),(params[0]++, params[1]++),o(stack.pop()),o(";"),o(stack.pop()),o("R");return out.join("");
+Compiling user7: "\u001b[6n"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[6n");return out.join("");
+Compiling user8: "\u001b[?1;2c"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[?1;2c");return out.join("");
+Compiling user9: "\u001b[c"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[c");return out.join("");
+Compiling orig_pair: "\u001b[39;49m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[39;49m");return out.join("");
+Compiling set_foreground: "\u001b[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[3");if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {o("4")} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {o("6")} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {o("1")} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {o("3")} else {(stack.push(v = params[0]), v),o(stack.pop())}o("m");return out.join("");
+Compiling set_background: "\u001b[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[4");if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {o("4")} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {o("6")} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {o("1")} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {o("3")} else {(stack.push(v = params[0]), v),o(stack.pop())}o("m");return out.join("");
+Compiling key_mouse: "\u001b[M"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[M");return out.join("");
+Compiling set_a_foreground: "\u001b[3%p1%dm"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[3"),(stack.push(v = params[0]), v),o(stack.pop()),o("m");return out.join("");
+Compiling set_a_background: "\u001b[4%p1%dm"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1b[4"),(stack.push(v = params[0]), v),o(stack.pop()),o("m");return out.join("");
+Compiling memory_lock: "\u001bl"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bl");return out.join("");
+Compiling memory_unlock: "\u001bm"
+var v, dyn = {}, stat = {}, stack = [], out = []; function o(a){out.push(a);return a}o("\x1bm");return out.join("");
