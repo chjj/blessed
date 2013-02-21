@@ -289,136 +289,135 @@ Compiling maximum_windows: -1
 Compiling max_colors: 8
 Compiling max_pairs: 64
 Compiling back_tab: "\u001b[Z"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[Z");return out.join("");
+return "\x1b[Z";
 Compiling bell: "\u0007"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("");return out.join("");
+return "";
 Compiling carriage_return: "\r"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\");return out.join("");
+return "\r";
 Compiling change_scroll_region: "\u001b[%i%p1%d;%p2%dr"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push(";"),(stack.push(v = params[1]), v),out.push(stack.pop()),out.push("r");return out.join("");
 Compiling clear_all_tabs: "\u001b[3g"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[3g");return out.join("");
+return "\x1b[3g";
 Compiling clear_screen: "\u001b[H\u001b[2J"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[H\x1b[2J");return out.join("");
+return "\x1b[H\x1b[2J";
 Compiling clr_eol: "\u001b[K"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[K");return out.join("");
+return "\x1b[K";
 Compiling clr_eos: "\u001b[J"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[J");return out.join("");
+return "\x1b[J";
 Compiling column_address: "\u001b[%i%p1%dG"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("G");return out.join("");
 Compiling cursor_address: "\u001b[%i%p1%d;%p2%dH"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push(";"),(stack.push(v = params[1]), v),out.push(stack.pop()),out.push("H");return out.join("");
 Compiling cursor_down: "\n"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\
-");return out.join("");
+return "\n";
 Compiling cursor_home: "\u001b[H"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[H");return out.join("");
+return "\x1b[H";
 Compiling cursor_invisible: "\u001b[?25l"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?25l");return out.join("");
+return "\x1b[?25l";
 Compiling cursor_left: "\b"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("");return out.join("");
+return "";
 Compiling cursor_normal: "\u001b[?12l\u001b[?25h"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?12l\x1b[?25h");return out.join("");
+return "\x1b[?12l\x1b[?25h";
 Compiling cursor_right: "\u001b[C"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[C");return out.join("");
+return "\x1b[C";
 Compiling cursor_up: "\u001b[A"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[A");return out.join("");
+return "\x1b[A";
 Compiling cursor_visible: "\u001b[?12;25h"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?12;25h");return out.join("");
+return "\x1b[?12;25h";
 Compiling delete_character: "\u001b[P"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[P");return out.join("");
+return "\x1b[P";
 Compiling delete_line: "\u001b[M"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[M");return out.join("");
+return "\x1b[M";
 Compiling enter_alt_charset_mode: "\u001b(0"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b(0");return out.join("");
+return "\x1b(0";
 Compiling enter_blink_mode: "\u001b[5m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[5m");return out.join("");
+return "\x1b[5m";
 Compiling enter_bold_mode: "\u001b[1m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1m");return out.join("");
+return "\x1b[1m";
 Compiling enter_ca_mode: "\u001b[?1049h"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?1049h");return out.join("");
+return "\x1b[?1049h";
 Compiling enter_insert_mode: "\u001b[4h"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[4h");return out.join("");
+return "\x1b[4h";
 Compiling enter_secure_mode: "\u001b[8m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[8m");return out.join("");
+return "\x1b[8m";
 Compiling enter_reverse_mode: "\u001b[7m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[7m");return out.join("");
+return "\x1b[7m";
 Compiling enter_standout_mode: "\u001b[7m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[7m");return out.join("");
+return "\x1b[7m";
 Compiling enter_underline_mode: "\u001b[4m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[4m");return out.join("");
+return "\x1b[4m";
 Compiling erase_chars: "\u001b[%p1%dX"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("X");return out.join("");
 Compiling exit_alt_charset_mode: "\u001b(B"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b(B");return out.join("");
+return "\x1b(B";
 Compiling exit_attribute_mode: "\u001b(B\u001b[m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b(B\x1b[m");return out.join("");
+return "\x1b(B\x1b[m";
 Compiling exit_ca_mode: "\u001b[?1049l"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?1049l");return out.join("");
+return "\x1b[?1049l";
 Compiling exit_insert_mode: "\u001b[4l"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[4l");return out.join("");
+return "\x1b[4l";
 Compiling exit_standout_mode: "\u001b[27m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[27m");return out.join("");
+return "\x1b[27m";
 Compiling exit_underline_mode: "\u001b[24m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[24m");return out.join("");
+return "\x1b[24m";
 Compiling flash_screen: "\u001b[?5h$<100/>\u001b[?5l"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?5h$<100/>\x1b[?5l");return out.join("");
+return "\x1b[?5h$<100/>\x1b[?5l";
 Compiling init_2string: "\u001b[!p\u001b[?3;4l\u001b[4l\u001b>"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[!p\x1b[?3;4l\x1b[4l\x1b>");return out.join("");
+return "\x1b[!p\x1b[?3;4l\x1b[4l\x1b>";
 Compiling insert_line: "\u001b[L"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[L");return out.join("");
+return "\x1b[L";
 Compiling key_backspace: "\b"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("");return out.join("");
+return "";
 Compiling key_dc: "\u001b[3~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[3~");return out.join("");
+return "\x1b[3~";
 Compiling key_down: "\u001bOB"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOB");return out.join("");
+return "\x1bOB";
 Compiling key_f1: "\u001bOP"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOP");return out.join("");
+return "\x1bOP";
 Compiling key_f10: "\u001b[21~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[21~");return out.join("");
+return "\x1b[21~";
 Compiling key_f2: "\u001bOQ"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOQ");return out.join("");
+return "\x1bOQ";
 Compiling key_f3: "\u001bOR"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOR");return out.join("");
+return "\x1bOR";
 Compiling key_f4: "\u001bOS"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOS");return out.join("");
+return "\x1bOS";
 Compiling key_f5: "\u001b[15~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[15~");return out.join("");
+return "\x1b[15~";
 Compiling key_f6: "\u001b[17~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[17~");return out.join("");
+return "\x1b[17~";
 Compiling key_f7: "\u001b[18~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[18~");return out.join("");
+return "\x1b[18~";
 Compiling key_f8: "\u001b[19~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[19~");return out.join("");
+return "\x1b[19~";
 Compiling key_f9: "\u001b[20~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[20~");return out.join("");
+return "\x1b[20~";
 Compiling key_home: "\u001bOH"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOH");return out.join("");
+return "\x1bOH";
 Compiling key_ic: "\u001b[2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[2~");return out.join("");
+return "\x1b[2~";
 Compiling key_left: "\u001bOD"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOD");return out.join("");
+return "\x1bOD";
 Compiling key_npage: "\u001b[6~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[6~");return out.join("");
+return "\x1b[6~";
 Compiling key_ppage: "\u001b[5~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[5~");return out.join("");
+return "\x1b[5~";
 Compiling key_right: "\u001bOC"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOC");return out.join("");
+return "\x1bOC";
 Compiling key_sf: "\u001b[1;2B"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;2B");return out.join("");
+return "\x1b[1;2B";
 Compiling key_sr: "\u001b[1;2A"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;2A");return out.join("");
+return "\x1b[1;2A";
 Compiling key_up: "\u001bOA"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOA");return out.join("");
+return "\x1bOA";
 Compiling keypad_local: "\u001b[?1l\u001b>"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?1l\x1b>");return out.join("");
+return "\x1b[?1l\x1b>";
 Compiling keypad_xmit: "\u001b[?1h\u001b="
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?1h\x1b=");return out.join("");
+return "\x1b[?1h\x1b=";
 Compiling meta_off: "\u001b[?1034l"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?1034l");return out.join("");
+return "\x1b[?1034l";
 Compiling meta_on: "\u001b[?1034h"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?1034h");return out.join("");
+return "\x1b[?1034h";
 Compiling parm_dch: "\u001b[%p1%dP"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("P");return out.join("");
 Compiling parm_delete_line: "\u001b[%p1%dM"
@@ -440,191 +439,190 @@ var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v
 Compiling parm_up_cursor: "\u001b[%p1%dA"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("A");return out.join("");
 Compiling print_screen: "\u001b[i"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[i");return out.join("");
+return "\x1b[i";
 Compiling prtr_off: "\u001b[4i"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[4i");return out.join("");
+return "\x1b[4i";
 Compiling prtr_on: "\u001b[5i"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[5i");return out.join("");
+return "\x1b[5i";
 Compiling reset_1string: "\u001bc"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bc");return out.join("");
+return "\x1bc";
 Compiling reset_2string: "\u001b[!p\u001b[?3;4l\u001b[4l\u001b>"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[!p\x1b[?3;4l\x1b[4l\x1b>");return out.join("");
+return "\x1b[!p\x1b[?3;4l\x1b[4l\x1b>";
 Compiling restore_cursor: "\u001b8"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b8");return out.join("");
+return "\x1b8";
 Compiling row_address: "\u001b[%i%p1%dd"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("d");return out.join("");
 Compiling save_cursor: "\u001b7"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b7");return out.join("");
+return "\x1b7";
 Compiling scroll_forward: "\n"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\
-");return out.join("");
+return "\n";
 Compiling scroll_reverse: "\u001bM"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bM");return out.join("");
+return "\x1bM";
 Compiling set_attributes: "%?%p9%t\u001b(0%e\u001b(B%;\u001b[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m"
 var v, dyn = {}, stat = {}, stack = [], out = [];;if ((stack.push(v = params[8]), v)) {out.push("\x1b(0")} else {out.push("\x1b(B")}out.push("\x1b[0");if ((stack.push(v = params[5]), v)) {out.push(";1")};if ((stack.push(v = params[1]), v)) {out.push(";4")};if ((stack.push(v = params[0]), v),(stack.push(v = params[2]), v),(stack.push(v = (stack.pop() | stack.pop())), v)) {out.push(";7")};if ((stack.push(v = params[3]), v)) {out.push(";5")};if ((stack.push(v = params[6]), v)) {out.push(";8")}out.push("m");return out.join("");
 Compiling set_tab: "\u001bH"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bH");return out.join("");
+return "\x1bH";
 Compiling tab: "\t"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("	");return out.join("");
+return "	";
 Compiling key_b2: "\u001bOE"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOE");return out.join("");
+return "\x1bOE";
 Compiling acs_chars: "``aaffggiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("``aaffggiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~");return out.join("");
+return "``aaffggiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~";
 Compiling key_btab: "\u001b[Z"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[Z");return out.join("");
+return "\x1b[Z";
 Compiling enter_am_mode: "\u001b[?7h"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?7h");return out.join("");
+return "\x1b[?7h";
 Compiling exit_am_mode: "\u001b[?7l"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?7l");return out.join("");
+return "\x1b[?7l";
 Compiling key_end: "\u001bOF"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOF");return out.join("");
+return "\x1bOF";
 Compiling key_enter: "\u001bOM"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bOM");return out.join("");
+return "\x1bOM";
 Compiling key_sdc: "\u001b[3;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[3;2~");return out.join("");
+return "\x1b[3;2~";
 Compiling key_send: "\u001b[1;2F"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;2F");return out.join("");
+return "\x1b[1;2F";
 Compiling key_shome: "\u001b[1;2H"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;2H");return out.join("");
+return "\x1b[1;2H";
 Compiling key_sic: "\u001b[2;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[2;2~");return out.join("");
+return "\x1b[2;2~";
 Compiling key_sleft: "\u001b[1;2D"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;2D");return out.join("");
+return "\x1b[1;2D";
 Compiling key_snext: "\u001b[6;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[6;2~");return out.join("");
+return "\x1b[6;2~";
 Compiling key_sprevious: "\u001b[5;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[5;2~");return out.join("");
+return "\x1b[5;2~";
 Compiling key_sright: "\u001b[1;2C"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;2C");return out.join("");
+return "\x1b[1;2C";
 Compiling key_f11: "\u001b[23~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[23~");return out.join("");
+return "\x1b[23~";
 Compiling key_f12: "\u001b[24~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[24~");return out.join("");
+return "\x1b[24~";
 Compiling key_f13: "\u001b[1;2P"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;2P");return out.join("");
+return "\x1b[1;2P";
 Compiling key_f14: "\u001b[1;2Q"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;2Q");return out.join("");
+return "\x1b[1;2Q";
 Compiling key_f15: "\u001b[1;2R"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;2R");return out.join("");
+return "\x1b[1;2R";
 Compiling key_f16: "\u001b[1;2S"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;2S");return out.join("");
+return "\x1b[1;2S";
 Compiling key_f17: "\u001b[15;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[15;2~");return out.join("");
+return "\x1b[15;2~";
 Compiling key_f18: "\u001b[17;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[17;2~");return out.join("");
+return "\x1b[17;2~";
 Compiling key_f19: "\u001b[18;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[18;2~");return out.join("");
+return "\x1b[18;2~";
 Compiling key_f20: "\u001b[19;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[19;2~");return out.join("");
+return "\x1b[19;2~";
 Compiling key_f21: "\u001b[20;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[20;2~");return out.join("");
+return "\x1b[20;2~";
 Compiling key_f22: "\u001b[21;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[21;2~");return out.join("");
+return "\x1b[21;2~";
 Compiling key_f23: "\u001b[23;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[23;2~");return out.join("");
+return "\x1b[23;2~";
 Compiling key_f24: "\u001b[24;2~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[24;2~");return out.join("");
+return "\x1b[24;2~";
 Compiling key_f25: "\u001b[1;5P"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;5P");return out.join("");
+return "\x1b[1;5P";
 Compiling key_f26: "\u001b[1;5Q"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;5Q");return out.join("");
+return "\x1b[1;5Q";
 Compiling key_f27: "\u001b[1;5R"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;5R");return out.join("");
+return "\x1b[1;5R";
 Compiling key_f28: "\u001b[1;5S"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;5S");return out.join("");
+return "\x1b[1;5S";
 Compiling key_f29: "\u001b[15;5~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[15;5~");return out.join("");
+return "\x1b[15;5~";
 Compiling key_f30: "\u001b[17;5~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[17;5~");return out.join("");
+return "\x1b[17;5~";
 Compiling key_f31: "\u001b[18;5~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[18;5~");return out.join("");
+return "\x1b[18;5~";
 Compiling key_f32: "\u001b[19;5~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[19;5~");return out.join("");
+return "\x1b[19;5~";
 Compiling key_f33: "\u001b[20;5~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[20;5~");return out.join("");
+return "\x1b[20;5~";
 Compiling key_f34: "\u001b[21;5~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[21;5~");return out.join("");
+return "\x1b[21;5~";
 Compiling key_f35: "\u001b[23;5~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[23;5~");return out.join("");
+return "\x1b[23;5~";
 Compiling key_f36: "\u001b[24;5~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[24;5~");return out.join("");
+return "\x1b[24;5~";
 Compiling key_f37: "\u001b[1;6P"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;6P");return out.join("");
+return "\x1b[1;6P";
 Compiling key_f38: "\u001b[1;6Q"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;6Q");return out.join("");
+return "\x1b[1;6Q";
 Compiling key_f39: "\u001b[1;6R"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;6R");return out.join("");
+return "\x1b[1;6R";
 Compiling key_f40: "\u001b[1;6S"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;6S");return out.join("");
+return "\x1b[1;6S";
 Compiling key_f41: "\u001b[15;6~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[15;6~");return out.join("");
+return "\x1b[15;6~";
 Compiling key_f42: "\u001b[17;6~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[17;6~");return out.join("");
+return "\x1b[17;6~";
 Compiling key_f43: "\u001b[18;6~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[18;6~");return out.join("");
+return "\x1b[18;6~";
 Compiling key_f44: "\u001b[19;6~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[19;6~");return out.join("");
+return "\x1b[19;6~";
 Compiling key_f45: "\u001b[20;6~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[20;6~");return out.join("");
+return "\x1b[20;6~";
 Compiling key_f46: "\u001b[21;6~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[21;6~");return out.join("");
+return "\x1b[21;6~";
 Compiling key_f47: "\u001b[23;6~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[23;6~");return out.join("");
+return "\x1b[23;6~";
 Compiling key_f48: "\u001b[24;6~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[24;6~");return out.join("");
+return "\x1b[24;6~";
 Compiling key_f49: "\u001b[1;3P"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;3P");return out.join("");
+return "\x1b[1;3P";
 Compiling key_f50: "\u001b[1;3Q"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;3Q");return out.join("");
+return "\x1b[1;3Q";
 Compiling key_f51: "\u001b[1;3R"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;3R");return out.join("");
+return "\x1b[1;3R";
 Compiling key_f52: "\u001b[1;3S"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;3S");return out.join("");
+return "\x1b[1;3S";
 Compiling key_f53: "\u001b[15;3~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[15;3~");return out.join("");
+return "\x1b[15;3~";
 Compiling key_f54: "\u001b[17;3~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[17;3~");return out.join("");
+return "\x1b[17;3~";
 Compiling key_f55: "\u001b[18;3~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[18;3~");return out.join("");
+return "\x1b[18;3~";
 Compiling key_f56: "\u001b[19;3~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[19;3~");return out.join("");
+return "\x1b[19;3~";
 Compiling key_f57: "\u001b[20;3~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[20;3~");return out.join("");
+return "\x1b[20;3~";
 Compiling key_f58: "\u001b[21;3~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[21;3~");return out.join("");
+return "\x1b[21;3~";
 Compiling key_f59: "\u001b[23;3~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[23;3~");return out.join("");
+return "\x1b[23;3~";
 Compiling key_f60: "\u001b[24;3~"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[24;3~");return out.join("");
+return "\x1b[24;3~";
 Compiling key_f61: "\u001b[1;4P"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;4P");return out.join("");
+return "\x1b[1;4P";
 Compiling key_f62: "\u001b[1;4Q"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;4Q");return out.join("");
+return "\x1b[1;4Q";
 Compiling key_f63: "\u001b[1;4R"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1;4R");return out.join("");
+return "\x1b[1;4R";
 Compiling clr_bol: "\u001b[1K"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[1K");return out.join("");
+return "\x1b[1K";
 Compiling user6: "\u001b[%i%d;%dR"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(params[0]++, params[1]++),out.push(stack.pop()),out.push(";"),out.push(stack.pop()),out.push("R");return out.join("");
 Compiling user7: "\u001b[6n"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[6n");return out.join("");
+return "\x1b[6n";
 Compiling user8: "\u001b[?1;2c"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?1;2c");return out.join("");
+return "\x1b[?1;2c";
 Compiling user9: "\u001b[c"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[c");return out.join("");
+return "\x1b[c";
 Compiling orig_pair: "\u001b[39;49m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[39;49m");return out.join("");
+return "\x1b[39;49m";
 Compiling set_foreground: "\u001b[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[3");if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("4")} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("6")} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("1")} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("3")} else {(stack.push(v = params[0]), v),out.push(stack.pop())}out.push("m");return out.join("");
 Compiling set_background: "\u001b[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[4");if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("4")} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("6")} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("1")} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("3")} else {(stack.push(v = params[0]), v),out.push(stack.pop())}out.push("m");return out.join("");
 Compiling key_mouse: "\u001b[M"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[M");return out.join("");
+return "\x1b[M";
 Compiling set_a_foreground: "\u001b[3%p1%dm"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[3"),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("m");return out.join("");
 Compiling set_a_background: "\u001b[4%p1%dm"
 var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[4"),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("m");return out.join("");
 Compiling memory_lock: "\u001bl"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bl");return out.join("");
+return "\x1bl";
 Compiling memory_unlock: "\u001bm"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1bm");return out.join("");
+return "\x1bm";
