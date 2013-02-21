@@ -291,7 +291,7 @@ Compiling max_pairs: 64
 Compiling back_tab: "\u001b[Z"
 return "\x1b[Z";
 Compiling bell: "\u0007"
-return "";
+return "\u0007";
 Compiling carriage_return: "\r"
 return "\r";
 Compiling change_scroll_region: "\u001b[%i%p1%d;%p2%dr"
@@ -315,7 +315,7 @@ return "\x1b[H";
 Compiling cursor_invisible: "\u001b[?25l"
 return "\x1b[?25l";
 Compiling cursor_left: "\b"
-return "";
+return "\b";
 Compiling cursor_normal: "\u001b[?12l\u001b[?25h"
 return "\x1b[?12l\x1b[?25h";
 Compiling cursor_right: "\u001b[C"
@@ -367,7 +367,7 @@ return "\x1b[!p\x1b[?3;4l\x1b[4l\x1b>";
 Compiling insert_line: "\u001b[L"
 return "\x1b[L";
 Compiling key_backspace: "\b"
-return "";
+return "\b";
 Compiling key_dc: "\u001b[3~"
 return "\x1b[3~";
 Compiling key_down: "\u001bOB"
@@ -463,7 +463,7 @@ var v, dyn = {}, stat = {}, stack = [], out = [];;if ((stack.push(v = params[8])
 Compiling set_tab: "\u001bH"
 return "\x1bH";
 Compiling tab: "\t"
-return "	";
+return "\t";
 Compiling key_b2: "\u001bOE"
 return "\x1bOE";
 Compiling acs_chars: "``aaffggiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~"
