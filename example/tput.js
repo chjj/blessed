@@ -12,3 +12,6 @@ var tput = new Tput(process.argv[2] || 'xterm', true);
 
 //console.log(tput.methods.set_attributes([34]) + 'foo' + tput.methods.set_attributes([0]));
 //console.log(tput.set_attributes(34) + 'foo' + tput.set_attributes(0));
+
+//tput.readTermCap();
+//console.log(tput.termcap.terms);
