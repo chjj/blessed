@@ -9,6 +9,7 @@
      strTableSize: 1388,
      total: 2342 },
   name: 'xterm',
+  names: [ 'xterm' ],
   desc: 'xterm terminal emulator (X Window System)',
   bools: 
    { auto_left_margin: false,
