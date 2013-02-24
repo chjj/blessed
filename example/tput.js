@@ -15,6 +15,8 @@ console.log('Max colors: %d.', tput.max_colors);
 
 //console.log(tput.methods.set_foreground([4]) + 'foo' + tput.methods.set_attributes([0]));
 //console.log(tput.set_foreground(4) + 'foo' + tput.set_attributes(0));
+//console.log(tput.setaf(4) + 'foo' + tput.sgr0());
+//console.log(tput.setaf(4) + 'foo' + tput.sgr(0));
 
 //tput.readTermcap();
 //console.log(tput.termcap.terms);

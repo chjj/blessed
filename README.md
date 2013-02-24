@@ -18,7 +18,7 @@ string capability to a javascript function:
 var Tput = require('blessed').Tput
   , tput = Tput('xterm');
 
-console.log(tput.set_foreground(4) + 'hello' + tput.set_attributes(0));
+console.log(tput.setaf(4) + 'hello' + tput.sgr0());
 ```
 
 ``` js
