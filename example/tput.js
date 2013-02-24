@@ -5,7 +5,7 @@ var tput = Tput({
   debug: true
 });
 
-//tput.colors();
+console.log('Max colors: %d.', tput.max_colors);
 
 //console.log(tput.info);
 

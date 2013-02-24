@@ -627,3 +627,4 @@ Compiling memory_lock: "\u001bl"
 return "\x1bl";
 Compiling memory_unlock: "\u001bm"
 return "\x1bm";
+Max colors: 8.
