@@ -18,3 +18,8 @@ console.log('Max colors: %d.', tput.max_colors);
 
 //tput.readTermcap();
 //console.log(tput.termcap.terms);
+
+//tput.padding = true;
+//tput._parsePadding('hello$<1000/>world', console.log, function() {
+//  tput._parsePadding('$<1000*>foo$<1000/>bar', console.log, process.exit);
+//});
