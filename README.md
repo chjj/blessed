@@ -26,6 +26,7 @@ To play around with it on the command line, it works just like tput:
 ``` bash
 $ tput.js setaf 2
 $ tput.js sgr0
+$ echo "$(tput.js setaf 2)hello world$(tput.js sgr0)"
 ```
 
 The higher level functionality is exposed in the main `blessed` module:

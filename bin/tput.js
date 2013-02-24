@@ -5,5 +5,5 @@ var tput = require('../lib/tput')(process.env.TERM || 'xterm')
   , cmd = argv.shift();
 
 if (tput[cmd]) {
-  process.stdout.write(tput[cmd].apply(tput, argv));
+  process.stdout.write(tput[cmd].apply(tput, argv) + '\n');
 }
