@@ -1,6 +1,9 @@
-var Tput = require('../lib/tput');
+var Tput = require('../').Tput;
 
-var tput = new Tput(process.argv[2] || 'xterm', true);
+var tput = Tput({
+  term: process.argv[2] || 'xterm',
+  debug: true
+});
 
 //tput.colors();
 
