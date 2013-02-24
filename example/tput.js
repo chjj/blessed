@@ -7,6 +7,8 @@ var tput = Tput({
 
 console.log('Max colors: %d.', tput.max_colors);
 
+//process.stdout.write(Tput.sprintf('%-10s\n', 'hello'));
+
 //console.log(tput.info);
 
 //tput.compile();
