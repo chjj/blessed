@@ -362,7 +362,7 @@ return "\x1b[27m";
 Compiling exit_underline_mode: "\u001b[24m"
 return "\x1b[24m";
 Compiling flash_screen: "\u001b[?5h$<100/>\u001b[?5l"
-return "\x1b[?5h$<100/>\x1b[?5l";
+var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?5h"),out.push("\x1b[?5l");return out.join("");
 Compiling init_2string: "\u001b[!p\u001b[?3;4l\u001b[4l\u001b>"
 return "\x1b[!p\x1b[?3;4l\x1b[4l\x1b>";
 Compiling insert_line: "\u001b[L"
