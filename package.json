@@ -4,10 +4,12 @@
   "author": "Christopher Jeffrey",
   "version": "0.0.3",
   "main": "./lib/program.js",
+  "bin": "./bin/tput.js",
+  "preferGlobal": false,
   "repository": "git://github.com/chjj/blessed.git",
   "homepage": "https://github.com/chjj/blessed",
   "bugs": { "url": "http://github.com/chjj/blessed/issues" },
-  "keywords": ["curses", "tui"],
-  "tags": ["curses", "tui"],
+  "keywords": ["curses", "tui", "tput"],
+  "tags": ["curses", "tui", "tput"],
   "scripts": { "test": "node test", "bench": "node test --bench" }
 }
