@@ -2,15 +2,24 @@
 
 A curses-like library for node.js.
 
-As of right now, it does not read all terminfo. It was designed for one
-terminal's terminfo: **xterm**, but if you understand the differences between
-the three popular vt100-based terminals (xterm, screen, rxvt), you should be
-able to use it for any terminal.
+Blessed was originally written to only support the xterm terminfo, but can
+now parse and compile any terminfo to be completely portable accross all
+terminals. See the `tput` example below.
 
 I want this library to eventually become a high-level library for terminal
 widgets.
 
 ## Example Usage
+
+This will actually parse the xterm terminfo and compile every
+string capability to a javascript function:
+
+``` js
+var Tput = require('blessed').Tput
+  , tput = Tput('xterm');
+
+console.log(tput.set_attribute(34) + 'hello' + tput.set_attribute(0));
+```
 
 ``` js
 var blessed = require('blessed')
