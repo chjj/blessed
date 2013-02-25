@@ -49,7 +49,9 @@
      semi_auto_right_margin: false,
      cpi_changes_res: false,
      lpi_changes_res: false,
-     backspaces_with_bs: true },
+     backspaces_with_bs: true,
+     AX: true,
+     XT: false },
   numbers: 
    { columns: 80,
      init_tabs: 8,
@@ -65,7 +67,8 @@
      max_attributes: -1,
      maximum_windows: -1,
      max_colors: 8,
-     max_pairs: 64 },
+     max_pairs: 64,
+     U8: -1 },
   strings: 
    { back_tab: '\u001b[Z',
      bell: '\u0007',
@@ -235,7 +238,64 @@
      set_a_foreground: '\u001b[3%p1%dm',
      set_a_background: '\u001b[4%p1%dm',
      memory_lock: '\u001bl',
-     memory_unlock: '\u001bm' } }
+     memory_unlock: '\u001bm',
+     XM: '',
+     kDC3: '\u001b[3;3~',
+     kDC4: '\u001b[3;4~',
+     kDC5: '\u001b[3;5~',
+     kDC6: '\u001b[3;6~',
+     kDC7: '\u001b[3;7~',
+     kDN: '\u001b[1;2B',
+     kDN3: '\u001b[1;3B',
+     kDN4: '\u001b[1;4B',
+     kDN5: '\u001b[1;5B',
+     kDN6: '\u001b[1;6B',
+     kDN7: '\u001b[1;7B',
+     kEND3: '\u001b[1;3F',
+     kEND4: '\u001b[1;4F',
+     kEND5: '\u001b[1;5F',
+     kEND6: '\u001b[1;6F',
+     kEND7: '\u001b[1;7F',
+     kHOM3: '\u001b[1;3H',
+     kHOM4: '\u001b[1;4H',
+     kHOM5: '\u001b[1;5H',
+     kHOM6: '\u001b[1;6H',
+     kHOM7: '\u001b[1;7H',
+     kIC3: '\u001b[2;3~',
+     kIC4: '\u001b[2;4~',
+     kIC5: '\u001b[2;5~',
+     kIC6: '\u001b[2;6~',
+     kIC7: '\u001b[2;7~',
+     kLFT3: '\u001b[1;3D',
+     kLFT4: '\u001b[1;4D',
+     kLFT5: '\u001b[1;5D',
+     kLFT6: '\u001b[1;6D',
+     kLFT7: '\u001b[1;7D',
+     kNXT3: '\u001b[6;3~',
+     kNXT4: '\u001b[6;4~',
+     kNXT5: '\u001b[6;5~',
+     kNXT6: '\u001b[6;6~',
+     kNXT7: '\u001b[6;7~',
+     kPRV3: '\u001b[5;3~',
+     kPRV4: '\u001b[5;4~',
+     kPRV5: '\u001b[5;5~',
+     kPRV6: '\u001b[5;6~',
+     kPRV7: '\u001b[5;7~',
+     kRIT3: '\u001b[1;3C',
+     kRIT4: '\u001b[1;4C',
+     kRIT5: '\u001b[1;5C',
+     kRIT6: '\u001b[1;6C',
+     kRIT7: '\u001b[1;7C',
+     kUP: '\u001b[1;2A',
+     kUP3: '\u001b[1;3A',
+     kUP4: '\u001b[1;4A',
+     kUP5: '\u001b[1;5A',
+     kUP6: '\u001b[1;6A',
+     kUP7: '\u001b[1;7A',
+     ka2: '',
+     kb1: '',
+     kb3: '',
+     kc2: '' } }
 Compiling auto_left_margin: false
 Compiling auto_right_margin: true
 Compiling no_esc_ctlc: false
@@ -274,6 +334,8 @@ Compiling semi_auto_right_margin: false
 Compiling cpi_changes_res: false
 Compiling lpi_changes_res: false
 Compiling backspaces_with_bs: true
+Compiling AX: true
+Compiling XT: false
 Compiling columns: 80
 Compiling init_tabs: 8
 Compiling lines: 24
@@ -289,6 +351,7 @@ Compiling max_attributes: -1
 Compiling maximum_windows: -1
 Compiling max_colors: 8
 Compiling max_pairs: 64
+Compiling U8: -1
 Compiling back_tab: "\u001b[Z"
 return "\x1b[Z";
 Compiling bell: "\u0007"
@@ -627,4 +690,113 @@ Compiling memory_lock: "\u001bl"
 return "\x1bl";
 Compiling memory_unlock: "\u001bm"
 return "\x1bm";
+Compiling XM: ""
+Compiling kDC3: "\u001b[3;3~"
+return "\x1b[3;3~";
+Compiling kDC4: "\u001b[3;4~"
+return "\x1b[3;4~";
+Compiling kDC5: "\u001b[3;5~"
+return "\x1b[3;5~";
+Compiling kDC6: "\u001b[3;6~"
+return "\x1b[3;6~";
+Compiling kDC7: "\u001b[3;7~"
+return "\x1b[3;7~";
+Compiling kDN: "\u001b[1;2B"
+return "\x1b[1;2B";
+Compiling kDN3: "\u001b[1;3B"
+return "\x1b[1;3B";
+Compiling kDN4: "\u001b[1;4B"
+return "\x1b[1;4B";
+Compiling kDN5: "\u001b[1;5B"
+return "\x1b[1;5B";
+Compiling kDN6: "\u001b[1;6B"
+return "\x1b[1;6B";
+Compiling kDN7: "\u001b[1;7B"
+return "\x1b[1;7B";
+Compiling kEND3: "\u001b[1;3F"
+return "\x1b[1;3F";
+Compiling kEND4: "\u001b[1;4F"
+return "\x1b[1;4F";
+Compiling kEND5: "\u001b[1;5F"
+return "\x1b[1;5F";
+Compiling kEND6: "\u001b[1;6F"
+return "\x1b[1;6F";
+Compiling kEND7: "\u001b[1;7F"
+return "\x1b[1;7F";
+Compiling kHOM3: "\u001b[1;3H"
+return "\x1b[1;3H";
+Compiling kHOM4: "\u001b[1;4H"
+return "\x1b[1;4H";
+Compiling kHOM5: "\u001b[1;5H"
+return "\x1b[1;5H";
+Compiling kHOM6: "\u001b[1;6H"
+return "\x1b[1;6H";
+Compiling kHOM7: "\u001b[1;7H"
+return "\x1b[1;7H";
+Compiling kIC3: "\u001b[2;3~"
+return "\x1b[2;3~";
+Compiling kIC4: "\u001b[2;4~"
+return "\x1b[2;4~";
+Compiling kIC5: "\u001b[2;5~"
+return "\x1b[2;5~";
+Compiling kIC6: "\u001b[2;6~"
+return "\x1b[2;6~";
+Compiling kIC7: "\u001b[2;7~"
+return "\x1b[2;7~";
+Compiling kLFT3: "\u001b[1;3D"
+return "\x1b[1;3D";
+Compiling kLFT4: "\u001b[1;4D"
+return "\x1b[1;4D";
+Compiling kLFT5: "\u001b[1;5D"
+return "\x1b[1;5D";
+Compiling kLFT6: "\u001b[1;6D"
+return "\x1b[1;6D";
+Compiling kLFT7: "\u001b[1;7D"
+return "\x1b[1;7D";
+Compiling kNXT3: "\u001b[6;3~"
+return "\x1b[6;3~";
+Compiling kNXT4: "\u001b[6;4~"
+return "\x1b[6;4~";
+Compiling kNXT5: "\u001b[6;5~"
+return "\x1b[6;5~";
+Compiling kNXT6: "\u001b[6;6~"
+return "\x1b[6;6~";
+Compiling kNXT7: "\u001b[6;7~"
+return "\x1b[6;7~";
+Compiling kPRV3: "\u001b[5;3~"
+return "\x1b[5;3~";
+Compiling kPRV4: "\u001b[5;4~"
+return "\x1b[5;4~";
+Compiling kPRV5: "\u001b[5;5~"
+return "\x1b[5;5~";
+Compiling kPRV6: "\u001b[5;6~"
+return "\x1b[5;6~";
+Compiling kPRV7: "\u001b[5;7~"
+return "\x1b[5;7~";
+Compiling kRIT3: "\u001b[1;3C"
+return "\x1b[1;3C";
+Compiling kRIT4: "\u001b[1;4C"
+return "\x1b[1;4C";
+Compiling kRIT5: "\u001b[1;5C"
+return "\x1b[1;5C";
+Compiling kRIT6: "\u001b[1;6C"
+return "\x1b[1;6C";
+Compiling kRIT7: "\u001b[1;7C"
+return "\x1b[1;7C";
+Compiling kUP: "\u001b[1;2A"
+return "\x1b[1;2A";
+Compiling kUP3: "\u001b[1;3A"
+return "\x1b[1;3A";
+Compiling kUP4: "\u001b[1;4A"
+return "\x1b[1;4A";
+Compiling kUP5: "\u001b[1;5A"
+return "\x1b[1;5A";
+Compiling kUP6: "\u001b[1;6A"
+return "\x1b[1;6A";
+Compiling kUP7: "\u001b[1;7A"
+return "\x1b[1;7A";
+Compiling ka2: ""
+Compiling kb1: ""
+Compiling kb3: ""
+Compiling kc2: ""
 Max colors: 8.

@@ -2,7 +2,7 @@ var Tput = require('../').Tput;
 
 var tput = Tput({
   term: process.argv[2] || 'xterm',
-  extended: !!~process.argv.indexOf('--extended'),
+  extended: true,
   debug: true
 });
 
