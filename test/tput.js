@@ -1,5 +1,16 @@
 var Tput = require('../').Tput;
 
+if (~process.argv.indexOf('--termcap')) {
+  var tput = Tput({
+    term: 'vt102',
+    debug: true,
+    termcap: true
+  });
+  console.log(tput.info);
+  console.log(tput.termcap);
+  process.exit(0);
+}
+
 var tput = Tput({
   term: process.argv[2] || 'xterm',
   extended: true,
