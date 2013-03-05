@@ -4,10 +4,10 @@
  * https://github.com/chjj/blessed
  */
 
-// $ node test/tput.js | tee out
+// $ node test/tput.js xterm | tee out
 // $ node test/tput.js vt102 --termcap | tee out
-// $ node test/tput.js --cfile usr/xterm.termcap | tee out
-// $ node test/tput.js --iprefix ~/.terminfo | tee out
+// $ node test/tput.js xterm --termcap --cfile usr/xterm.termcap | tee out
+// $ node test/tput.js xterm --iprefix ~/.terminfo | tee out
 // $ node test/tput.js xterm-256color --ifile ~/.terminfo/x/xterm-256color | tee out
 // $ cdiff test/terminfo out
 
@@ -71,7 +71,7 @@ var tput = Tput({
   term: argv[0] || 'xterm',
   extended: true,
   debug: true,
-  termcap: argv.termcap || !!argv.cfile || !!argv.c,
+  termcap: argv.termcap,
   terminfoFile: argv.i || argv.ifile,
   terminfoPrefix: argv.p || argv.iprefix,
   termcapFile: argv.c || argv.cfile
