@@ -4,6 +4,16 @@
  * https://github.com/chjj/blessed
  */
 
+// Compile xterm terminfo/termcap:
+// $ tic -a -I -1 usr/xterm.terminfo
+// $ tic -a -C -U usr/xterm.termcap
+
+// Compile xterm terminfo/termcap:
+// $ tic -a -1 usr/xterm.terminfo
+// $ tic -a -1 usr/xterm.terminfo && ls ~/.terminfo
+// $ tic -a -1 -o usr usr/xterm.terminfo && mv usr/x/xterm usr/ && rm -rf usr/v usr/x
+
+// Check tput output:
 // $ node test/tput.js xterm | tee out
 // $ node test/tput.js vt102 --termcap | tee out
 // $ node test/tput.js xterm --termcap --cfile usr/xterm.termcap | tee out
