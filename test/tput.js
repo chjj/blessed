@@ -15,6 +15,7 @@
 
 // Check tput output:
 // $ node test/tput.js xterm | tee out
+// $ node test/tput.js xterm --ifile usr/xterm | tee out
 // $ node test/tput.js vt102 --termcap | tee out
 // $ node test/tput.js xterm --termcap --cfile usr/xterm.termcap | tee out
 // $ node test/tput.js xterm --iprefix ~/.terminfo | tee out
