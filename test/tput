@@ -1,0 +1,5 @@
+#!/bin/bash
+
+node test/tput.js "$@" | tee out
+diff -u -s test/terminfo out | less -c -R
+rm out
