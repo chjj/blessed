@@ -12,10 +12,12 @@
 // $ tic -a -1 usr/xterm.terminfo
 // $ tic -a -1 usr/xterm.terminfo && ls ~/.terminfo
 // $ tic -a -1 -o usr usr/xterm.terminfo && mv usr/x/xterm usr/ && rm -rf usr/v usr/x
+// $ tic -a -1 -o usr usr/xterm.terminfo && mv usr/x/xterm-256color usr/ && rm -rf usr/v usr/x
 
 // Check tput output:
 // $ node test/tput.js xterm | tee out
 // $ node test/tput.js xterm --ifile usr/xterm | tee out
+// $ node test/tput.js xterm-256color --ifile usr/xterm-256color | tee out
 // $ node test/tput.js vt102 --termcap | tee out
 // $ node test/tput.js xterm --termcap --cfile usr/xterm.termcap | tee out
 // $ node test/tput.js xterm --iprefix ~/.terminfo | tee out
