@@ -1,5 +1,11 @@
 #!/bin/bash
 
 node test/tput.js "$@" | tee out
-diff -u -s test/terminfo out | less -c -R
+out=$(git diff --color=always --no-index test/terminfo out)
 rm out
+
+if test -n "$out"; then
+  echo "$out" | less -c -R
+else
+  echo 'Files are identical.'
+fi
