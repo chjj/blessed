@@ -2,12 +2,6 @@ var blessed = require('blessed')
   , program = blessed()
   , screen;
 
-var high = require('blessed/lib/high');
-
-Object.keys(high).forEach(function(key) {
-  blessed[key] = high[key];
-});
-
 screen = new blessed.Screen({
   program: program
 });
