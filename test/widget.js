@@ -66,6 +66,7 @@ screen.children[0].append(new blessed.Box({
 var list = new blessed.List({
   screen: screen,
   parent: screen,
+  mouse: true,
   fg: 4,
   bg: -1,
   border: {
@@ -140,6 +141,7 @@ var lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei
 var stext = new blessed.ScrollableText({
   screen: screen,
   parent: screen,
+  mouse: true,
   content: lorem,
   fg: 4,
   bg: -1,
