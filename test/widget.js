@@ -194,6 +194,11 @@ list.focus();
 
 screen.render();
 
+setInterval(function() {
+  stext.toggle();
+  screen.render();
+}, 1000);
+
 (function fill() {
   if (progress.filled === 100) progress.filled = 0;
   progress.progress(2);
