@@ -114,6 +114,10 @@ list.on('keypress', function(ch, key) {
   }
 });
 
+list.on('click', function() {
+  list.focus();
+});
+
 var progress = new blessed.ProgressBar({
   screen: screen,
   parent: screen,
@@ -159,6 +163,10 @@ var stext = new blessed.ScrollableText({
   height: 6,
   left: 0,
   bottom: 0
+});
+
+stext.on('click', function() {
+  stext.focus();
 });
 
 screen.append(stext);
