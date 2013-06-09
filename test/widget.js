@@ -10,16 +10,12 @@ screen = new blessed.Screen({
 });
 
 screen.append(new blessed.Text({
-  screen: screen,
-  parent: screen,
   top: 0,
   left: 2,
   content: 'Welcome to my program'
 }));
 
 screen.append(new blessed.Line({
-  screen: screen,
-  parent: screen,
   orientation: 'horizontal',
   top: 1,
   left: 0,
@@ -64,8 +60,6 @@ screen.children[0].append(new blessed.Box({
 */
 
 var list = new blessed.List({
-  screen: screen,
-  parent: screen,
   mouse: true,
   fg: 4,
   bg: -1,
@@ -94,20 +88,19 @@ var list = new blessed.List({
 });
 
 screen.append(list);
+list.select(0);
 
 list.prepend(new blessed.Text({
-  screen: screen,
-  parent: list,
   left: 2,
   content: ' My list '
 }));
 
 list.on('keypress', function(ch, key) {
-  if (key.name === 'up') {
+  if (key.name === 'up' || key.name === 'k') {
     list.up();
     screen.render();
     return;
-  } else if (key.name === 'down') {
+  } else if (key.name === 'down' || key.name === 'j') {
     list.down();
     screen.render();
     return;
@@ -119,8 +112,6 @@ list.on('click', function() {
 });
 
 var progress = new blessed.ProgressBar({
-  screen: screen,
-  parent: screen,
   fg: 4,
   bg: -1,
   barBg: -1,
@@ -144,9 +135,9 @@ var lorem = 'Lorem ipsum \x1b[41mdolor sit amet, \nconsectetur adipisicing elit,
 
 var lorem = require('fs').readFileSync(__dirname + '/../t.log', 'utf8');
 
+//lorem = lorem.replace(/\x1b[^m]*m/g, '');
+
 var stext = new blessed.ScrollableText({
-  screen: screen,
-  parent: screen,
   mouse: true,
   content: lorem,
   fg: 4,
@@ -171,11 +162,11 @@ stext.on('click', function() {
 
 screen.append(stext);
 stext.on('keypress', function(ch, key) {
-  if (key.name === 'up') {
+  if (key.name === 'up' || key.name === 'k') {
     stext.scroll(-1);
     screen.render();
     return;
-  } else if (key.name === 'down') {
+  } else if (key.name === 'down' || key.name === 'j') {
     stext.scroll(1);
     screen.render();
     return;
