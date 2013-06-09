@@ -175,11 +175,41 @@ screen.on('element focus', function(old, cur) {
   screen.render();
 });
 
-program.on('keypress', function(ch, key) {
+var input = new blessed.Textbox({
+  mouse: true,
+  content: '',
+  fg: 4,
+  bg: -1,
+  barBg: -1,
+  barFg: 4,
+  border: {
+    type: 'ascii',
+    fg: -1,
+    bg: -1
+  },
+  width: '30%',
+  height: 3,
+  right: 0,
+  top: 0
+});
+
+screen.append(input);
+
+screen.on('keypress', function(ch, key) {
   if (key.name === 'tab') {
     return key.shift
       ? screen.focusPrev()
       : screen.focusNext();
+  }
+  if (key.name === 'i') {
+    return input.setInput(function(err, value) {
+      screen.children[0].setContent(value);
+    });
+  }
+  if (key.name === 'e') {
+    return input.setEditor(function(err, value) {
+      screen.children[0].setContent(value);
+    });
   }
   if (key.name === 'escape' || key.name === 'q') {
     return process.exit(0);
