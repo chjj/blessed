@@ -103,10 +103,6 @@ list.on('keypress', function(ch, key) {
   }
 });
 
-list.on('click', function() {
-  list.focus();
-});
-
 var progress = new blessed.ProgressBar({
   fg: 4,
   bg: -1,
@@ -150,10 +146,6 @@ var stext = new blessed.ScrollableText({
   height: 6,
   left: 0,
   bottom: 0
-});
-
-stext.on('click', function() {
-  stext.focus();
 });
 
 screen.append(stext);
@@ -219,12 +211,16 @@ screen.on('keypress', function(ch, key) {
 
 list.focus();
 
+//screen.on('element click', function(el) {
+//  el.focus();
+//});
+
 screen.render();
 
 setInterval(function() {
-  stext.toggle();
+  progress.toggle();
   screen.render();
-}, 1000);
+}, 2000);
 
 (function fill() {
   if (progress.filled === 100) {
