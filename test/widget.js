@@ -177,6 +177,7 @@ screen.on('element focus', function(old, cur) {
 
 var input = new blessed.Textbox({
   mouse: true,
+  label: ' My Input ',
   content: '',
   fg: 4,
   bg: -1,
@@ -190,7 +191,7 @@ var input = new blessed.Textbox({
   width: '30%',
   height: 3,
   right: 0,
-  top: 0
+  top: 2
 });
 
 screen.append(input);
@@ -203,12 +204,12 @@ screen.on('keypress', function(ch, key) {
   }
   if (key.name === 'i') {
     return input.setInput(function(err, value) {
-      screen.children[0].setContent(value);
+      if (value) screen.children[0].setContent(value);
     });
   }
   if (key.name === 'e') {
     return input.setEditor(function(err, value) {
-      screen.children[0].setContent(value);
+      if (value) screen.children[0].setContent(value);
     });
   }
   if (key.name === 'escape' || key.name === 'q') {
