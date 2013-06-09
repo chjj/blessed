@@ -226,7 +226,9 @@ setInterval(function() {
 }, 1000);
 
 (function fill() {
-  if (progress.filled === 100) progress.filled = 0;
+  if (progress.filled === 100) {
+    progress.reset();
+  }
   progress.progress(2);
   screen.render();
   setTimeout(fill, 300);
