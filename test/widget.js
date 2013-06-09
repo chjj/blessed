@@ -1,11 +1,7 @@
 var blessed = require('blessed')
-  , program = blessed()
-  , screen;
+  , program = blessed();
 
-program.alternateBuffer();
-program.hideCursor();
-
-screen = new blessed.Screen({
+var screen = new blessed.Screen({
   program: program
 });
 
@@ -186,10 +182,6 @@ program.on('keypress', function(ch, key) {
       : screen.focusNext();
   }
   if (key.name === 'escape' || key.name === 'q') {
-    program.disableMouse();
-    program.clear();
-    program.showCursor();
-    program.normalBuffer();
     return process.exit(0);
   }
 });
@@ -199,8 +191,8 @@ list.focus();
 screen.render();
 
 setInterval(function() {
-  //stext.toggle();
-  //screen.render();
+  stext.toggle();
+  screen.render();
 }, 1000);
 
 (function fill() {
