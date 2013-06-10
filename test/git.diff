@@ -1,0 +1,143 @@
+[1mdiff --git a/lib/widget.js b/lib/widget.js[m
+[1mindex 8785046..4bfefd3 100644[m
+[1m--- a/lib/widget.js[m
+[1m+++ b/lib/widget.js[m
+[36m@@ -511,6 +511,9 @@[m [mElement.prototype.__defineGetter__('left', function() {[m
+ });[m
+ [m
+ Element.prototype.__defineGetter__('right', function() {[m
+[32m+[m[32m  //if (this.options.right == null && this.options.left != null) {[m
+[32m+[m[32m  //  return this.screen.cols - (this.left + this.width);[m
+[32m+[m[32m  //}[m
+   return (this.parent.right || 0) + this.position.right;[m
+ });[m
+ [m
+[36m@@ -532,6 +535,9 @@[m [mElement.prototype.__defineGetter__('top', function() {[m
+ });[m
+ [m
+ Element.prototype.__defineGetter__('bottom', function() {[m
+[32m+[m[32m  //if (this.options.bottom == null && this.options.top != null) {[m
+[32m+[m[32m  //  return this.screen.rows - (this.top + this.height);[m
+[32m+[m[32m  //}[m
+   return (this.parent.bottom || 0) + this.position.bottom;[m
+ });[m
+ [m
+[36m@@ -671,7 +677,20 @@[m [mBox.prototype.render = function(stop) {[m
+     var cb = this.childBase[m
+       , xxl = xl - (this.border ? 1 : 0)[m
+       , xxi;[m
+[31m-    while (cb--) for (xxi = xi + (this.border ? 1 : 0); xxi < xxl; xxi++) ci++;[m
+[32m+[m[32m    while (cb--) {[m
+[32m+[m[32m      for (xxi = xi + (this.border ? 1 : 0); xxi < xxl; xxi++) {[m
+[32m+[m[32m        if (this.content[ci] === '\n' || this.content[ci] === '\r') {[m
+[32m+[m[32m          ci++;[m
+[32m+[m[32m          if (!cb) break;[m
+[32m+[m[32m          cb--;[m
+[32m+[m[32m        } else if (this.content[ci] === '\x1b') {[m
+[32m+[m[32m          for (; ci < this.content.length; ci++) {[m
+[32m+[m[32m            if (this.content[ci] === 'm') break;[m
+[32m+[m[32m          }[m
+[32m+[m[32m        }[m
+[32m+[m[32m        ci++;[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }[m
+   }[m
+ [m
+   var ret = {[m
+[36m@@ -683,6 +702,8 @@[m [mBox.prototype.render = function(stop) {[m
+ [m
+   if (stop) return ret;[m
+ [m
+[32m+[m[32m  var lastEscape, hasEscapes, c;[m
+[32m+[m
+   for (; yi < yl; yi++) {[m
+     if (!lines[yi]) break;[m
+     for (xi = this.left; xi < xl; xi++) {[m
+[36m@@ -708,22 +729,52 @@[m [mBox.prototype.render = function(stop) {[m
+       } else {[m
+         attr = ((this.bold << 18) + (this.underline << 18)) | (this.fg << 9) | this.bg;[m
+         ch = this.content[ci++] || ' ';[m
+[32m+[m
+[32m+[m[32m        // Handle escape codes.[m
+[32m+[m[32m        // NOTE: We could also change around `attr`, that might be cleaner.[m
+[32m+[m[32m        // NOTE: Currently, this will not work with newline handling.[m
+[32m+[m[32m        if (lastEscape) {[m
+[32m+[m[32m          ch = lastEscape + ch;[m
+[32m+[m[32m          lastEscape = '';[m
+[32m+[m[32m        }[m
+[32m+[m[32m        if (ch === '\x1b') {[m
+[32m+[m[32m          hasEscapes = true;[m
+[32m+[m[32m          if (c = /^\x1b\[\d+(?:;\d+)*m/.exec(this.content.substring(ci - 1))) {[m
+[32m+[m[32m            ci += c[0].length - 1;[m
+[32m+[m[32m            if (!this.content[c[0].length]) {[m
+[32m+[m[32m              // Problem: No character to put here[m
+[32m+[m[32m              // needs to wrap around below.[m
+[32m+[m[32m              lastEscape = c[0];[m
+[32m+[m[32m              ch = ' ';[m
+[32m+[m[32m            } else {[m
+[32m+[m[32m              ch = c[0] + this.content[ci];[m
+[32m+[m[32m            }[m
+[32m+[m[32m            ci++;[m
+[32m+[m[32m          }[m
+[32m+[m[32m        }[m
+[32m+[m[32m        if (hasEscapes && xi === xl - 1) {[m
+[32m+[m[32m          ch += '\x1b[m';[m
+[32m+[m[32m        }[m
+       }[m
+ [m
+[31m-      // TODO: Allow newlines.[m
+[31m-      //if (ch === '\n' || ch === '\r') {[m
+[31m-      //  ch = ' ';[m
+[31m-      //  xl = xl - 1 - (this.border ? 1 : 0);[m
+[31m-      //  for (; xi < xl; xi++) {[m
+[31m-      //    cell = lines[yi][xi];[m
+[31m-      //    if (!cell) break;[m
+[31m-      //    if (attr !== cell[0] || ch !== cell[1]) {[m
+[31m-      //      lines[yi][xi][0] = attr;[m
+[31m-      //      lines[yi][xi][1] = ch;[m
+[31m-      //      lines[yi].dirty = true;[m
+[31m-      //    }[m
+[31m-      //  }[m
+[31m-      //}[m
+[32m+[m[32m      // Handle newlines.[m
+[32m+[m[32m      if (ch === '\n' || ch === '\r') {[m
+[32m+[m[32m        ch = ' ';[m
+[32m+[m[32m        if (hasEscapes) ch += '\x1b[m';[m
+[32m+[m[32m        var xxl = xl - (this.border ? 1 : 0);[m
+[32m+[m[32m        for (; xi < xxl; xi++) {[m
+[32m+[m[32m          attr = ((this.bold << 18) + (this.underline << 18)) | (this.fg << 9) | this.bg;[m
+[32m+[m[32m          cell = lines[yi][xi];[m
+[32m+[m[32m          if (!cell) break;[m
+[32m+[m[32m          if (attr !== cell[0] || ch !== cell[1]) {[m
+[32m+[m[32m            lines[yi][xi][0] = attr;[m
+[32m+[m[32m            lines[yi][xi][1] = ch;[m
+[32m+[m[32m            lines[yi].dirty = true;[m
+[32m+[m[32m          }[m
+[32m+[m[32m        }[m
+[32m+[m[32m        if (this.border) xi--;[m
+[32m+[m[32m        continue;[m
+[32m+[m[32m      }[m
+ [m
+       if (attr !== cell[0] || ch !== cell[1]) {[m
+         lines[yi][xi][0] = attr;[m
+[36m@@ -958,6 +1009,7 @@[m [mList.prototype.__proto__ = ScrollableBox.prototype;[m
+ List.prototype.add = function(item) {[m
+   var self = this;[m
+ [m
+[32m+[m[32m  // TODO: Use box here and get rid of text.[m
+   var item = new Text({[m
+     screen: this.screen,[m
+     parent: this,[m
+[1mdiff --git a/test/widget.js b/test/widget.js[m
+[1mindex a392a0e..1e62e8c 100644[m
+[1m--- a/test/widget.js[m
+[1m+++ b/test/widget.js[m
+[36m@@ -136,7 +136,7 @@[m [mvar progress = new blessed.ProgressBar({[m
+ [m
+ screen.append(progress);[m
+ [m
+[31m-var lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';[m
+[32m+[m[32mvar lorem = 'Lorem ipsum \x1b[41mdolor sit amet, \nconsectetur adipisicing elit, \x1b[43msed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';[m
+ [m
+ var stext = new blessed.ScrollableText({[m
+   screen: screen,[m
