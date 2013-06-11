@@ -231,6 +231,3 @@ setInterval(function() {
   setTimeout(fill, 300);
   progress.top -= 2;
 })();
-
-setTimeout(function() {
-}, 2000);

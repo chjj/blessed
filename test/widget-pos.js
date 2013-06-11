@@ -1,13 +1,16 @@
 var blessed = require('blessed')
-  , program = blessed();
+  , program = blessed()
+  , assert = require('assert');
 
 var screen = new blessed.Screen({
   program: program
 });
 
 var main = new blessed.Box({
-  width: '75%',
-  height: '75%',
+  //width: '75%',
+  //height: '75%',
+  width: 115,
+  height: 14,
   bg: 3,
   top: 2,
   left: 2,
@@ -19,6 +22,8 @@ screen.append(main);
 var inner = new blessed.Box({
   width: '50%',
   height: '50%',
+  //width: 57,
+  //height: 7,
   bg: 4,
   top: 2,
   left: 2,
@@ -40,6 +45,50 @@ inner.setContent(inner.content + '\n' + JSON.stringify({
   rbottom: inner.rbottom
 }));
 
+// NOTE: With 154 cols.
+program.cols = 154;
+program.rows = 19;
+
+assert.equal(inner.width, 57);
+assert.equal(inner.height, 7);
+
+assert.equal(inner.left, 4);
+assert.equal(inner.right, 93);
+assert.equal(inner.top, 4);
+assert.equal(inner.bottom, 8);
+
+assert.equal(inner.rleft, 2);
+assert.equal(inner.rright, 56);
+assert.equal(inner.rtop, 2);
+assert.equal(inner.rbottom, 5);
+
+// Change left to half of the parent width.
+inner.rleft = '50%';
+assert.equal(inner.left, 59);
+
+// Change left to half of the screen width.
+inner.left = '50%';
+assert.equal(inner.left, screen.width / 2 | 0);
+
+// Test implied height/width.
+reset(inner, {
+  top: 5,
+  bottom: 5,
+  left: 5,
+  right: 5
+});
+
+assert.equal(inner.width, 105);
+assert.equal(inner.height, 4);
+
+// Demonstrate the difference between `left: 5`, and `.left = 5` (relative vs. absolute):
+inner.top = inner.bottom = inner.left = inner.right = 5;
+
+assert.equal(inner.width, 144);
+assert.equal(inner.height, 9);
+
+// TODO: Start storing position.left, etc. as absolute?
+
 screen.on('keypress', function(ch, key) {
   if (key.name === 'escape' || key.name === 'q') {
     return process.exit(0);
@@ -47,3 +96,12 @@ screen.on('keypress', function(ch, key) {
 });
 
 screen.render();
+
+function reset(el, pos) {
+  el.position.width = el.options.width = pos.width;
+  el.position.height = el.options.height = pos.height;
+  el.position.left = el.options.left = pos.left;
+  el.position.right = el.options.right = pos.right;
+  el.position.top = el.options.top = pos.top;
+  el.position.bottom = el.options.bottom = pos.bottom;
+}
