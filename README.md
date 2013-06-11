@@ -161,6 +161,7 @@ The base node which everything inherits from.
 ##### Events:
 
 - inherits all from EventEmitter.
+- **adopt** - received when node is added to a parent.
 - **remove** - received when node is removed from it's current parent.
 - **reparent** - received when node gains a new parent.
 

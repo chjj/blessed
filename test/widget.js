@@ -1,5 +1,5 @@
 var blessed = require('blessed')
-  , program = blessed();
+  , program = blessed({ tput: true });
 
 var screen = new blessed.Screen({
   program: program
