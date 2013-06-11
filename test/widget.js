@@ -229,4 +229,8 @@ setInterval(function() {
   progress.progress(2);
   screen.render();
   setTimeout(fill, 300);
+  progress.top -= 2;
 })();
+
+setTimeout(function() {
+}, 2000);
