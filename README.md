@@ -233,7 +233,7 @@ The base element.
 - inherits all from Node.
 - **border** - border object.
   - **type** - type of border (`ascii` or `bg`). `bg` by default.
-  - **ch* - character to use if `bg` type, default is space.
+  - **ch** - character to use if `bg` type, default is space.
   - **bg, fg** - border foreground and background, must be numbers (-1 for default).
   - **bold, underline** - border attributes.
 - **position** - raw width, height, and offsets.
