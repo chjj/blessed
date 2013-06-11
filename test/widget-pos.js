@@ -2,6 +2,10 @@ var blessed = require('blessed')
   , program = blessed()
   , assert = require('assert');
 
+// My terminal size at the time of writing these tests:
+program.cols = 154;
+program.rows = 19;
+
 var screen = new blessed.Screen({
   program: program
 });
@@ -45,10 +49,6 @@ inner.setContent(inner.content + '\n' + JSON.stringify({
   rbottom: inner.rbottom
 }));
 
-// NOTE: With 154 cols.
-program.cols = 154;
-program.rows = 19;
-
 assert.equal(inner.width, 57);
 assert.equal(inner.height, 7);
 
@@ -87,6 +87,17 @@ inner.top = inner.bottom = inner.left = inner.right = 5;
 assert.equal(inner.width, 144);
 assert.equal(inner.height, 9);
 
+// Test center keyword
+reset(inner, {
+  width: '50%',
+  height: '50%',
+  left: 'center',
+  top: 'center'
+});
+
+assert.equal(inner.rleft, 29);
+assert.equal(inner.rtop, 4);
+
 // TODO: Start storing position.left, etc. as absolute?
 
 screen.on('keypress', function(ch, key) {
@@ -98,6 +109,7 @@ screen.on('keypress', function(ch, key) {
 screen.render();
 
 function reset(el, pos) {
+  pos = pos || {};
   el.position.width = el.options.width = pos.width;
   el.position.height = el.options.height = pos.height;
   el.position.left = el.options.left = pos.left;
