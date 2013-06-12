@@ -114,6 +114,9 @@ var progress = new blessed.ProgressBar({
     bg: -1
   },
   ch: ':',
+  //orientation: 'vertical',
+  //height: 10,
+  //width: 3,
   width: '50%',
   height: 3,
   right: 0,
