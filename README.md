@@ -185,14 +185,17 @@ The screen on which every other node renders.
 
 - inherits all from Node.
 - **program** - the blessed Program object.
-- **tput** - the blessed Tput object.
+- **tput** - the blessed Tput object (only available if you passed `tput: true`
+  to the Program constructor.)
 - **focused** - top of the focus history stack.
 - **width** - width of the screen (same as `program.cols`).
 - **height** - height of the screen (same as `program.rows`).
-- **left** - left offset, always zero.
-- **right** - right offset, always zero.
-- **top** - top offset, always zero.
-- **bottom** - bottom offset, always zero.
+- **cols** - same as `screen.width`.
+- **rows** - same as `screen.height`.
+- **left**, **rleft** - left offset, always zero.
+- **right**, **rright** - right offset, always zero.
+- **top**, **rtop** - top offset, always zero.
+- **bottom**, **rbottom** - bottom offset, always zero.
 
 ##### Events:
 
@@ -229,6 +232,7 @@ The base element.
 - **hidden** - whether the element is hidden.
 - **label** - a simple text label for the element.
 - **align** - text alignment: `left`, `center`, or `right`.
+- **shrink** - shrink/flex/grow to content width during render.
 
 ##### Properties:
 
@@ -286,7 +290,7 @@ An element similar to Box, but geared towards rendering simple text elements.
 
 - inherits all from Element.
 - **fill** - fill the entire line with chosen bg until parent bg ends, even if
-  there is not enough text to fill the entire width.
+  there is not enough text to fill the entire width. **(deprecated)**
 - **align** - text alignment: `left`, `center`, or `right`.
 
 Inherits all options, properties, events, and methods from Element.
