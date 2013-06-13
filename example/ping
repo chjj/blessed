@@ -79,11 +79,12 @@ var score = new blessed.Box({
   top: 0,
   left: 4,
   height: 3,
-  width: 26,
+  //width: 26,
   border: {
     type: 'ascii'
   },
-  align: 'center',
+  shrink: true,
+  //align: 'center',
   bold: true
 });
 
