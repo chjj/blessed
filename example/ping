@@ -79,7 +79,11 @@ var score = new blessed.Box({
   top: 0,
   left: 4,
   height: 3,
-  width: 20,
+  width: 26,
+  border: {
+    type: 'ascii'
+  },
+  align: 'center',
   bold: true
 });
 
@@ -109,6 +113,7 @@ var text = new blessed.Box({
   left: 1,
   right: 1,
   height: 1,
+  align: 'center',
   content: 'Waiting for players to connect...'
 });
 
