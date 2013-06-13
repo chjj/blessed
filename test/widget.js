@@ -57,18 +57,18 @@ screen.children[0].append(new blessed.Box({
 
 var list = new blessed.List({
   mouse: true,
-  fg: 4,
-  bg: -1,
+  fg: 'blue',
+  bg: 'default',
   border: {
     type: 'ascii',
-    fg: -1,
-    bg: -1
+    fg: 'default',
+    bg: 'default'
   },
   width: '50%',
   height: '50%',
   top: 'center',
   left: 'center',
-  selectedBg: 2,
+  selectedBg: 'green',
   items: [
     'one',
     'two',
@@ -104,14 +104,14 @@ list.on('keypress', function(ch, key) {
 });
 
 var progress = new blessed.ProgressBar({
-  fg: 4,
-  bg: -1,
-  barBg: -1,
-  barFg: 4,
+  fg: 'blue',
+  bg: 'default',
+  barBg: 'default',
+  barFg: 'blue',
   border: {
     type: 'ascii',
-    fg: -1,
-    bg: -1
+    fg: 'default',
+    bg: 'default'
   },
   ch: ':',
   //orientation: 'vertical',
@@ -135,14 +135,14 @@ var lorem = require('fs').readFileSync(__dirname + '/git.diff', 'utf8');
 var stext = new blessed.ScrollableText({
   mouse: true,
   content: lorem,
-  fg: 4,
-  bg: -1,
-  barBg: -1,
-  barFg: 4,
+  fg: 'blue',
+  bg: 'default',
+  barBg: 'default',
+  barFg: 'blue',
   border: {
     type: 'ascii',
-    fg: -1,
-    bg: -1
+    fg: 'default',
+    bg: 'default'
   },
   width: '50%',
   //height: 4,
@@ -174,14 +174,14 @@ var input = new blessed.Textbox({
   mouse: true,
   label: ' My Input ',
   content: '',
-  fg: 4,
-  bg: -1,
-  barBg: -1,
-  barFg: 4,
+  fg: 'blue',
+  bg: 'default',
+  barBg: 'default',
+  barFg: 'blue',
   border: {
     type: 'ascii',
-    fg: -1,
-    bg: -1
+    fg: 'default',
+    bg: 'default'
   },
   width: '30%',
   height: 3,

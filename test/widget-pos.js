@@ -15,7 +15,7 @@ var main = new blessed.Box({
   //height: '75%',
   width: 115,
   height: 14,
-  bg: 3,
+  bg: 'yellow',
   top: 2,
   left: 2,
   content: 'Welcome to my program'
@@ -28,7 +28,7 @@ var inner = new blessed.Box({
   height: '50%',
   //width: 57,
   //height: 7,
-  bg: 4,
+  bg: 'blue',
   top: 2,
   left: 2,
   content: 'Hello'
