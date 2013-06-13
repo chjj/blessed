@@ -228,6 +228,7 @@ The base element.
 - **input** - element is focusable and can receive key input.
 - **hidden** - whether the element is hidden.
 - **label** - a simple text label for the element.
+- **align** - text alignment: `left`, `center`, or `right`.
 
 ##### Properties:
 
@@ -286,6 +287,7 @@ An element similar to Box, but geared towards rendering simple text elements.
 - inherits all from Element.
 - **fill** - fill the entire line with chosen bg until parent bg ends, even if
   there is not enough text to fill the entire width.
+- **align** - text alignment: `left`, `center`, or `right`.
 
 Inherits all options, properties, events, and methods from Element.
 

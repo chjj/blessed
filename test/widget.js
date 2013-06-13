@@ -8,7 +8,9 @@ var screen = new blessed.Screen({
 screen.append(new blessed.Text({
   top: 0,
   left: 2,
-  content: 'Welcome to my program'
+  width: '100%',
+  content: 'Welcome to my program',
+  align: 'center'
 }));
 
 screen.append(new blessed.Line({
@@ -56,6 +58,7 @@ screen.children[0].append(new blessed.Box({
 */
 
 var list = new blessed.List({
+  align: 'center',
   mouse: true,
   fg: 'blue',
   bg: 'default',
