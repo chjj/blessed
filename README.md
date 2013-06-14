@@ -108,7 +108,7 @@ program.getCursor(function(err, data) {
 ### Example
 
 This will render a box with ascii borders containing the text 'Hello world!',
-centered horizontally and vertically.
+perfectly centered horizontally and vertically.
 
 ``` js
 var blessed = require('blessed')
@@ -122,16 +122,16 @@ screen.append(new blessed.Box({
   height: '50%',
   border: {
     type: 'ascii',
-    fg: 1
+    fg: 'white'
   },
-  fg: 3,
-  bg: 5,
+  fg: 'white',
+  bg: 'magenta',
   content: 'Hello world!',
 }));
 
 screen.on('keypress', function(ch, key) {
   if (key.name === 'escape') {
-    process.exit(0);
+    return process.exit(0);
   }
 });
 
@@ -233,6 +233,7 @@ The base element.
 - **label** - a simple text label for the element.
 - **align** - text alignment: `left`, `center`, or `right`.
 - **shrink** - shrink/flex/grow to content width during render.
+- **padding** - amount of padding on the inside of the element.
 
 ##### Properties:
 
@@ -458,7 +459,7 @@ When an element is created, it can be given coordinates in its constructor:
 var box = new blessed.Box({
   left: 'center',
   top: 'center',
-  bg: 3,
+  bg: 'yellow',
   width: '50%',
   height: '50%'
 });

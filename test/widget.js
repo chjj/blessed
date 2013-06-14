@@ -136,6 +136,7 @@ var lorem = require('fs').readFileSync(__dirname + '/git.diff', 'utf8');
 //lorem = lorem.replace(/\x1b[^m]*m/g, '');
 
 var stext = new blessed.ScrollableText({
+  //padding: 1,
   mouse: true,
   content: lorem,
   fg: 'blue',
