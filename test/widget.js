@@ -9,7 +9,7 @@ screen.append(new blessed.Text({
   top: 0,
   left: 2,
   width: '100%',
-  content: '{green-fg}Welcome{/green-fg} to my {red-bg,underlined}program{/}',
+  content: '{green-fg}Welcome{/green-fg} to my {red-bg,ul}program{/}',
   tags: true,
   align: 'center'
 }));
