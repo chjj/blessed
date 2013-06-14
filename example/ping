@@ -85,7 +85,8 @@ var score = new blessed.Box({
   },
   shrink: true,
   //align: 'center',
-  bold: true
+  bold: true,
+  tags: true
 });
 
 score.lwins = 0;
@@ -174,7 +175,7 @@ function reset() {
   lpaddle.rtop = 0;
   rpaddle.rtop = 0;
 
-  score.setContent('Score: ' + score.lwins + ' | ' + score.rwins);
+  score.setContent('{green-fg}Score:{/} ' + score.lwins + ' | ' + score.rwins);
 
   rpaddle.movable = true;
 
