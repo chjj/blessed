@@ -143,6 +143,7 @@ screen.render();
 Blessed comes with a number of high-level widgets so you can avoid all the
 nasty low-level terminal stuff.
 
+
 #### Node (from EventEmitter)
 
 The base node which everything inherits from.
@@ -172,6 +173,7 @@ The base node which everything inherits from.
 - **append(node)** - append a node to this node's children.
 - **remove(node)** - remove child node from node.
 - **detach()** - remove node from its parent.
+
 
 #### Screen (from Node)
 
@@ -217,6 +219,7 @@ The screen on which every other node renders.
 - **focusNext()** - focus next element in the index.
 - **focusPush(element)** - push element on the focus stack (equivalent to `screen.focused = el`).
 - **focusPop()/focusLast()** - pop element off the focus stack.
+
 
 #### Element (from Node)
 
@@ -277,6 +280,7 @@ The base element.
 - **toggle()** - toggle hidden/shown.
 - **focus()** - focus element.
 
+
 #### Box (from Element)
 
 A box element which draws a simple box containing `content` or other elements.
@@ -296,6 +300,7 @@ An element similar to Box, but geared towards rendering simple text elements.
 
 Inherits all options, properties, events, and methods from Element.
 
+
 #### Line (from Box)
 
 A simple line which can be `ascii` or `bg` styled.
@@ -307,6 +312,7 @@ A simple line which can be `ascii` or `bg` styled.
 - **type, bg, fg, ch** - treated the same as a border object.
 
 Inherits all options, properties, events, and methods from Box.
+
 
 #### ScrollableBox (from Box)
 
@@ -333,6 +339,7 @@ A box with scrollable content.
 ##### Methods:
 
 - **scroll(offset)** - scroll the content by an offset.
+
 
 #### List (from ScrollableBox)
 
@@ -367,6 +374,7 @@ A scrollable list which can display selectable items.
 - **up(amount)** - select item above selected.
 - **down(amount)** - select item below selected.
 
+
 #### ScrollableText (from ScrollableBox)
 
 A scrollable text box which can display and scroll text, as well as handle pre-existing newlines and escape codes.
@@ -392,6 +400,7 @@ A scrollable text box which can display and scroll text, as well as handle pre-e
 
 A form input.
 
+
 #### Textbox (from Input)
 
 A box which allows text input.
@@ -415,6 +424,34 @@ A box which allows text input.
   keyboard. takes a callback which receives the final value.
 - **setEditor(callback)** - open text editor in $EDITOR, read the output from the
   resulting file. takes a callback which receives the final value.
+
+
+#### Button (from Input)
+
+A button which can be focused and allows key and mouse input.
+
+##### Options:
+
+- inherits all from Input.
+
+##### Properties:
+
+- inherits all from Input.
+
+##### Events:
+
+- inherits all from ScrollableBox.
+- **press** - received when the button is clicked/pressed.
+
+##### Methods:
+
+- inherits all from ScrollableBox.
+- **add(text)** - add an item based on a string.
+- **select(index)** - select an index of an item.
+- **move(offset)** - select item based on current offset.
+- **up(amount)** - select item above selected.
+- **down(amount)** - select item below selected.
+
 
 #### ProgressBar (from Input)
 
@@ -442,6 +479,7 @@ A progress bar allowing various styles.
 - inherits all from Input.
 - **progress(amount)** - progress the bar by a fill amount.
 - **reset()** - reset the bar.
+
 
 ### Positioning
 

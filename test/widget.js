@@ -9,7 +9,8 @@ screen.append(new blessed.Text({
   top: 0,
   left: 2,
   width: '100%',
-  content: '{green-fg}Welcome{/green-fg} to my {red-bg,ul}program{/}',
+  //bg: 'blue',
+  content: '{green-fg}Welcome{/green-fg} to my {red-fg,ul}program{/red-fg,ul}',
   tags: true,
   align: 'center'
 }));
@@ -195,6 +196,28 @@ var input = new blessed.Textbox({
 });
 
 screen.append(input);
+
+var button = blessed.Button({
+  //content: 'Click me!',
+  content: 'Click\nme!',
+  shrink: true,
+  border: {
+    type: 'ascii'
+  },
+  fg: 'red',
+  bg: 'blue',
+  //height: 3,
+  right: 4,
+  //bottom: 6,
+  bottom: 2,
+  padding: 0
+});
+
+button.on('press', function() {
+  button.setContent('Clicked!');
+});
+
+screen.append(button);
 
 screen.on('keypress', function(ch, key) {
   if (key.name === 'tab') {
