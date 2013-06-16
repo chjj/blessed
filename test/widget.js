@@ -1,9 +1,5 @@
 var blessed = require('blessed')
-  , program = blessed({ tput: true });
-
-var screen = new blessed.Screen({
-  program: program
-});
+  , screen = blessed.Screen({ tput: true });
 
 screen.append(new blessed.Text({
   top: 0,
@@ -175,6 +171,19 @@ screen.on('element focus', function(old, cur) {
   if (cur.border) cur.border.fg = 2;
   screen.render();
 });
+
+/*
+screen.on('element mouseover', function(el) {
+  el._bg = el.bg;
+  el.bg = 1;
+  screen.render();
+});
+
+screen.on('element mouseout', function(el) {
+  el.bg = el._bg;
+  screen.render();
+});
+*/
 
 var input = new blessed.Textbox({
   mouse: true,

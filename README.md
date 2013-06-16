@@ -202,6 +202,7 @@ The screen on which every other node renders.
 ##### Events:
 
 - inherits all from Node.
+- **resize** - received on screen resize.
 - **mouse** - received on mouse events.
 - **keypress** - received on key events.
 - **element [name]** - global events received for all elements.
@@ -265,7 +266,12 @@ The base element.
 ##### Events:
 
 - inherits all from Node.
+- **blur, focus** - received when an element is focused or unfocused.
 - **mouse** - received on mouse events for this element.
+  - **mousedown, mouseup** - mouse button was pressed or released.
+  - **wheeldown, wheelup** - wheel was scrolled down or up.
+  - **mouseover, mouseout** - element was hovered or unhovered.
+  - **mousemove** - mouse was moved somewhere on this element.
 - **keypress** - received on key events for this element.
 - **move** - received when the element is moved.
 - **resize** - received when the element is resized.
