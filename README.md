@@ -202,6 +202,8 @@ The screen on which every other node renders.
 - **right**, **rright** - right offset, always zero.
 - **top**, **rtop** - top offset, always zero.
 - **bottom**, **rbottom** - bottom offset, always zero.
+- **grabKeys** - whether the focused element grabs all keypresses.
+- **lockKeys** - prevent keypresses from being received by any element.
 
 ##### Events:
 
@@ -364,6 +366,8 @@ A scrollable list which can display selectable items.
   treated like bold and underline.
 - **mouse** - whether to automatically enable mouse support for this list (allows
   clicking items).
+- **keys** - use predefined keys for navigating the list.
+- **vi** - use vi keys with the `keys` option.
 - **items** - an array of strings which become the list's items.
 
 ##### Properties:
@@ -374,6 +378,8 @@ A scrollable list which can display selectable items.
 
 - inherits all from ScrollableBox.
 - **select** - received when an item is selected.
+- **cancel** - list was canceled (when `esc` is pressed with the `keys` option).
+- **action** - either a select or a cancel event was received.
 
 ##### Methods:
 
@@ -393,6 +399,8 @@ A scrollable text box which can display and scroll text, as well as handle pre-e
 
 - inherits all from ScrollableBox.
 - **mouse** - whether to enable automatic mouse support for this element.
+- **keys** - use predefined keys for navigating the text.
+- **vi** - use vi keys with the `keys` option.
 
 ##### Properties:
 

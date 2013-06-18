@@ -20,8 +20,6 @@ screen.append(new blessed.Line({
 
 /*
 screen.append(new blessed.Box({
-  screen: screen,
-  parent: screen,
   fg: 4,
   bg: -1,
   border: {
@@ -37,8 +35,6 @@ screen.append(new blessed.Box({
 }));
 
 screen.children[0].append(new blessed.Box({
-  screen: screen,
-  parent: screen.children[0],
   fg: 4,
   bg: 3,
   border: {
