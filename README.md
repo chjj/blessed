@@ -157,7 +157,11 @@ The base node which everything inherits from.
 ##### Properties:
 
 - inherits all from EventEmitter.
+- **options** - original options object.
+- **parent** - parent node.
+- **screen** - parent screen.
 - **children** - array of node's children.
+- **data, _, $** - an object for any miscellanous user data.
 
 ##### Events:
 
