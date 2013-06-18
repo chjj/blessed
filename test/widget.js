@@ -139,8 +139,6 @@ var stext = new blessed.ScrollableText({
   content: lorem,
   fg: 'blue',
   bg: 'default',
-  barBg: 'default',
-  barFg: 'blue',
   border: {
     type: 'ascii',
     fg: 'default',
