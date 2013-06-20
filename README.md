@@ -146,6 +146,8 @@ The base node which everything inherits from.
 - **append(node)** - append a node to this node's children.
 - **remove(node)** - remove child node from node.
 - **detach()** - remove node from its parent.
+- **emitDescendants(type, args..., [iterator])** - emit event for element, and
+  recursively emit same event for all descendants.
 
 
 #### Screen (from Node)
