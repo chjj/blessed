@@ -197,6 +197,8 @@ The screen on which every other node renders.
 - **focusNext()** - focus next element in the index.
 - **focusPush(element)** - push element on the focus stack (equivalent to `screen.focused = el`).
 - **focusPop()/focusLast()** - pop element off the focus stack.
+- **saveFocus()** - save the focused element.
+- **restoreFocus()** - restore the saved focused element.
 
 
 #### Element (from Node)
