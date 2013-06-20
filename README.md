@@ -6,8 +6,7 @@ Blessed was originally written to only support the xterm terminfo, but can
 now parse and compile any terminfo to be completely portable accross all
 terminals. See the `tput` example below.
 
-I want this library to eventually become a high-level library for terminal
-widgets.
+Blessed also includes an extremely high-level widget library.
 
 ## Example Usage
 
@@ -29,7 +28,7 @@ $ tput.js sgr0
 $ echo "$(tput.js setaf 2)hello world$(tput.js sgr0)"
 ```
 
-The higher level functionality is exposed in the main `blessed` module:
+The main functionality is exposed in the main `blessed` module:
 
 ``` js
 var blessed = require('blessed')
@@ -135,6 +134,10 @@ The base node which everything inherits from.
 - **adopt** - received when node is added to a parent.
 - **remove** - received when node is removed from it's current parent.
 - **reparent** - received when node gains a new parent.
+- **attach** - received when node is attached to the screen directly or
+  somewhere in its ancestry.
+- **detach** - received when node is detached from the screen directly or
+  somewhere in its ancestry.
 
 ##### Methods:
 
