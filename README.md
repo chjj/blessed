@@ -77,10 +77,9 @@ perfectly centered horizontally and vertically.
 
 ``` js
 var blessed = require('blessed')
-  , program = blessed()
-  , screen = new blessed.Screen({ program: program });
+  , screen = new blessed.Screen;
 
-screen.append(new blessed.Box({
+var box = new blessed.Box({
   top: 'center',
   left: 'center',
   width: '50%',
@@ -92,7 +91,14 @@ screen.append(new blessed.Box({
   fg: 'white',
   bg: 'magenta',
   content: 'Hello world!',
-}));
+  tags: true
+});
+
+screen.append(box);
+
+box.on('click', function(data) {
+  box.setContent('{center}Some different {red-fg}content{/red-fg}.{/center}');
+});
 
 screen.on('keypress', function(ch, key) {
   if (key.name === 'escape') {
@@ -514,6 +520,44 @@ console.log(box.top);
 #### Overlapping offsets and dimensions greater than parents'
 
 This still needs to be tested a bit, but it should work.
+
+### Content
+
+Every element can have text content via `setContent`. If `tags: true` was
+passed to the element's constructor, the content can contain tags. For example:
+
+```
+box.setContent('hello {red-fg}{green-bg}{bold}world{/bold}{/green-bg}{/red-fg}');
+```
+
+To make this more concise `{/}` cancels all character attributes.
+
+```
+box.setContent('hello {red-fg}{green-bg}{bold}world{/}');
+```
+
+Newlines and alignment are also possible in content.
+
+```
+box.setContent('hello\n'
+  + '{right}world{/right}\n'
+  + '{center}foo{/center}');
+```
+
+This will produce a box that looks like:
+
+```
+| hello                 |
+|                 world |
+|          foo          |
+```
+
+Content can also handle SGR escape codes. This means if you got output from a
+program, say `git log` for example, you can feed it directly to an element's
+content and the colors will be parsed appropriately.
+
+This means that while `{red-fg}foo{/red-fg}` produces `^[[31mfoo^[[39m`, you
+could just feed `^[[31mfoo^[[39m` directly to the content.
 
 ### Rendering
 
