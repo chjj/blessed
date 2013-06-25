@@ -326,6 +326,7 @@ A box with scrollable content.
 
 - inherits all from Box.
 - **scroll** - received when the element is scrolled.
+- **resetScroll** - reset scroll offset to zero.
 
 ##### Methods:
 
