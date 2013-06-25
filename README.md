@@ -193,15 +193,20 @@ The screen on which every other node renders.
 ##### Methods:
 
 - inherits all from Node.
-- **alloc()** - allocate a new pending screen buffer and a new output screen buffer.
-- **draw(start, end)** - draw the screen based on the contents of the screen buffer.
-- **render()** - render all child elements, writing all data to the screen buffer and drawing the screen.
+- **alloc()** - allocate a new pending screen buffer and a new output screen
+  buffer.
+- **draw(start, end)** - draw the screen based on the contents of the screen
+  buffer.
+- **render()** - render all child elements, writing all data to the screen
+  buffer and drawing the screen.
 - **clearRegion(x1, x2, y1, y2)** - clear any region on the screen.
-- **fillRegion(attr, ch, x1, x2, y1, y2)** - fill any region with a character of a certain attribute.
+- **fillRegion(attr, ch, x1, x2, y1, y2)** - fill any region with a character
+  of a certain attribute.
 - **focus(offset)** - focus element by offset of focusable elements.
 - **focusPrev()** - focus previous element in the index.
 - **focusNext()** - focus next element in the index.
-- **focusPush(element)** - push element on the focus stack (equivalent to `screen.focused = el`).
+- **focusPush(element)** - push element on the focus stack (equivalent to
+  `screen.focused = el`).
 - **focusPop()/focusLast()** - pop element off the focus stack.
 - **saveFocus()** - save the focused element.
 - **restoreFocus()** - restore the saved focused element.
@@ -230,7 +235,8 @@ The base element.
 - **border** - border object.
   - **type** - type of border (`ascii` or `bg`). `bg` by default.
   - **ch** - character to use if `bg` type, default is space.
-  - **bg, fg** - border foreground and background, must be numbers (-1 for default).
+  - **bg, fg** - border foreground and background, must be numbers (-1 for
+    default).
   - **bold, underline** - border attributes.
 - **position** - raw width, height, and offsets.
 - **content** - text content.
@@ -313,8 +319,10 @@ A box with scrollable content.
 
 - inherits all from Box.
 - **baseLimit** - a limit to the childBase. default is `Infinity`.
-- **alwaysScroll** - a option which causes the ignoring of `childOffset`. this in
-  turn causes the childBase to change every time the element is scrolled.
+- **alwaysScroll** - a option which causes the ignoring of `childOffset`. this
+  in turn causes the childBase to change every time the element is scrolled.
+- **scrollbar** - object enabling a scrollbar. allows `ch`, `fg`, and `bg`
+  properties.
 
 ##### Properties:
 
@@ -340,12 +348,12 @@ A scrollable list which can display selectable items.
 ##### Options:
 
 - inherits all from ScrollableBox.
-- **selectFg, selectedBg** - foreground and background for selected item, treated
-  like fg and bg.
+- **selectFg, selectedBg** - foreground and background for selected item,
+  treated like fg and bg.
 - **selectedBold, selectedUnderline** - character attributes for selected item,
   treated like bold and underline.
-- **mouse** - whether to automatically enable mouse support for this list (allows
-  clicking items).
+- **mouse** - whether to automatically enable mouse support for this list
+  (allows clicking items).
 - **keys** - use predefined keys for navigating the list.
 - **vi** - use vi keys with the `keys` option.
 - **items** - an array of strings which become the list's items.
@@ -373,7 +381,8 @@ A scrollable list which can display selectable items.
 
 #### ScrollableText (from ScrollableBox)
 
-A scrollable text box which can display and scroll text, as well as handle pre-existing newlines and escape codes.
+A scrollable text box which can display and scroll text, as well as handle
+pre-existing newlines and escape codes.
 
 ##### Options:
 
@@ -420,8 +429,8 @@ A box which allows text input.
 - inherits all from Input.
 - **setInput(callback)** - grab key events and start reading text from the
   keyboard. takes a callback which receives the final value.
-- **setEditor(callback)** - open text editor in $EDITOR, read the output from the
-  resulting file. takes a callback which receives the final value.
+- **setEditor(callback)** - open text editor in `$EDITOR`, read the output from
+  the resulting file. takes a callback which receives the final value.
 
 
 #### Button (from Input)
