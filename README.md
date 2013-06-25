@@ -572,6 +572,41 @@ Elements are rendered with the lower elements in the children array being
 painted first. In terms of the painter's algorithm, the lowest indicies in the
 array are the furthest away, just like in the DOM.
 
+### Optimization and CSR
+
+You may notice a lot of terminal apps (e.g. mutt, irssi, vim, ncmpcpp) don't
+have sidebars, and only have "elements" that take up the entire width of the
+screen. The reason for this is speed (and general cleanliness). VT-like
+terminals have something called a CSR (change_scroll_region) code, as well as
+IL (insert_line), and DL (delete_code) codes. Using these three codes, it is
+possible to create a very efficient rendering by avoiding redrawing the entire
+screen when a line is inserted or removed. Since blessed is extremely dynamic,
+it is hard to do this optimization automatically (blessed assumes you may
+create any element of any width in any position). So, there is a solution:
+
+``` js
+var box = new blessed.Box(...);
+box.setContent('line 1\nline 2');
+box.insertBottom('line 3');
+box.insertBottom('line 4');
+box.insertTop('line 0');
+```
+
+If your element has the same width as the screen, the line insertion will be
+optimized by using a combination CSR/IL/DL codes. These methods may be made
+smarter in the future to detect whether any elements are being overlapped to
+the sides.
+
+Outputting:
+
+```
+| line 0            |
+| line 1            |
+| line 2            |
+| line 3            |
+| line 4            |
+```
+
 ### Testing
 
 - For an interactive test, see `test/widget.js`.
