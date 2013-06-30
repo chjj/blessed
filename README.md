@@ -98,6 +98,7 @@ screen.append(box);
 
 box.on('click', function(data) {
   box.setContent('{center}Some different {red-fg}content{/red-fg}.{/center}');
+  screen.render();
 });
 
 screen.on('keypress', function(ch, key) {
