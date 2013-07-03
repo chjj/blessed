@@ -8,6 +8,7 @@ terminals. See the `tput` example below.
 
 Blessed also includes an extremely high-level widget library.
 
+
 ## Example Usage
 
 This will actually parse the xterm terminfo and compile every
@@ -68,6 +69,7 @@ program.bg('!black');
 program.feed();
 ```
 
+
 ## High-level Documentation
 
 ### Example
@@ -109,6 +111,7 @@ screen.on('keypress', function(ch, key) {
 
 screen.render();
 ```
+
 
 ### Widgets
 
@@ -182,6 +185,7 @@ The screen on which every other node renders.
 - **bottom**, **rbottom** - bottom offset, always zero.
 - **grabKeys** - whether the focused element grabs all keypresses.
 - **lockKeys** - prevent keypresses from being received by any element.
+- **hover** - the currently hovered element. only set if mouse events are bound.
 
 ##### Events:
 
@@ -228,7 +232,7 @@ The base element.
 - **label** - a simple text label for the element.
 - **align** - text alignment: `left`, `center`, or `right`.
 - **shrink** - shrink/flex/grow to content width during render.
-- **padding** - amount of padding on the inside of the element.
+- **padding** - amount of padding on the inside of the element. **(does not work...yet)**
 
 ##### Properties:
 
@@ -283,7 +287,8 @@ The base element.
 
 A box element which draws a simple box containing `content` or other elements.
 
-Inherits all options, properties, events, and methods from Box.
+Inherits all options, properties, events, and methods from Element.
+
 
 #### Text (from Element)
 
@@ -428,9 +433,9 @@ A box which allows text input.
 ##### Methods:
 
 - inherits all from Input.
-- **setInput(callback)** - grab key events and start reading text from the
+- **readInput(callback)** - grab key events and start reading text from the
   keyboard. takes a callback which receives the final value.
-- **setEditor(callback)** - open text editor in `$EDITOR`, read the output from
+- **readEditor(callback)** - open text editor in `$EDITOR`, read the output from
   the resulting file. takes a callback which receives the final value.
 
 
@@ -532,6 +537,7 @@ console.log(box.top);
 
 This still needs to be tested a bit, but it should work.
 
+
 ### Content
 
 Every element can have text content via `setContent`. If `tags: true` was
@@ -549,7 +555,7 @@ box.setContent('hello {red-fg}{green-bg}{bold}world{/}');
 
 Newlines and alignment are also possible in content.
 
-```
+``` js
 box.setContent('hello\n'
   + '{right}world{/right}\n'
   + '{center}foo{/center}');
@@ -570,6 +576,7 @@ content and the colors will be parsed appropriately.
 This means that while `{red-fg}foo{/red-fg}` produces `^[[31mfoo^[[39m`, you
 could just feed `^[[31mfoo^[[39m` directly to the content.
 
+
 ### Rendering
 
 To actually render the screen buffer, you must call `render`.
@@ -582,6 +589,7 @@ screen.render();
 Elements are rendered with the lower elements in the children array being
 painted first. In terms of the painter's algorithm, the lowest indicies in the
 array are the furthest away, just like in the DOM.
+
 
 ### Optimization and CSR
 
@@ -618,10 +626,12 @@ Outputting:
 | line 4            |
 ```
 
+
 ### Testing
 
 - For an interactive test, see `test/widget.js`.
 - For a less interactive position testing, see `test/widget-pos.js`.
+
 
 ## License
 

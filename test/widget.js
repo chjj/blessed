@@ -229,12 +229,12 @@ screen.on('keypress', function(ch, key) {
       : screen.focusNext();
   }
   if (key.name === 'i') {
-    return input.setInput(function(err, value) {
+    return input.readInput(function(err, value) {
       if (value) screen.children[0].setContent(value);
     });
   }
   if (key.name === 'e') {
-    return input.setEditor(function(err, value) {
+    return input.readEditor(function(err, value) {
       if (value) screen.children[0].setContent(value);
     });
   }
