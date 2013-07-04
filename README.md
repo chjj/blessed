@@ -446,6 +446,7 @@ A box which allows text input.
   keyboard. takes a callback which receives the final value.
 - **readEditor(callback)** - open text editor in `$EDITOR`, read the output from
   the resulting file. takes a callback which receives the final value.
+- **clearInput** - clear input.
 
 
 #### Textarea (from Input/ScrollableText)
@@ -471,6 +472,7 @@ A box which allows multiline text input.
   keyboard. takes a callback which receives the final value.
 - **readEditor(callback)** - open text editor in `$EDITOR`, read the output from
   the resulting file. takes a callback which receives the final value.
+- **clearInput** - clear input.
 
 
 #### Button (from Input)
