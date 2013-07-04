@@ -221,6 +221,7 @@ The screen on which every other node renders.
   blessed app after exit.
 - **exec(file, args, options, callback)** - spawn a process in the foreground,
   return to blessed app after exit. executes callback on error or exit.
+- **readEditor([options], callback)** - read data from text editor.
 
 
 #### Element (from Node)
@@ -441,6 +442,31 @@ A box which allows text input.
 ##### Methods:
 
 - inherits all from Input.
+- **readInput(callback)** - grab key events and start reading text from the
+  keyboard. takes a callback which receives the final value.
+- **readEditor(callback)** - open text editor in `$EDITOR`, read the output from
+  the resulting file. takes a callback which receives the final value.
+
+
+#### Textarea (from Input/ScrollableText)
+
+A box which allows multiline text input.
+
+##### Options:
+
+- inherits all from Input/ScrollableText.
+
+##### Properties:
+
+- inherits all from Input/ScrollableText.
+
+##### Events:
+
+- inherits all from Input/ScrollableText.
+
+##### Methods:
+
+- inherits all from Input/ScrollableText.
 - **readInput(callback)** - grab key events and start reading text from the
   keyboard. takes a callback which receives the final value.
 - **readEditor(callback)** - open text editor in `$EDITOR`, read the output from
