@@ -1,5 +1,8 @@
-var blessed = require('blessed')
-  , screen = blessed.Screen({ tput: true });
+var blessed = require('blessed');
+
+var screen = new blessed.Screen({
+  tput: true
+});
 
 screen.append(new blessed.Text({
   top: 0,

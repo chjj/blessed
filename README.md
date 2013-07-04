@@ -194,6 +194,7 @@ The screen on which every other node renders.
 - **mouse** - received on mouse events.
 - **keypress** - received on key events.
 - **element [name]** - global events received for all elements.
+- **key [name]** - received on key event for [name].
 
 ##### Methods:
 
@@ -215,6 +216,11 @@ The screen on which every other node renders.
 - **focusPop()/focusLast()** - pop element off the focus stack.
 - **saveFocus()** - save the focused element.
 - **restoreFocus()** - restore the saved focused element.
+- **key(name, listener)** - bind a keypress listener for a specific key.
+- **spawn(file, args, options)** - spawn a process in the foreground, return to
+  blessed app after exit.
+- **exec(file, args, options, callback)** - spawn a process in the foreground,
+  return to blessed app after exit. executes callback on error or exit.
 
 
 #### Element (from Node)
@@ -271,6 +277,7 @@ The base element.
 - **keypress** - received on key events for this element.
 - **move** - received when the element is moved.
 - **resize** - received when the element is resized.
+- **key [name]** - received on key event for [name].
 
 ##### Methods:
 
@@ -281,6 +288,7 @@ The base element.
 - **show()** - show element.
 - **toggle()** - toggle hidden/shown.
 - **focus()** - focus element.
+- **key(name, listener)** - bind a keypress listener for a specific key.
 
 
 #### Box (from Element)
@@ -507,7 +515,7 @@ an element has the `position: absolute` CSS property.
 When an element is created, it can be given coordinates in its constructor:
 
 ``` js
-var box = new blessed.Box({
+var box = blessed.box({
   left: 'center',
   top: 'center',
   bg: 'yellow',
@@ -604,7 +612,7 @@ it is hard to do this optimization automatically (blessed assumes you may
 create any element of any width in any position). So, there is a solution:
 
 ``` js
-var box = new blessed.Box(...);
+var box = blessed.box(...);
 box.setContent('line 1\nline 2');
 box.insertBottom('line 3');
 box.insertBottom('line 4');
