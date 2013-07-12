@@ -583,6 +583,35 @@ A progress bar allowing various styles.
 - **reset()** - reset the bar.
 
 
+#### FileManager (from List)
+
+A very simple file manager for selecting files.
+
+##### Options:
+
+- inherits all from List.
+- **cwd** - current working directory.
+
+##### Properties:
+
+- inherits all from List.
+- **cwd** - current working directory.
+
+##### Events:
+
+- inherits all from List.
+- **cd** - directory was selected and navigated to.
+- **file** - file was selected.
+
+##### Methods:
+
+- inherits all from List.
+- **refresh([callback])** - refresh the file list (perform a `readdir` on `cwd`
+  and update the list items).
+- **pick(callback)** - pick a single file and return the path in the callback.
+- **reset([callback])** - reset back to original cwd.
+
+
 ### Positioning
 
 Offsets may be a number, a percentage (e.g. `50%`), or a keyword (e.g.
