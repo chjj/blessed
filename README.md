@@ -137,6 +137,7 @@ The base node which everything inherits from.
 - **screen** - parent screen.
 - **children** - array of node's children.
 - **data, _, $** - an object for any miscellanous user data.
+- **index** - render index (document order index) of the last render call.
 
 ##### Events:
 
