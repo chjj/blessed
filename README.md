@@ -35,14 +35,12 @@ The main functionality is exposed in the main `blessed` module:
 var blessed = require('blessed')
   , program = blessed();
 
-program.on('keypress', function(ch, key) {
-  if (key.name === 'q') {
-    program.clear();
-    program.disableMouse();
-    program.showCursor();
-    program.normalBuffer();
-    process.exit(0);
-  }
+program.key('q', function(ch, key) {
+  program.clear();
+  program.disableMouse();
+  program.showCursor();
+  program.normalBuffer();
+  process.exit(0);
 });
 
 program.on('mouse', function(data) {
