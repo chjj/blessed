@@ -606,10 +606,10 @@ A very simple file manager for selecting files.
 ##### Methods:
 
 - inherits all from List.
-- **refresh([callback])** - refresh the file list (perform a `readdir` on `cwd`
+- **refresh([cwd], [callback])** - refresh the file list (perform a `readdir` on `cwd`
   and update the list items).
-- **pick(callback)** - pick a single file and return the path in the callback.
-- **reset([callback])** - reset back to original cwd.
+- **pick([cwd], callback)** - pick a single file and return the path in the callback.
+- **reset([cwd], [callback])** - reset back to original cwd.
 
 
 ### Positioning
