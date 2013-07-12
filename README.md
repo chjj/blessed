@@ -103,10 +103,8 @@ box.on('click', function(data) {
   screen.render();
 });
 
-screen.on('keypress', function(ch, key) {
-  if (key.name === 'escape') {
-    return process.exit(0);
-  }
+screen.key('escape', function(ch, key) {
+  return process.exit(0);
 });
 
 screen.render();
@@ -159,6 +157,8 @@ The base node which everything inherits from.
 - **detach()** - remove node from its parent.
 - **emitDescendants(type, args..., [iterator])** - emit event for element, and
   recursively emit same event for all descendants.
+- **get(name, [default])** - get user property with a potential default value.
+- **set(name, value)** - set user property to value.
 
 
 #### Screen (from Node)
@@ -218,11 +218,24 @@ The screen on which every other node renders.
 - **saveFocus()** - save the focused element.
 - **restoreFocus()** - restore the saved focused element.
 - **key(name, listener)** - bind a keypress listener for a specific key.
+- **onceKey(name, listener)** - bind a keypress listener for a specific key
+  once.
+- **unkey(name, listener)** - remove a keypress listener for a specific key.
 - **spawn(file, args, options)** - spawn a process in the foreground, return to
   blessed app after exit.
 - **exec(file, args, options, callback)** - spawn a process in the foreground,
   return to blessed app after exit. executes callback on error or exit.
 - **readEditor([options], callback)** - read data from text editor.
+- **setEffects(el, fel, over, out, effects, temp)** - set effects based on
+  two events and attributes.
+- **insertLine(n, y, top, bottom)** - insert a line into the screen (using csr:
+  this bypasses the output buffer).
+- **deleteLine(n, y, top, bottom)** - delete a line from the screen (using csr:
+  this bypasses the output buffer).
+- **insertBottom(top, bottom)** - insert a line at the bottom of the screen.
+- **insertTop(top, bottom)** - insert a line at the top of the screen.
+- **deleteBottom(top, bottom)** - delete a line at the bottom of the screen.
+- **deleteTop(top, bottom)** - delete a line at the top of the screen.
 
 
 #### Element (from Node)
@@ -291,13 +304,54 @@ The base element.
 - **toggle()** - toggle hidden/shown.
 - **focus()** - focus element.
 - **key(name, listener)** - bind a keypress listener for a specific key.
+- **onceKey(name, listener)** - bind a keypress listener for a specific key
+  once.
+- **unkey(name, listener)** - remove a keypress listener for a specific key.
+- **onScreenEvent(type, listener)** - same as`el.on('screen', ...)` except this
+  will automatically cleanup listeners after the element is detached.
 
 
 #### Box (from Element)
 
 A box element which draws a simple box containing `content` or other elements.
 
-Inherits all options, properties, events, and methods from Element.
+##### Options:
+
+- inherits all from Element.
+
+##### Properties:
+
+- inherits all from Element.
+
+##### Events:
+
+- inherits all from Element.
+
+##### Methods:
+
+- inherits all from Element.
+- **insertLine(i, line)** - insert a line into the box's content.
+- **deleteLine(i)** - delete a line from the box's content.
+- **getLine(i)** - get a line from the box's content.
+- **setLine(i, line)** - set a line in the box's content.
+- **clearLine(i)** - clear a line from the box's content.
+- **insertTop(line)** - insert a line at the top of the box.
+- **insertBottom(line)** - insert a line at the bottom of the box.
+- **deleteTop()** - delete a line at the top of the box.
+- **deleteBottom()** - delete a line at the bottom of the box.
+
+
+#### Line (from Box)
+
+A simple line which can be `ascii` or `bg` styled.
+
+##### Options:
+
+- inherits all from Box.
+- **orientation** - can be `vertical` or `horizontal`.
+- **type, bg, fg, ch** - treated the same as a border object.
+
+Inherits all options, properties, events, and methods from Box.
 
 
 #### Text (from Element)
@@ -646,6 +700,7 @@ box.setContent('line 1\nline 2');
 box.insertBottom('line 3');
 box.insertBottom('line 4');
 box.insertTop('line 0');
+box.insertLine(1, 'line 1.5');
 ```
 
 If your element has the same width as the screen, the line insertion will be
@@ -658,6 +713,7 @@ Outputting:
 ```
 | line 0            |
 | line 1            |
+| line 1.5          |
 | line 2            |
 | line 3            |
 | line 4            |
