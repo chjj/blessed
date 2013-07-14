@@ -248,6 +248,10 @@ screen.on('keypress', function(ch, key) {
   }
 });
 
+screen.key('C-z', function() {
+  screen.sigtstp();
+});
+
 list.focus();
 
 //screen.on('element click', function(el) {
