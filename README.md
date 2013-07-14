@@ -714,6 +714,11 @@ array are the furthest away, just like in the DOM.
 
 ### Optimization and CSR
 
+**NOTE:** This is now automatically optimized for full-width scrollable elements.
+
+**TODO:** Detect to see if there are any elements under/to the sides of
+non-full-width elements.
+
 You may notice a lot of terminal apps (e.g. mutt, irssi, vim, ncmpcpp) don't
 have sidebars, and only have "elements" that take up the entire width of the
 screen. The reason for this is speed (and general cleanliness). VT-like
