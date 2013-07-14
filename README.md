@@ -194,6 +194,9 @@ The screen on which every other node renders.
 - **keypress** - received on key events.
 - **element [name]** - global events received for all elements.
 - **key [name]** - received on key event for [name].
+- **focus, blur** - when the terminal window focuses/blurs. requires a terminal
+  supporting the focus protocol and focus needs to be passed to
+  program.enableMouse().
 
 ##### Methods:
 
