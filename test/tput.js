@@ -92,6 +92,9 @@ var tput = Tput({
 
 console.log('Max colors: %d.', tput.colors);
 
+// console.log(tput.strings.acs_chars.split('').map(function(ch) { return ch.charCodeAt(0); }));
+// console.log(JSON.stringify(tput.strings.acs_chars));
+
 // process.stdout.write(Tput.sprintf('%-10s\n', 'hello'));
 
 // tput._compile('%?%p9%t\u001b(0%e\u001b(B%;\u001b[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m');
