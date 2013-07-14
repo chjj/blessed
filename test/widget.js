@@ -10,6 +10,8 @@ screen.append(new blessed.Text({
   width: '100%',
   //bg: 'blue',
   content: '{green-fg}Welcome{/green-fg} to my {red-fg,ul}program{/red-fg,ul}',
+  bg: '#0000ff',
+  // bg: blessed.colors.matchColor('#0000ff'),
   tags: true,
   align: 'center'
 }));
