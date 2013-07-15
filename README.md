@@ -152,6 +152,11 @@ The base node which everything inherits from.
 - **prepend(node)** - prepend a node to this node's children.
 - **append(node)** - append a node to this node's children.
 - **remove(node)** - remove child node from node.
+- **insert(node, i)** - insert a node to this node's children at index `i`.
+- **insertBefore(node, refNode)** - insert a node to this node's children
+  before the reference node.
+- **insertAfter(node, refNode)** - insert a node from node after the reference
+  node.
 - **detach()** - remove node from its parent.
 - **emitDescendants(type, args..., [iterator])** - emit event for element, and
   recursively emit same event for all descendants.
@@ -166,6 +171,10 @@ The screen on which every other node renders.
 ##### Options:
 
 - **program** - the blessed Program to be associated with.
+- **smartCSR** - attempt to perform CSR optimization on all possible elements
+  (not just full-width ones, elements with uniform cells to their sides).
+  this is known to cause flickering with elements that are not full-width,
+  however, it is more optimal for terminal rendering.
 
 ##### Properties:
 

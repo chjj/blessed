@@ -1,5 +1,10 @@
 var blessed = require('blessed')
-  , screen = blessed.screen({ dump: __dirname + '/p.log' });
+  , screen;
+
+screen = blessed.screen({
+  dump: __dirname + '/p.log',
+  smartCSR: true
+});
 
 var lorem = require('fs').readFileSync(__dirname + '/git.diff', 'utf8');
 
@@ -16,6 +21,7 @@ function expectClean(value) {
   };
 }
 
+/*
 blessed.box({
   parent: screen,
   left: 0,
@@ -26,8 +32,8 @@ blessed.box({
   content: 'This will disallow CSR.'
 });
 expectClean(false);
+*/
 
-/*
 blessed.box({
   parent: screen,
   left: 'center',
@@ -41,7 +47,6 @@ blessed.box({
   content: 'CSR should still work.'
 });
 expectClean(true);
-*/
 
 var text = blessed.scrollabletext({
   parent: screen,
