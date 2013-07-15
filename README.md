@@ -2,112 +2,67 @@
 
 A curses-like library for node.js.
 
-Blessed was originally written to only support the xterm terminfo, but can
-now parse and compile any terminfo to be completely portable accross all
-terminals. See the `tput` example below.
+## Example
 
-Blessed also includes an extremely high-level widget library.
-
-
-## Example Usage
-
-This will actually parse the xterm terminfo and compile every
-string capability to a javascript function:
-
-``` js
-var Tput = require('blessed').Tput
-  , tput = Tput('xterm');
-
-console.log(tput.setaf(4) + 'hello' + tput.sgr0());
-```
-
-To play around with it on the command line, it works just like tput:
-
-``` bash
-$ tput.js setaf 2
-$ tput.js sgr0
-$ echo "$(tput.js setaf 2)hello world$(tput.js sgr0)"
-```
-
-The main functionality is exposed in the main `blessed` module:
-
-``` js
-var blessed = require('blessed')
-  , program = blessed();
-
-program.key('q', function(ch, key) {
-  program.clear();
-  program.disableMouse();
-  program.showCursor();
-  program.normalBuffer();
-  process.exit(0);
-});
-
-program.on('mouse', function(data) {
-  if (data.action === 'mousemove') {
-    program.move(data.x, data.y);
-    program.bg('red');
-    program.write('x');
-    program.bg('!red');
-  }
-});
-
-program.alternateBuffer();
-program.enableMouse();
-program.hideCursor();
-program.clear();
-
-program.move(1, 1);
-program.bg('black');
-program.write('Hello world', 'blue fg');
-program.setx((program.cols / 2 | 0) - 4);
-program.down(5);
-program.write('Hi again!');
-program.bg('!black');
-program.feed();
-```
-
-
-## High-level Documentation
-
-### Example
-
-This will render a box with ascii borders containing the text 'Hello world!',
+This will render a box with ascii borders containing the text `'Hello world!'`,
 perfectly centered horizontally and vertically.
 
 ``` js
-var blessed = require('blessed')
-  , screen = new blessed.Screen;
+var blessed = require('blessed');
 
-var box = new blessed.Box({
+// Create a screen object.
+var screen = blessed.screen();
+
+// Create a box perfectly centered horizontally and vertically.
+var box = blessed.box({
   top: 'center',
   left: 'center',
   width: '50%',
   height: '50%',
   border: {
     type: 'ascii',
-    fg: 'white'
+    fg: '#ffffff'
   },
   fg: 'white',
   bg: 'magenta',
-  content: 'Hello world!',
-  tags: true
+  content: 'Hello {bold}world{/bold}!',
+  tags: true,
+  hoverEffects: {
+    bg: 'green'
+  }
 });
 
+// Append our box to the screen.
 screen.append(box);
 
+// If our box is clicked, change the content.
 box.on('click', function(data) {
   box.setContent('{center}Some different {red-fg}content{/red-fg}.{/center}');
   screen.render();
 });
 
-screen.key('escape', function(ch, key) {
+// If box is focused, handle `enter` and give us some more content.
+box.key('enter', function() {
+  box.setContent('{right}Even different {black-fg}content{/black-fg}.{/right}\n');
+  box.setLine(1, 'bar');
+  box.insertLine(1, 'foo');
+  screen.render();
+});
+
+// Quit on Escape, q, or Control-C.
+screen.key(['escape', 'q', 'C-c'], function(ch, key) {
   return process.exit(0);
 });
 
+// Focus our element.
+box.focus();
+
+// Render the screen.
 screen.render();
 ```
 
+
+## High-level Documentation
 
 ### Widgets
 
@@ -768,6 +723,65 @@ Outputting:
 
 - For an interactive test, see `test/widget.js`.
 - For a less interactive position testing, see `test/widget-pos.js`.
+
+
+## Lower-Level Usage
+
+This will actually parse the xterm terminfo and compile every
+string capability to a javascript function:
+
+``` js
+var Tput = require('blessed').Tput
+  , tput = Tput('xterm');
+
+console.log(tput.setaf(4) + 'hello' + tput.sgr0());
+```
+
+To play around with it on the command line, it works just like tput:
+
+``` bash
+$ tput.js setaf 2
+$ tput.js sgr0
+$ echo "$(tput.js setaf 2)hello world$(tput.js sgr0)"
+```
+
+The main functionality is exposed in the main `blessed` module:
+
+``` js
+var blessed = require('blessed')
+  , program = blessed();
+
+program.key('q', function(ch, key) {
+  program.clear();
+  program.disableMouse();
+  program.showCursor();
+  program.normalBuffer();
+  process.exit(0);
+});
+
+program.on('mouse', function(data) {
+  if (data.action === 'mousemove') {
+    program.move(data.x, data.y);
+    program.bg('red');
+    program.write('x');
+    program.bg('!red');
+  }
+});
+
+program.alternateBuffer();
+program.enableMouse();
+program.hideCursor();
+program.clear();
+
+program.move(1, 1);
+program.bg('black');
+program.write('Hello world', 'blue fg');
+program.setx((program.cols / 2 | 0) - 4);
+program.down(5);
+program.write('Hi again!');
+program.bg('!black');
+program.feed();
+```
 
 
 ## License
