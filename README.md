@@ -2,6 +2,8 @@
 
 A curses-like library for node.js.
 
+![blessed](https://raw.github.com/chjj/blessed/master/img/screenshot.png)
+
 ## Example
 
 This will render a box with ascii borders containing the text `'Hello world!'`,
