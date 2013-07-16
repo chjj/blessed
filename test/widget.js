@@ -166,8 +166,8 @@ stext.on('keypress', function(ch, key) {
 });
 
 screen.on('element focus', function(old, cur) {
-  if (old.border) old.border.fg = 0x1ff;
-  if (cur.border) cur.border.fg = 2;
+  if (old.border) old.style.border.fg = 'default';
+  if (cur.border) cur.style.border.fg = 'green';
   screen.render();
 });
 

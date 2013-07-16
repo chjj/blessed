@@ -10,7 +10,7 @@ $ npm install blessed
 
 ## Example
 
-This will render a box with ascii borders containing the text `'Hello world!'`,
+This will render a box with line borders containing the text `'Hello world!'`,
 perfectly centered horizontally and vertically.
 
 ``` js
@@ -26,7 +26,7 @@ var box = blessed.box({
   width: '50%',
   height: '50%',
   border: {
-    type: 'ascii',
+    type: 'line',
     fg: '#ffffff'
   },
   fg: 'white',
@@ -232,7 +232,7 @@ The base element.
 
 - inherits all from Node.
 - **border** - border object.
-  - **type** - type of border (`ascii` or `bg`). `bg` by default.
+  - **type** - type of border (`line` or `bg`). `bg` by default.
   - **ch** - character to use if `bg` type, default is space.
   - **bg, fg** - border foreground and background, must be numbers (-1 for
     default).
@@ -316,7 +316,7 @@ A box element which draws a simple box containing `content` or other elements.
 
 #### Line (from Box)
 
-A simple line which can be `ascii` or `bg` styled.
+A simple line which can be `line` or `bg` styled.
 
 ##### Options:
 
@@ -343,7 +343,7 @@ Inherits all options, properties, events, and methods from Element.
 
 #### Line (from Box)
 
-A simple line which can be `ascii` or `bg` styled.
+A simple line which can be `line` or `bg` styled.
 
 ##### Options:
 
