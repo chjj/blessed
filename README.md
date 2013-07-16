@@ -391,7 +391,7 @@ A scrollable list which can display selectable items.
 ##### Options:
 
 - inherits all from ScrollableBox.
-- **selectFg, selectedBg** - foreground and background for selected item,
+- **selectedFg, selectedBg** - foreground and background for selected item,
   treated like fg and bg.
 - **selectedBold, selectedUnderline** - character attributes for selected item,
   treated like bold and underline.
