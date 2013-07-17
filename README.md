@@ -250,13 +250,18 @@ The base element.
 - **label** - a simple text label for the element.
 - **align** - text alignment: `left`, `center`, or `right`.
 - **valign** - vertical text alignment: `top`, `middle`, or `bottom`.
-- **shrink** - shrink/flex/grow to content width/height during render.
-- **shrinkBox** - shrink/flex/grow to combined coordinates of all child boxes.
+- **shrink** - shrink/flex/grow to content and child elements. width/height
+  during render.
 - **padding** - amount of padding on the inside of the element.
+- **width, height** - width/height of the element, can be a number, percentage
+  (`0-100%`), or keyword (`half` or `shrink`).
+- **left, right, top, bottom** - offsets of the element **relative to its
+  parent**. can be a number, percentage (`0-100%`), or keyword (`center`).
 
 ##### Properties:
 
 - inherits all from Node.
+- **name** - name of the element. useful for form submission.
 - **border** - border object.
   - **type** - type of border (`line` or `bg`). `bg` by default.
   - **ch** - character to use if `bg` type, default is space.
@@ -278,7 +283,6 @@ The base element.
 - **rright** - calculated relative right offset.
 - **rtop** - calculated relative top offset.
 - **rbottom** - calculated relative bottom offset.
-- **name** - name of the element. useful for form submission.
 
 ##### Events:
 
