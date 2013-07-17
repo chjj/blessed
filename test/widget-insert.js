@@ -11,7 +11,8 @@ var box = blessed.box({
   height: 5,
   top: 'center',
   left: 0,
-  content: 'line 1'
+  content: 'line 1',
+  //valign: 'middle'
 });
 
 screen.render();
