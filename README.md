@@ -220,6 +220,19 @@ The base element.
 ##### Options:
 
 - **fg, bg, bold, underline** - attributes.
+- **style** - may contain attributes in the format of:
+  ``` js
+    {
+      fg: 'blue',
+      bg: 'black',
+      border: {
+        fg: 'blue'
+      },
+      scrollbar: {
+        bg: 'blue'
+      }
+    }
+  ```
 - **border** - border object, see below.
 - **content** - element's text content.
 - **clickable** - element is clickable.
@@ -227,8 +240,9 @@ The base element.
 - **hidden** - whether the element is hidden.
 - **label** - a simple text label for the element.
 - **align** - text alignment: `left`, `center`, or `right`.
+- **valign** - vertical text alignment: `top`, `middle`, or `bottom`.
 - **shrink** - shrink/flex/grow to content width during render.
-- **padding** - amount of padding on the inside of the element. **(does not work...yet)**
+- **padding** - amount of padding on the inside of the element.
 
 ##### Properties:
 
@@ -316,19 +330,6 @@ A box element which draws a simple box containing `content` or other elements.
 - **deleteBottom()** - delete a line at the bottom of the box.
 
 
-#### Line (from Box)
-
-A simple line which can be `line` or `bg` styled.
-
-##### Options:
-
-- inherits all from Box.
-- **orientation** - can be `vertical` or `horizontal`.
-- **type, bg, fg, ch** - treated the same as a border object.
-
-Inherits all options, properties, events, and methods from Box.
-
-
 #### Text (from Element)
 
 An element similar to Box, but geared towards rendering simple text elements.
@@ -352,6 +353,7 @@ A simple line which can be `line` or `bg` styled.
 - inherits all from Box.
 - **orientation** - can be `vertical` or `horizontal`.
 - **type, bg, fg, ch** - treated the same as a border object.
+  (attributes can be contained in `style`).
 
 Inherits all options, properties, events, and methods from Box.
 
@@ -394,9 +396,15 @@ A scrollable list which can display selectable items.
 
 - inherits all from ScrollableBox.
 - **selectedFg, selectedBg** - foreground and background for selected item,
-  treated like fg and bg.
+  treated like fg and bg. (can be contained in style: e.g. `style.selected.fg`).
 - **selectedBold, selectedUnderline** - character attributes for selected item,
-  treated like bold and underline.
+  treated like bold and underline. (can be contained in style: e.g.
+  `style.selected.bold`).
+- **itemFg, itemBg** - foreground and background for unselected item,
+  treated like fg and bg. (can be contained in style: e.g. `style.item.fg`).
+- **itemBold, itemUnderline** - character attributes for an unselected item,
+  treated like bold and underline. (can be contained in style: e.g.
+  `style.item.bold`).
 - **mouse** - whether to automatically enable mouse support for this list
   (allows clicking items).
 - **keys** - use predefined keys for navigating the list.
@@ -540,6 +548,7 @@ A progress bar allowing various styles.
 
 - inherits all from Input.
 - **barFg, barBg** - (completed) bar foreground and background.
+  (can be contained in `style`: e.g. `style.bar.fg`).
 - **ch** - the character to fill the bar with (default is space).
 - **filled** - the amount filled (0 - 100).
 
