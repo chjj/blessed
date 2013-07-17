@@ -268,9 +268,13 @@ The base element.
   - **bg, fg** - border foreground and background, must be numbers (-1 for
     default).
   - **bold, underline** - border attributes.
+- **style** - contains attributes (e.g. `fg/bg/underline`). see above.
 - **position** - raw width, height, and offsets.
 - **content** - text content.
 - **hidden** - whether the element is hidden or not.
+- **visible** - whether the element is visible or not.
+- **detached** - whether the element is attached to a screen in its ancestry
+  somewhere.
 - **fg, bg** - foreground and background, must be numbers (-1 for default).
 - **bold, underline** - attributes.
 - **width** - calculated width.
