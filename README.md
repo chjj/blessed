@@ -4,9 +4,11 @@ A curses-like library for node.js.
 
 ![blessed](https://raw.github.com/chjj/blessed/master/img/screenshot.png)
 
-`` bash
+## Install
+
+``` bash
 $ npm install blessed
-``
+```
 
 ## Example
 
