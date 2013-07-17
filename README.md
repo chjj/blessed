@@ -91,6 +91,7 @@ The base node which everything inherits from.
 ##### Properties:
 
 - inherits all from EventEmitter.
+- **type** - type of the node (e.g. `box`).
 - **options** - original options object.
 - **parent** - parent node.
 - **screen** - parent screen.
@@ -241,7 +242,8 @@ The base element.
 - **label** - a simple text label for the element.
 - **align** - text alignment: `left`, `center`, or `right`.
 - **valign** - vertical text alignment: `top`, `middle`, or `bottom`.
-- **shrink** - shrink/flex/grow to content width during render.
+- **shrink** - shrink/flex/grow to content width/height during render.
+- **shrinkBox** - shrink/flex/grow to combined coordinates of all child boxes.
 - **padding** - amount of padding on the inside of the element.
 
 ##### Properties:
@@ -268,6 +270,7 @@ The base element.
 - **rright** - calculated relative right offset.
 - **rtop** - calculated relative top offset.
 - **rbottom** - calculated relative bottom offset.
+- **name** - name of the element. useful for form submission.
 
 ##### Events:
 
@@ -456,6 +459,39 @@ pre-existing newlines and escape codes.
 
 - inherits all from ScrollableBox.
 
+
+#### Form (from Box)
+
+A form which can contain form elements.
+
+##### Options:
+
+- inherits all from Box.
+- **keys** - allow default keys (tab, vi keys, enter).
+- **vi** - allow vi keys.
+
+##### Properties:
+
+- inherits all from Box.
+- **submission** - last submitted data.
+
+##### Events:
+
+- inherits all from Box.
+- **submit** - form is submitted. receives a data object.
+- **cancel** - form is discarded.
+- **reset** - form is cleared.
+
+##### Methods:
+
+- inherits all from Box.
+- **focusNext()** - focus next form element.
+- **focusPrevious()** - focus previous form element.
+- **submit()** - submit the form.
+- **cancel()** - discard the form.
+- **reset()** - clear the form.
+
+
 #### Input (from Box)
 
 A form input.
@@ -476,6 +512,9 @@ A box which allows text input.
 ##### Events:
 
 - inherits all from Input.
+- **submit** - value is submitted (enter).
+- **cancel** - value is discared (escape).
+- **action** - either submit or cancel.
 
 ##### Methods:
 
@@ -502,6 +541,9 @@ A box which allows multiline text input.
 ##### Events:
 
 - inherits all from Input/ScrollableText.
+- **submit** - value is submitted (enter).
+- **cancel** - value is discared (escape).
+- **action** - either submit or cancel.
 
 ##### Methods:
 
@@ -542,7 +584,7 @@ A button which can be focused and allows key and mouse input.
 
 #### ProgressBar (from Input)
 
-A progress bar allowing various styles.
+A progress bar allowing various styles. This can also be used as a form input.
 
 ##### Options:
 
@@ -551,6 +593,9 @@ A progress bar allowing various styles.
   (can be contained in `style`: e.g. `style.bar.fg`).
 - **ch** - the character to fill the bar with (default is space).
 - **filled** - the amount filled (0 - 100).
+- **value** - same as `filled`.
+- **keys** - enable key support.
+- **mouse** - enable mouse support.
 
 ##### Properties:
 
@@ -566,6 +611,7 @@ A progress bar allowing various styles.
 
 - inherits all from Input.
 - **progress(amount)** - progress the bar by a fill amount.
+- **setProgress(amount)** - set progress to specific amount.
 - **reset()** - reset the bar.
 
 
@@ -596,6 +642,81 @@ A very simple file manager for selecting files.
   and update the list items).
 - **pick([cwd], callback)** - pick a single file and return the path in the callback.
 - **reset([cwd], [callback])** - reset back to original cwd.
+
+
+#### Checkbox (from Input)
+
+A checkbox which can be used in a form element.
+
+##### Options:
+
+- inherits all from Input.
+- **checked** - whether the element is checked or not.
+- **mouse** - enable mouse support.
+
+##### Properties:
+
+- inherits all from Input.
+- **text** - the text next to the checkbox (do not use setContent, use
+  `check.text = ''`).
+- **checked** - whether the element is checked or not.
+- **value** - same as `checked`.
+
+##### Events:
+
+- inherits all from Input.
+- **check** - received when element is checked.
+- **uncheck** received when element is unchecked.
+
+##### Methods:
+
+- inherits all from Input.
+- **check()** - check the element.
+- **uncheck()** - uncheck the element.
+- **toggle()** - toggle checked state.
+
+
+#### RadioSet (from Box)
+
+An element wrapping RadioButtons. RadioButtons within this element will be
+mutually exclusive with each other.
+
+##### Options:
+
+- inherits all from Box.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+
+
+#### RadioButton (from Checkbox)
+
+A radio button which can be used in a form element.
+
+##### Options:
+
+- inherits all from Checkbox.
+
+##### Properties:
+
+- inherits all from Checkbox.
+
+##### Events:
+
+- inherits all from Checkbox.
+
+##### Methods:
+
+- inherits all from Checkbox.
 
 
 ### Positioning
