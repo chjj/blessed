@@ -24,7 +24,8 @@ var set = blessed.radioset({
   left: 0,
   top: 0,
   shrink: true,
-  height: 1,
+  //padding: 1,
+  //content: 'f',
   bg: 'magenta'
 });
 
@@ -62,7 +63,7 @@ var text = blessed.textbox({
   height: 1,
   width: 20,
   left: 1,
-  top: 1,
+  top: 2,
   name: 'text'
 });
 
@@ -77,8 +78,8 @@ var check = blessed.checkbox({
   shrink: true,
   bg: 'magenta',
   height: 1,
-  left: 24,
-  top: 1,
+  left: 28,
+  top: 0,
   name: 'check',
   content: 'check'
 });
@@ -87,9 +88,10 @@ var submit = blessed.button({
   parent: form,
   mouse: true,
   keys: true,
-  height: 1,
+  shrink: true,
+  padding: 1,
   left: 30,
-  top: 0,
+  top: 2,
   shrink: true,
   name: 'submit',
   content: 'submit',
