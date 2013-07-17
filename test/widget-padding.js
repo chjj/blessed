@@ -11,9 +11,9 @@ blessed.box({
   align: 'center',
   left: 'center',
   top: 'center',
-  width: 20,
-  height: 8,
-  padding: 1
+  width: 22,
+  height: 10,
+  padding: 2
 });
 
 screen.key('q', function() {
