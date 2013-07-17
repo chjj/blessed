@@ -91,11 +91,13 @@ var submit = blessed.button({
   left: 30,
   top: 0,
   shrink: true,
-  bg: 'blue',
   name: 'submit',
   content: 'submit',
-  focusEffects: {
-    bg: 'red'
+  style: {
+    bg: 'blue',
+    focus: {
+      bg: 'red'
+    }
   }
 });
 

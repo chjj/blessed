@@ -233,6 +233,12 @@ The base element.
       },
       scrollbar: {
         bg: 'blue'
+      },
+      focus: {
+        bg: 'red'
+      },
+      hover: {
+        bg: 'red'
       }
     }
   ```
