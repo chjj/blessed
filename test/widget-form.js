@@ -23,7 +23,7 @@ var set = blessed.radioset({
   parent: form,
   left: 0,
   top: 0,
-  shrinkBox: true,
+  shrink: true,
   height: 1,
   bg: 'magenta'
 });
