@@ -18,8 +18,10 @@ var inner = blessed.box({
   parent: outer,
   left: 0,
   top: 0,
-  width: 5,
-  height: 5,
+  //width: 5,
+  //height: 5,
+  shrink: true,
+  content: 'foobar',
   //padding: 1,
   //content: 'f',
   bg: 'magenta'
