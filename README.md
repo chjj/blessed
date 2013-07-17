@@ -139,6 +139,8 @@ The screen on which every other node renders.
   (not just full-width ones, elements with uniform cells to their sides).
   this is known to cause flickering with elements that are not full-width,
   however, it is more optimal for terminal rendering.
+- **resizeTimeout** - amount of time (in ms) to redraw the screen after the
+  terminal is resized (default: 300).
 
 ##### Properties:
 
