@@ -1,8 +1,6 @@
-var blessed = require('blessed');
+var blessed = require('../');
 
-var screen = blessed.screen({
-  tput: true
-});
+var screen = blessed.screen();
 
 var box = blessed.textarea({
   parent: screen,

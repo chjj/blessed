@@ -887,8 +887,8 @@ This will actually parse the xterm terminfo and compile every
 string capability to a javascript function:
 
 ``` js
-var Tput = require('blessed').Tput
-  , tput = Tput('xterm');
+var blessed = require('blessed')
+  , tput = blessed.tput('xterm-256color');
 
 console.log(tput.setaf(4) + 'hello' + tput.sgr0());
 ```
@@ -905,7 +905,7 @@ The main functionality is exposed in the main `blessed` module:
 
 ``` js
 var blessed = require('blessed')
-  , program = blessed();
+  , program = blessed.program();
 
 program.key('q', function(ch, key) {
   program.clear();

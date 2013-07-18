@@ -1,10 +1,7 @@
-var blessed = require('blessed');
+var blessed = require('../')
+  , screen = blessed.screen();
 
-var screen = new blessed.Screen({
-  tput: true
-});
-
-screen.append(new blessed.Text({
+screen.append(blessed.text({
   top: 0,
   left: 2,
   width: '100%',
@@ -16,7 +13,7 @@ screen.append(new blessed.Text({
   align: 'center'
 }));
 
-screen.append(new blessed.Line({
+screen.append(blessed.line({
   orientation: 'horizontal',
   top: 1,
   left: 0,
@@ -24,7 +21,7 @@ screen.append(new blessed.Line({
 }));
 
 /*
-screen.append(new blessed.Box({
+screen.append(blessed.box({
   fg: 4,
   bg: -1,
   border: {
@@ -39,7 +36,7 @@ screen.append(new blessed.Box({
   left: 'center'
 }));
 
-screen.children[0].append(new blessed.Box({
+screen.children[0].append(blessed.box({
   fg: 4,
   bg: 3,
   border: {
@@ -56,7 +53,7 @@ screen.children[0].append(new blessed.Box({
 }));
 */
 
-var list = new blessed.List({
+var list = blessed.list({
   align: 'center',
   mouse: true,
   fg: 'blue',
@@ -88,7 +85,7 @@ var list = new blessed.List({
 screen.append(list);
 list.select(0);
 
-list.prepend(new blessed.Text({
+list.prepend(blessed.text({
   left: 2,
   content: ' My list '
 }));
@@ -105,7 +102,7 @@ list.on('keypress', function(ch, key) {
   }
 });
 
-var progress = new blessed.ProgressBar({
+var progress = blessed.progressbar({
   fg: 'blue',
   bg: 'default',
   barBg: 'default',
@@ -134,7 +131,7 @@ var lorem = require('fs').readFileSync(__dirname + '/git.diff', 'utf8');
 
 //lorem = lorem.replace(/\x1b[^m]*m/g, '');
 
-var stext = new blessed.ScrollableText({
+var stext = blessed.scrollabletext({
   //padding: 1,
   mouse: true,
   content: lorem,
@@ -184,7 +181,7 @@ screen.on('element mouseout', function(el) {
 });
 */
 
-var input = new blessed.Textbox({
+var input = blessed.textbox({
   mouse: true,
   label: ' My Input ',
   content: '',

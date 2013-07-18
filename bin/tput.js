@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-var tput = require('../lib/tput')(process.env.TERM || 'xterm')
+var blessed = require('../')
+  , tput = blessed.tput()
   , argv = process.argv.slice(2)
   , cmd = argv.shift();
 

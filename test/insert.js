@@ -1,11 +1,7 @@
-var blessed = require('blessed')
-  , program = blessed();
+var blessed = require('../')
+  , screen = blessed.screen();
 
-var screen = new blessed.Screen({
-  program: program
-});
-
-var main = new blessed.Box({
+var main = blessed.box({
   width: screen.width,
   height: screen.height,
   bg: 'yellow',

@@ -1,16 +1,12 @@
-var blessed = require('blessed')
-  , program = blessed()
+var blessed = require('../')
+  , screen = blessed.screen()
   , assert = require('assert');
 
 // My terminal size at the time of writing these tests:
-program.cols = 154;
-program.rows = 19;
+screen.program.cols = 154;
+screen.program.rows = 19;
 
-var screen = new blessed.Screen({
-  program: program
-});
-
-var main = new blessed.Box({
+var main = blessed.box({
   //width: '75%',
   //height: '75%',
   width: 115,
@@ -23,7 +19,7 @@ var main = new blessed.Box({
 
 screen.append(main);
 
-var inner = new blessed.Box({
+var inner = blessed.box({
   width: '50%',
   height: '50%',
   //width: 57,

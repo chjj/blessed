@@ -1,4 +1,4 @@
-var blessed = require('blessed')
+var blessed = require('../')
   , screen = blessed.screen();
 
 var outer = blessed.box({

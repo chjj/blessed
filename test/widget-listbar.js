@@ -1,5 +1,5 @@
-var blessed = require('blessed')
-  , screen; screen = blessed.screen();
+var blessed = require('../')
+  , screen = blessed.screen();
 
 var bar = blessed.listbar({
   parent: screen,

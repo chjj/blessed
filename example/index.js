@@ -5,7 +5,7 @@
  */
 
 var blessed = require('blessed')
-  , program = blessed();
+  , program = blessed.program();
 
 process.title = 'blessed';
 

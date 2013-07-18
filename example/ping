@@ -24,7 +24,6 @@ if (/^(-h|--help|-\?)$/.test(process.argv[2])) {
 }
 
 var blessed = require('blessed')
-  , program = blessed()
   , nssocket;
 
 try {
@@ -40,18 +39,16 @@ var server
  * Screen Layout
  */
 
-var screen = new blessed.Screen({
-  program: program
-});
+var screen = blessed.screen();
 
-var table = new blessed.Box({
+var table = blessed.box({
   left: 0,
   top: 0,
   width: screen.width,
   height: screen.height
 });
 
-var ball = new blessed.Box({
+var ball = blessed.box({
   width: 1,
   height: 1,
   bg: 'white',
@@ -59,7 +56,7 @@ var ball = new blessed.Box({
   left: 0
 });
 
-var lpaddle = new blessed.Box({
+var lpaddle = blessed.box({
   width: 1,
   height: 3,
   bg: 'yellow',
@@ -67,7 +64,7 @@ var lpaddle = new blessed.Box({
   left: 0
 });
 
-var rpaddle = new blessed.Box({
+var rpaddle = blessed.box({
   width: 1,
   height: 3,
   bg: 'yellow',
@@ -75,24 +72,25 @@ var rpaddle = new blessed.Box({
   right: 0
 });
 
-var score = new blessed.Box({
+var score = blessed.box({
   top: 0,
   left: 4,
   height: 3,
-  //width: 26,
+  width: 'shrink',
   border: {
-    type: 'ascii'
+    type: 'line'
   },
-  shrink: true,
   //align: 'center',
-  bold: true,
+  style: {
+    bold: true
+  },
   tags: true
 });
 
 score.lwins = 0;
 score.rwins = 0;
 
-var net = new blessed.Box({
+var net = blessed.box({
   width: 1,
   height: '100%',
   bg: 'yellow',
@@ -100,17 +98,17 @@ var net = new blessed.Box({
   left: 'center'
 });
 
-var message = new blessed.Box({
+var message = blessed.box({
   width: '50%',
   height: 3,
   border: {
-    type: 'ascii'
+    type: 'line'
   },
   top: 'center',
   left: 'center'
 });
 
-var text = new blessed.Box({
+var text = blessed.box({
   top: 'center',
   left: 1,
   right: 1,

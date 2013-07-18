@@ -24,7 +24,7 @@
 // $ node test/tput.js xterm-256color --ifile ~/.terminfo/x/xterm-256color | tee out
 // $ cdiff test/terminfo out
 
-var Tput = require('../').Tput;
+var blessed = require('../');
 
 // Simple argument parser
 // Copyright (c) 2012, Christopher Jeffrey (MIT License)
@@ -80,7 +80,7 @@ function parseArg() {
 
 var argv = parseArg();
 
-var tput = Tput({
+var tput = blessed.tput({
   term: argv[0] || 'xterm',
   extended: true,
   debug: true,
@@ -95,7 +95,7 @@ console.log('Max colors: %d.', tput.colors);
 // console.log(tput.strings.acs_chars.split('').map(function(ch) { return ch.charCodeAt(0); }));
 // console.log(JSON.stringify(tput.strings.acs_chars));
 
-// process.stdout.write(Tput.sprintf('%-10s\n', 'hello'));
+// process.stdout.write(blessed.tput.sprintf('%-10s\n', 'hello'));
 
 // tput._compile('%?%p9%t\u001b(0%e\u001b(B%;\u001b[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m');
 
