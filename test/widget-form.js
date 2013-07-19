@@ -1,5 +1,5 @@
 var blessed = require('../')
-  , screen = blessed.screen();
+  , screen = blessed.screen({ dump: __dirname + '/form.log' });
 
 var form = blessed.form({
   parent: screen,
@@ -82,6 +82,19 @@ var check = blessed.checkbox({
   top: 0,
   name: 'check',
   content: 'check'
+});
+
+var check2 = blessed.checkbox({
+  parent: form,
+  mouse: true,
+  keys: true,
+  shrink: true,
+  bg: 'magenta',
+  height: 1,
+  left: 28,
+  top: 10,
+  name: 'foooooooo2',
+  content: 'foooooooo2'
 });
 
 var submit = blessed.button({
