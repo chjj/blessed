@@ -257,6 +257,7 @@ The base element.
   (`0-100%`), or keyword (`half` or `shrink`).
 - **left, right, top, bottom** - offsets of the element **relative to its
   parent**. can be a number, percentage (`0-100%`), or keyword (`center`).
+  `right` and `bottom` do not accept keywords.
 
 ##### Properties:
 
