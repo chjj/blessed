@@ -79,7 +79,11 @@ var list = blessed.list({
     'eight',
     'nine',
     'ten'
-  ]
+  ],
+  scrollbar: {
+    ch: ' ',
+    inverse: true
+  }
 });
 
 screen.append(list);
