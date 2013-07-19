@@ -200,6 +200,10 @@ var input = blessed.textbox({
   top: 2
 });
 
+input.on('submit', function() {
+  input.clearInput();
+});
+
 screen.append(input);
 
 var button = blessed.Button({
