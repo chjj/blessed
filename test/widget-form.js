@@ -89,7 +89,10 @@ var submit = blessed.button({
   mouse: true,
   keys: true,
   shrink: true,
-  padding: 1,
+  padding: {
+    left: 1,
+    right: 1
+  },
   left: 30,
   top: 2,
   shrink: true,
