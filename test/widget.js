@@ -150,7 +150,10 @@ var stext = blessed.scrollabletext({
   //height: 4,
   height: 6,
   left: 0,
-  bottom: 0
+  bottom: 0,
+  scrollbar: {
+    inverse: true
+  }
 });
 
 screen.append(stext);

@@ -9,9 +9,19 @@ var form = blessed.form({
   left: 0,
   top: 0,
   width: '100%',
-  height: 5,
+  height: 12,
   bg: 'green',
-  content: 'foobar'
+  content: 'foobar',
+  border: {
+    type: 'ch',
+    ch: ' ',
+    style: { inverse: true }
+  },
+  scrollbar: {
+    ch: ' ',
+    inverse: true
+  }
+  //alwaysScroll: true
 });
 
 form.on('submit', function(data) {
@@ -19,10 +29,20 @@ form.on('submit', function(data) {
   screen.render();
 });
 
+form.key('d', function() {
+  form.scroll(1);
+  screen.render();
+});
+
+form.key('u', function() {
+  form.scroll(-1);
+  screen.render();
+});
+
 var set = blessed.radioset({
   parent: form,
-  left: 0,
-  top: 0,
+  left: 1,
+  top: 1,
   shrink: true,
   //padding: 1,
   //content: 'f',
@@ -63,7 +83,7 @@ var text = blessed.textbox({
   height: 1,
   width: 20,
   left: 1,
-  top: 2,
+  top: 3,
   name: 'text'
 });
 
@@ -79,7 +99,7 @@ var check = blessed.checkbox({
   bg: 'magenta',
   height: 1,
   left: 28,
-  top: 0,
+  top: 1,
   name: 'check',
   content: 'check'
 });
@@ -92,7 +112,7 @@ var check2 = blessed.checkbox({
   bg: 'magenta',
   height: 1,
   left: 28,
-  top: 10,
+  top: 14,
   name: 'foooooooo2',
   content: 'foooooooo2'
 });
@@ -106,8 +126,8 @@ var submit = blessed.button({
     left: 1,
     right: 1
   },
-  left: 30,
-  top: 2,
+  left: 29,
+  top: 3,
   shrink: true,
   name: 'submit',
   content: 'submit',
@@ -128,7 +148,7 @@ var output = blessed.scrollabletext({
   mouse: true,
   keys: true,
   left: 0,
-  top: 5,
+  top: 12,
   width: '100%',
   bg: 'red',
   content: 'foobar'
