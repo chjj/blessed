@@ -20,6 +20,8 @@
   name: 'xterm',
   names: [ 'xterm' ],
   desc: 'xterm terminal emulator (X Window System)',
+  dir: '/usr/share/terminfo',
+  file: '/usr/share/terminfo/x/xterm',
   bools: 
    { auto_left_margin: false,
      auto_right_margin: true,
@@ -304,7 +306,68 @@
      ka2: '',
      kb1: '',
      kb3: '',
-     kc2: '' } }
+     kc2: '' },
+  features: 
+   { unicode: true,
+     brokenACS: false,
+     PCRomSet: false,
+     magicCookie: true,
+     padding: true,
+     setbuf: true,
+     acsc: 
+      { '`': '◆',
+        a: '▒',
+        f: '°',
+        g: '±',
+        i: '\u000b',
+        j: '┘',
+        k: '┐',
+        l: '┌',
+        m: '└',
+        n: '┼',
+        o: '⎺',
+        p: '⎻',
+        q: '─',
+        r: '⎼',
+        s: '⎽',
+        t: '├',
+        u: '┤',
+        v: '┴',
+        w: '┬',
+        x: '│',
+        y: '≤',
+        z: '≥',
+        '{': 'π',
+        '|': '≠',
+        '}': '£',
+        '~': '·' },
+     acscr: 
+      { '◆': '`',
+        '▒': 'a',
+        '°': 'f',
+        '±': 'g',
+        '\u000b': 'i',
+        '┘': 'j',
+        '┐': 'k',
+        '┌': 'l',
+        '└': 'm',
+        '┼': 'n',
+        '⎺': 'o',
+        '⎻': 'p',
+        '─': 'q',
+        '⎼': 'r',
+        '⎽': 's',
+        '├': 't',
+        '┤': 'u',
+        '┴': 'v',
+        '┬': 'w',
+        '│': 'x',
+        '≤': 'y',
+        '≥': 'z',
+        'π': '{',
+        '≠': '|',
+        '£': '}',
+        '·': '~' } } }
 Compiling auto_left_margin: false
 Compiling auto_right_margin: true
 Compiling no_esc_ctlc: false
@@ -364,7 +427,7 @@ Compiling U8: -1
 Compiling back_tab: "\u001b[Z"
 return "\x1b[Z";
 Compiling bell: "\u0007"
-return "\u0007";
+return "\x07";
 Compiling carriage_return: "\r"
 return "\r";
 Compiling change_scroll_region: "\u001b[%i%p1%d;%p2%dr"
@@ -434,7 +497,7 @@ return "\x1b[27m";
 Compiling exit_underline_mode: "\u001b[24m"
 return "\x1b[24m";
 Compiling flash_screen: "\u001b[?5h$<100/>\u001b[?5l"
-var out = "\x1b[?5h";out += "\x1b[?5l";return out;
+return "\x1b[?5h\x1b[?5l";
 Compiling init_2string: "\u001b[!p\u001b[?3;4l\u001b[4l\u001b>"
 return "\x1b[!p\x1b[?3;4l\x1b[4l\x1b>";
 Compiling insert_line: "\u001b[L"
@@ -808,4 +871,3 @@ Compiling ka2: ""
 Compiling kb1: ""
 Compiling kb3: ""
 Compiling kc2: ""
-Max colors: 8.

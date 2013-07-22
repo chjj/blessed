@@ -81,7 +81,7 @@ function parseArg() {
 var argv = parseArg();
 
 var tput = blessed.tput({
-  term: argv[0] || 'xterm',
+  term: argv[0] && argv[0] !== 'all' ? argv[0] : 'xterm',
   extended: true,
   debug: true,
   termcap: argv.termcap,
@@ -90,7 +90,39 @@ var tput = blessed.tput({
   termcapFile: argv.c || argv.cfile
 });
 
-console.log('Max colors: %d.', tput.colors);
+if (!argv[0] || argv[0] === 'all') {
+  console.log('');
+
+  var rl = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  var text = '\x1b[31mWARNING:\x1b[m '
+    + 'This will compile every single terminfo file on your disk.\n'
+    + 'It will probably use a lot of CPU.\n'
+    + 'Do you wish to proceed? (Y/n) ';
+
+  rl.question(text, function(result) {
+    result = result.trim().toLowerCase();
+    if (result !== 'y') return process.exit(0);
+    console.log('\x1b[32m(You bet your ass I wish to proceed.)\x1b[m');
+    setTimeout(function() { process.stdout.write('.'); }, 1000);
+    setTimeout(function() { process.stdout.write('.'); }, 2000);
+    setTimeout(function() { process.stdout.write('.'); }, 3000);
+    setTimeout(function() {
+      console.log('Let\'s go...');
+    }, 3000);
+    setTimeout(function() {
+      tput.compileAll(argv[1]);
+      process.exit(0);
+    }, 4000);
+  });
+
+  return;
+}
+
+// console.log('Max colors: %d.', tput.colors);
 
 // console.log(tput.strings.acs_chars.split('').map(function(ch) { return ch.charCodeAt(0); }));
 // console.log(JSON.stringify(tput.strings.acs_chars));
