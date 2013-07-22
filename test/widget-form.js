@@ -12,7 +12,7 @@ var form = blessed.form({
   height: 12,
   bg: 'green',
   content: 'foobar',
-  border: {
+  border_: {
     type: 'ch',
     ch: ' ',
     style: { inverse: true }
