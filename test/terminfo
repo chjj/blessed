@@ -368,7 +368,7 @@ return "\u0007";
 Compiling carriage_return: "\r"
 return "\r";
 Compiling change_scroll_region: "\u001b[%i%p1%d;%p2%dr"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push(";"),(stack.push(v = params[1]), v),out.push(stack.pop()),out.push("r");return out.join("");
+var out = "\x1b[";(params[0]++, params[1]++),out += (params[0] || ""),out += ";",out += (params[1] || ""),out += "r";return out;
 Compiling clear_all_tabs: "\u001b[3g"
 return "\x1b[3g";
 Compiling clear_screen: "\u001b[H\u001b[2J"
@@ -378,9 +378,9 @@ return "\x1b[K";
 Compiling clr_eos: "\u001b[J"
 return "\x1b[J";
 Compiling column_address: "\u001b[%i%p1%dG"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("G");return out.join("");
+var out = "\x1b[";(params[0]++, params[1]++),out += (params[0] || ""),out += "G";return out;
 Compiling cursor_address: "\u001b[%i%p1%d;%p2%dH"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push(";"),(stack.push(v = params[1]), v),out.push(stack.pop()),out.push("H");return out.join("");
+var out = "\x1b[";(params[0]++, params[1]++),out += (params[0] || ""),out += ";",out += (params[1] || ""),out += "H";return out;
 Compiling cursor_down: "\n"
 return "\n";
 Compiling cursor_home: "\u001b[H"
@@ -420,7 +420,7 @@ return "\x1b[7m";
 Compiling enter_underline_mode: "\u001b[4m"
 return "\x1b[4m";
 Compiling erase_chars: "\u001b[%p1%dX"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("X");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "X";return out;
 Compiling exit_alt_charset_mode: "\u001b(B"
 return "\x1b(B";
 Compiling exit_attribute_mode: "\u001b(B\u001b[m"
@@ -434,7 +434,7 @@ return "\x1b[27m";
 Compiling exit_underline_mode: "\u001b[24m"
 return "\x1b[24m";
 Compiling flash_screen: "\u001b[?5h$<100/>\u001b[?5l"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[?5h"),out.push("\x1b[?5l");return out.join("");
+var out = "\x1b[?5h";out += "\x1b[?5l";return out;
 Compiling init_2string: "\u001b[!p\u001b[?3;4l\u001b[4l\u001b>"
 return "\x1b[!p\x1b[?3;4l\x1b[4l\x1b>";
 Compiling insert_line: "\u001b[L"
@@ -492,25 +492,25 @@ return "\x1b[?1034l";
 Compiling meta_on: "\u001b[?1034h"
 return "\x1b[?1034h";
 Compiling parm_dch: "\u001b[%p1%dP"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("P");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "P";return out;
 Compiling parm_delete_line: "\u001b[%p1%dM"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("M");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "M";return out;
 Compiling parm_down_cursor: "\u001b[%p1%dB"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("B");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "B";return out;
 Compiling parm_ich: "\u001b[%p1%d@"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("@");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "@";return out;
 Compiling parm_index: "\u001b[%p1%dS"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("S");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "S";return out;
 Compiling parm_insert_line: "\u001b[%p1%dL"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("L");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "L";return out;
 Compiling parm_left_cursor: "\u001b[%p1%dD"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("D");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "D";return out;
 Compiling parm_right_cursor: "\u001b[%p1%dC"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("C");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "C";return out;
 Compiling parm_rindex: "\u001b[%p1%dT"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("T");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "T";return out;
 Compiling parm_up_cursor: "\u001b[%p1%dA"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("A");return out.join("");
+var out = "\x1b[";out += (params[0] || ""),out += "A";return out;
 Compiling print_screen: "\u001b[i"
 return "\x1b[i";
 Compiling prtr_off: "\u001b[4i"
@@ -524,7 +524,7 @@ return "\x1b[!p\x1b[?3;4l\x1b[4l\x1b>";
 Compiling restore_cursor: "\u001b8"
 return "\x1b8";
 Compiling row_address: "\u001b[%i%p1%dd"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(params[0]++, params[1]++),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("d");return out.join("");
+var out = "\x1b[";(params[0]++, params[1]++),out += (params[0] || ""),out += "d";return out;
 Compiling save_cursor: "\u001b7"
 return "\x1b7";
 Compiling scroll_forward: "\n"
@@ -532,7 +532,7 @@ return "\n";
 Compiling scroll_reverse: "\u001bM"
 return "\x1bM";
 Compiling set_attributes: "%?%p9%t\u001b(0%e\u001b(B%;\u001b[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m"
-var v, dyn = {}, stat = {}, stack = [], out = [];;if ((stack.push(v = params[8]), v)) {out.push("\x1b(0")} else {out.push("\x1b(B")}out.push("\x1b[0");if ((stack.push(v = params[5]), v)) {out.push(";1")};if ((stack.push(v = params[1]), v)) {out.push(";4")};if ((stack.push(v = params[0]), v),(stack.push(v = params[2]), v),(stack.push(v = (stack.pop() | stack.pop())), v)) {out.push(";7")};if ((stack.push(v = params[3]), v)) {out.push(";5")};if ((stack.push(v = params[6]), v)) {out.push(";8")}out.push("m");return out.join("");
+var v, stack = [], out = "";;if ((stack.push(v = params[8]), v)) {out += "\x1b(0"} else {out += "\x1b(B"}out += "\x1b[0";if ((stack.push(v = params[5]), v)) {out += ";1"};if ((stack.push(v = params[1]), v)) {out += ";4"};if ((stack.push(v = params[0]), v),(stack.push(v = params[2]), v),(stack.push(v = (stack.pop() | stack.pop())), v)) {out += ";7"};if ((stack.push(v = params[3]), v)) {out += ";5"};if ((stack.push(v = params[6]), v)) {out += ";8"}out += "m";return out;
 Compiling set_tab: "\u001bH"
 return "\x1bH";
 Compiling tab: "\t"
@@ -676,7 +676,7 @@ return "\x1b[1;4R";
 Compiling clr_bol: "\u001b[1K"
 return "\x1b[1K";
 Compiling user6: "\u001b[%i%d;%dR"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b["),(params[0]++, params[1]++),out.push(stack.pop()),out.push(";"),out.push(stack.pop()),out.push("R");return out.join("");
+var stack = [], out = "\x1b[";(params[0]++, params[1]++),out += (stack.pop() || ""),out += ";",out += (stack.pop() || ""),out += "R";return out;
 Compiling user7: "\u001b[6n"
 return "\x1b[6n";
 Compiling user8: "\u001b[?1;2c"
@@ -686,15 +686,15 @@ return "\x1b[c";
 Compiling orig_pair: "\u001b[39;49m"
 return "\x1b[39;49m";
 Compiling set_foreground: "\u001b[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[3");if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("4")} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("6")} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("1")} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("3")} else {(stack.push(v = params[0]), v),out.push(stack.pop())}out.push("m");return out.join("");
+var v, stack = [], out = "";out += "\x1b[3";if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "4"} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "6"} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "1"} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "3"} else {out += (params[0] || "")}out += "m";return out;
 Compiling set_background: "\u001b[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[4");if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("4")} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("6")} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("1")} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out.push("3")} else {(stack.push(v = params[0]), v),out.push(stack.pop())}out.push("m");return out.join("");
+var v, stack = [], out = "";out += "\x1b[4";if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "4"} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "6"} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "1"} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "3"} else {out += (params[0] || "")}out += "m";return out;
 Compiling key_mouse: "\u001b[M"
 return "\x1b[M";
 Compiling set_a_foreground: "\u001b[3%p1%dm"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[3"),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("m");return out.join("");
+var out = "\x1b[3";out += (params[0] || ""),out += "m";return out;
 Compiling set_a_background: "\u001b[4%p1%dm"
-var v, dyn = {}, stat = {}, stack = [], out = [];out.push("\x1b[4"),(stack.push(v = params[0]), v),out.push(stack.pop()),out.push("m");return out.join("");
+var out = "\x1b[4";out += (params[0] || ""),out += "m";return out;
 Compiling memory_lock: "\u001bl"
 return "\x1bl";
 Compiling memory_unlock: "\u001bm"
