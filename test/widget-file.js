@@ -1,7 +1,8 @@
 var blessed = require('../');
 
 var screen = blessed.screen({
-  tput: true
+  tput: true,
+  smartCSR: true
 });
 
 var fm = blessed.filemanager({
