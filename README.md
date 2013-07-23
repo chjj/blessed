@@ -277,7 +277,7 @@ The base element.
   - **bold, underline** - border attributes.
 - **style** - contains attributes (e.g. `fg/bg/underline`). see above.
 - **position** - raw width, height, and offsets.
-- **content** - text content.
+- **content** - raw text content.
 - **hidden** - whether the element is hidden or not.
 - **visible** - whether the element is visible or not.
 - **detached** - whether the element is attached to a screen in its ancestry
@@ -313,7 +313,6 @@ The base element.
 
 - inherits all from Node.
 - **render()** - write content and children to the screen buffer.
-- **setContent(text)** - set the content.
 - **hide()** - hide element.
 - **show()** - show element.
 - **toggle()** - toggle hidden/shown.
@@ -324,6 +323,42 @@ The base element.
 - **unkey(name, listener)** - remove a keypress listener for a specific key.
 - **onScreenEvent(type, listener)** - same as`el.on('screen', ...)` except this
   will automatically cleanup listeners after the element is detached.
+
+###### Content Methods
+
+Methods for dealing with text content, line by line. Useful for writing a
+text editor, irc client, etc.
+
+Note: all of these methods deal with pre-aligned, pre-wrapped text. If you use
+deleteTop() on a box with a wrapped line at the top, it may remove 3-4 "real"
+lines (rows) depending on how long the original line was.
+
+The `lines` parameter can be a string or an array of strings. The `line`
+parameter must be a string.
+
+- **setContent(text)** - set the content. note: when text is input, it will be
+  stripped of all non-SGR escape codes, tabs will be replaced with 8 spaces,
+  and tags will be replaced with SGR codes (if enabled).
+- **getContent(text)** - return content, slightly different from `el.content`.
+  assume the above formatting.
+- **insertLine(i, lines)** - insert a line into the box's content.
+- **deleteLine(i)** - delete a line from the box's content.
+- **getLine(i)** - get a line from the box's content.
+- **getBaseLine(i)** - get a line from the box's content from the visible top.
+- **setLine(i, line)** - set a line in the box's content.
+- **setBaseLine(i, line)** - set a line in the box's content from the visible
+  top.
+- **clearLine(i)** - clear a line from the box's content.
+- **clearBaseLine(i)** - clear a line from the box's content from the visible
+  top.
+- **insertTop(lines)** - insert a line at the top of the box.
+- **insertBottom(lines)** - insert a line at the bottom of the box.
+- **deleteTop()** - delete a line at the top of the box.
+- **deleteBottom()** - delete a line at the bottom of the box.
+- **unshiftLine(lines)** - unshift a line onto the top of the content.
+- **shiftLine(i)** - shift a line off the top of the content.
+- **pushLine(lines)** - push a line onto the bottom of the content.
+- **popLine(i)** - pop a line off the top of the content.
 
 
 #### Box (from Element)
@@ -345,15 +380,6 @@ A box element which draws a simple box containing `content` or other elements.
 ##### Methods:
 
 - inherits all from Element.
-- **insertLine(i, line)** - insert a line into the box's content.
-- **deleteLine(i)** - delete a line from the box's content.
-- **getLine(i)** - get a line from the box's content.
-- **setLine(i, line)** - set a line in the box's content.
-- **clearLine(i)** - clear a line from the box's content.
-- **insertTop(line)** - insert a line at the top of the box.
-- **insertBottom(line)** - insert a line at the bottom of the box.
-- **deleteTop()** - delete a line at the top of the box.
-- **deleteBottom()** - delete a line at the bottom of the box.
 
 
 #### Text (from Element)
