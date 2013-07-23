@@ -263,6 +263,7 @@ The base element.
 - **left, right, top, bottom** - offsets of the element **relative to its
   parent**. can be a number, percentage (`0-100%`), or keyword (`center`).
   `right` and `bottom` do not accept keywords.
+- **position** - can contain the above options.
 
 ##### Properties:
 
