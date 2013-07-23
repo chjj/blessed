@@ -139,6 +139,11 @@ The screen on which every other node renders.
   (not just full-width ones, elements with uniform cells to their sides).
   this is known to cause flickering with elements that are not full-width,
   however, it is more optimal for terminal rendering.
+- **useBCE** - attempt to perform `back_color_erase` optimizations for terminals
+  that support it. it will also work with terminals that don't support it, but
+  only on lines with the default background color. as it stands with the current
+  implementation, it's uncertain how much terminal performance this adds at the
+  cost of overhead within node.
 - **resizeTimeout** - amount of time (in ms) to redraw the screen after the
   terminal is resized (default: 300).
 

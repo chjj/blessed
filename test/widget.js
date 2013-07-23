@@ -8,7 +8,7 @@ screen.append(blessed.text({
   //bg: 'blue',
   content: '{green-fg}Welcome{/green-fg} to my {red-fg,ul}program{/red-fg,ul}',
   bg: '#0000ff',
-  // bg: blessed.colors.matchColor('#0000ff'),
+  // bg: blessed.colors.match('#0000ff'),
   tags: true,
   align: 'center'
 }));
