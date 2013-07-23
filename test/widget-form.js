@@ -30,12 +30,12 @@ form.on('submit', function(data) {
 });
 
 form.key('d', function() {
-  form.scroll(1);
+  form.scroll(1, true);
   screen.render();
 });
 
 form.key('u', function() {
-  form.scroll(-1);
+  form.scroll(-1, true);
   screen.render();
 });
 
@@ -141,6 +141,46 @@ var submit = blessed.button({
 
 submit.on('press', function() {
   form.submit();
+});
+
+var box1 = blessed.box({
+  parent: form,
+  left: 1,
+  top: 10,
+  height: 10,
+  width: 10,
+  content: 'one',
+  bg: 'cyan'
+});
+
+var box2 = blessed.box({
+  parent: box1,
+  left: 1,
+  top: 2,
+  height: 8,
+  width: 9,
+  content: 'two',
+  bg: 'magenta'
+});
+
+var box3 = blessed.box({
+  parent: box2,
+  left: 1,
+  top: 2,
+  height: 6,
+  width: 8,
+  content: 'three',
+  bg: 'yellow'
+});
+
+var box4 = blessed.box({
+  parent: box3,
+  left: 1,
+  top: 2,
+  height: 4,
+  width: 7,
+  content: 'four',
+  bg: 'blue'
 });
 
 var output = blessed.scrollabletext({
