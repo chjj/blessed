@@ -595,7 +595,7 @@ return "\n";
 Compiling scroll_reverse: "\u001bM"
 return "\x1bM";
 Compiling set_attributes: "%?%p9%t\u001b(0%e\u001b(B%;\u001b[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m"
-var v, stack = [], out = "";;if ((stack.push(v = params[8]), v)) {out += "\x1b(0"} else {out += "\x1b(B"}out += "\x1b[0";if ((stack.push(v = params[5]), v)) {out += ";1"};if ((stack.push(v = params[1]), v)) {out += ";4"};if ((stack.push(v = params[0]), v),(stack.push(v = params[2]), v),(stack.push(v = (stack.pop() | stack.pop())), v)) {out += ";7"};if ((stack.push(v = params[3]), v)) {out += ";5"};if ((stack.push(v = params[6]), v)) {out += ";8"}out += "m";return out;
+var v, stack = [], out = "";;if ((stack.push(v = params[8]), v)) {out += "\x1b(0"} else {out += "\x1b(B"}out += "\x1b[0";if ((stack.push(v = params[5]), v)) {out += ";1"};if ((stack.push(v = params[1]), v)) {out += ";4"};if ((stack.push(v = params[0]), v),(stack.push(v = params[2]), v),(stack.push(v = (stack.pop() | stack.pop()) || 0), v)) {out += ";7"};if ((stack.push(v = params[3]), v)) {out += ";5"};if ((stack.push(v = params[6]), v)) {out += ";8"}out += "m";return out;
 Compiling set_tab: "\u001bH"
 return "\x1bH";
 Compiling tab: "\t"
@@ -749,9 +749,9 @@ return "\x1b[c";
 Compiling orig_pair: "\u001b[39;49m"
 return "\x1b[39;49m";
 Compiling set_foreground: "\u001b[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m"
-var v, stack = [], out = "";out += "\x1b[3";if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "4"} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "6"} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "1"} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "3"} else {out += (params[0] || "")}out += "m";return out;
+var v, stack = [], out = "";out += "\x1b[3";if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop()) || 0), v)) {out += "4"} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop()) || 0), v)) {out += "6"} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop()) || 0), v)) {out += "1"} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop()) || 0), v)) {out += "3"} else {out += (params[0] || "")}out += "m";return out;
 Compiling set_background: "\u001b[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m"
-var v, stack = [], out = "";out += "\x1b[4";if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "4"} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "6"} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "1"} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop())), v)) {out += "3"} else {out += (params[0] || "")}out += "m";return out;
+var v, stack = [], out = "";out += "\x1b[4";if ((stack.push(v = params[0]), v),(stack.push(v = 1), v),(stack.push(v = (stack.pop() === stack.pop()) || 0), v)) {out += "4"} else if ((stack.push(v = params[0]), v),(stack.push(v = 3), v),(stack.push(v = (stack.pop() === stack.pop()) || 0), v)) {out += "6"} else if ((stack.push(v = params[0]), v),(stack.push(v = 4), v),(stack.push(v = (stack.pop() === stack.pop()) || 0), v)) {out += "1"} else if ((stack.push(v = params[0]), v),(stack.push(v = 6), v),(stack.push(v = (stack.pop() === stack.pop()) || 0), v)) {out += "3"} else {out += (params[0] || "")}out += "m";return out;
 Compiling key_mouse: "\u001b[M"
 return "\x1b[M";
 Compiling set_a_foreground: "\u001b[3%p1%dm"

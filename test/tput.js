@@ -81,7 +81,7 @@ function parseArg() {
 var argv = parseArg();
 
 var tput = blessed.tput({
-  term: argv[0] && argv[0] !== 'all' ? argv[0] : 'xterm',
+  term: argv[0] && argv[0] !== 'all' && argv[0] !== 'rand' ? argv[0] : 'xterm',
   extended: true,
   debug: true,
   termcap: argv.termcap,
@@ -119,6 +119,14 @@ if (!argv[0] || argv[0] === 'all') {
     }, 4000);
   });
 
+  return;
+}
+
+if (argv[0] === 'rand') {
+  var terms = tput.getAll();
+  var term = terms[(terms.length - 1) * Math.random() | 0];
+  console.log('Compiling ' + term + '...');
+  tput.compileTerminfo(term);
   return;
 }
 
