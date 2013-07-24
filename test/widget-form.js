@@ -9,9 +9,10 @@ var form = blessed.form({
   left: 0,
   top: 0,
   width: '100%',
-  height: 12,
+  //height: 12,
   bg: 'green',
   content: 'foobar',
+  scrollable: true,
   border_: {
     type: 'ch',
     ch: ' ',
@@ -184,11 +185,12 @@ var box4 = blessed.box({
 });
 
 var output = blessed.scrollabletext({
-  parent: screen,
+  parent: form,
   mouse: true,
   keys: true,
   left: 0,
-  top: 12,
+  top: 20,
+  height: 5,
   width: '100%',
   bg: 'red',
   content: 'foobar'
