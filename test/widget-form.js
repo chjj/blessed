@@ -191,7 +191,8 @@ var output = blessed.scrollabletext({
   left: 0,
   top: 20,
   height: 5,
-  width: '100%',
+  left: 0,
+  right: 0,
   bg: 'red',
   content: 'foobar'
 });
