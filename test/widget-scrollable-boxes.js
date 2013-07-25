@@ -54,11 +54,43 @@ var text2 = blessed.box({
 var box2 = blessed.box({
   parent: box,
   scrollable: true,
-  content: 'foo1\nfoo2\nfoo3\nfoo4\nfoo5\nfoo6\nfoo7\nf008',
+  content: 'foo-one\nfoo-two',
   left: 'center',
   top: 20,
   width: '80%',
-  height: 5,
+  height: 9,
+  border: {
+    type: 'ascii'
+  },
+  style: {
+    bg: 'magenta',
+    focus: {
+      bg: 'blue'
+    },
+    hover: {
+      bg: 'red'
+    }
+  },
+  keys: true,
+  vi: true,
+  alwaysScroll: true,
+  scrollbar_: {
+    ch: ' ',
+    inverse: true
+  }
+});
+
+var box3 = blessed.box({
+  parent: box2,
+  //scrollable: true,
+  //content: 'foo1\nfoo2\nfoo3\nfoo4\nfoo5\nfoo6\nfoo7\nf008',
+  //left: 'center',
+  left: 2,
+  top: 2,
+  content: 'foo',
+  shrink: true,
+  //width: '80%',
+  //height: 5,
   border: {
     type: 'ascii'
   },
