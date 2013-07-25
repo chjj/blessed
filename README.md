@@ -146,6 +146,7 @@ The screen on which every other node renders.
   cost of overhead within node.
 - **resizeTimeout** - amount of time (in ms) to redraw the screen after the
   terminal is resized (default: 300).
+- **tabSize** - the width of tabs within an element's content.
 
 ##### Properties:
 
@@ -264,6 +265,7 @@ The base element.
   parent**. can be a number, percentage (`0-100%`), or keyword (`center`).
   `right` and `bottom` do not accept keywords.
 - **position** - can contain the above options.
+- **scrollable** - whether the element is scrollable or not.
 
 ##### Properties:
 
@@ -308,6 +310,8 @@ The base element.
 - **move** - received when the element is moved.
 - **resize** - received when the element is resized.
 - **key [name]** - received on key event for [name].
+- **prerender** - received before a call to render.
+- **render** - received after a call to render.
 
 ##### Methods:
 
@@ -412,6 +416,8 @@ Inherits all options, properties, events, and methods from Box.
 
 #### ScrollableBox (from Box)
 
+**DEPRECATED** - Use box with the `scrollable` option instead.
+
 A box with scrollable content.
 
 ##### Options:
@@ -485,6 +491,8 @@ A scrollable list which can display selectable items.
 
 
 #### ScrollableText (from ScrollableBox)
+
+**DEPRECATED** - Use box with the `scrollable` option instead.
 
 A scrollable text box which can display and scroll text, as well as handle
 pre-existing newlines and escape codes.

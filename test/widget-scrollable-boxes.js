@@ -1,9 +1,14 @@
 var blessed = require('../')
-  , screen = blessed.screen();
+  , screen;
 
-var box = blessed.scrollablebox({
-//var box = blessed.scrollabletext({
+screen = blessed.screen({
+  dump: __dirname + '/scrollable-boxes.log',
+  smartCSR: true
+});
+
+var box = blessed.box({
   parent: screen,
+  scrollable: true,
   left: 'center',
   top: 'center',
   width: '80%',
@@ -16,7 +21,7 @@ var box = blessed.scrollablebox({
   keys: true,
   vi: true,
   alwaysScroll: true,
-  scrollbar: {
+  scrollbar_: {
     ch: ' ',
     inverse: true
   }
@@ -44,6 +49,35 @@ var text2 = blessed.box({
   top: 50,
   width: '50%',
   height: 3
+});
+
+var box2 = blessed.box({
+  parent: box,
+  scrollable: true,
+  content: 'foo1\nfoo2\nfoo3\nfoo4\nfoo5\nfoo6\nfoo7\nf008',
+  left: 'center',
+  top: 20,
+  width: '80%',
+  height: 5,
+  border: {
+    type: 'ascii'
+  },
+  style: {
+    bg: 'yellow',
+    focus: {
+      bg: 'blue'
+    },
+    hover: {
+      bg: 'red'
+    }
+  },
+  keys: true,
+  vi: true,
+  alwaysScroll: true,
+  scrollbar_: {
+    ch: ' ',
+    inverse: true
+  }
 });
 
 screen.key('q', function() {
