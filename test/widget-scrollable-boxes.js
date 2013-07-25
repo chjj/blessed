@@ -24,14 +24,14 @@ var box = blessed.scrollablebox({
 
 var text = blessed.box({
   parent: box,
-  content: 'hello',
+  content: 'hello1\nhello2\nhello3\nhello4',
   style: {
     bg: 'red'
   },
   left: 2,
   top: 30,
   width: '50%',
-  height: 4
+  height: 6
 });
 
 var text2 = blessed.box({
@@ -48,19 +48,6 @@ var text2 = blessed.box({
 
 screen.key('q', function() {
   return process.exit(0);
-});
-
-box.on('keypress', function(ch, key) {
-  if (key.name === 'up' || key.name === 'k') {
-    box.scroll(-1);
-    screen.render();
-    return;
-  }
-  if (key.name === 'down' || key.name === 'j') {
-    box.scroll(1);
-    screen.render();
-    return;
-  }
 });
 
 box.focus();
