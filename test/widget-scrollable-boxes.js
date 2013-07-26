@@ -59,7 +59,7 @@ var box2 = blessed.box({
   top: 20,
   width: '80%',
   height: 9,
-  border_: {
+  border: {
     type: 'ascii'
   },
   style: {
@@ -82,18 +82,18 @@ var box2 = blessed.box({
 
 var box3 = blessed.box({
   parent: box2,
-  //scrollable: true,
+  scrollable: true,
   //content: 'foo1\nfoo2\nfoo3\nfoo4\nfoo5\nfoo6\nfoo7\nf008',
   //left: 'center',
-  left: 2,
-  top: 2,
+  left: 3,
+  top: 3,
   content: 'foo',
-  shrink: true,
-  //height: 2,
-  //width: 3,
+  //shrink: true,
+  height: 4,
+  width: 5,
   //width: '80%',
   //height: 5,
-  border_: {
+  border: {
     type: 'ascii'
   },
   style: {
