@@ -59,7 +59,7 @@ var box2 = blessed.box({
   top: 20,
   width: '80%',
   height: 9,
-  border: {
+  border_: {
     type: 'ascii'
   },
   style: {
@@ -89,9 +89,11 @@ var box3 = blessed.box({
   top: 2,
   content: 'foo',
   shrink: true,
+  //height: 2,
+  //width: 3,
   //width: '80%',
   //height: 5,
-  border: {
+  border_: {
     type: 'ascii'
   },
   style: {
