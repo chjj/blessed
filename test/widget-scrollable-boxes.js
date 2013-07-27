@@ -54,7 +54,7 @@ var text2 = blessed.box({
 var box2 = blessed.box({
   parent: box,
   scrollable: true,
-  content: 'foo-one\nfoo-two',
+  content: 'foo-one\nfoo-two\nfoo-three',
   left: 'center',
   top: 20,
   width: '80%',
