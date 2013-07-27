@@ -82,7 +82,12 @@ var list = blessed.list({
   ],
   scrollbar: {
     ch: ' ',
-    inverse: true
+    track: {
+      bg: 'yellow'
+    },
+    style: {
+      inverse: true
+    }
   }
 });
 
