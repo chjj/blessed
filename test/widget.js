@@ -145,7 +145,7 @@ var stext = blessed.scrollabletext({
   mouse: true,
   content: lorem,
   fg: 'blue',
-  bg: 'default',
+  bg: 'black',
   border: {
     type: 'ascii',
     fg: 'default',
