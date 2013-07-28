@@ -10,6 +10,5 @@
   "homepage": "https://github.com/chjj/blessed",
   "bugs": { "url": "http://github.com/chjj/blessed/issues" },
   "keywords": ["curses", "tui", "tput"],
-  "tags": ["curses", "tui", "tput"],
-  "scripts": { "test": "node test", "bench": "node test --bench" }
+  "tags": ["curses", "tui", "tput"]
 }

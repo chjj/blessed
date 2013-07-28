@@ -2,7 +2,7 @@ var blessed = require('../')
   , screen;
 
 screen = blessed.screen({
-  dump: __dirname + '/p.log',
+  dump: __dirname + '/logs/csr.log',
   smartCSR: true
 });
 

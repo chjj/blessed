@@ -1,6 +1,10 @@
 var blessed = require('../')
-  , screen = blessed.screen()
-  , assert = require('assert');
+  , assert = require('assert')
+  , screen;
+
+screen = blessed.screen({
+  dump: __dirname + '/logs/pos.log'
+});
 
 // My terminal size at the time of writing these tests:
 screen.program.cols = 154;

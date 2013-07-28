@@ -1,5 +1,9 @@
 var blessed = require('../')
-  , program = blessed();
+  , program;
+
+program = blessed.program({
+  dump: __dirname + '/logs/mouse.log'
+});
 
 // program.setMouse({
 //   allMotion: true,

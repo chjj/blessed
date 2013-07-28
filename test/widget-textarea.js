@@ -1,6 +1,9 @@
-var blessed = require('../');
+var blessed = require('../')
+  , screen;
 
-var screen = blessed.screen();
+screen = blessed.screen({
+  dump: __dirname + '/logs/textarea.log'
+});
 
 var box = blessed.textarea({
   parent: screen,

@@ -1,5 +1,9 @@
 var blessed = require('../')
-  , screen = blessed.screen();
+  , screen;
+
+screen = blessed.screen({
+  dump: __dirname + '/logs/listbar.log'
+});
 
 var bar = blessed.listbar({
   parent: screen,

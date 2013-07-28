@@ -1,5 +1,9 @@
 var blessed = require('../')
-  , screen = blessed.screen({ dump: __dirname + '/form.log' });
+  , screen;
+
+screen = blessed.screen({
+  dump: __dirname + '/logs/form.log'
+});
 
 var form = blessed.form({
   parent: screen,

@@ -2,8 +2,7 @@ var blessed = require('../')
   , screen;
 
 screen = blessed.screen({
-  dump: __dirname + '/nested-attr.log',
-  smartCSR: true
+  dump: __dirname + '/logs/nested-attr.log'
 });
 
 blessed.box({
@@ -18,7 +17,8 @@ blessed.box({
   border: {
     type: 'ascii'
   },
-  content: '{red-fg}hello {blue-fg}how{/blue-fg} are you?{/red-fg}'
+  content: '{red-fg}hello {blue-fg}how{/blue-fg}'
+    + ' {yellow-bg}are{/yellow-bg} you?{/red-fg}'
 });
 
 screen.key('q', function() {

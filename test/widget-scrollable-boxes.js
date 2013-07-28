@@ -2,7 +2,7 @@ var blessed = require('../')
   , screen;
 
 screen = blessed.screen({
-  dump: __dirname + '/scrollable-boxes.log',
+  dump: __dirname + '/logs/scrollable-boxes.log',
   smartCSR: true
 });
 

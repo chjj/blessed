@@ -1,27 +1,25 @@
 { header: 
-   { dataSize: 3270,
+   { dataSize: 3337,
      headerSize: 12,
      magicNumber: 282,
-     namesSize: 48,
+     namesSize: 28,
      boolCount: 38,
      numCount: 15,
      strCount: 413,
      strTableSize: 1388,
-     total: 2342,
+     total: 2322,
      extended: 
-      { dataSize: 928,
+      { dataSize: 1015,
         headerSize: 10,
         boolCount: 2,
-        numCount: 1,
-        strCount: 57,
-        strTableSize: 117,
-        lastStrTableOffset: 680,
-        total: 245 } },
+        numCount: 0,
+        strCount: 62,
+        strTableSize: 126,
+        lastStrTableOffset: 751,
+        total: 262 } },
   name: 'xterm',
   names: [ 'xterm' ],
-  desc: 'xterm terminal emulator (X Window System)',
-  dir: '/usr/share/terminfo',
-  file: '/usr/share/terminfo/x/xterm',
+  desc: 'X11 terminal emulator',
   bools: 
    { auto_left_margin: false,
      auto_right_margin: true,
@@ -62,7 +60,7 @@
      lpi_changes_res: false,
      backspaces_with_bs: true,
      AX: true,
-     XT: false },
+     XT: true },
   numbers: 
    { columns: 80,
      init_tabs: 8,
@@ -78,8 +76,7 @@
      max_attributes: -1,
      maximum_windows: -1,
      max_colors: 8,
-     max_pairs: 64,
-     U8: -1 },
+     max_pairs: 64 },
   strings: 
    { back_tab: '\u001b[Z',
      bell: '\u0007',
@@ -250,7 +247,12 @@
      set_a_background: '\u001b[4%p1%dm',
      memory_lock: '\u001bl',
      memory_unlock: '\u001bm',
-     XM: '',
+     Cr: '\u001b]112\u0007',
+     Cs: '\u001b]12;%p1%s\u0007',
+     E3: '\u001b[3;J',
+     Ms: '\u001b]52;%p1%s;%p2%s\u0007',
+     Se: '\u001b[2 q',
+     Ss: '\u001b[%p1%d q',
      kDC3: '\u001b[3;3~',
      kDC4: '\u001b[3;4~',
      kDC5: '\u001b[3;5~',
@@ -407,7 +409,7 @@ Compiling cpi_changes_res: false
 Compiling lpi_changes_res: false
 Compiling backspaces_with_bs: true
 Compiling AX: true
-Compiling XT: false
+Compiling XT: true
 Compiling columns: 80
 Compiling init_tabs: 8
 Compiling lines: 24
@@ -423,7 +425,6 @@ Compiling max_attributes: -1
 Compiling maximum_windows: -1
 Compiling max_colors: 8
 Compiling max_pairs: 64
-Compiling U8: -1
 Compiling back_tab: "\u001b[Z"
 return "\x1b[Z";
 Compiling bell: "\u0007"
@@ -762,7 +763,18 @@ Compiling memory_lock: "\u001bl"
 return "\x1bl";
 Compiling memory_unlock: "\u001bm"
 return "\x1bm";
-Compiling XM: ""
+Compiling Cr: "\u001b]112\u0007"
+return "\x1b]112\x07";
+Compiling Cs: "\u001b]12;%p1%s\u0007"
+var out = ["\x1b]12;"];out.push(params[0]),out.push("\x07");return out.join("");
+Compiling E3: "\u001b[3;J"
+return "\x1b[3;J";
+Compiling Ms: "\u001b]52;%p1%s;%p2%s\u0007"
+var out = ["\x1b]52;"];out.push(params[0]),out.push(";"),out.push(params[1]),out.push("\x07");return out.join("");
+Compiling Se: "\u001b[2 q"
+return "\x1b[2 q";
+Compiling Ss: "\u001b[%p1%d q"
+var out = ["\x1b["];out.push(params[0]),out.push(" q");return out.join("");
 Compiling kDC3: "\u001b[3;3~"
 return "\x1b[3;3~";
 Compiling kDC4: "\u001b[3;4~"

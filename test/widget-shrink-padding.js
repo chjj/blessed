@@ -1,5 +1,9 @@
 var blessed = require('../')
-  , screen = blessed.screen();
+  , screen;
+
+screen = blessed.screen({
+  dump: __dirname + '/logs/shrink-padding.log'
+});
 
 var outer = blessed.box({
   parent: screen,
