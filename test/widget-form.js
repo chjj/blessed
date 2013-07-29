@@ -201,6 +201,16 @@ var output = blessed.scrollabletext({
   content: 'foobar'
 });
 
+var bottom = blessed.line({
+  parent: form,
+  type: 'line',
+  orientation: 'horizontal',
+  left: 0,
+  right: 0,
+  top: 50,
+  fg: 'blue'
+});
+
 screen.key('q', function() {
   return process.exit(0);
 });

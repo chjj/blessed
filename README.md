@@ -193,14 +193,15 @@ The screen on which every other node renders.
 - **clearRegion(x1, x2, y1, y2)** - clear any region on the screen.
 - **fillRegion(attr, ch, x1, x2, y1, y2)** - fill any region with a character
   of a certain attribute.
-- **focus(offset)** - focus element by offset of focusable elements.
-- **focusPrev()** - focus previous element in the index.
+- **focusOffset(offset)** - focus element by offset of focusable elements.
+- **focusPrevious()** - focus previous element in the index.
 - **focusNext()** - focus next element in the index.
 - **focusPush(element)** - push element on the focus stack (equivalent to
   `screen.focused = el`).
-- **focusPop()/focusLast()** - pop element off the focus stack.
+- **focusPop()** - pop element off the focus stack.
 - **saveFocus()** - save the focused element.
 - **restoreFocus()** - restore the saved focused element.
+- **rewindFocus()** - "rewind" focus to the last visible and attached element.
 - **key(name, listener)** - bind a keypress listener for a specific key.
 - **onceKey(name, listener)** - bind a keypress listener for a specific key
   once.
