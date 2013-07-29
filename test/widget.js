@@ -213,11 +213,17 @@ var input = blessed.textbox({
   width: '30%',
   height: 3,
   right: 0,
-  top: 2
+  top: 2,
+  keys: true,
+  vi: true,
+  mouse: true
+  //inputOnFocus: true
 });
 
-input.on('submit', function() {
+input.on('submit', function(value) {
+  if (value) screen.children[0].setContent(value);
   input.clearInput();
+  screen.render();
 });
 
 screen.append(input);
@@ -240,6 +246,7 @@ var button = blessed.Button({
 
 button.on('press', function() {
   button.setContent('Clicked!');
+  screen.render();
 });
 
 screen.append(button);
@@ -247,19 +254,19 @@ screen.append(button);
 screen.on('keypress', function(ch, key) {
   if (key.name === 'tab') {
     return key.shift
-      ? screen.focusPrev()
+      ? screen.focusPrevious()
       : screen.focusNext();
   }
-  if (key.name === 'i') {
-    return input.readInput(function(err, value) {
-      if (value) screen.children[0].setContent(value);
-    });
-  }
-  if (key.name === 'e') {
-    return input.readEditor(function(err, value) {
-      if (value) screen.children[0].setContent(value);
-    });
-  }
+  //if (key.name === 'i') {
+  //  return input.readInput(function(err, value) {
+  //    ;
+  //  });
+  //}
+  //if (key.name === 'e') {
+  //  return input.readEditor(function(err, value) {
+  //    ;
+  //  });
+  //}
   if (key.name === 'escape' || key.name === 'q') {
     return process.exit(0);
   }
