@@ -258,7 +258,8 @@ The base element.
 - **valign** - vertical text alignment: `top`, `middle`, or `bottom`.
 - **shrink** - shrink/flex/grow to content and child elements. width/height
   during render.
-- **padding** - amount of padding on the inside of the element.
+- **padding** - amount of padding on the inside of the element. can be a number
+  or an object containing the properties: `left`, `right`, `top`, and `bottom`.
 - **width, height** - width/height of the element, can be a number, percentage
   (`0-100%`), or keyword (`half` or `shrink`).
 - **left, right, top, bottom** - offsets of the element **relative to its
@@ -316,6 +317,8 @@ The base element.
 ##### Methods:
 
 - inherits all from Node.
+- note: if the `scrollable` option is enabled, Element inherits all methods
+  from ScrollableBox.
 - **render()** - write content and children to the screen buffer.
 - **hide()** - hide element.
 - **show()** - show element.
@@ -343,7 +346,7 @@ parameter must be a string.
 - **setContent(text)** - set the content. note: when text is input, it will be
   stripped of all non-SGR escape codes, tabs will be replaced with 8 spaces,
   and tags will be replaced with SGR codes (if enabled).
-- **getContent(text)** - return content, slightly different from `el.content`.
+- **getContent()** - return content, slightly different from `el.content`.
   assume the above formatting.
 - **insertLine(i, lines)** - insert a line into the box's content.
 - **deleteLine(i)** - delete a line from the box's content.
@@ -416,7 +419,8 @@ Inherits all options, properties, events, and methods from Box.
 
 #### ScrollableBox (from Box)
 
-**DEPRECATED** - Use box with the `scrollable` option instead.
+**DEPRECATED** - Use Box with the `scrollable` and `alwaysScroll` options
+instead.
 
 A box with scrollable content.
 
@@ -444,50 +448,7 @@ A box with scrollable content.
 ##### Methods:
 
 - **scroll(offset)** - scroll the content by an offset.
-
-
-#### List (from ScrollableBox)
-
-A scrollable list which can display selectable items.
-
-##### Options:
-
-- inherits all from ScrollableBox.
-- **selectedFg, selectedBg** - foreground and background for selected item,
-  treated like fg and bg. (can be contained in style: e.g. `style.selected.fg`).
-- **selectedBold, selectedUnderline** - character attributes for selected item,
-  treated like bold and underline. (can be contained in style: e.g.
-  `style.selected.bold`).
-- **itemFg, itemBg** - foreground and background for unselected item,
-  treated like fg and bg. (can be contained in style: e.g. `style.item.fg`).
-- **itemBold, itemUnderline** - character attributes for an unselected item,
-  treated like bold and underline. (can be contained in style: e.g.
-  `style.item.bold`).
-- **mouse** - whether to automatically enable mouse support for this list
-  (allows clicking items).
-- **keys** - use predefined keys for navigating the list.
-- **vi** - use vi keys with the `keys` option.
-- **items** - an array of strings which become the list's items.
-
-##### Properties:
-
-- inherits all from ScrollableBox.
-
-##### Events:
-
-- inherits all from ScrollableBox.
-- **select** - received when an item is selected.
-- **cancel** - list was canceled (when `esc` is pressed with the `keys` option).
-- **action** - either a select or a cancel event was received.
-
-##### Methods:
-
-- inherits all from ScrollableBox.
-- **add(text)** - add an item based on a string.
-- **select(index)** - select an index of an item.
-- **move(offset)** - select item based on current offset.
-- **up(amount)** - select item above selected.
-- **down(amount)** - select item below selected.
+- **scrollTo(index)** - scroll the content to an absolute index.
 
 
 #### ScrollableText (from ScrollableBox)
@@ -515,6 +476,50 @@ pre-existing newlines and escape codes.
 ##### Methods:
 
 - inherits all from ScrollableBox.
+
+
+#### List (from Box)
+
+A scrollable list which can display selectable items.
+
+##### Options:
+
+- inherits all from Box.
+- **selectedFg, selectedBg** - foreground and background for selected item,
+  treated like fg and bg. (can be contained in style: e.g. `style.selected.fg`).
+- **selectedBold, selectedUnderline** - character attributes for selected item,
+  treated like bold and underline. (can be contained in style: e.g.
+  `style.selected.bold`).
+- **itemFg, itemBg** - foreground and background for unselected item,
+  treated like fg and bg. (can be contained in style: e.g. `style.item.fg`).
+- **itemBold, itemUnderline** - character attributes for an unselected item,
+  treated like bold and underline. (can be contained in style: e.g.
+  `style.item.bold`).
+- **mouse** - whether to automatically enable mouse support for this list
+  (allows clicking items).
+- **keys** - use predefined keys for navigating the list.
+- **vi** - use vi keys with the `keys` option.
+- **items** - an array of strings which become the list's items.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+- **select** - received when an item is selected.
+- **cancel** - list was canceled (when `esc` is pressed with the `keys` option).
+- **action** - either a select or a cancel event was received.
+
+##### Methods:
+
+- inherits all from Box.
+- **add(text)** - add an item based on a string.
+- **select(index)** - select an index of an item.
+- **move(offset)** - select item based on current offset.
+- **up(amount)** - select item above selected.
+- **down(amount)** - select item below selected.
 
 
 #### Form (from Box)
@@ -554,62 +559,63 @@ A form which can contain form elements.
 A form input.
 
 
-#### Textbox (from Input)
-
-A box which allows text input.
-
-##### Options:
-
-- inherits all from Input.
-
-##### Properties:
-
-- inherits all from Input.
-
-##### Events:
-
-- inherits all from Input.
-- **submit** - value is submitted (enter).
-- **cancel** - value is discared (escape).
-- **action** - either submit or cancel.
-
-##### Methods:
-
-- inherits all from Input.
-- **readInput(callback)** - grab key events and start reading text from the
-  keyboard. takes a callback which receives the final value.
-- **readEditor(callback)** - open text editor in `$EDITOR`, read the output from
-  the resulting file. takes a callback which receives the final value.
-- **clearInput** - clear input.
-
-
-#### Textarea (from Input/ScrollableText)
+#### Textarea (from Input)
 
 A box which allows multiline text input.
 
 ##### Options:
 
-- inherits all from Input/ScrollableText.
+- inherits all from Input.
 
 ##### Properties:
 
-- inherits all from Input/ScrollableText.
+- inherits all from Input.
+- **value** - the input text. **read-only**.
 
 ##### Events:
 
-- inherits all from Input/ScrollableText.
+- inherits all from Input.
 - **submit** - value is submitted (enter).
 - **cancel** - value is discared (escape).
 - **action** - either submit or cancel.
 
 ##### Methods:
 
-- inherits all from Input/ScrollableText.
+- inherits all from Input.
+- **submit** - submit the textarea (emits `submit`).
+- **cancel** - cancel the textarea (emits `cancel`).
 - **readInput(callback)** - grab key events and start reading text from the
   keyboard. takes a callback which receives the final value.
 - **readEditor(callback)** - open text editor in `$EDITOR`, read the output from
   the resulting file. takes a callback which receives the final value.
-- **clearInput** - clear input.
+- **getValue()** - the same as `this.value`, for now.
+- **clearValue()** - clear input.
+- **setValue(text)** - set value.
+
+
+#### Textbox (from Textarea)
+
+A box which allows text input.
+
+##### Options:
+
+- inherits all from Textarea.
+- **secret** - completely hide text.
+- **censor** - replace text with asterisks (`*`).
+
+##### Properties:
+
+- inherits all from Textarea.
+- **secret** - completely hide text.
+- **censor** - replace text with asterisks (`*`).
+
+##### Events:
+
+- inherits all from Textarea.
+
+##### Methods:
+
+- inherits all from Textarea.
 
 
 #### Button (from Input)
@@ -626,12 +632,12 @@ A button which can be focused and allows key and mouse input.
 
 ##### Events:
 
-- inherits all from ScrollableBox.
+- inherits all from Input.
 - **press** - received when the button is clicked/pressed.
 
 ##### Methods:
 
-- inherits all from ScrollableBox.
+- inherits all from Input.
 - **add(text)** - add an item based on a string.
 - **select(index)** - select an index of an item.
 - **move(offset)** - select item based on current offset.
@@ -646,6 +652,7 @@ A progress bar allowing various styles. This can also be used as a form input.
 ##### Options:
 
 - inherits all from Input.
+- **orientation** - can be `horizontal` or `vertical`.
 - **barFg, barBg** - (completed) bar foreground and background.
   (can be contained in `style`: e.g. `style.bar.fg`).
 - **ch** - the character to fill the bar with (default is space).
@@ -871,49 +878,6 @@ screen.render();
 Elements are rendered with the lower elements in the children array being
 painted first. In terms of the painter's algorithm, the lowest indicies in the
 array are the furthest away, just like in the DOM.
-
-
-### Optimization and CSR
-
-**NOTE:** This is now automatically optimized for full-width scrollable elements.
-
-**TODO:** Detect to see if there are any elements under/to the sides of
-non-full-width elements.
-
-You may notice a lot of terminal apps (e.g. mutt, irssi, vim, ncmpcpp) don't
-have sidebars, and only have "elements" that take up the entire width of the
-screen. The reason for this is speed (and general cleanliness). VT-like
-terminals have something called a CSR (change_scroll_region) code, as well as
-IL (insert_line), and DL (delete_code) codes. Using these three codes, it is
-possible to create a very efficient rendering by avoiding redrawing the entire
-screen when a line is inserted or removed. Since blessed is extremely dynamic,
-it is hard to do this optimization automatically (blessed assumes you may
-create any element of any width in any position). So, there is a solution:
-
-``` js
-var box = blessed.box(...);
-box.setContent('line 1\nline 2');
-box.insertBottom('line 3');
-box.insertBottom('line 4');
-box.insertTop('line 0');
-box.insertLine(1, 'line 1.5');
-```
-
-If your element has the same width as the screen, the line insertion will be
-optimized by using a combination CSR/IL/DL codes. These methods may be made
-smarter in the future to detect whether any elements are being overlapped to
-the sides.
-
-Outputting:
-
-```
-| line 0            |
-| line 1            |
-| line 1.5          |
-| line 2            |
-| line 3            |
-| line 4            |
-```
 
 
 ### Testing
