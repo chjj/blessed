@@ -370,7 +370,7 @@ parameter must be a string.
 - **unshiftLine(lines)** - unshift a line onto the top of the content.
 - **shiftLine(i)** - shift a line off the top of the content.
 - **pushLine(lines)** - push a line onto the bottom of the content.
-- **popLine(i)** - pop a line off the top of the content.
+- **popLine(i)** - pop a line off the bottom of the content.
 
 
 #### Box (from Element)
@@ -424,7 +424,7 @@ Inherits all options, properties, events, and methods from Box.
 
 #### ScrollableBox (from Box)
 
-**DEPRECATED** - Use box with the `scrollable` option instead.
+**DEPRECATED** - Use Box with the `scrollable` option instead.
 
 A box with scrollable content.
 
@@ -574,7 +574,7 @@ A box which allows multiline text input.
 - **keys** - use pre-defined keys (`i` or `enter` for insert, `e` for editor,
   `C-e` for editor while inserting).
 - **mouse** - use pre-defined mouse events (right-click for editor).
-- **inputOnFocus** - call `readInput()` when the element is focus and
+- **inputOnFocus** - call `readInput()` when the element is focused.
   automatically unfocus.
 
 ##### Properties:
