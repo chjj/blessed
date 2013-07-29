@@ -27,16 +27,20 @@ var box = blessed.box({
   left: 'center',
   width: '50%',
   height: '50%',
-  border: {
-    type: 'line',
-    fg: '#ffffff'
-  },
-  fg: 'white',
-  bg: 'magenta',
   content: 'Hello {bold}world{/bold}!',
   tags: true,
-  hoverEffects: {
-    bg: 'green'
+  border: {
+    type: 'line'
+  },
+  style: {
+    fg: 'white',
+    bg: 'magenta',
+    border: {
+      fg: '#ffffff'
+    },
+    hover: {
+      bg: 'green'
+    }
   }
 });
 
