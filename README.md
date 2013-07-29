@@ -424,8 +424,7 @@ Inherits all options, properties, events, and methods from Box.
 
 #### ScrollableBox (from Box)
 
-**DEPRECATED** - Use Box with the `scrollable` and `alwaysScroll` options
-instead.
+**DEPRECATED** - Use box with the `scrollable` option instead.
 
 A box with scrollable content.
 
@@ -458,7 +457,8 @@ A box with scrollable content.
 
 #### ScrollableText (from ScrollableBox)
 
-**DEPRECATED** - Use box with the `scrollable` option instead.
+**DEPRECATED** - Use Box with the `scrollable` and `alwaysScroll` options
+instead.
 
 A scrollable text box which can display and scroll text, as well as handle
 pre-existing newlines and escape codes.
@@ -574,7 +574,7 @@ A box which allows multiline text input.
 - **keys** - use pre-defined keys (`i` or `enter` for insert, `e` for editor,
   `C-e` for editor while inserting).
 - **mouse** - use pre-defined mouse events (right-click for editor).
-- **inputOnFocus** - call readInput() when the element is focus and
+- **inputOnFocus** - call `readInput()` when the element is focus and
   automatically unfocus.
 
 ##### Properties:
