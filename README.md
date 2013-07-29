@@ -567,6 +567,11 @@ A box which allows multiline text input.
 ##### Options:
 
 - inherits all from Input.
+- **keys** - use pre-defined keys (`i` or `enter` for insert, `e` for editor,
+  `C-e` for editor while inserting).
+- **mouse** - use pre-defined mouse events (right-click for editor).
+- **inputOnFocus** - call readInput() when the element is focus and
+  automatically unfocus.
 
 ##### Properties:
 
