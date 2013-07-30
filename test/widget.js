@@ -103,6 +103,11 @@ list.prepend(blessed.text({
   content: ' My list '
 }));
 
+if (screen.autoPadding) {
+  list.children[0].rleft = -list.ileft + 2;
+  list.children[0].rtop = -list.itop;
+}
+
 list.on('keypress', function(ch, key) {
   if (key.name === 'up' || key.name === 'k') {
     list.up();

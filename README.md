@@ -151,6 +151,8 @@ The screen on which every other node renders.
 - **resizeTimeout** - amount of time (in ms) to redraw the screen after the
   terminal is resized (default: 300).
 - **tabSize** - the width of tabs within an element's content.
+- **autoPadding** - automatically position child elements with border and
+  padding in mind.
 
 ##### Properties:
 
