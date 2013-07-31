@@ -153,6 +153,10 @@ The screen on which every other node renders.
 - **tabSize** - the width of tabs within an element's content.
 - **autoPadding** - automatically position child elements with border and
   padding in mind.
+- **log** - create a log file. see `log` method.
+- **dump** - dump all output and input to desired file. can be used together
+  with `log` option if set as a boolean.
+- **debug** - debug mode. enables usage of the `debug` method.
 
 ##### Properties:
 
@@ -190,6 +194,9 @@ The screen on which every other node renders.
 ##### Methods:
 
 - inherits all from Node.
+- **log(msg, ...)** - write string to the log file if one was created.
+- **debug(msg, ...)** - same as the log method, but only gets called if the
+  `debug` option was set.
 - **alloc()** - allocate a new pending screen buffer and a new output screen
   buffer.
 - **draw(start, end)** - draw the screen based on the contents of the screen
