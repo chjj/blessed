@@ -233,10 +233,11 @@ input.on('submit', function(value) {
 
 screen.append(input);
 
-var button = blessed.Button({
+var button = blessed.button({
   //content: 'Click me!',
   content: 'Click\nme!',
   shrink: true,
+  mouse: true,
   border: {
     type: 'ascii'
   },
