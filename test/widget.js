@@ -183,7 +183,7 @@ stext.on('keypress', function(ch, key) {
   }
 });
 
-screen.on('element focus', function(old, cur) {
+screen.on('element focus', function(cur, old) {
   if (old.border) old.style.border.fg = 'default';
   if (cur.border) cur.style.border.fg = 'green';
   screen.render();
