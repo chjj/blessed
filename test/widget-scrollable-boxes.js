@@ -8,6 +8,7 @@ screen = blessed.screen({
 
 var box = blessed.box({
   parent: screen,
+  //padding: 2,
   scrollable: true,
   left: 'center',
   top: 'center',
@@ -21,7 +22,7 @@ var box = blessed.box({
   keys: true,
   vi: true,
   alwaysScroll: true,
-  scrollbar_: {
+  scrollbar: {
     ch: ' ',
     inverse: true
   }
@@ -30,6 +31,7 @@ var box = blessed.box({
 var text = blessed.box({
   parent: box,
   content: 'hello1\nhello2\nhello3\nhello4',
+  padding: 2,
   style: {
     bg: 'red'
   },
@@ -42,6 +44,7 @@ var text = blessed.box({
 var text2 = blessed.box({
   parent: box,
   content: 'world',
+  padding: 1,
   style: {
     bg: 'red'
   },
@@ -55,6 +58,7 @@ var box2 = blessed.box({
   parent: box,
   scrollable: true,
   content: 'foo-one\nfoo-two\nfoo-three',
+  padding: 2,
   left: 'center',
   top: 20,
   width: '80%',
