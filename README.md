@@ -885,6 +885,36 @@ This means that while `{red-fg}foo{/red-fg}` produces `^[[31mfoo^[[39m`, you
 could just feed `^[[31mfoo^[[39m` directly to the content.
 
 
+### Event Bubbling
+
+Events can bubble in blessed. For example:
+
+Receiving all click events for `box`:
+
+``` js
+box.on('click', function(mouse) {
+  box.setContent('You clicked ' + mouse.x + ', ' + mouse.y + '.');
+  screen.render();
+});
+```
+
+Receiving all click events for `box`, as well as all of its children:
+
+``` js
+box.on('element click', function(el, mouse) {
+  box.setContent('You clicked '
+    + el.type + ' at ' + mouse.x + ', ' + mouse.y + '.');
+  screen.render();
+  if (el === box) {
+    return false; // Cancel propagation.
+  }
+});
+```
+
+`el` gets passed in as the first argument. It refers to the target element the
+event occurred on. Returning `false` will cancel propagation up the tree.
+
+
 ### Rendering
 
 To actually render the screen buffer, you must call `render`.
