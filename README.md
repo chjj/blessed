@@ -667,11 +667,7 @@ A button which can be focused and allows key and mouse input.
 ##### Methods:
 
 - inherits all from Input.
-- **add(text)** - add an item based on a string.
-- **select(index)** - select an index of an item.
-- **move(offset)** - select item based on current offset.
-- **up(amount)** - select item above selected.
-- **down(amount)** - select item below selected.
+- **press()** - press button. emits `press`.
 
 
 #### ProgressBar (from Input)
