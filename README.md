@@ -372,6 +372,10 @@ parameter must be a string.
   and tags will be replaced with SGR codes (if enabled).
 - **getContent()** - return content, slightly different from `el.content`.
   assume the above formatting.
+- **setText(text)** - similar to `setContent`, but ignore tags and remove escape
+  codes.
+- **getText()** - similar to `getContent`, but return content with tags and
+  escape codes removed.
 - **insertLine(i, lines)** - insert a line into the box's content.
 - **deleteLine(i)** - delete a line from the box's content.
 - **getLine(i)** - get a line from the box's content.
