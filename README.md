@@ -53,8 +53,8 @@ box.on('click', function(data) {
   screen.render();
 });
 
-// If box is focused, handle `enter` and give us some more content.
-box.key('enter', function() {
+// If box is focused, handle `enter`/`return` and give us some more content.
+box.key(['enter', 'return'], function(ch, key) {
   box.setContent('{right}Even different {black-fg}content{/black-fg}.{/right}\n');
   box.setLine(1, 'bar');
   box.insertLine(1, 'foo');
@@ -71,6 +71,16 @@ box.focus();
 
 // Render the screen.
 screen.render();
+```
+
+## Windows compatibility
+
+Currently there is no mouse or 'resize' event support on Windows.
+
+Windows users will need to explicitly set `term` when creating a screen like so:
+
+``` js
+var screen = blessed.screen({ term: 'windows-ansi' });
 ```
 
 
