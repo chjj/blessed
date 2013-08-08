@@ -254,24 +254,24 @@ The base element.
 
 - **fg, bg, bold, underline** - attributes.
 - **style** - may contain attributes in the format of:
-  ``` js
-    {
-      fg: 'blue',
-      bg: 'black',
-      border: {
-        fg: 'blue'
-      },
-      scrollbar: {
-        bg: 'blue'
-      },
-      focus: {
-        bg: 'red'
-      },
-      hover: {
-        bg: 'red'
-      }
+``` js
+  {
+    fg: 'blue',
+    bg: 'black',
+    border: {
+      fg: 'blue'
+    },
+    scrollbar: {
+      bg: 'blue'
+    },
+    focus: {
+      bg: 'red'
+    },
+    hover: {
+      bg: 'red'
     }
-  ```
+  }
+```
 - **border** - border object, see below.
 - **content** - element's text content.
 - **clickable** - element is clickable.

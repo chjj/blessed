@@ -81,7 +81,9 @@ function parseArg() {
 var argv = parseArg();
 
 var tput = blessed.tput({
-  term: argv[0] && argv[0] !== 'all' && argv[0] !== 'rand' ? argv[0] : 'xterm',
+  term: argv[0] !== 'all' && argv[0] !== 'rand'
+    ? argv[0] || __dirname + '/../usr/xterm'
+    : null,
   extended: true,
   debug: true,
   termcap: argv.termcap,
@@ -90,9 +92,7 @@ var tput = blessed.tput({
   termcapFile: argv.c || argv.cfile
 });
 
-if (!argv[0] || argv[0] === 'all') {
-  console.log('');
-
+if (argv[0] === 'all') {
   var rl = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
@@ -107,12 +107,14 @@ if (!argv[0] || argv[0] === 'all') {
     result = result.trim().toLowerCase();
     if (result !== 'y') return process.exit(0);
     console.log('\x1b[32m(You bet your ass I wish to proceed.)\x1b[m');
+    tput._write('$<1000/>.$<1000/>.$<1000/>.$<100/>Let\'s go...', process.stdout.write.bind(process.stdout), function() {
+    });
     setTimeout(function() { process.stdout.write('.'); }, 1000);
     setTimeout(function() { process.stdout.write('.'); }, 2000);
     setTimeout(function() { process.stdout.write('.'); }, 3000);
     setTimeout(function() {
       console.log('Let\'s go...');
-    }, 3000);
+    }, 3100);
     setTimeout(function() {
       tput.compileAll(argv[1]);
       process.exit(0);
@@ -123,10 +125,15 @@ if (!argv[0] || argv[0] === 'all') {
 }
 
 if (argv[0] === 'rand') {
-  var terms = tput.getAll();
-  var term = terms[(terms.length - 1) * Math.random() | 0];
+  var terms = tput.getAll()
+    , term;
+
+  term = terms[(terms.length - 1) * Math.random() | 0];
+
   console.log('Compiling ' + term + '...');
   tput.compileTerminfo(term);
+  console.log('Compiled ' + term + '.');
+
   return;
 }
 
@@ -137,12 +144,13 @@ if (argv[0] === 'rand') {
 
 // process.stdout.write(blessed.tput.sprintf('%-10s\n', 'hello'));
 
-// tput._compile('%?%p9%t\u001b(0%e\u001b(B%;\u001b[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m');
+// tput._compile({ name: 'xterm' }, 'set_attributes',
+//   '%?%p9%t\u001b(0%e\u001b(B%;\u001b[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m');
 
 // console.log(tput.setaf(4) + 'foo' + tput.sgr0());
 // console.log(tput.setaf(4) + 'foo' + tput.sgr(0));
 
 // tput.padding = true;
 // tput._print('hello$<1000/>world', console.log, function() {
-//   tput._print('$<1000*>foo$<1000/>bar', console.log, process.exit);
+//   tput._print('$<1000/>foo$<1000/>bar', console.log, process.exit);
 // });
