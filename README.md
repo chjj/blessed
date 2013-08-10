@@ -153,6 +153,9 @@ The screen on which every other node renders.
   (not just full-width ones, elements with uniform cells to their sides).
   this is known to cause flickering with elements that are not full-width,
   however, it is more optimal for terminal rendering.
+- **fastCSR** - do CSR on any element within 20 cols of the screen edge on
+  either side. faster than smartCSR, but may cause flickering depending on
+  what is on each side of the element.
 - **useBCE** - attempt to perform `back_color_erase` optimizations for terminals
   that support it. it will also work with terminals that don't support it, but
   only on lines with the default background color. as it stands with the current
