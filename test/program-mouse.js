@@ -28,3 +28,9 @@ program.key(['q', 'escape', 'C-c'], function() {
   program.normalBuffer();
   process.exit(0);
 });
+
+program.on('keypress', function(ch, data) {
+  program.clear();
+  program.cup(0, 0);
+  console.log(data);
+});
