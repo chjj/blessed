@@ -294,6 +294,7 @@ The base element.
   `right` and `bottom` do not accept keywords.
 - **position** - can contain the above options.
 - **scrollable** - whether the element is scrollable or not.
+- **ch** - background character (default is whitespace ` `).
 
 ##### Properties:
 
@@ -357,6 +358,9 @@ The base element.
 - **unkey(name, listener)** - remove a keypress listener for a specific key.
 - **onScreenEvent(type, listener)** - same as`el.on('screen', ...)` except this
   will automatically cleanup listeners after the element is detached.
+- **setIndex(z)** - set the z-index of the element (changes rendering order).
+- **setFront()** - put the element in front of its siblings.
+- **setBack()** - put the element in back of its siblings.
 
 ###### Content Methods
 
