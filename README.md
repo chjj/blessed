@@ -477,12 +477,17 @@ A box with scrollable content.
 
 - inherits all from Box.
 - **scroll** - received when the element is scrolled.
-- **resetScroll** - reset scroll offset to zero.
 
 ##### Methods:
 
-- **scroll(offset)** - scroll the content by an offset.
+- **scroll(offset)** - scroll the content by a relative offset.
 - **scrollTo(index)** - scroll the content to an absolute index.
+- **setScroll(index)** - same as `scrollTo`.
+- **setScrollPerc(perc)** - set the current scroll index in percentage (0-100).
+- **getScroll()** - get the current scroll index in lines.
+- **getScrollHeight()** - get the actual height of the scrolling area.
+- **getScrollPerc()** - get the current scroll index in percentage.
+- **resetScroll()** - reset the scroll index to its initial state.
 
 
 #### ScrollableText (from ScrollableBox)
