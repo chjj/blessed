@@ -54,7 +54,7 @@ box.on('click', function(data) {
 });
 
 // If box is focused, handle `enter`/`return` and give us some more content.
-box.key(['enter', 'return'], function(ch, key) {
+box.key('enter', function(ch, key) {
   box.setContent('{right}Even different {black-fg}content{/black-fg}.{/right}\n');
   box.setLine(1, 'bar');
   box.insertLine(1, 'foo');
