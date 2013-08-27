@@ -16,6 +16,7 @@ var fm = blessed.filemanager({
   width: 'half',
   top: 'center',
   left: 'center',
+  label: ' {blue-fg}%path{/blue-fg} ',
   cwd: process.env.HOME,
   keys: true,
   vi: true,
