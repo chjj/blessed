@@ -9,7 +9,7 @@
 var blessed = require('blessed');
 
 var screen = blessed.screen({
-  autoPadding: true,
+  autoPadding: true
 });
 
 var positions = {};
@@ -38,14 +38,6 @@ var date = blessed.box({
     fg: 'black'
   }
 });
-
-//var date = blessed.box({
-//  parent: container,
-//  top: -2,
-//  left: -1,
-//  width: 'shrink',
-//  height: 'shrink',
-//});
 
 for (var i = 0; i < 10; i++) {
   var symbols = positions[i] = {};
@@ -839,8 +831,10 @@ function updateTime() {
     , s;
 
   h = d.getHours();
-  if (h > 12) {
+  if (h >= 12) {
     im = 'pm';
+  }
+  if (h > 12) {
     h -= 12;
   }
   if (h < 10) {
@@ -857,11 +851,9 @@ function updateTime() {
     s = '0' + s;
   }
 
-  if (process.argv[2] === '-s') {
-    time = h + ':' + m + ':' + s + im;
-  } else {
-    time = h + ':' + m + im;
-  }
+  time = process.argv[2] === '-s'
+    ? h + ':' + m + ':' + s + im
+    : h + ':' + m + im;
 
   time = time.split('');
 
@@ -873,15 +865,16 @@ function updateTime() {
   });
 
   time.forEach(function(ch, i) {
-    var symbols = positions[i];
-    var symbol = symbols[ch];
+    var symbols = positions[i]
+      , symbol = symbols[ch];
+
     symbol.rleft = pos;
     pos += symbol.width + 1;
+
     symbol.show();
   });
 
   date.setContent(d.toISOString());
-  //date.setContent(d.toISOString().split('T')[0]);
 
   screen.render();
 }
