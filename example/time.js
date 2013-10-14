@@ -1,10 +1,12 @@
+#!/usr/bin/env node
+
 /**
  * A clock using blessed
  * Copyright (c) 2013, Christopher Jeffrey (MIT License).
  * https://github.com/chjj/blessed
  */
 
-var blessed = require('blessed')
+var blessed = require('blessed');
 
 var screen = blessed.screen({
   autoPadding: true,
@@ -37,6 +39,14 @@ var date = blessed.box({
   }
 });
 
+//var date = blessed.box({
+//  parent: container,
+//  top: -2,
+//  left: -1,
+//  width: 'shrink',
+//  height: 'shrink',
+//});
+
 for (var i = 0; i < 10; i++) {
   var symbols = positions[i] = {};
 
@@ -59,7 +69,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'red',
       inverse: true
     }
   });
@@ -71,7 +80,6 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'blue',
       inverse: true
     }
   });
@@ -83,7 +91,6 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'yellow'
       inverse: true
     }
   });
@@ -95,7 +102,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -119,7 +125,6 @@ for (var i = 0; i < 10; i++) {
     left: 'center',
     width: 2,
     style: {
-      //bg: 'red',
       inverse: true
     }
   });
@@ -145,7 +150,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'red',
       inverse: true
     }
   });
@@ -157,7 +161,6 @@ for (var i = 0; i < 10; i++) {
     height: 4,
     width: 1,
     style: {
-      //bg: 'blue',
       inverse: true
     }
   });
@@ -169,7 +172,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'green'
       inverse: true
     }
   });
@@ -181,7 +183,6 @@ for (var i = 0; i < 10; i++) {
     height: 4,
     width: 1,
     style: {
-      //bg: 'yellow'
       inverse: true
     }
   });
@@ -193,7 +194,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -220,7 +220,6 @@ for (var i = 0; i < 10; i++) {
     width: 1,
     height: 8,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -232,7 +231,6 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -244,7 +242,6 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -256,7 +253,6 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -283,7 +279,6 @@ for (var i = 0; i < 10; i++) {
     width: 1,
     height: 8,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -295,7 +290,6 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -307,7 +301,6 @@ for (var i = 0; i < 10; i++) {
     width: 1,
     height: 4,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -333,7 +326,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'red',
       inverse: true
     }
   });
@@ -345,7 +337,6 @@ for (var i = 0; i < 10; i++) {
     height: 4,
     width: 1,
     style: {
-      //bg: 'blue',
       inverse: true
     }
   });
@@ -357,7 +348,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'green'
       inverse: true
     }
   });
@@ -369,7 +359,6 @@ for (var i = 0; i < 10; i++) {
     height: 4,
     width: 1,
     style: {
-      //bg: 'yellow'
       inverse: true
     }
   });
@@ -381,7 +370,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -407,7 +395,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'red',
       inverse: true
     }
   });
@@ -419,7 +406,6 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'blue',
       inverse: true
     }
   });
@@ -431,7 +417,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'green'
       inverse: true
     }
   });
@@ -443,7 +428,6 @@ for (var i = 0; i < 10; i++) {
     height: 4,
     width: 1,
     style: {
-      //bg: 'yellow'
       inverse: true
     }
   });
@@ -455,7 +439,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -482,7 +465,6 @@ for (var i = 0; i < 10; i++) {
     width: 1,
     height: 8,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -494,7 +476,6 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -520,7 +501,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'red',
       inverse: true
     }
   });
@@ -532,7 +512,6 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'blue',
       inverse: true
     }
   });
@@ -544,7 +523,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'green'
       inverse: true
     }
   });
@@ -556,7 +534,6 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'yellow'
       inverse: true
     }
   });
@@ -568,7 +545,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -594,7 +570,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'red',
       inverse: true
     }
   });
@@ -606,7 +581,6 @@ for (var i = 0; i < 10; i++) {
     height: 4,
     width: 1,
     style: {
-      //bg: 'blue',
       inverse: true
     }
   });
@@ -618,7 +592,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'green'
       inverse: true
     }
   });
@@ -630,7 +603,6 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'yellow'
       inverse: true
     }
   });
@@ -642,7 +614,6 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'magenta'
       inverse: true
     }
   });
@@ -667,9 +638,7 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     height: 1,
     style: {
-      //bg: 'red',
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -679,9 +648,7 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     height: 1,
     style: {
-      //bg: 'red',
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -706,9 +673,7 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'red',
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -719,9 +684,7 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'blue',
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -732,9 +695,7 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'green'
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -745,9 +706,7 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'yellow'
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -772,9 +731,7 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'red',
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -785,9 +742,7 @@ for (var i = 0; i < 10; i++) {
     height: 4,
     width: 1,
     style: {
-      //bg: 'blue',
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -798,9 +753,7 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'blue',
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -811,9 +764,7 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'green'
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -838,9 +789,7 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      //bg: 'red',
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -851,9 +800,7 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'blue',
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -864,9 +811,7 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      //bg: 'yellow'
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
@@ -877,19 +822,16 @@ for (var i = 0; i < 10; i++) {
     left: 'center',
     width: 1,
     style: {
-      //bg: 'magenta'
-      bg: 'black',
-      //inverse: true
+      bg: 'black'
     }
   });
 
   symbols['m'].hide();
 }
 
-screen.render();
-
 function updateTime() {
-  var d = new Date
+  var pos = 0
+    , d = new Date
     , im = 'am'
     , time
     , h
@@ -930,7 +872,6 @@ function updateTime() {
     });
   });
 
-  var pos = 0;
   time.forEach(function(ch, i) {
     var symbols = positions[i];
     var symbol = symbols[ch];
@@ -939,12 +880,16 @@ function updateTime() {
     symbol.show();
   });
 
-  date.setContent((new Date()).toISOString());
+  date.setContent(d.toISOString());
+  //date.setContent(d.toISOString().split('T')[0]);
 
   screen.render();
 }
 
+screen.render();
+
 setInterval(updateTime, 1000);
+
 updateTime();
 
 screen.key('q', function() {
