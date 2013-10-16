@@ -63,6 +63,16 @@ var date = blessed.box({
 
 date.hide();
 
+var bch = ' ';
+var inverse = true;
+
+// var bch = '*';
+// var bch = '·';
+// var bch = '│';
+// var bch = '◆';
+// var bch = '▪';
+// var inverse = false;
+
 for (var i = 0; i < 10; i++) {
   var symbols = positions[i] = {};
 
@@ -84,8 +94,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -95,8 +107,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -106,8 +120,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -117,8 +133,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -140,8 +158,10 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     left: 'center',
     width: 2,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -165,8 +185,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -176,8 +198,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 4,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -187,8 +211,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -198,8 +224,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     height: 4,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -209,8 +237,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -235,8 +265,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     width: 1,
     height: 8,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -246,8 +278,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     left: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -257,8 +291,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     left: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -268,8 +304,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     left: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -294,8 +332,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     width: 1,
     height: 8,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -305,8 +345,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     left: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -316,8 +358,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     width: 1,
     height: 4,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -341,8 +385,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -352,8 +398,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     height: 4,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -363,8 +411,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -374,8 +424,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 4,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -385,8 +437,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -410,8 +464,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -421,8 +477,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -432,8 +490,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -443,8 +503,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 4,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -454,8 +516,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -480,8 +544,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     width: 1,
     height: 8,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -491,8 +557,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     left: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -516,8 +584,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -527,8 +597,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -538,8 +610,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -549,8 +623,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -560,8 +636,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -585,8 +663,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -596,8 +676,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     height: 4,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -607,8 +689,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -618,8 +702,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -629,8 +715,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      inverse: true
+      fg: 'default',
+      inverse: inverse
     }
   });
 
@@ -654,8 +742,10 @@ for (var i = 0; i < 10; i++) {
     left: 'center',
     width: 2,
     height: 1,
+    ch: bch,
     style: {
-      bg: 'black'
+      fg: 'black',
+      inverse: inverse
     }
   });
 
@@ -665,8 +755,10 @@ for (var i = 0; i < 10; i++) {
     left: 'center',
     width: 2,
     height: 1,
+    ch: bch,
     style: {
-      bg: 'black'
+      fg: 'black',
+      inverse: inverse
     }
   });
 
@@ -690,8 +782,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      bg: 'blue'
+      fg: 'blue',
+      inverse: inverse
     }
   });
 
@@ -701,8 +795,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      bg: 'blue'
+      fg: 'blue',
+      inverse: inverse
     }
   });
 
@@ -712,8 +808,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      bg: 'blue'
+      fg: 'blue',
+      inverse: inverse
     }
   });
 
@@ -723,8 +821,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      bg: 'blue'
+      fg: 'blue',
+      inverse: inverse
     }
   });
 
@@ -748,8 +848,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      bg: 'blue'
+      fg: 'blue',
+      inverse: inverse
     }
   });
 
@@ -759,8 +861,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 4,
     width: 1,
+    ch: bch,
     style: {
-      bg: 'blue'
+      fg: 'blue',
+      inverse: inverse
     }
   });
 
@@ -770,8 +874,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      bg: 'blue'
+      fg: 'blue',
+      inverse: inverse
     }
   });
 
@@ -781,8 +887,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      bg: 'blue'
+      fg: 'blue',
+      inverse: inverse
     }
   });
 
@@ -806,8 +914,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     right: 0,
     height: 1,
+    ch: bch,
     style: {
-      bg: 'black'
+      fg: 'black',
+      inverse: inverse
     }
   });
 
@@ -817,8 +927,10 @@ for (var i = 0; i < 10; i++) {
     left: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      bg: 'black'
+      fg: 'black',
+      inverse: inverse
     }
   });
 
@@ -828,8 +940,10 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     bottom: 0,
     width: 1,
+    ch: bch,
     style: {
-      bg: 'black'
+      fg: 'black',
+      inverse: inverse
     }
   });
 
@@ -839,8 +953,10 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     left: 'center',
     width: 1,
+    ch: bch,
     style: {
-      bg: 'black'
+      fg: 'black',
+      inverse: inverse
     }
   });
 
