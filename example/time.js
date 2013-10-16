@@ -6,6 +6,18 @@
  * https://github.com/chjj/blessed
  */
 
+process.title = 'time.js';
+
+var argv = process.argv;
+
+if (~argv.indexOf('-h') || ~argv.indexOf('--help')) {
+  console.log('Options:');
+  console.log('-s - Show seconds.');
+  console.log('-n - No leading zero on hours.');
+  console.log('-d - Show date box.');
+  return process.exit(0);
+}
+
 var blessed = require('blessed');
 
 var screen = blessed.screen({
@@ -27,10 +39,20 @@ var container = blessed.box({
   //}
 });
 
+// Workaround for centering shrunken box.
+container.on('prerender', function() {
+  var lpos = container._getCoords(true);
+  if (lpos) {
+    container.rleft = (screen.width - (lpos.xl - lpos.xi)) / 2 | 0;
+  }
+});
+
 var date = blessed.box({
   parent: screen,
   top: 1,
   left: 1,
+  //top: '80%',
+  //left: 'center',
   width: 'shrink',
   height: 'shrink',
   border: {
@@ -38,6 +60,8 @@ var date = blessed.box({
     fg: 'black'
   }
 });
+
+date.hide();
 
 for (var i = 0; i < 10; i++) {
   var symbols = positions[i] = {};
@@ -853,11 +877,15 @@ function updateTime() {
     s = '0' + s;
   }
 
-  time = process.argv[2] === '-s'
+  time = ~argv.indexOf('-s')
     ? h + ':' + m + ':' + s + im
     : h + ':' + m + im;
 
   time = time.split('');
+
+  if (~argv.indexOf('-n')) {
+    if (time[0] === '0') time[0] = ' ';
+  }
 
   Object.keys(positions).forEach(function(key) {
     var symbols = positions[key];
@@ -870,18 +898,21 @@ function updateTime() {
     var symbols = positions[i]
       , symbol = symbols[ch];
 
+    if (!symbol) return;
+
     symbol.rleft = pos;
     pos += symbol.width + 2;
 
     symbol.show();
   });
 
-  date.setContent(d.toISOString());
+  if (~argv.indexOf('-d')) {
+    date.show();
+    date.setContent(d.toISOString());
+  }
 
   screen.render();
 }
-
-screen.render();
 
 setInterval(updateTime, 1000);
 
