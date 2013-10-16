@@ -20,11 +20,11 @@ var container = blessed.box({
   left: 'center',
   width: 'shrink',
   height: 'shrink',
-  padding: 2,
-  border: {
-    type: 'line',
-    fg: 'black'
-  }
+  //padding: 2,
+  //border: {
+  //  type: 'line',
+  //  fg: 'black'
+  //}
 });
 
 var date = blessed.box({
@@ -620,14 +620,15 @@ for (var i = 0; i < 10; i++) {
     parent: container,
     top: 0,
     left: 0,
-    width: 2,
+    width: 5,
     height: 8
   });
 
   blessed.box({
     parent: symbols[':'],
     top: 2,
-    left: 0,
+    left: 'center',
+    width: 2,
     height: 1,
     style: {
       bg: 'black'
@@ -637,7 +638,8 @@ for (var i = 0; i < 10; i++) {
   blessed.box({
     parent: symbols[':'],
     top: 5,
-    left: 0,
+    left: 'center',
+    width: 2,
     height: 1,
     style: {
       bg: 'black'
@@ -665,7 +667,7 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      bg: 'black'
+      bg: 'blue'
     }
   });
 
@@ -676,7 +678,7 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      bg: 'black'
+      bg: 'blue'
     }
   });
 
@@ -687,7 +689,7 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      bg: 'black'
+      bg: 'blue'
     }
   });
 
@@ -698,7 +700,7 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      bg: 'black'
+      bg: 'blue'
     }
   });
 
@@ -723,7 +725,7 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      bg: 'black'
+      bg: 'blue'
     }
   });
 
@@ -734,7 +736,7 @@ for (var i = 0; i < 10; i++) {
     height: 4,
     width: 1,
     style: {
-      bg: 'black'
+      bg: 'blue'
     }
   });
 
@@ -745,7 +747,7 @@ for (var i = 0; i < 10; i++) {
     bottom: 0,
     width: 1,
     style: {
-      bg: 'black'
+      bg: 'blue'
     }
   });
 
@@ -756,7 +758,7 @@ for (var i = 0; i < 10; i++) {
     right: 0,
     height: 1,
     style: {
-      bg: 'black'
+      bg: 'blue'
     }
   });
 
@@ -869,7 +871,7 @@ function updateTime() {
       , symbol = symbols[ch];
 
     symbol.rleft = pos;
-    pos += symbol.width + 1;
+    pos += symbol.width + 2;
 
     symbol.show();
   });
