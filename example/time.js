@@ -63,6 +63,7 @@ var date = blessed.box({
 
 date.hide();
 
+var wid = ~argv.indexOf('--skinny') ? 1 : 2;
 var bch = ' ';
 var inverse = true;
 
@@ -72,6 +73,10 @@ var inverse = true;
 // var bch = '◆';
 // var bch = '▪';
 // var inverse = false;
+
+// TODO: Potentially make height of each char 9 instead
+// of 8 so we can vertically center horizontal lines
+// in 4, 8, etc.
 
 for (var i = 0; i < 10; i++) {
   var symbols = positions[i] = {};
@@ -106,7 +111,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     left: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -119,7 +124,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     right: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -197,7 +202,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     right: 0,
     height: 4,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -223,7 +228,7 @@ for (var i = 0; i < 10; i++) {
     top: 4,
     left: 0,
     height: 4,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -263,7 +268,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     bottom: 0,
     right: 0,
-    width: 1,
+    width: wid,
     height: 8,
     ch: bch,
     style: {
@@ -330,7 +335,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     bottom: 0,
     right: 0,
-    width: 1,
+    width: wid,
     height: 8,
     ch: bch,
     style: {
@@ -356,7 +361,7 @@ for (var i = 0; i < 10; i++) {
     parent: symbols[4],
     top: 0,
     left: 0,
-    width: 1,
+    width: wid,
     height: 4,
     ch: bch,
     style: {
@@ -397,7 +402,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     left: 0,
     height: 4,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -423,7 +428,7 @@ for (var i = 0; i < 10; i++) {
     top: 4,
     right: 0,
     height: 4,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -476,7 +481,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     left: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -502,7 +507,7 @@ for (var i = 0; i < 10; i++) {
     top: 4,
     right: 0,
     height: 4,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -542,7 +547,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     bottom: 0,
     right: 0,
-    width: 1,
+    width: wid,
     height: 8,
     ch: bch,
     style: {
@@ -596,7 +601,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     left: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -622,7 +627,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     right: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -675,7 +680,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     left: 0,
     height: 4,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -701,7 +706,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     right: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'default',
@@ -794,7 +799,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     left: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'blue',
@@ -820,7 +825,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     right: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'blue',
@@ -860,7 +865,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     right: 0,
     height: 4,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'blue',
@@ -873,7 +878,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     left: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'blue',
@@ -926,7 +931,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     left: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'black',
@@ -939,7 +944,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     right: 0,
     bottom: 0,
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'black',
@@ -952,7 +957,7 @@ for (var i = 0; i < 10; i++) {
     top: 0,
     bottom: 0,
     left: 'center',
-    width: 1,
+    width: wid,
     ch: bch,
     style: {
       fg: 'black',
@@ -1030,7 +1035,7 @@ function updateTime() {
   screen.render();
 }
 
-setInterval(updateTime, 1000);
+setInterval(updateTime, 950);
 
 updateTime();
 
