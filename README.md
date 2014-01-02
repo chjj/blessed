@@ -36,7 +36,7 @@ var box = blessed.box({
     fg: 'white',
     bg: 'magenta',
     border: {
-      fg: '#ffffff'
+      fg: '#f0f0f0'
     },
     hover: {
       bg: 'green'
@@ -75,9 +75,11 @@ screen.render();
 
 ## Windows compatibility
 
-Currently there is no mouse or 'resize' event support on Windows.
+Currently there is no `mouse` or `resize` event support on Windows.
 
-Windows users will need to explicitly set `term` when creating a screen like so:
+Windows users will need to explicitly set `term` when creating a screen like so
+(**NOTE**: This is no longer necessary as of the latest versions of blessed.
+This is now handled automatically):
 
 ``` js
 var screen = blessed.screen({ term: 'windows-ansi' });
@@ -154,7 +156,7 @@ The screen on which every other node renders.
   this is known to cause flickering with elements that are not full-width,
   however, it is more optimal for terminal rendering.
 - **fastCSR** - do CSR on any element within 20 cols of the screen edge on
-  either side. faster than smartCSR, but may cause flickering depending on
+  either side. faster than `smartCSR`, but may cause flickering depending on
   what is on each side of the element.
 - **useBCE** - attempt to perform `back_color_erase` optimizations for terminals
   that support it. it will also work with terminals that don't support it, but
@@ -1015,7 +1017,7 @@ program.bg('!black');
 program.feed();
 ```
 
-### Contribution and License Agreement
+## Contribution and License Agreement
 
 If you contribute code to this project, you are implicitly allowing your code
 to be distributed under the MIT license. You are also implicitly verifying that
