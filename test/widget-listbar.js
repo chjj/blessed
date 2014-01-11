@@ -5,13 +5,24 @@ screen = blessed.screen({
   dump: __dirname + '/logs/listbar.log'
 });
 
+var box = blessed.box({
+  parent: screen,
+  top: 0,
+  right: 0,
+  width: 'shrink',
+  height: 'shrink',
+  content: '...'
+});
+
 var bar = blessed.listbar({
   parent: screen,
   bottom: 0,
   left: 0,
+  height: 1,
   mouse: true,
   keys: true,
-  shrinkBox: true,
+  globalKeys: true,
+  vi: true,
   style: {
     bg: 'green',
     item: {
@@ -19,28 +30,76 @@ var bar = blessed.listbar({
       hover: {
         bg: 'blue'
       },
-      focus: {
-        fg: 'blue'
-      }
+      //focus: {
+      //  bg: 'blue'
+      //}
     },
+    selected: {
+      bg: 'blue'
+    }
   },
-  items: [
-    'one',
-    'two',
-    'three',
-    'four',
-    'five',
-    'six',
-    'seven',
-    'eight',
-    'nine',
-    'ten',
-    'eleven',
-    'twelve',
-    'thirteen',
-    'fourteen',
-    'fifteen'
-  ]
+  commands: {
+    'one': function() {
+      box.setContent('Pressed one.');
+      screen.render();
+    },
+    'two': function() {
+      box.setContent('Pressed two.');
+      screen.render();
+    },
+    'three': function() {
+      box.setContent('Pressed three.');
+      screen.render();
+    },
+    'four': function() {
+      box.setContent('Pressed four.');
+      screen.render();
+    },
+    'five': function() {
+      box.setContent('Pressed five.');
+      screen.render();
+    },
+    'six': function() {
+      box.setContent('Pressed six.');
+      screen.render();
+    },
+    'seven': function() {
+      box.setContent('Pressed seven.');
+      screen.render();
+    },
+    'eight': function() {
+      box.setContent('Pressed eight.');
+      screen.render();
+    },
+    'nine': function() {
+      box.setContent('Pressed nine.');
+      screen.render();
+    },
+    'ten': function() {
+      box.setContent('Pressed ten.');
+      screen.render();
+    },
+    'eleven': function() {
+      box.setContent('Pressed eleven.');
+      screen.render();
+    },
+    'twelve': function() {
+      box.setContent('Pressed twelve.');
+      screen.render();
+    },
+    'thirteen': function() {
+      box.setContent('Pressed thirteen.');
+      screen.render();
+    },
+    'fourteen': function() {
+      box.setContent('Pressed fourteen.');
+      screen.render();
+    },
+    'fifteen': function() {
+      box.setContent('Pressed fifteen.');
+      screen.render();
+    }
+  }
 });
 
 bar.focus();
