@@ -1,9 +1,11 @@
 var blessed = require('../')
   , screen;
 
+var auto = true;
+
 screen = blessed.screen({
   dump: __dirname + '/logs/listbar.log',
-  autoPadding: true
+  autoPadding: auto
 });
 
 var box = blessed.box({
@@ -20,7 +22,7 @@ var bar = blessed.listbar({
   bottom: 0,
   left: 3,
   right: 3,
-  height: 3,
+  height: auto ? 'shrink' : 3,
   mouse: true,
   keys: true,
   autoCommandKeys: true,
