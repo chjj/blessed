@@ -18,10 +18,13 @@ var bar = blessed.listbar({
   parent: screen,
   bottom: 0,
   left: 0,
-  height: 1,
+  height: 3,
   mouse: true,
   keys: true,
-  globalKeys: true,
+  autoCommandKeys: true,
+  border: {
+    type: 'line'
+  },
   vi: true,
   style: {
     bg: 'green',
