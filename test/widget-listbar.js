@@ -46,9 +46,12 @@ var bar = blessed.listbar({
     }
   },
   commands: {
-    'one': function() {
-      box.setContent('Pressed one.');
-      screen.render();
+    'one': {
+      keys: ['a'],
+      callback: function() {
+        box.setContent('Pressed one.');
+        screen.render();
+      }
     },
     'two': function() {
       box.setContent('Pressed two.');
