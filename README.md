@@ -403,6 +403,9 @@ parameter must be a string.
 - **shiftLine(i)** - shift a line off the top of the content.
 - **pushLine(lines)** - push a line onto the bottom of the content.
 - **popLine(i)** - pop a line off the bottom of the content.
+- **getLines()** - an array containing the content lines.
+- **getScreenLines()** - an array containing the lines as they are displayed on
+  the screen.
 
 
 #### Box (from Element)
