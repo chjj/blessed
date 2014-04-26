@@ -15,6 +15,7 @@ var box = blessed.box({
   wrap: false,
   tags: true,
   content: fs.readFileSync(__filename, 'utf8')
+  // content: '{red-bg}' + blessed.escape('{{{{{}{bold}x{/bold}}') + '{/red-bg}'
 });
 
 box.focus();
