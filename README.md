@@ -562,7 +562,7 @@ A scrollable list which can display selectable items.
 - inherits all from Box.
 - **add/addItem(text)** - add an item based on a string.
 - **removeItem(child)** - removes an item from the list. child can be an
-  element or an index.
+  element, index, or string.
 - **clearItems()** - clears all items from the list.
 - **setItems(items)** - sets the list items to multiple strings.
 - **select(index)** - select an index of an item.
