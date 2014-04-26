@@ -911,6 +911,7 @@ content and the colors will be parsed appropriately.
 This means that while `{red-fg}foo{/red-fg}` produces `^[[31mfoo^[[39m`, you
 could just feed `^[[31mfoo^[[39m` directly to the content.
 
+To write a literal `{`, use `{curly}`. Likewise, for `}`, use `{!curly}`.
 
 ### Event Bubbling
 
