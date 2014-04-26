@@ -560,11 +560,17 @@ A scrollable list which can display selectable items.
 ##### Methods:
 
 - inherits all from Box.
-- **add(text)** - add an item based on a string.
+- **add/addItem(text)** - add an item based on a string.
+- **removeItem(child)** - removes an item from the list. child can be an
+  element or an index.
+- **clearItems()** - clears all items from the list.
+- **setItems(items)** - sets the list items to multiple strings.
 - **select(index)** - select an index of an item.
 - **move(offset)** - select item based on current offset.
 - **up(amount)** - select item above selected.
 - **down(amount)** - select item below selected.
+- **pick(callback)** - show/focus list and pick an item. the callback is
+  executed with the result.
 
 
 #### Form (from Box)
