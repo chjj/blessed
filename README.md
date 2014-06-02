@@ -363,6 +363,8 @@ The base element.
 - **setIndex(z)** - set the z-index of the element (changes rendering order).
 - **setFront()** - put the element in front of its siblings.
 - **setBack()** - put the element in back of its siblings.
+- **setLabel(text)** - set the label text for the top-left corner.
+- **removeLabel()** - remove the label completely.
 
 ###### Content Methods
 
