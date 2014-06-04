@@ -172,6 +172,9 @@ The screen on which every other node renders.
 - **dump** - dump all output and input to desired file. can be used together
   with `log` option if set as a boolean.
 - **debug** - debug mode. enables usage of the `debug` method.
+- **ignoreLocked** - Array of keys in their full format (e.g. `C-c`) to ignore
+  when keys are locked. Useful for creating a key that will *always* exit no
+  matter whether the keys are locked.
 
 ##### Properties:
 
