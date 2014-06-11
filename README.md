@@ -284,6 +284,7 @@ The base element.
 - **content** - element's text content.
 - **clickable** - element is clickable.
 - **input** - element is focusable and can receive key input.
+- **focused** - element is focused.
 - **hidden** - whether the element is hidden.
 - **label** - a simple text label for the element.
 - **align** - text alignment: `left`, `center`, or `right`.
