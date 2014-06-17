@@ -6,19 +6,21 @@ var screen = blessed.screen({
 
 var box = blessed.box({
   parent: screen,
-  align: 'center',
+  //align: 'center',
   bg: 'blue',
   height: 5,
   top: 'center',
   left: 0,
-  content: 'line 1',
+  width: 12,
+  tags: true,
+  content: 'line{|}1',
   //valign: 'middle'
 });
 
 screen.render();
 
-box.insertBottom('line 2');
-box.insertTop('line 0');
+box.insertBottom('line{|}2');
+box.insertTop('line{|}0');
 
 screen.render();
 
