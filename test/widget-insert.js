@@ -13,14 +13,14 @@ var box = blessed.box({
   left: 0,
   width: 12,
   tags: true,
-  content: 'line{|}1',
+  content: '{yellow-fg}line{/yellow-fg}{|}1',
   //valign: 'middle'
 });
 
 screen.render();
 
-box.insertBottom('line{|}2');
-box.insertTop('line{|}0');
+box.insertBottom('{yellow-fg}line{/yellow-fg}{|}2');
+box.insertTop('{yellow-fg}line{/yellow-fg}{|}0');
 
 screen.render();
 
