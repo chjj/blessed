@@ -23,7 +23,7 @@ if (/^(-h|--help|-\?)$/.test(process.argv[2])) {
   return process.exit(0);
 }
 
-var blessed = require('blessed')
+var blessed = require('../')
   , nssocket;
 
 try {
