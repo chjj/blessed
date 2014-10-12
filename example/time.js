@@ -18,7 +18,7 @@ if (~argv.indexOf('-h') || ~argv.indexOf('--help')) {
   return process.exit(0);
 }
 
-var blessed = require('blessed');
+var blessed = require('../');
 
 var screen = blessed.screen({
   autoPadding: true

@@ -12,7 +12,7 @@ var box = blessed.box({
   content: 'Hello {bold}world{/bold}!',
   tags: true,
   border: {
-    type: 'line'
+    type: 'round'
   },
   style: {
     fg: 'white',
