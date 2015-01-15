@@ -9,6 +9,7 @@ screen = blessed.screen({
 // My terminal size at the time of writing these tests:
 screen.program.cols = 154;
 screen.program.rows = 19;
+screen.alloc();
 
 var main = blessed.box({
   //width: '75%',
