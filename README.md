@@ -93,8 +93,27 @@ var screen = blessed.screen({ term: 'windows-ansi' });
 Blessed comes with a number of high-level widgets so you can avoid all the
 nasty low-level terminal stuff.
 
+* <a name="node">Node</a>
+* <a name="screen">Screen</a>
+* <a name="element">Element</a>
+* <a name="box">Box</a>
+* <a name="text">Text</a>
+* <a name="line">Line</a>
+* <a name="scrollable-box">ScrollableBox (deprecated)</a>
+* <a name="scrollable-text">ScrollableText (deprecated)</a>
+* <a name="list">List</a>
+* <a name="form">Form</a>
+* <a name="input">Input</a>
+* <a name="textarea">Textarea</a>
+* <a name="textbox">Textbox</a>
+* <a name="button">Button</a>
+* <a name="progress-bar">ProgressBar</a>
+* <a name="file-manager">FileManager</a>
+* <a name="checkbox">Checkbox</a>
+* <a name="radio-set">RadioSet</a>
+* <a name="radio-button">RadioButton</a>
 
-#### Node (from EventEmitter)
+#### [Node](#node) (from EventEmitter)
 
 The base node which everything inherits from.
 
@@ -144,7 +163,7 @@ The base node which everything inherits from.
 - **set(name, value)** - set user property to value.
 
 
-#### Screen (from Node)
+#### [Screen](#screen) (from [Node](#node))
 
 The screen on which every other node renders.
 
@@ -254,7 +273,7 @@ The screen on which every other node renders.
 - **deleteTop(top, bottom)** - delete a line at the top of the screen.
 
 
-#### Element (from Node)
+#### [Element](#element) (from [Node](#node))
 
 The base element.
 
@@ -414,7 +433,7 @@ parameter must be a string.
   the screen.
 
 
-#### Box (from Element)
+#### [Box](#box) (from [Element](#element))
 
 A box element which draws a simple box containing `content` or other elements.
 
@@ -435,7 +454,7 @@ A box element which draws a simple box containing `content` or other elements.
 - inherits all from Element.
 
 
-#### Text (from Element)
+#### [Text](#text) (from [Element](#element))
 
 An element similar to Box, but geared towards rendering simple text elements.
 
@@ -449,7 +468,7 @@ An element similar to Box, but geared towards rendering simple text elements.
 Inherits all options, properties, events, and methods from Element.
 
 
-#### Line (from Box)
+#### [Line](#line) (from [Box](#box))
 
 A simple line which can be `line` or `bg` styled.
 
@@ -463,7 +482,7 @@ A simple line which can be `line` or `bg` styled.
 Inherits all options, properties, events, and methods from Box.
 
 
-#### ScrollableBox (from Box)
+#### [ScrollableBox](#scrollable-box) (from [Box](#box))
 
 **DEPRECATED** - Use Box with the `scrollable` option instead.
 
@@ -501,7 +520,7 @@ A box with scrollable content.
 - **resetScroll()** - reset the scroll index to its initial state.
 
 
-#### ScrollableText (from ScrollableBox)
+#### [ScrollableText](#scrollable-text) (from [ScrollableBox](#scrollable-box))
 
 **DEPRECATED** - Use Box with the `scrollable` and `alwaysScroll` options
 instead.
@@ -529,7 +548,7 @@ pre-existing newlines and escape codes.
 - inherits all from ScrollableBox.
 
 
-#### List (from Box)
+#### [List](#list) (from [Box](#box))
 
 A scrollable list which can display selectable items.
 
@@ -584,7 +603,7 @@ A scrollable list which can display selectable items.
   executed with the result.
 
 
-#### Form (from Box)
+#### [Form](#form) (from [Box](#box))
 
 A form which can contain form elements.
 
@@ -616,12 +635,12 @@ A form which can contain form elements.
 - **reset()** - clear the form.
 
 
-#### Input (from Box)
+#### [Input](#input) (from [Box](#box))
 
 A form input.
 
 
-#### Textarea (from Input)
+#### [Textarea](#textarea) (from [Input](#input))
 
 A box which allows multiline text input.
 
@@ -660,7 +679,7 @@ A box which allows multiline text input.
 - **setValue(text)** - set value.
 
 
-#### Textbox (from Textarea)
+#### [Textbox](#textbox) (from [Textarea](#textarea))
 
 A box which allows text input.
 
@@ -685,7 +704,7 @@ A box which allows text input.
 - inherits all from Textarea.
 
 
-#### Button (from Input)
+#### [Button](#button) (from [Input](#input))
 
 A button which can be focused and allows key and mouse input.
 
@@ -708,7 +727,7 @@ A button which can be focused and allows key and mouse input.
 - **press()** - press button. emits `press`.
 
 
-#### ProgressBar (from Input)
+#### [ProgressBar](#progress-bar) (from [Input](#input))
 
 A progress bar allowing various styles. This can also be used as a form input.
 
@@ -742,7 +761,7 @@ A progress bar allowing various styles. This can also be used as a form input.
 - **reset()** - reset the bar.
 
 
-#### FileManager (from List)
+#### [FileManager](#file-manager) (from [List](#list))
 
 A very simple file manager for selecting files.
 
@@ -771,7 +790,7 @@ A very simple file manager for selecting files.
 - **reset([cwd], [callback])** - reset back to original cwd.
 
 
-#### Checkbox (from Input)
+#### [Checkbox](#checkbox) (from [Input](#input))
 
 A checkbox which can be used in a form element.
 
@@ -803,7 +822,7 @@ A checkbox which can be used in a form element.
 - **toggle()** - toggle checked state.
 
 
-#### RadioSet (from Box)
+#### [RadioSet](#radio-set] (from [Box](#box))
 
 An element wrapping RadioButtons. RadioButtons within this element will be
 mutually exclusive with each other.
@@ -825,7 +844,7 @@ mutually exclusive with each other.
 - inherits all from Box.
 
 
-#### RadioButton (from Checkbox)
+#### [RadioButton](#radio-button) (from [Checkbox](#checkbox))
 
 A radio button which can be used in a form element.
 
