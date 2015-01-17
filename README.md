@@ -93,27 +93,27 @@ var screen = blessed.screen({ term: 'windows-ansi' });
 Blessed comes with a number of high-level widgets so you can avoid all the
 nasty low-level terminal stuff.
 
-* <a name="node">Node</a>
-* <a name="screen">Screen</a>
-* <a name="element">Element</a>
-* <a name="box">Box</a>
-* <a name="text">Text</a>
-* <a name="line">Line</a>
-* <a name="scrollable-box">ScrollableBox (deprecated)</a>
-* <a name="scrollable-text">ScrollableText (deprecated)</a>
-* <a name="list">List</a>
-* <a name="form">Form</a>
-* <a name="input">Input</a>
-* <a name="textarea">Textarea</a>
-* <a name="textbox">Textbox</a>
-* <a name="button">Button</a>
-* <a name="progress-bar">ProgressBar</a>
-* <a name="file-manager">FileManager</a>
-* <a name="checkbox">Checkbox</a>
-* <a name="radio-set">RadioSet</a>
-* <a name="radio-button">RadioButton</a>
+* [Node](#node)
+* [Screen](#screen)
+* [Element](#element)
+* [Box](#box)
+* [Text](#text)
+* [Line](#line)
+* [ScrollableBox (deprecated)](#scrollable-box)
+* [ScrollableText (deprecated)](#scrollable-text)
+* [List](#list)
+* [Form](#form)
+* [Input](#input)
+* [Textarea](#textarea)
+* [Textbox](#textbox)
+* [Button](#button)
+* [ProgressBar](#progress-bar)
+* [FileManager](#file-manager)
+* [Checkbox](#checkbox)
+* [RadioSet](#radio-set)
+* [RadioButton](#radio-button)
 
-#### [Node](#node) (from EventEmitter)
+#### <a name="node">Node</a> (from EventEmitter)
 
 The base node which everything inherits from.
 
@@ -163,7 +163,7 @@ The base node which everything inherits from.
 - **set(name, value)** - set user property to value.
 
 
-#### [Screen](#screen) (from [Node](#node))
+#### <a name="screen">[Screen]</a> (from [Node](#node))
 
 The screen on which every other node renders.
 
@@ -273,7 +273,7 @@ The screen on which every other node renders.
 - **deleteTop(top, bottom)** - delete a line at the top of the screen.
 
 
-#### [Element](#element) (from [Node](#node))
+#### <a name="element">Element</a> (from [Node](#node))
 
 The base element.
 
@@ -433,7 +433,7 @@ parameter must be a string.
   the screen.
 
 
-#### [Box](#box) (from [Element](#element))
+#### <a name="box">Box</a> (from [Element](#element))
 
 A box element which draws a simple box containing `content` or other elements.
 
@@ -454,7 +454,7 @@ A box element which draws a simple box containing `content` or other elements.
 - inherits all from Element.
 
 
-#### [Text](#text) (from [Element](#element))
+#### <a name="text">Text</a> (from [Element](#element))
 
 An element similar to Box, but geared towards rendering simple text elements.
 
@@ -468,7 +468,7 @@ An element similar to Box, but geared towards rendering simple text elements.
 Inherits all options, properties, events, and methods from Element.
 
 
-#### [Line](#line) (from [Box](#box))
+#### <a name="line">Line</a> (from [Box](#box))
 
 A simple line which can be `line` or `bg` styled.
 
@@ -482,7 +482,7 @@ A simple line which can be `line` or `bg` styled.
 Inherits all options, properties, events, and methods from Box.
 
 
-#### [ScrollableBox](#scrollable-box) (from [Box](#box))
+#### <a name="scrollable-box">ScrollableBox</a> (from [Box](#box))
 
 **DEPRECATED** - Use Box with the `scrollable` option instead.
 
@@ -520,7 +520,7 @@ A box with scrollable content.
 - **resetScroll()** - reset the scroll index to its initial state.
 
 
-#### [ScrollableText](#scrollable-text) (from [ScrollableBox](#scrollable-box))
+#### <a name="scrollable-text">ScrollableText</a> (from [ScrollableBox](#scrollable-box))
 
 **DEPRECATED** - Use Box with the `scrollable` and `alwaysScroll` options
 instead.
@@ -548,7 +548,7 @@ pre-existing newlines and escape codes.
 - inherits all from ScrollableBox.
 
 
-#### [List](#list) (from [Box](#box))
+#### <a name="list">List</a> (from [Box](#box))
 
 A scrollable list which can display selectable items.
 
@@ -603,7 +603,7 @@ A scrollable list which can display selectable items.
   executed with the result.
 
 
-#### [Form](#form) (from [Box](#box))
+#### <a name="form">Form</a> (from [Box](#box))
 
 A form which can contain form elements.
 
@@ -635,12 +635,12 @@ A form which can contain form elements.
 - **reset()** - clear the form.
 
 
-#### [Input](#input) (from [Box](#box))
+#### <a name="input">Input</a> (from [Box](#box))
 
 A form input.
 
 
-#### [Textarea](#textarea) (from [Input](#input))
+#### <a name="textarea">Textarea</a> (from [Input](#input))
 
 A box which allows multiline text input.
 
@@ -679,7 +679,7 @@ A box which allows multiline text input.
 - **setValue(text)** - set value.
 
 
-#### [Textbox](#textbox) (from [Textarea](#textarea))
+#### <a name="textbox">Textbox</a> (from [Textarea](#textarea))
 
 A box which allows text input.
 
@@ -704,7 +704,7 @@ A box which allows text input.
 - inherits all from Textarea.
 
 
-#### [Button](#button) (from [Input](#input))
+#### <a name="button">Button</a> (from [Input](#input))
 
 A button which can be focused and allows key and mouse input.
 
@@ -727,7 +727,7 @@ A button which can be focused and allows key and mouse input.
 - **press()** - press button. emits `press`.
 
 
-#### [ProgressBar](#progress-bar) (from [Input](#input))
+#### <a name="progress-bar">ProgressBar</a> (from [Input](#input))
 
 A progress bar allowing various styles. This can also be used as a form input.
 
@@ -761,7 +761,7 @@ A progress bar allowing various styles. This can also be used as a form input.
 - **reset()** - reset the bar.
 
 
-#### [FileManager](#file-manager) (from [List](#list))
+#### <a name="file-manager">FileManager</a> (from [List](#list))
 
 A very simple file manager for selecting files.
 
@@ -790,7 +790,7 @@ A very simple file manager for selecting files.
 - **reset([cwd], [callback])** - reset back to original cwd.
 
 
-#### [Checkbox](#checkbox) (from [Input](#input))
+#### <a name="checkbox">Checkbox</a> (from [Input](#input))
 
 A checkbox which can be used in a form element.
 
@@ -822,7 +822,7 @@ A checkbox which can be used in a form element.
 - **toggle()** - toggle checked state.
 
 
-#### [RadioSet](#radio-set] (from [Box](#box))
+#### <a name="radio-set">RadioSet</a> (from [Box](#box))
 
 An element wrapping RadioButtons. RadioButtons within this element will be
 mutually exclusive with each other.
@@ -844,7 +844,7 @@ mutually exclusive with each other.
 - inherits all from Box.
 
 
-#### [RadioButton](#radio-button) (from [Checkbox](#checkbox))
+#### <a name="radio-button">RadioButton</a> (from [Checkbox](#checkbox))
 
 A radio button which can be used in a form element.
 
