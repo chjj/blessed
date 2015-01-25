@@ -69,7 +69,7 @@ var loader = blessed.loading({
   vi: true
 });
 
-prompt.type('Question?', '', function(err, value) {
+prompt.input('Question?', '', function(err, value) {
   question.ask('Question?', function(err, value) {
     msg.display('Hello world!', 3, function(err) {
       msg.display('Hello world again!', -1, function(err) {

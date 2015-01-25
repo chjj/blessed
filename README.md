@@ -287,6 +287,7 @@ The base element.
 - **focused** - element is focused.
 - **hidden** - whether the element is hidden.
 - **label** - a simple text label for the element.
+- **hoverText** - a floating text label for the element which appears on mouseover.
 - **align** - text alignment: `left`, `center`, or `right`.
 - **valign** - vertical text alignment: `top`, `middle`, or `bottom`.
 - **shrink** - shrink/flex/grow to content and child elements. width/height
@@ -367,8 +368,12 @@ The base element.
 - **setIndex(z)** - set the z-index of the element (changes rendering order).
 - **setFront()** - put the element in front of its siblings.
 - **setBack()** - put the element in back of its siblings.
-- **setLabel(text)** - set the label text for the top-left corner.
+- **setLabel(text/options)** - set the label text for the top-left corner.
+  example options: `{text:'foo',side:'left'}`
 - **removeLabel()** - remove the label completely.
+- **setHover(text/options)** - set the hover text for the bottom-right corner.
+  example options: `{text:'foo'}`
+- **removeHover()** - remove the hover label completely.
 
 ###### Content Methods
 
@@ -844,6 +849,28 @@ A radio button which can be used in a form element.
 ##### Methods:
 
 - inherits all from Checkbox.
+
+
+#### Terminal (from Box)
+
+A box which spins up a pseudo terminal and renders the output. (Requires
+term.js to be installed).
+
+##### Options:
+
+- inherits all from Box.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
 
 
 ### Positioning
