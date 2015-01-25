@@ -170,6 +170,10 @@ function reset() {
   ball.angle = 'down';
   ball.rtop = 1;
   ball.rleft = 1;
+  if ((score.lwins + score.rwins) % 2 !== 0) {
+    ball.direction = 'left';
+    ball.rleft = table.width - 1;
+  }
   lpaddle.rtop = 0;
   rpaddle.rtop = 0;
 
@@ -207,7 +211,7 @@ function startGame() {
       if (lpaddle.rbottom > 0) lpaddle.rtop += lpaddle.speed;
       if (!socket) if (rpaddle.rbottom > 0) rpaddle.rtop += rpaddle.speed;
       if (lpaddle.rbottom < 0) lpaddle.rtop = table.height - lpaddle.height - 1;
-      if (rpaddle.rbottom < 0) rpaddle.rbottom = table.height - rpaddle.height - 1;
+      if (rpaddle.rbottom < 0) rpaddle.rtop = table.height - rpaddle.height - 1;
       screen.render();
     }
   });
