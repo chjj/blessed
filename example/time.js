@@ -15,6 +15,7 @@ if (~argv.indexOf('-h') || ~argv.indexOf('--help')) {
   console.log('-s - Show seconds.');
   console.log('-n - No leading zero on hours.');
   console.log('-d - Show date box.');
+  console.log('--skinny - Skinny text.');
   return process.exit(0);
 }
 
@@ -64,7 +65,8 @@ var date = blessed.box({
 date.hide();
 
 var wid = ~argv.indexOf('--skinny') ? 1 : 2;
-var bch = ' ';
+// var bch = ' ';
+var bch = '│';
 var inverse = true;
 
 // var bch = '*';
@@ -1030,7 +1032,7 @@ function updateTime() {
 
   if (~argv.indexOf('-d')) {
     date.show();
-    date.setContent(d.toISOString());
+    date.setContent(d.toISOString().replace(/\.\d+/, ''));
   }
 
   screen.render();
