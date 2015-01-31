@@ -35,3 +35,7 @@ program.on('keypress', function(ch, data) {
   program.cup(0, 0);
   console.log(data);
 });
+
+// program.getCursor(function(err, data) {
+//   console.log(data);
+// });
