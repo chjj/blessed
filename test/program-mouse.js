@@ -22,6 +22,14 @@ program.on('mouse', function(data) {
   console.log(data);
 });
 
+program.input.on('data', function(data) {
+  program.cup(10, 0);
+  program.write(JSON.stringify(data + ''));
+  program.nel();
+  program.cr();
+  program.write(JSON.stringify(Array.prototype.slice.call(data)));
+});
+
 program.key(['q', 'escape', 'C-c'], function() {
   program.showCursor();
   program.disableMouse();
@@ -32,6 +40,6 @@ program.key(['q', 'escape', 'C-c'], function() {
 program.on('keypress', function(ch, data) {
   if (data.name === 'mouse') return;
   program.clear();
-  program.cup(0, 0);
+  program.cup(20, 0);
   console.log(data);
 });
