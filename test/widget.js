@@ -2,7 +2,8 @@ var blessed = require('../')
   , screen;
 
 screen = blessed.screen({
-  dump: __dirname + '/logs/widget.log'
+  dump: __dirname + '/logs/widget.log',
+  title: 'widget test'
 });
 
 screen.append(blessed.text({

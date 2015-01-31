@@ -21,6 +21,8 @@ var blessed = require('blessed');
 // Create a screen object.
 var screen = blessed.screen();
 
+screen.title = 'my window title';
+
 // Create a box perfectly centered horizontally and vertically.
 var box = blessed.box({
   top: 'center',
@@ -194,6 +196,7 @@ The screen on which every other node renders.
 - **grabKeys** - whether the focused element grabs all keypresses.
 - **lockKeys** - prevent keypresses from being received by any element.
 - **hover** - the currently hovered element. only set if mouse events are bound.
+- **title** - set or get window title.
 
 ##### Events:
 
