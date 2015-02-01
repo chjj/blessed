@@ -49,6 +49,16 @@ var box = blessed.box({
 // Append our box to the screen.
 screen.append(box);
 
+// Add a PNG icon to the box (X11 only)
+var icon = blessed.image({
+  parent: box,
+  top: 0,
+  left: 0,
+  width: 'shrink',
+  height: 'shrink',
+  file: __dirname + '/my-program-icon.png'
+});
+
 // If our box is clicked, change the content.
 box.on('click', function(data) {
   box.setContent('{center}Some different {red-fg}content{/red-fg}.{/center}');
@@ -1096,11 +1106,41 @@ program.bg('!black');
 program.feed();
 ```
 
+
+## FAQ
+
+1. Why doesn't the Linux console render lines correctly on Ubuntu?
+   You need to install the `ncurses-base` package __and__ the `ncurses-term` package. (#98)
+2. Why do vertical lines look chopped up in iTerm2?
+   All ACS vertical lines look this way in iTerm2.
+3. Why can't I use my mouse in Terminal.app?
+   Terminal.app does not support mouse events.
+4. Why doesn't the Image element appear in my terminal?
+   The Image element uses w3m to display images. This generally only works on
+   X11+xterm/urxvt, but it *may* work on other unix terminals.
+5. Why can't my mouse clicks register beyond 255-287 cells?
+   Older versions of VTE do not support any modern mouse protocol. On top of that,
+   the old x10 protocol it does implement is bugged. Through several workarounds
+   we've managed to get the cell limit from 127 to 255/287. If you're not happy
+   with this, you may want to look into using xterm or urxvt, or a terminal which
+   uses a modern VTE, like gnome-terminal.
+6. Is blessed efficient?
+   Yes. Blessed implements CSR and uses the painter's algorithm to render the
+   screen. It maintains two screen buffers so it only needs to render what has
+   changed on the terminal screen.
+7. Will blessed work with all terminals?
+   Yes. blessed has a terminfo/termcap parser and compiler that was written from
+   scratch. It should work with every terminal as long as a terminfo file is
+   provided. If you notice any compatibility issues in your termial, do not
+   hesitate to post an issue.
+
+
 ## Contribution and License Agreement
 
 If you contribute code to this project, you are implicitly allowing your code
 to be distributed under the MIT license. You are also implicitly verifying that
 all code is your original work. `</legalese>`
+
 
 ## License
 
