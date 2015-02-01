@@ -36,9 +36,10 @@ program.on('keypress', function(ch, data) {
   console.log(data);
 });
 
-program.on('mousebuf', function(buf) {
+program.on('mouse-debug', function(data) {
   program.cup(20, 0);
-  console.log(buf);
+  data = Array.prototype.slice.call(data);
+  console.log(data);
 });
 
 // program.getCursor(function(err, data) {
