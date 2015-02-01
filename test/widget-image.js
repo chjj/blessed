@@ -10,8 +10,8 @@ var img = blessed.image({
   parent: screen,
   left: 'center',
   top: 'center',
-  width: 20,
-  height: 20,
+  width: 'shrink',
+  height: 'shrink',
   bg: 'green',
   file: process.argv[2] || __dirname + '/test-image.png'
 });
