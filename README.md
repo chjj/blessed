@@ -876,6 +876,35 @@ term.js to be installed).
 - inherits all from Box.
 
 
+#### Image (from Box)
+
+Display an image in the terminal (jpeg, png, gif) using w3mimgdisplay. Requires
+w3m to be installed. X11 required: works in xterm, urxvt, and possibly other
+terminals.
+
+##### Options:
+
+- inherits all from Box.
+- **file** - path to image
+- **w3m** - path to w3mimgdisplay
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+- **setImage(img, callback)** - set the image in the box to a new path.
+- **clearImage(callback)** - clear the current image.
+- **imageSize(img, callback)** - get the size of an image file in pixels.
+- **termSize(callback)** - get the size of the terminal in pixels.
+
+
 ### Positioning
 
 Offsets may be a number, a percentage (e.g. `50%`), or a keyword (e.g.
