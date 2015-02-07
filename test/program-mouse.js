@@ -39,18 +39,6 @@ program.on('keypress', function(ch, data) {
   program.write(util.inspect(data));
 });
 
-program.on('mouse-debug', function(s, buf) {
-  if (s) {
-    program.cup(10, 0);
-    program.write(util.inspect(s));
-  }
-  if (buf) {
-    program.cup(11, 0);
-    buf = Array.prototype.slice.call(buf);
-    program.write(util.inspect(buf));
-  }
-});
-
 // program.getCursor(function(err, data) {
 //   program.write(util.inspect(data));
 // });
