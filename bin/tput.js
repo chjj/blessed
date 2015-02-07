@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 
 var blessed = require('../')
-  , tput = blessed.tput()
   , argv = process.argv.slice(2)
-  , cmd = argv.shift();
+  , cmd = argv.shift()
+  , tput;
+
+tput = blessed.tput({
+  terminal: process.env.TERM,
+  extended: true
+});
 
 if (tput[cmd]) {
   process.stdout.write(tput[cmd].apply(tput, argv) + '\n');
