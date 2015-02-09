@@ -25,6 +25,19 @@ setTimeout(function() {
   screen.render();
 }, 1000);
 
+//setTimeout(function() {
+//  image.setImage(file);
+//  image.rtop = 4;
+//  image.rleft = 10;
+//  screen.render();
+//  setTimeout(function() {
+//    image.setImage(file);
+//    image.rtop = 2;
+//    image.rleft = 7;
+//    screen.render();
+//  }, 1000);
+//}, 5000);
+
 image.focus();
 
 screen.key('i', function() {
