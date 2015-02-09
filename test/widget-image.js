@@ -6,11 +6,12 @@ screen = blessed.screen({
   smartCSR: true
 });
 
+// To ensure our w3mimgdisplay search works:
 blessed.image.w3mdisplay = '/does/not/exist';
 
 var file = process.argv[2] || __dirname + '/test-image.png';
 
-var img = blessed.image({
+var image = blessed.image({
   parent: screen,
   left: 'center',
   top: 'center',
@@ -20,14 +21,14 @@ var img = blessed.image({
 });
 
 setTimeout(function() {
-  img.setImage(file);
+  image.setImage(file);
   screen.render();
 }, 1000);
 
-img.focus();
+image.focus();
 
 screen.key('i', function() {
-  screen.displayImage(img.options.file);
+  screen.displayImage(file);
 });
 
 screen.key('q', function() {
