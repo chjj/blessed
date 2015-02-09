@@ -18,6 +18,10 @@ var img = blessed.image({
 
 img.focus();
 
+screen.key('i', function() {
+  screen.displayImage(img.options.file);
+});
+
 screen.key('q', function() {
   return process.exit(0);
 });
