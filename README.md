@@ -569,7 +569,12 @@ A scrollable list which can display selectable items.
 - **keys** - use predefined keys for navigating the list.
 - **vi** - use vi keys with the `keys` option.
 - **items** - an array of strings which become the list's items.
-- **search** - a function that is called when `vi` mode is enabled and the key `/` is pressed. This function accepts a callback function which should be called with the search string. The search string is then used to jump to an item that is found in `items`.
+- **search** - a function that is called when `vi` mode is enabled and the key
+  `/` is pressed. This function accepts a callback function which should be
+  called with the search string. The search string is then used to jump to an
+  item that is found in `items`.
+- **interactive** - whether the list is interactive or can have items selected
+  (default: true).
 
 ##### Properties:
 
