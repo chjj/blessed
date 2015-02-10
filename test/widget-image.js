@@ -21,22 +21,24 @@ var image = blessed.image({
 });
 
 setTimeout(function() {
-  image.setImage(file);
-  screen.render();
+  image.setImage(file, function() {
+    // XXX For some reason the image sometimes envelopes
+    // the entire screen at the end if this is uncommented:
+    // NOTE: Might have to do with an uncached ratio and
+    // a bad termSize being reported.
+    screen.render();
+    setTimeout(function() {
+      image.rtop = 4;
+      image.rleft = 10;
+      screen.render();
+      setTimeout(function() {
+        image.rtop = 2;
+        image.rleft = 7;
+        screen.render();
+      }, 1000);
+    }, 5000);
+  });
 }, 1000);
-
-//setTimeout(function() {
-//  image.setImage(file);
-//  image.rtop = 4;
-//  image.rleft = 10;
-//  screen.render();
-//  setTimeout(function() {
-//    image.setImage(file);
-//    image.rtop = 2;
-//    image.rleft = 7;
-//    screen.render();
-//  }, 1000);
-//}, 5000);
 
 image.focus();
 
