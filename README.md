@@ -573,7 +573,7 @@ A scrollable list which can display selectable items.
   `/` is pressed. This function accepts a callback function which should be
   called with the search string. The search string is then used to jump to an
   item that is found in `items`.
-- **interactive** - whether the list is interactive or can have items selected
+- **interactive** - whether the list is interactive and can have items selected
   (default: true).
 
 ##### Properties:
