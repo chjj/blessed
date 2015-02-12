@@ -7,7 +7,10 @@ screen = blessed.screen({
 });
 
 // To ensure our w3mimgdisplay search works:
-blessed.image.w3mdisplay = '/does/not/exist';
+if (process.argv[2] === 'find') {
+  blessed.image.w3mdisplay = '/does/not/exist';
+  process.argv.length = 2;
+}
 
 var file = process.argv[2] || __dirname + '/test-image.png';
 
@@ -35,6 +38,14 @@ setTimeout(function() {
         image.rtop = 2;
         image.rleft = 7;
         screen.render();
+        setTimeout(function() {
+          image.detach();
+          screen.render();
+          setTimeout(function() {
+            screen.append(image);
+            screen.render();
+          }, 1000);
+        }, 1000);
       }, 1000);
     }, 5000);
   });

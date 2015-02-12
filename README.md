@@ -871,24 +871,37 @@ A radio button which can be used in a form element.
 
 #### Terminal (from Box)
 
-A box which spins up a pseudo terminal and renders the output. (Requires
-term.js to be installed).
+A box which spins up a pseudo terminal and renders the output. Useful for
+writing a terminal multiplexer, or something similar to an mc-like file
+manager. Requires term.js and pty.js to be installed. See
+`example/multiplex.js` for an example terminal multiplexer.
 
 ##### Options:
 
 - inherits all from Box.
+- **handler** - handler for input data.
+- **shell** - name of shell. `$SHELL` by default.
+- **args** - args for shell.
+- **cursor** - can be `line`, `underline`, and `block`.
+- Other options similar to term.js'.
 
 ##### Properties:
 
 - inherits all from Box.
+- **term** - reference to the headless term.js terminal.
+- **pty** - reference to the pty.js pseudo terminal.
 
 ##### Events:
 
 - inherits all from Box.
+- **title** - window title from terminal.
+- Other events similar to ScrollableBox.
 
 ##### Methods:
 
 - inherits all from Box.
+- **write(data)** - write data to the terminal.
+- Other methods similar to ScrollableBox.
 
 
 #### Image (from Box)
@@ -900,8 +913,9 @@ terminals.
 ##### Options:
 
 - inherits all from Box.
-- **file** - path to image
-- **w3m** - path to w3mimgdisplay
+- **file** - path to image.
+- **w3m** - path to w3mimgdisplay. if a proper w3mimgdisplay path is not given,
+  blessed will search the entire disk for the binary.
 
 ##### Properties:
 
@@ -918,6 +932,7 @@ terminals.
 - **clearImage(callback)** - clear the current image.
 - **imageSize(img, callback)** - get the size of an image file in pixels.
 - **termSize(callback)** - get the size of the terminal in pixels.
+- **getPixelRatio(callback)** - get the pixel to cell ratio for the terminal.
 
 
 ### Positioning

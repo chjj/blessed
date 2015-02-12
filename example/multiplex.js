@@ -14,6 +14,9 @@ var blessed = require('blessed')
 
 var left = blessed.terminal({
   parent: screen,
+  cursor: 'line',
+  cursorBlink: true,
+  screenKeys: false,
   left: 0,
   top: 2,
   bottom: 2,
@@ -32,6 +35,9 @@ var left = blessed.terminal({
 
 var right = blessed.terminal({
   parent: screen,
+  cursor: 'block',
+  cursorBlink: true,
+  screenKeys: false,
   right: 2,
   top: 2,
   bottom: 2,
