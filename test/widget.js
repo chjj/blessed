@@ -99,6 +99,10 @@ var list = blessed.list({
 screen.append(list);
 list.select(0);
 
+list.items.forEach(function(item) {
+  item.setHover(item.getText().trim());
+});
+
 list.prepend(blessed.text({
   left: 2,
   content: ' My list '
