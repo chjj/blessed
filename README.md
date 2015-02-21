@@ -180,6 +180,10 @@ The screen on which every other node renders.
 - **tabSize** - the width of tabs within an element's content.
 - **autoPadding** - automatically position child elements with border and
   padding in mind.
+- **noAlt** - do not clear the screen, only scroll down enough to make room for
+  the elements on the screen. do not use the alternate screenbuffer. useful for
+  writing a CLI tool or some kind of prompt (experimental - see
+  test/widget-noalt.js).
 - **log** - create a log file. see `log` method.
 - **dump** - dump all output and input to desired file. can be used together
   with `log` option if set as a boolean.
