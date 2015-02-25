@@ -2,7 +2,7 @@
   "name": "blessed",
   "description": "A curses-like library for node.js.",
   "author": "Christopher Jeffrey",
-  "version": "0.0.47",
+  "version": "0.0.48",
   "main": "./lib/blessed.js",
   "bin": "./bin/tput.js",
   "preferGlobal": false,
