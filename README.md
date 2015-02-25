@@ -269,6 +269,9 @@ The screen on which every other node renders.
 - **insertTop(top, bottom)** - insert a line at the top of the screen.
 - **deleteBottom(top, bottom)** - delete a line at the bottom of the screen.
 - **deleteTop(top, bottom)** - delete a line at the top of the screen.
+- **enableMouse([el])** - enable mouse events for the screen and optionally an element (automatically called when a form of on('mouse') is bound).
+- **enableKeys([el])** - enable keypress events for the screen and optionally an element (automatically called when a form of on('keypress') is bound).
+- **enableInput([el])** - enable key and mouse events. calls bot enableMouse and enableKeys.
 
 
 #### Element (from Node)
@@ -391,6 +394,9 @@ The base element.
 - **setHover(text/options)** - set the hover text for the bottom-right corner.
   example options: `{text:'foo'}`
 - **removeHover()** - remove the hover label completely.
+- **enableMouse()** - enable mouse events for the element (automatically called when a form of on('mouse') is bound).
+- **enableKeys()** - enable keypress events for the element (automatically called when a form of on('keypress') is bound).
+- **enableInput()** - enable key and mouse events. calls bot enableMouse and enableKeys.
 
 ###### Content Methods
 
