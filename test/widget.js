@@ -25,44 +25,12 @@ screen.append(blessed.line({
   right: 0
 }));
 
-/*
-screen.append(blessed.box({
-  fg: 4,
-  bg: -1,
-  border: {
-    type: 'ascii',
-    fg: -1,
-    bg: -1
-  },
-  content: 'Hello world!',
-  width: '50%',
-  height: '50%',
-  top: 'center',
-  left: 'center'
-}));
-
-screen.children[0].append(blessed.box({
-  fg: 4,
-  bg: 3,
-  border: {
-    type: 'bg',
-    fg: 0,
-    bg: 1,
-    ch: '/'
-  },
-  content: 'Foobar',
-  width: '50%',
-  height: '50%',
-  top: 'center',
-  left: 'center'
-}));
-*/
-
 var list = blessed.list({
   align: 'center',
   mouse: true,
   fg: 'blue',
   bg: 'default',
+  label: ' My list ',
   border: {
     type: 'ascii',
     fg: 'default',
@@ -103,16 +71,6 @@ list.items.forEach(function(item) {
   item.setHover(item.getText().trim());
 });
 
-list.prepend(blessed.text({
-  left: 2,
-  content: ' My list '
-}));
-
-if (screen.autoPadding) {
-  list.children[0].rleft = -list.ileft + 2;
-  list.children[0].rtop = -list.itop;
-}
-
 list.on('keypress', function(ch, key) {
   if (key.name === 'up' || key.name === 'k') {
     list.up();
@@ -123,6 +81,11 @@ list.on('keypress', function(ch, key) {
     screen.render();
     return;
   }
+});
+
+list.on('select', function(item, select) {
+  list.setLabel(' ' + item.getText() + ' ');
+  screen.render();
 });
 
 var progress = blessed.progressbar({
@@ -194,21 +157,7 @@ screen.on('element focus', function(cur, old) {
   screen.render();
 });
 
-/*
-screen.on('element mouseover', function(el) {
-  el._bg = el.bg;
-  el.bg = 1;
-  screen.render();
-});
-
-screen.on('element mouseout', function(el) {
-  el.bg = el._bg;
-  screen.render();
-});
-*/
-
 var input = blessed.textbox({
-  mouse: true,
   label: ' My Input ',
   content: '',
   fg: 'blue',
@@ -268,16 +217,6 @@ screen.on('keypress', function(ch, key) {
       ? screen.focusPrevious()
       : screen.focusNext();
   }
-  //if (key.name === 'i') {
-  //  return input.readInput(function(err, value) {
-  //    ;
-  //  });
-  //}
-  //if (key.name === 'e') {
-  //  return input.readEditor(function(err, value) {
-  //    ;
-  //  });
-  //}
   if (key.name === 'escape' || key.name === 'q') {
     return process.exit(0);
   }
@@ -288,10 +227,6 @@ screen.key('C-z', function() {
 });
 
 list.focus();
-
-//screen.on('element click', function(el) {
-//  el.focus();
-//});
 
 screen.render();
 
