@@ -751,7 +751,7 @@ A progress bar allowing various styles. This can also be used as a form input.
 - **orientation** - can be `horizontal` or `vertical`.
 - **barFg, barBg** - (completed) bar foreground and background.
   (can be contained in `style`: e.g. `style.bar.fg`).
-- **ch** - the character to fill the bar with (default is space).
+- **pch** - the character to fill the bar with (default is space).
 - **filled** - the amount filled (0 - 100).
 - **value** - same as `filled`.
 - **keys** - enable key support.
