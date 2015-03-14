@@ -945,6 +945,24 @@ terminals.
 - **getPixelRatio(callback)** - get the pixel to cell ratio for the terminal.
 
 
+### Artificial Cursors
+
+Terminal cursors can be tricky. They all have different custom escape codes to
+alter. As an _experimental_ alternative, blessed can draw a cursor for you,
+allowing you to have a custom cursor that you control.
+
+``` js
+var screen = blessed.screen({
+  artificialCursor: true,
+  cursorShape: 'line',
+  cursorBlink: true,
+  cursorColor: null // null for default
+});
+```
+
+That's it. It's controlled the same way as the regular cursor.
+
+
 ### Positioning
 
 Offsets may be a number, a percentage (e.g. `50%`), or a keyword (e.g.
