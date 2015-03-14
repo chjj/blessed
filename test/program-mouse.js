@@ -42,3 +42,7 @@ program.on('keypress', function(ch, data) {
 // program.getCursor(function(err, data) {
 //   program.write(util.inspect(data));
 // });
+
+// program.manipulateWindow(18, function(err, data) {
+//   program.write(util.inspect(data));
+// });
