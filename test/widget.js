@@ -3,7 +3,12 @@ var blessed = require('../')
 
 screen = blessed.screen({
   dump: __dirname + '/logs/widget.log',
-  title: 'widget test'
+  title: 'widget test',
+  artificialCursor: true,
+  cursorShape: 'line',
+  cursorBlink: true,
+  cursorColor: null
+
 });
 
 screen.append(blessed.text({
