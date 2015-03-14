@@ -191,6 +191,13 @@ The screen on which every other node renders.
 - **ignoreLocked** - Array of keys in their full format (e.g. `C-c`) to ignore
   when keys are locked. Useful for creating a key that will *always* exit no
   matter whether the keys are locked.
+- **artificialCursor** - have blessed draw a custom cursor and hide the
+  terminal cursor (experimental).
+- **cursorShape** - shape of the artificial cursor. can be: block, underline,
+  or line.
+- **cursorBlink** - whether the artificial cursor blinks.
+- **cursorColor** - color of the artificial color. accepts any valid color
+  value (null is default).
 
 ##### Properties:
 
