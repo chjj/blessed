@@ -8,7 +8,7 @@ screen = blessed.screen({
   cursorShape: 'line',
   cursorBlink: true,
   cursorColor: null
-
+  //cursorColor: 'red'
 });
 
 screen.append(blessed.text({
