@@ -4,7 +4,7 @@ A curses-like library and high level terminal widget API for node.js.
 
 ![blessed](https://raw.github.com/chjj/blessed/master/img/screenshot.png)
 
-Blessed is over 16,000 lines of code of terminal goodness. It's completely
+Blessed is over 16,000 lines of code and terminal goodness. It's completely
 implemented in javascript, and its goal consists of two things:
 
 1. Reimplement ncurses entirely by parsing and compiling terminfo and termcap,
