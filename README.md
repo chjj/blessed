@@ -1,8 +1,29 @@
 # blessed
 
-A curses-like library for node.js.
+A curses-like library and high level terminal widget API for node.js.
 
 ![blessed](https://raw.github.com/chjj/blessed/master/img/screenshot.png)
+
+Blessed is over 16,000 lines of code of terminal goodness. It's completely
+implemented in javascript, and its goal consists of two things:
+
+1. Reimplement ncurses entirely by parsing and compiling terminfo and termcap,
+and exposing a `Program` object which can output escape sequences compatible
+with _any_ terminal.
+
+2. Implement a widget API which is heavily optimized for terminals, and makes
+use of CSR (change-scroll-region), and BCE (back-color-erase). It also
+optimizes drawing with efficient cursor movement. This means rendering of your
+application will be extremely efficient.
+
+Blessed is arguably as accurate as ncurses, but even more optimized in some
+ways. The widget library gives you an API which is reminiscent of the DOM.
+Anyone is able to make an awesome terminal application with blessed. There are
+terminal widget libraries for other platforms (primarily python and perl), but
+blessed is the most DOM-like.
+
+Blessed has been used to implement other popular libraries and programs.
+Examples include: the [slap text editor][slap] and [blessed-contrib][contrib].
 
 ## Install
 
@@ -15,11 +36,20 @@ $ npm install blessed
 This will render a box with line borders containing the text `'Hello world!'`,
 perfectly centered horizontally and vertically.
 
+__NOTE__: It is recommend you use either `smartCSR` or `fastCSR` as a
+`blessed.screen` option. `autoPadding` is also recommended; it will
+automatically offset box content within borders instead of on top of them when
+coords are `0`. non-`autoPadding` _may_ be deprecated in the future. See the
+API documentation for further explanation of these options.
+
 ``` js
 var blessed = require('blessed');
 
 // Create a screen object.
-var screen = blessed.screen();
+var screen = blessed.screen({
+  autoPadding: true,
+  smartCSR: true
+});
 
 screen.title = 'my window title';
 
@@ -179,10 +209,11 @@ The screen on which every other node renders.
   terminal is resized (default: 300).
 - **tabSize** - the width of tabs within an element's content.
 - **autoPadding** - automatically position child elements with border and
-  padding in mind.
+  padding in mind (__NOTE__: this is a recommended option. it may become
+  default in the future).
 - **noAlt** - do not clear the screen, only scroll down enough to make room for
   the elements on the screen. do not use the alternate screenbuffer. useful for
-  writing a CLI tool or some kind of prompt (experimental - see
+  writing a CLI tool or some kind of prompt (__experimental__ - see
   test/widget-noalt.js).
 - **log** - create a log file. see `log` method.
 - **dump** - dump all output and input to desired file. can be used together
@@ -192,12 +223,12 @@ The screen on which every other node renders.
   when keys are locked. Useful for creating a key that will *always* exit no
   matter whether the keys are locked.
 - **artificialCursor** - have blessed draw a custom cursor and hide the
-  terminal cursor (experimental).
+  terminal cursor (__experimental__).
 - **cursorShape** - shape of the artificial cursor. can be: block, underline,
   or line.
 - **cursorBlink** - whether the artificial cursor blinks.
 - **cursorColor** - color of the artificial color. accepts any valid color
-  value (null is default).
+  value (`null` is default).
 
 ##### Properties:
 
@@ -1202,3 +1233,6 @@ all code is your original work. `</legalese>`
 Copyright (c) 2013, Christopher Jeffrey. (MIT License)
 
 See LICENSE for more info.
+
+[slap]: https://github.com/slap-editor/slap
+[contrib]: https://github.com/yaronn/blessed-contrib
