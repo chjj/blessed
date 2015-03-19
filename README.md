@@ -196,7 +196,8 @@ The screen on which every other node renders.
 
 ##### Options:
 
-- **program** - the blessed Program to be associated with.
+- **program** - the blessed `Program` to be associated with. will be
+  automatically instantiated if none is provided.
 - **smartCSR** - attempt to perform CSR optimization on all possible elements
   (not just full-width ones, elements with uniform cells to their sides).
   this is known to cause flickering with elements that are not full-width,
@@ -314,6 +315,14 @@ The screen on which every other node renders.
 - **enableMouse([el])** - enable mouse events for the screen and optionally an element (automatically called when a form of on('mouse') is bound).
 - **enableKeys([el])** - enable keypress events for the screen and optionally an element (automatically called when a form of on('keypress') is bound).
 - **enableInput([el])** - enable key and mouse events. calls bot enableMouse and enableKeys.
+- **copyToClipboard(text)** - attempt to copy text to clipboard using iTerm2's
+  propriety sequence. returns true if successful.
+- **cursorShape(shape, blink)** - attempt to change cursor shape. will not work
+  in all terminals (see artificial cursors for a solution to this). returns
+  true if successful.
+- **cursorColor(color)** - attempt to change cursor color. returns true if
+  successful.
+- **resetCursor()** - attempt to reset cursor. returns true if successful.
 
 
 #### Element (from Node)
