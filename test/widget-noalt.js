@@ -16,7 +16,8 @@ var list = blessed.list({
   width: '50%',
   height: 'shrink',
   //border: 'line',
-  bottom: 2,
+  top: 5,
+  //bottom: 2,
   left: 0,
   style: {
     fg: 'blue',
