@@ -119,18 +119,6 @@ box.focus();
 screen.render();
 ```
 
-## Windows compatibility
-
-Currently there is no `mouse` or `resize` event support on Windows.
-
-Windows users will need to explicitly set `term` when creating a screen like so
-(**NOTE**: This is no longer necessary as of the latest versions of blessed.
-This is now handled automatically):
-
-``` js
-var screen = blessed.screen({ term: 'windows-ansi' });
-```
-
 
 ## High-level Documentation
 
@@ -216,17 +204,6 @@ The screen on which every other node renders.
 - **autoPadding** - automatically position child elements with border and
   padding in mind (__NOTE__: this is a recommended option. it may become
   default in the future).
-- **noAlt** - do not clear the screen, only scroll down enough to make room for
-  the elements on the screen. do not use the alternate screenbuffer. useful for
-  writing a CLI tool or some kind of prompt (__experimental__ - see
-  test/widget-noalt.js).
-- **log** - create a log file. see `log` method.
-- **dump** - dump all output and input to desired file. can be used together
-  with `log` option if set as a boolean.
-- **debug** - debug mode. enables usage of the `debug` method.
-- **ignoreLocked** - Array of keys in their full format (e.g. `C-c`) to ignore
-  when keys are locked. Useful for creating a key that will *always* exit no
-  matter whether the keys are locked.
 - **artificialCursor** - have blessed draw a custom cursor and hide the
   terminal cursor (__experimental__).
 - **cursorShape** - shape of the artificial cursor. can be: block, underline,
@@ -234,6 +211,13 @@ The screen on which every other node renders.
 - **cursorBlink** - whether the artificial cursor blinks.
 - **cursorColor** - color of the artificial color. accepts any valid color
   value (`null` is default).
+- **log** - create a log file. see `log` method.
+- **dump** - dump all output and input to desired file. can be used together
+  with `log` option if set as a boolean.
+- **debug** - debug mode. enables usage of the `debug` method.
+- **ignoreLocked** - Array of keys in their full format (e.g. `C-c`) to ignore
+  when keys are locked. Useful for creating a key that will *always* exit no
+  matter whether the keys are locked.
 
 ##### Properties:
 
@@ -316,7 +300,7 @@ The screen on which every other node renders.
 - **enableKeys([el])** - enable keypress events for the screen and optionally an element (automatically called when a form of on('keypress') is bound).
 - **enableInput([el])** - enable key and mouse events. calls bot enableMouse and enableKeys.
 - **copyToClipboard(text)** - attempt to copy text to clipboard using iTerm2's
-  propriety sequence. returns true if successful.
+  proprietary sequence. returns true if successful.
 - **cursorShape(shape, blink)** - attempt to change cursor shape. will not work
   in all terminals (see artificial cursors for a solution to this). returns
   true if successful.
@@ -1141,10 +1125,24 @@ painted first. In terms of the painter's algorithm, the lowest indicies in the
 array are the furthest away, just like in the DOM.
 
 
+### Windows compatibility
+
+Currently there is no `mouse` or `resize` event support on Windows.
+
+Windows users will need to explicitly set `term` when creating a screen like so
+(**NOTE**: This is no longer necessary as of the latest versions of blessed.
+This is now handled automatically):
+
+``` js
+var screen = blessed.screen({ term: 'windows-ansi' });
+```
+
+
 ### Testing
 
-- For an interactive test, see `test/widget.js`.
-- For a less interactive position testing, see `test/widget-pos.js`.
+Most tests contained in the `test/` directory are interactive. It's up to the
+programmer to determine whether the test is properly displayed. In the future
+it might be better to do something similar to vttest.
 
 
 ## Lower-Level Usage
@@ -1209,29 +1207,42 @@ program.feed();
 ## FAQ
 
 1. Why doesn't the Linux console render lines correctly on Ubuntu?
-   You need to install the `ncurses-base` package __and__ the `ncurses-term` package. (#98)
+   - You need to install the `ncurses-base` package __and__ the `ncurses-term`
+     package. (#98)
 2. Why do vertical lines look chopped up in iTerm2?
-   All ACS vertical lines look this way in iTerm2.
+   - All ACS vertical lines look this way in iTerm2.
 3. Why can't I use my mouse in Terminal.app?
-   Terminal.app does not support mouse events.
+   - Terminal.app does not support mouse events.
 4. Why doesn't the Image element appear in my terminal?
-   The Image element uses w3m to display images. This generally only works on
-   X11+xterm/urxvt, but it *may* work on other unix terminals.
+   - The Image element uses w3m to display images. This generally only works on
+     X11+xterm/urxvt, but it *may* work on other unix terminals.
 5. Why can't my mouse clicks register beyond 255-287 cells?
-   Older versions of VTE do not support any modern mouse protocol. On top of that,
-   the old x10 protocol it does implement is bugged. Through several workarounds
-   we've managed to get the cell limit from 127 to 255/287. If you're not happy
-   with this, you may want to look into using xterm or urxvt, or a terminal which
-   uses a modern VTE, like gnome-terminal.
+   - Older versions of VTE do not support any modern mouse protocol. On top of
+     that, the old x10 protocol it does implement is bugged. Through several
+     workarounds we've managed to get the cell limit from 127 to 255/287. If
+     you're not happy with this, you may want to look into using xterm or
+     urxvt, or a terminal which uses a modern VTE, like gnome-terminal.
 6. Is blessed efficient?
-   Yes. Blessed implements CSR and uses the painter's algorithm to render the
-   screen. It maintains two screen buffers so it only needs to render what has
-   changed on the terminal screen.
+   - Yes. Blessed implements CSR and uses the painter's algorithm to render the
+     screen. It maintains two screen buffers so it only needs to render what
+     has changed on the terminal screen.
 7. Will blessed work with all terminals?
-   Yes. blessed has a terminfo/termcap parser and compiler that was written from
-   scratch. It should work with every terminal as long as a terminfo file is
-   provided. If you notice any compatibility issues in your termial, do not
-   hesitate to post an issue.
+   - Yes. blessed has a terminfo/termcap parser and compiler that was written
+     from scratch. It should work with every terminal as long as a terminfo
+     file is provided. If you notice any compatibility issues in your termial,
+     do not hesitate to post an issue.
+8. What is "curses" and "ncurses"?
+   - ["curses"][curses] was an old library written in the early days of unix
+     which allowed a programmer to not have to worry about terminal
+     compatibility. ["ncurses"][ncurses] is a free reimplementation of curses.
+     It improved upon it quite a bit and is now the standard library for
+     implementing terminal programs. Blessed uses neither of these, and instead
+     handles terminal compatibility itself.
+9. What is the difference between blessed and blessed-contrib?
+   - blessed is a major piece of code which reimplements curses from the ground
+     up. A UI API is then layered on top of this. blessed-contrib is a popular
+     library built on top of blessed which makes clever use of modules to
+     implement useful widgets like graphs, ascii art, and so on.
 
 
 ## Contribution and License Agreement
@@ -1250,3 +1261,5 @@ See LICENSE for more info.
 [slap]: https://github.com/slap-editor/slap
 [contrib]: https://github.com/yaronn/blessed-contrib
 [termui]: https://github.com/gizak/termui
+[curses]: https://en.wikipedia.org/wiki/Curses_(programming_library)
+[ncurses]: https://en.wikipedia.org/wiki/Ncurses
