@@ -1,6 +1,6 @@
 {
   "name": "blessed",
-  "description": "A curses-like library for node.js.",
+  "description": "A high-level terminal interface library for node.js.",
   "author": "Christopher Jeffrey",
   "version": "0.0.50",
   "main": "./lib/blessed.js",

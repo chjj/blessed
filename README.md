@@ -1,6 +1,6 @@
 # blessed
 
-A curses-like library and high level terminal widget API for node.js.
+A curses-like library with a high level terminal interface API for node.js.
 
 ![blessed](https://raw.github.com/chjj/blessed/master/img/screenshot.png)
 
@@ -11,10 +11,13 @@ implemented in javascript, and its goal consists of two things:
 and exposing a `Program` object which can output escape sequences compatible
 with _any_ terminal.
 
-2. Implement a widget API which is heavily optimized for terminals, and makes
-use of CSR (change-scroll-region), and BCE (back-color-erase). It also
-optimizes drawing with efficient cursor movement. This means rendering of your
-application will be extremely efficient.
+2. Implement a widget API which is heavily optimized for terminals.
+
+The blessed renderer makes use of CSR (change-scroll-region), and BCE
+(back-color-erase). It draws the screen using the painter's algorithm and is
+sped up with smart cursor movements and a screen damage buffer. This means
+rendering of your application will be extremely efficient: blessed only draws
+the changes (damage) to the screen.
 
 Blessed is arguably as accurate as ncurses, but even more optimized in some
 ways. The widget library gives you an API which is reminiscent of the DOM.
@@ -24,6 +27,7 @@ blessed is the most DOM-like.
 
 Blessed has been used to implement other popular libraries and programs.
 Examples include: the [slap text editor][slap] and [blessed-contrib][contrib].
+The blessed API itself has gone on to inspire [termui][termui] for Go.
 
 ## Install
 
@@ -1236,3 +1240,4 @@ See LICENSE for more info.
 
 [slap]: https://github.com/slap-editor/slap
 [contrib]: https://github.com/yaronn/blessed-contrib
+[termui]: https://github.com/gizak/termui
