@@ -4,11 +4,13 @@ var blessed = require('../')
 screen = blessed.screen({
   dump: __dirname + '/logs/widget.log',
   title: 'widget test',
-  artificialCursor: true,
-  cursorShape: 'line',
-  cursorBlink: true,
-  cursorColor: null
-  //cursorColor: 'red'
+  resizeTimeout: 300,
+  cursor: {
+    artificial: true,
+    shape: 'line',
+    blink: true,
+    color: null
+  }
 });
 
 screen.append(blessed.text({

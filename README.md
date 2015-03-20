@@ -307,7 +307,7 @@ The screen on which every other node renders.
   true if successful.
 - **cursorColor(color)** - attempt to change cursor color. returns true if
   successful.
-- **resetCursor()** - attempt to reset cursor. returns true if successful.
+- **cursorReset()** - attempt to reset cursor. returns true if successful.
 
 
 #### Element (from Node)
@@ -989,14 +989,33 @@ allowing you to have a custom cursor that you control.
 
 ``` js
 var screen = blessed.screen({
-  artificialCursor: true,
-  cursorShape: 'line',
-  cursorBlink: true,
-  cursorColor: null // null for default
+  cursor: {
+    artificial: true,
+    shape: 'line',
+    blink: true,
+    color: null // null for default
+  }
 });
 ```
 
 That's it. It's controlled the same way as the regular cursor.
+
+To create a custom cursor:
+
+``` js
+var screen = blessed.screen({
+  cursor: {
+    artificial: true,
+    shape: {
+      bg: 'red',
+      fg: 'white',
+      bold: true,
+      ch: '#'
+    },
+    blink: true
+  }
+});
+```
 
 
 ### Positioning
