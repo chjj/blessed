@@ -398,6 +398,7 @@ The base element.
   - **wheeldown, wheelup** - wheel was scrolled down or up.
   - **mouseover, mouseout** - element was hovered or unhovered.
   - **mousemove** - mouse was moved somewhere on this element.
+  - **click** - element was clicked (slightly smarter than mouseup).
 - **keypress** - received on key events for this element.
 - **move** - received when the element is moved.
 - **resize** - received when the element is resized.
