@@ -38,10 +38,10 @@ var inner = blessed.box({
 main.append(inner);
 
 inner.setContent(inner.content + '\n' + JSON.stringify({
-  left: inner.left,
-  right: inner.right,
-  top: inner.top,
-  bottom: inner.bottom,
+  aleft: inner.aleft,
+  aright: inner.aright,
+  atop: inner.atop,
+  abottom: inner.abottom,
   width: inner.width,
   height: inner.height,
   rleft: inner.rleft,
@@ -53,10 +53,10 @@ inner.setContent(inner.content + '\n' + JSON.stringify({
 assert.equal(inner.width, 57);
 assert.equal(inner.height, 7);
 
-assert.equal(inner.left, 4);
-assert.equal(inner.right, 93);
-assert.equal(inner.top, 4);
-assert.equal(inner.bottom, 8);
+assert.equal(inner.aleft, 4);
+assert.equal(inner.aright, 93);
+assert.equal(inner.atop, 4);
+assert.equal(inner.abottom, 8);
 
 assert.equal(inner.rleft, 2);
 assert.equal(inner.rright, 56);
@@ -65,11 +65,11 @@ assert.equal(inner.rbottom, 5);
 
 // Change left to half of the parent width.
 inner.rleft = '50%';
-assert.equal(inner.left, 59);
+assert.equal(inner.aleft, 59);
 
 // Change left to half of the screen width.
-inner.left = '50%';
-assert.equal(inner.left, screen.width / 2 | 0);
+inner.aleft = '50%';
+assert.equal(inner.aleft, screen.width / 2 | 0);
 
 // Test implied height/width.
 reset(inner, {
@@ -82,8 +82,8 @@ reset(inner, {
 assert.equal(inner.width, 105);
 assert.equal(inner.height, 4);
 
-// Demonstrate the difference between `left: 5`, and `.left = 5` (relative vs. absolute):
-inner.top = inner.bottom = inner.left = inner.right = 5;
+// Demonstrate the difference between `left: 5`, and `.aleft = 5` (relative vs. absolute):
+inner.atop = inner.abottom = inner.aleft = inner.aright = 5;
 
 assert.equal(inner.width, 144);
 assert.equal(inner.height, 9);
