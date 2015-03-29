@@ -231,10 +231,14 @@ The screen on which every other node renders.
 - **height** - height of the screen (same as `program.rows`).
 - **cols** - same as `screen.width`.
 - **rows** - same as `screen.height`.
-- **left**, **rleft** - left offset, always zero.
-- **right**, **rright** - right offset, always zero.
-- **top**, **rtop** - top offset, always zero.
-- **bottom**, **rbottom** - bottom offset, always zero.
+- **left** - relative left offset, always zero.
+- **right** - relative right offset, always zero.
+- **top** - relative top offset, always zero.
+- **bottom** - relative bottom offset, always zero.
+- **aleft** - absolute left offset.
+- **aright** - absolute right offset.
+- **atop** - absolute top offset.
+- **abottom** - absolute bottom offset.
 - **grabKeys** - whether the focused element grabs all keypresses.
 - **lockKeys** - prevent keypresses from being received by any element.
 - **hover** - the currently hovered element. only set if mouse events are bound.
@@ -380,14 +384,14 @@ The base element.
 - **bold, underline** - attributes.
 - **width** - calculated width.
 - **height** - calculated height.
-- **left** - calculated absolute left offset.
-- **right** - calculated absolute right offset.
-- **top** - calculated absolute top offset.
-- **bottom** - calculated absolute bottom offset.
-- **rleft** - calculated relative left offset.
-- **rright** - calculated relative right offset.
-- **rtop** - calculated relative top offset.
-- **rbottom** - calculated relative bottom offset.
+- **left** - calculated relative left offset.
+- **right** - calculated relative right offset.
+- **top** - calculated relative top offset.
+- **bottom** - calculated relative bottom offset.
+- **aleft** - calculated absolute left offset.
+- **aright** - calculated absolute right offset.
+- **atop** - calculated absolute top offset.
+- **abottom** - calculated absolute bottom offset.
 
 ##### Events:
 
