@@ -12,6 +12,7 @@ var table = blessed.table({
   left: 'center',
   data: null,
   border: 'line',
+  align: 'center',
   style: {
     border: {
       fg: 'red'
