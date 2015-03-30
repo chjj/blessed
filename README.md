@@ -544,14 +544,16 @@ A box with scrollable content.
 - __baseLimit__ - a limit to the childBase. default is `Infinity`.
 - __alwaysScroll__ - a option which causes the ignoring of `childOffset`. this
   in turn causes the childBase to change every time the element is scrolled.
-- __scrollbar__ - object enabling a scrollbar. allows `ch`, `fg`, and `bg`
-  properties.
+- __scrollbar__ - object enabling a scrollbar.
+- __scrollbar.style__ - style of the scrollbar.
+- __scrollbar.track__ - style of the scrollbar track if present (takes regular
+  style options).
 
 ##### Properties:
 
 - inherits all from Box.
 - __childBase__ - the offset of the top of the scroll content.
-- __childOffset__ - the offset of the chosen item (if there is one).
+- __childOffset__ - the offset of the chosen item/line.
 
 ##### Events:
 
@@ -605,16 +607,8 @@ A scrollable list which can display selectable items.
 ##### Options:
 
 - inherits all from Box.
-- __selectedFg, selectedBg__ - foreground and background for selected item,
-  treated like fg and bg. (can be contained in style: e.g. `style.selected.fg`).
-- __selectedBold, selectedUnderline__ - character attributes for selected item,
-  treated like bold and underline. (can be contained in style: e.g.
-  `style.selected.bold`).
-- __itemFg, itemBg__ - foreground and background for unselected item,
-  treated like fg and bg. (can be contained in style: e.g. `style.item.fg`).
-- __itemBold, itemUnderline__ - character attributes for an unselected item,
-  treated like bold and underline. (can be contained in style: e.g.
-  `style.item.bold`).
+- __style.selected__ - style for a selected item.
+- __style.item__ - style for an unselected item.
 - __mouse__ - whether to automatically enable mouse support for this list
   (allows clicking items).
 - __keys__ - use predefined keys for navigating the list.
@@ -790,8 +784,7 @@ A progress bar allowing various styles. This can also be used as a form input.
 
 - inherits all from Input.
 - __orientation__ - can be `horizontal` or `vertical`.
-- __barFg, barBg__ - (completed) bar foreground and background.
-  (can be contained in `style`: e.g. `style.bar.fg`).
+- __style.bar__ - style of the bar contents itself.
 - __pch__ - the character to fill the bar with (default is space).
 - __filled__ - the amount filled (0 - 100).
 - __value__ - same as `filled`.
@@ -919,6 +912,169 @@ A radio button which can be used in a form element.
 
 - inherits all from Checkbox.
 
+
+#### Prompt (from Box)
+
+A prompt box containing a text input, okay, and cancel buttons.
+
+##### Options:
+
+- inherits all from Box.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+
+
+#### Question (from Box)
+
+A question box containing okay and cancel buttons.
+
+##### Options:
+
+- inherits all from Box.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+
+
+#### Message (from Box)
+
+A box containing a message to be displayed.
+
+##### Options:
+
+- inherits all from Box.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+
+
+#### Loading (from Box)
+
+A box with a spinning line to denote loading.
+
+##### Options:
+
+- inherits all from Box.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+
+
+#### Listbar (from Box)
+
+A horizontal list. Useful for a main menu bar.
+
+##### Options:
+
+- inherits all from Box.
+- __style.selected__ - style for a selected item.
+- __style.item__ - style for an unselected item.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+
+
+#### Log (from ScrollableText)
+
+A log permanently scrolled to the bottom.
+
+##### Options:
+
+- inherits all from ScrollableText.
+
+##### Properties:
+
+- inherits all from ScrollableText.
+
+##### Events:
+
+- inherits all from ScrollableText.
+- __line__ - emitted on a log line. passes in line.
+
+##### Methods:
+
+- inherits all from ScrollableText.
+- __log/add(text)__ - add a log line.
+
+
+#### Table (from Box)
+
+A stylized table of text elements.
+
+##### Options:
+
+- inherits all from Box.
+- __rows/data__ - array of array of strings representing rows.
+- __pad__ - spaces to attempt to pad on the sides of each cell. `2` by default:
+  one space on each side.
+- __style.header__ - header style.
+- __style.cell__ - cell style.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+- __setRows/setData(rows)__ - set rows in table. array of arrays of strings.
+  ```
+    table.setData([
+      [ 'Animals',  'Foods'  ],
+      [ 'Elephant', 'Apple'  ],
+      [ 'Bird',     'Orange' ]
+    ]);
+  ```
 
 #### Terminal (from Box)
 
