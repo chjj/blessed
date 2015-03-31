@@ -1076,6 +1076,41 @@ A stylized table of text elements.
     ]);
   ```
 
+
+#### ListTable (from Box)
+
+A stylized table of text elements with a list.
+
+##### Options:
+
+- inherits all from Box.
+- __rows/data__ - array of array of strings representing rows.
+- __pad__ - spaces to attempt to pad on the sides of each cell. `2` by default:
+  one space on each side.
+- __style.header__ - header style.
+- __style.cell__ - cell style.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+- __setRows/setData(rows)__ - set rows in table. array of arrays of strings.
+  ```
+    table.setData([
+      [ 'Animals',  'Foods'  ],
+      [ 'Elephant', 'Apple'  ],
+      [ 'Bird',     'Orange' ]
+    ]);
+  ```
+
+
 #### Terminal (from Box)
 
 A box which spins up a pseudo terminal and renders the output. Useful for
