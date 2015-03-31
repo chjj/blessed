@@ -1068,22 +1068,22 @@ A stylized table of text elements.
 
 - inherits all from Box.
 - __setRows/setData(rows)__ - set rows in table. array of arrays of strings.
-  ```
-    table.setData([
-      [ 'Animals',  'Foods'  ],
-      [ 'Elephant', 'Apple'  ],
-      [ 'Bird',     'Orange' ]
-    ]);
-  ```
+``` js
+  table.setData([
+    [ 'Animals',  'Foods'  ],
+    [ 'Elephant', 'Apple'  ],
+    [ 'Bird',     'Orange' ]
+  ]);
+```
 
 
-#### ListTable (from Box)
+#### ListTable (from List)
 
 A stylized table of text elements with a list.
 
 ##### Options:
 
-- inherits all from Box.
+- inherits all from List.
 - __rows/data__ - array of array of strings representing rows.
 - __pad__ - spaces to attempt to pad on the sides of each cell. `2` by default:
   one space on each side.
@@ -1092,23 +1092,23 @@ A stylized table of text elements with a list.
 
 ##### Properties:
 
-- inherits all from Box.
+- inherits all from List.
 
 ##### Events:
 
-- inherits all from Box.
+- inherits all from List.
 
 ##### Methods:
 
 - inherits all from Box.
 - __setRows/setData(rows)__ - set rows in table. array of arrays of strings.
-  ```
-    table.setData([
-      [ 'Animals',  'Foods'  ],
-      [ 'Elephant', 'Apple'  ],
-      [ 'Bird',     'Orange' ]
-    ]);
-  ```
+``` js
+  table.setData([
+    [ 'Animals',  'Foods'  ],
+    [ 'Elephant', 'Apple'  ],
+    [ 'Bird',     'Orange' ]
+  ]);
+```
 
 
 #### Terminal (from Box)
