@@ -31,7 +31,9 @@ var table = blessed.table({
 var data = [
   [ 'Animals',  'Foods',  'Times'  ],
   [ 'Elephant', 'Apple',  '1:00am' ],
-  [ 'Bird',     'Orange', '2:15pm' ]
+  [ 'Bird',     'Orange', '2:15pm' ],
+  [ 'T-Rex',    'Taco',   '8:45am' ],
+  [ 'Mouse',    'Cheese', '9:05am' ]
 ];
 
 data[1][0] = '{red-fg}' + data[1][0] + '{/red-fg}';
