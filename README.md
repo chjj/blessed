@@ -1027,15 +1027,21 @@ A log permanently scrolled to the bottom.
 ##### Options:
 
 - inherits all from ScrollableText.
+- __scrollback__ - amount of scrollback allowed. default: Infinity.
+- __scrollOnInput__ - scroll to bottom on input even if the user has scrolled
+  up. default: false.
 
 ##### Properties:
 
 - inherits all from ScrollableText.
+- __scrollback__ - amount of scrollback allowed. default: Infinity.
+- __scrollOnInput__ - scroll to bottom on input even if the user has scrolled
+  up. default: false.
 
 ##### Events:
 
 - inherits all from ScrollableText.
-- __line__ - emitted on a log line. passes in line.
+- __log__ - emitted on a log line. passes in line.
 
 ##### Methods:
 
