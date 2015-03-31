@@ -215,7 +215,9 @@ The screen on which every other node renders.
 - __log__ - create a log file. see `log` method.
 - __dump__ - dump all output and input to desired file. can be used together
   with `log` option if set as a boolean.
-- __debug__ - debug mode. enables usage of the `debug` method.
+- __debug__ - debug mode. enables usage of the `debug` method. also creates a
+  debug console which will display when pressing F12. it will display all log
+  and debug messages.
 - __ignoreLocked__ - Array of keys in their full format (e.g. `C-c`) to ignore
   when keys are locked. Useful for creating a key that will _always_ exit no
   matter whether the keys are locked.
@@ -362,6 +364,7 @@ The base element.
 - __position__ - can contain the above options.
 - __scrollable__ - whether the element is scrollable or not.
 - __ch__ - background character (default is whitespace ` `).
+- __draggable__ - allow the element to be dragged with the mouse.
 
 ##### Properties:
 
@@ -392,6 +395,8 @@ The base element.
 - __aright__ - calculated absolute right offset.
 - __atop__ - calculated absolute top offset.
 - __abottom__ - calculated absolute bottom offset.
+- __draggable__ - whether the element is draggable. set to true to allow
+  dragging.
 
 ##### Events:
 
@@ -438,6 +443,7 @@ The base element.
 - __enableMouse()__ - enable mouse events for the element (automatically called when a form of on('mouse') is bound).
 - __enableKeys()__ - enable keypress events for the element (automatically called when a form of on('keypress') is bound).
 - __enableInput()__ - enable key and mouse events. calls bot enableMouse and enableKeys.
+- __enableDrag()__ - enable dragging of the element.
 
 ###### Content Methods
 

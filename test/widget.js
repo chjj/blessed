@@ -10,8 +10,11 @@ screen = blessed.screen({
     shape: 'line',
     blink: true,
     color: null
-  }
+  },
+  debug: true
 });
+
+screen.debug('test');
 
 screen.append(blessed.text({
   top: 0,
