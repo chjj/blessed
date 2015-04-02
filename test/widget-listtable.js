@@ -15,8 +15,8 @@ var table = blessed.listtable({
   align: 'center',
   tags: true,
   keys: true,
-  height: 5,
   width: '80%',
+  height: '70%',
   vi: true,
   mouse: true,
   style: {
