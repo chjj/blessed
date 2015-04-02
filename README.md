@@ -932,7 +932,8 @@ A radio button which can be used in a form element.
 
 #### Prompt (from Box)
 
-A prompt box containing a text input, okay, and cancel buttons.
+A prompt box containing a text input, okay, and cancel buttons (automatically
+hidden).
 
 ##### Options:
 
@@ -949,11 +950,13 @@ A prompt box containing a text input, okay, and cancel buttons.
 ##### Methods:
 
 - inherits all from Box.
+- __input/setInput/readInput(callback)__ - show the prompt and wait for the
+  result of the textbox.
 
 
 #### Question (from Box)
 
-A question box containing okay and cancel buttons.
+A question box containing okay and cancel buttons (automatically hidden).
 
 ##### Options:
 
@@ -970,11 +973,13 @@ A question box containing okay and cancel buttons.
 ##### Methods:
 
 - inherits all from Box.
+- __ask(question, callback)__ - ask a `question`. `callback` will yield the
+  result.
 
 
 #### Message (from Box)
 
-A box containing a message to be displayed.
+A box containing a message to be displayed (automatically hidden).
 
 ##### Options:
 
@@ -991,11 +996,15 @@ A box containing a message to be displayed.
 ##### Methods:
 
 - inherits all from Box.
+- __log/display(text, [time], callback)__ - display a message for a time
+  (default is 3 seconds). set time to 0 for a perpetual message that is
+  dismissed on keypress.
+- __error(text, [time], callback)__ - display an error in the same way.
 
 
 #### Loading (from Box)
 
-A box with a spinning line to denote loading.
+A box with a spinning line to denote loading (automatically hidden).
 
 ##### Options:
 
@@ -1012,6 +1021,9 @@ A box with a spinning line to denote loading.
 ##### Methods:
 
 - inherits all from Box.
+- __load(text)__ - display the loading box with a message. will lock keys until
+  `stop` is called.
+- __stop()__ - hide loading box. unlock keys.
 
 
 #### Listbar (from Box)
@@ -1023,6 +1035,9 @@ A horizontal list. Useful for a main menu bar.
 - inherits all from Box.
 - __style.selected__ - style for a selected item.
 - __style.item__ - style for an unselected item.
+- __commands/items__ - set buttons using an object with keys as titles of
+  buttons, containing of objects containing keys of `keys` and `callback`.
+- __autoCommandKeys__ - automatically bind list buttons to keys 0-9.
 
 ##### Properties:
 
@@ -1035,6 +1050,14 @@ A horizontal list. Useful for a main menu bar.
 ##### Methods:
 
 - inherits all from Box.
+- __setItems(commands)__ - set commands (see `commands` option above).
+- __add/addItem/appendItem(item, callback)__ - append an item to the bar.
+- __select(offset)__ - select an item on the bar.
+- __removeItem(child)__ - remove item from the bar.
+- __move(offset)__ - move relatively across the bar.
+- __moveLeft(offset)__ - move left relatively across the bar.
+- __moveRight(offset)__ - move right relatively across the bar.
+- __selectTab(index)__ - select button and execute its callback.
 
 
 #### Log (from ScrollableText)
