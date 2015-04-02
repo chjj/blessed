@@ -14,7 +14,12 @@ screen = blessed.screen({
   debug: true
 });
 
-screen.debug('test');
+screen._debugLog.parseTags = true;
+
+require('./tail')(__dirname + '/logs/widget.log').on('line', function(line) {
+  if (!screen._debugLog.hidden) return;
+  screen.debug(line);
+});
 
 screen.append(blessed.text({
   top: 0,
