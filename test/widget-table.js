@@ -14,6 +14,7 @@ var table = blessed.table({
   border: 'line',
   align: 'center',
   tags: true,
+  width: '80%',
   style: {
     border: {
       fg: 'red'
