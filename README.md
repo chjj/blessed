@@ -131,12 +131,42 @@ screen.render();
 ```
 
 
-## High-level Documentation
+## API Documentation
 
 ### Widgets
 
 Blessed comes with a number of high-level widgets so you can avoid all the
 nasty low-level terminal stuff.
+
+- [Node](#node-from-eventemitter)
+- [Screen](#screen-from-node)
+- [Element](#element-from-node)
+- [Box](#box-from-element)
+- [Text](#text-from-element)
+- [Line](#line-from-box)
+- [ScrollableBox](#scrollablebox-from-box)
+- [ScrollableText](#scrollabletext-from-scrollablebox)
+- [List](#list-from-box)
+- [Form](#form-from-box)
+- [Input](#input-from-box)
+- [Textarea](#textarea-from-input)
+- [Textbox](#textbox-from-textarea)
+- [Button](#button-from-input)
+- [ProgressBar](#progressbar-from-input)
+- [FileManager](#filemanager-from-list)
+- [Checkbox](#checkbox-from-input)
+- [RadioSet](#radioset-from-box)
+- [RadioButton](#radiobutton-from-checkbox)
+- [Prompt](#prompt-from-box)
+- [Question](#question-from-box)
+- [Message](#message-from-box)
+- [Loading](#loading-from-box)
+- [Listbar](#listbar-from-box)
+- [Log](#log-from-scrollabletext)
+- [Table](#table-from-box)
+- [ListTable](#listtable-from-list)
+- [Terminal](#terminal-from-box)
+- [Image](#image-from-box)
 
 
 #### Node (from EventEmitter)
