@@ -1128,7 +1128,9 @@ A stylized table of text elements.
 - inherits all from Box.
 - __rows/data__ - array of array of strings representing rows.
 - __pad__ - spaces to attempt to pad on the sides of each cell. `2` by default:
-  one space on each side.
+  one space on each side (only useful if the width is shrunken).
+- __noCellBorders__ - do not draw inner cells.
+- __fillCellBorders__ - fill cell borders with the adjacent background color.
 - __style.header__ - header style.
 - __style.cell__ - cell style.
 
@@ -1162,7 +1164,8 @@ A stylized table of text elements with a list.
 - inherits all from List.
 - __rows/data__ - array of array of strings representing rows.
 - __pad__ - spaces to attempt to pad on the sides of each cell. `2` by default:
-  one space on each side.
+  one space on each side (only useful if the width is shrunken).
+- __noCellBorders__ - do not draw inner cells.
 - __style.header__ - header style.
 - __style.cell__ - cell style.
 
@@ -1318,15 +1321,15 @@ parent__, 50% as wide and 50% as tall as its parent.
 To access the calculated offsets, relative to the parent:
 
 ``` js
-console.log(box.rleft);
-console.log(box.rtop);
+console.log(box.left);
+console.log(box.top);
 ```
 
 To access the calculated offsets, absolute (relative to the screen):
 
 ``` js
-console.log(box.left);
-console.log(box.top);
+console.log(box.aleft);
+console.log(box.atop);
 ```
 
 #### Overlapping offsets and dimensions greater than parents'
@@ -1408,7 +1411,7 @@ event occurred on. Returning `false` will cancel propagation up the tree.
 To actually render the screen buffer, you must call `render`.
 
 ``` js
-box.setContent('Hello world.');
+box.setContent('Hello {#0fe1ab-fg}world{/}.');
 screen.render();
 ```
 
@@ -1443,10 +1446,14 @@ This will actually parse the xterm terminfo and compile every
 string capability to a javascript function:
 
 ``` js
-var blessed = require('blessed')
-  , tput = blessed.tput('xterm-256color');
+var blessed = require('blessed');
 
-console.log(tput.setaf(4) + 'hello' + tput.sgr0());
+var tput = blessed.tput({
+  terminal: 'xterm-256color',
+  extended: true
+});
+
+process.stdout.write(tput.setaf(4) + 'Hello' + tput.sgr0() + '\n');
 ```
 
 To play around with it on the command line, it works just like tput:
@@ -1454,7 +1461,7 @@ To play around with it on the command line, it works just like tput:
 ``` bash
 $ tput.js setaf 2
 $ tput.js sgr0
-$ echo "$(tput.js setaf 2)hello world$(tput.js sgr0)"
+$ echo "$(tput.js setaf 2)Hello World$(tput.js sgr0)"
 ```
 
 The main functionality is exposed in the main `blessed` module:

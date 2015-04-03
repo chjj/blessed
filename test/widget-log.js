@@ -33,7 +33,7 @@ var logger = blessed.log({
 logger.focus();
 
 setInterval(function() {
-  logger.log('Hello {green-fg}world{/}: {bold}%s{/bold}.', Date.now().toString(36));
+  logger.log('Hello {#0fe1ab-fg}world{/}: {bold}%s{/bold}.', Date.now().toString(36));
   if (Math.random() < 0.30) {
     logger.log({foo:{bar:{baz:true}}});
   }
