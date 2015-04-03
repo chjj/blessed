@@ -30,6 +30,14 @@ var table = blessed.table({
 });
 
 var data = [
+  [ 'Animals',  'Foods',  'Times',   'Numbers' ],
+  [ 'Elephant', 'Apple',  '1:00am',  'One'     ],
+  [ 'Bird',     'Orange', '2:15pm',  'Two'     ],
+  [ 'T-Rex',    'Taco',   '8:45am',  'Three'   ],
+  [ 'Mouse',    'Cheese', '9:05am',  'Four'    ]
+];
+
+var data = [
   [ 'Animals',  'Foods',  'Times'  ],
   [ 'Elephant', 'Apple',  '1:00am' ],
   [ 'Bird',     'Orange', '2:15pm' ],
