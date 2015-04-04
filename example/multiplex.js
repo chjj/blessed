@@ -10,7 +10,12 @@
 process.title = 'multiplex.js';
 
 var blessed = require('blessed')
-  , screen = blessed.screen();
+  , screen;
+
+screen = blessed.screen({
+  smartCSR: true,
+  log: process.env.HOME + '/blessed-terminal.log'
+});
 
 var left = blessed.terminal({
   parent: screen,
@@ -31,6 +36,10 @@ var left = blessed.terminal({
       }
     }
   }
+});
+
+left.pty.on('data', function(data) {
+  screen.log(JSON.stringify(data));
 });
 
 var right = blessed.terminal({
