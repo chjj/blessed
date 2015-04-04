@@ -415,10 +415,12 @@ The base element.
 - __padding__ - amount of padding on the inside of the element. can be a number
   or an object containing the properties: `left`, `right`, `top`, and `bottom`.
 - __width, height__ - width/height of the element, can be a number, percentage
-  (`0-100%`), or keyword (`half` or `shrink`).
+  (`0-100%`), or keyword (`half` or `shrink`). percentages can also have
+  offsets (`50%+1`, `50%-1`).
 - __left, right, top, bottom__ - offsets of the element __relative to its
   parent__. can be a number, percentage (`0-100%`), or keyword (`center`).
-  `right` and `bottom` do not accept keywords.
+  `right` and `bottom` do not accept keywords. percentages can also have
+  offsets (`50%+1`, `50%-1`).
 - __position__ - can contain the above options.
 - __scrollable__ - whether the element is scrollable or not.
 - __ch__ - background character (default is whitespace ` `).
@@ -1338,6 +1340,15 @@ var box = blessed.box({
 
 This tells blessed to create a box, perfectly centered __relative to its
 parent__, 50% as wide and 50% as tall as its parent.
+
+Percentages can also have offsets applied to them:
+
+``` js
+  ...
+  height: '50%-1',
+  left: '45%+1',
+  ...
+```
 
 To access the calculated offsets, relative to the parent:
 

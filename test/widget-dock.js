@@ -11,18 +11,18 @@ blessed.box({
   parent: screen,
   left: 0,
   top: 0,
-  width: 10,
-  height: 5,
+  width: '50%',
+  height: '50%',
   border: 'line',
   content: 'Foo'
 });
 
 blessed.box({
   parent: screen,
-  left: 9,
+  left: '50%-1',
   top: 0,
-  width: 10,
-  height: 5,
+  width: '50%+1',
+  height: '50%',
   content: 'Bar',
   border: 'line'
 });
@@ -30,19 +30,19 @@ blessed.box({
 blessed.box({
   parent: screen,
   left: 0,
-  top: 4,
-  width: 10,
-  height: 5,
+  top: '50%-1',
+  width: '50%',
+  height: '50%+1',
   border: 'line',
   content: 'Foo'
 });
 
 blessed.box({
   parent: screen,
-  left: 9,
-  top: 4,
-  width: 10,
-  height: 5,
+  left: '50%-1',
+  top: '50%-1',
+  width: '50%+1',
+  height: '50%+1',
   border: 'line',
   content: 'Bar'
 });
