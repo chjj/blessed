@@ -9,7 +9,9 @@ var box = blessed.textarea({
   parent: screen,
   // Possibly support:
   // align: 'center',
-  bg: 'blue',
+  style: {
+    bg: 'blue'
+  },
   height: 'half',
   width: 'half',
   top: 'center',

@@ -14,17 +14,23 @@ var form = blessed.form({
   top: 0,
   width: '100%',
   //height: 12,
-  bg: 'green',
+  style: {
+    bg: 'green',
+    // border: {
+    //   inverse: true
+    // },
+    scrollbar: {
+      inverse: true
+    }
+  },
   content: 'foobar',
   scrollable: true,
-  border_: {
-    type: 'ch',
-    ch: ' ',
-    style: { inverse: true }
-  },
+  // border: {
+  //   type: 'ch',
+  //   ch: ' '
+  // },
   scrollbar: {
-    ch: ' ',
-    inverse: true
+    ch: ' '
   }
   //alwaysScroll: true
 });
@@ -51,7 +57,9 @@ var set = blessed.radioset({
   shrink: true,
   //padding: 1,
   //content: 'f',
-  bg: 'magenta'
+  style: {
+    bg: 'magenta'
+  }
 });
 
 var radio1 = blessed.radiobutton({
@@ -59,7 +67,9 @@ var radio1 = blessed.radiobutton({
   mouse: true,
   keys: true,
   shrink: true,
-  bg: 'magenta',
+  style: {
+    bg: 'magenta'
+  },
   height: 1,
   left: 0,
   top: 0,
@@ -72,7 +82,9 @@ var radio2 = blessed.radiobutton({
   mouse: true,
   keys: true,
   shrink: true,
-  bg: 'magenta',
+  style: {
+    bg: 'magenta'
+  },
   height: 1,
   left: 15,
   top: 0,
@@ -84,7 +96,9 @@ var text = blessed.textbox({
   parent: form,
   mouse: true,
   keys: true,
-  bg: 'blue',
+  style: {
+    bg: 'blue'
+  },
   height: 1,
   width: 20,
   left: 1,
@@ -101,7 +115,9 @@ var check = blessed.checkbox({
   mouse: true,
   keys: true,
   shrink: true,
-  bg: 'magenta',
+  style: {
+    bg: 'magenta'
+  },
   height: 1,
   left: 28,
   top: 1,
@@ -114,7 +130,9 @@ var check2 = blessed.checkbox({
   mouse: true,
   keys: true,
   shrink: true,
-  bg: 'magenta',
+  style: {
+    bg: 'magenta'
+  },
   height: 1,
   left: 28,
   top: 14,
@@ -155,7 +173,9 @@ var box1 = blessed.box({
   height: 10,
   width: 10,
   content: 'one',
-  bg: 'cyan'
+  style: {
+    bg: 'cyan'
+  }
 });
 
 var box2 = blessed.box({
@@ -165,7 +185,9 @@ var box2 = blessed.box({
   height: 8,
   width: 9,
   content: 'two',
-  bg: 'magenta'
+  style: {
+    bg: 'magenta'
+  }
 });
 
 var box3 = blessed.box({
@@ -175,7 +197,9 @@ var box3 = blessed.box({
   height: 6,
   width: 8,
   content: 'three',
-  bg: 'yellow'
+  style: {
+    bg: 'yellow'
+  }
 });
 
 var box4 = blessed.box({
@@ -185,7 +209,9 @@ var box4 = blessed.box({
   height: 4,
   width: 7,
   content: 'four',
-  bg: 'blue'
+  style: {
+    bg: 'blue'
+  }
 });
 
 var output = blessed.scrollabletext({
@@ -197,7 +223,9 @@ var output = blessed.scrollabletext({
   height: 5,
   left: 0,
   right: 0,
-  bg: 'red',
+  style: {
+    bg: 'red'
+  },
   content: 'foobar'
 });
 
@@ -208,7 +236,9 @@ var bottom = blessed.line({
   left: 0,
   right: 0,
   top: 50,
-  fg: 'blue'
+  style: {
+    fg: 'blue'
+  }
 });
 
 screen.key('q', function() {

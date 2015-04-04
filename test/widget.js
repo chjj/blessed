@@ -15,10 +15,16 @@ screen = blessed.screen({
 });
 
 screen._debugLog.parseTags = true;
-
+var logs = '';
 require('./tail')(__dirname + '/logs/widget.log').on('line', function(line) {
   if (!screen._debugLog.hidden) return;
-  screen.debug(line);
+  logs += line + '\n';
+});
+screen._debugLog.on('show', function() {
+  if (logs) {
+    screen.debug(logs);
+    logs = '';
+  }
 });
 
 screen.append(blessed.text({
@@ -27,7 +33,9 @@ screen.append(blessed.text({
   width: '100%',
   //bg: 'blue',
   content: '{green-fg}Welcome{/green-fg} to my {red-fg,ul}program{/red-fg,ul}',
-  bg: '#0000ff',
+  style: {
+    bg: '#0000ff'
+  },
   // bg: blessed.colors.match('#0000ff'),
   tags: true,
   align: 'center'
@@ -43,19 +51,23 @@ screen.append(blessed.line({
 var list = blessed.list({
   align: 'center',
   mouse: true,
-  fg: 'blue',
-  bg: 'default',
   label: ' My list ',
-  border: {
-    type: 'ascii',
-    fg: 'default',
-    bg: 'default'
+  border: 'line',
+  style: {
+    fg: 'blue',
+    bg: 'default',
+    border: {
+      fg: 'default',
+      bg: 'default'
+    },
+    selected: {
+      bg: 'green'
+    }
   },
   width: '50%',
   height: '50%',
   top: 'center',
   left: 'center',
-  selectedBg: 'green',
   items: [
     'one',
     'two',
@@ -104,14 +116,18 @@ list.on('select', function(item, select) {
 });
 
 var progress = blessed.progressbar({
-  fg: 'blue',
-  bg: 'default',
-  barBg: 'default',
-  barFg: 'blue',
-  border: {
-    type: 'ascii',
-    fg: 'default',
-    bg: 'default'
+  border: 'line',
+  style: {
+    fg: 'blue',
+    bg: 'default',
+    bar: {
+      bg: 'default',
+      fg: 'blue'
+    },
+    border: {
+      fg: 'default',
+      bg: 'default'
+    }
   },
   ch: ':',
   //orientation: 'vertical',
@@ -136,12 +152,14 @@ var stext = blessed.scrollabletext({
   //padding: 1,
   mouse: true,
   content: lorem,
-  fg: 'blue',
-  bg: 'black',
-  border: {
-    type: 'ascii',
-    fg: 'default',
-    bg: 'default'
+  border: 'line',
+  style: {
+    fg: 'blue',
+    bg: 'black',
+    border: {
+      fg: 'default',
+      bg: 'default'
+    }
   },
   width: '50%',
   //height: 4,
@@ -175,14 +193,18 @@ screen.on('element focus', function(cur, old) {
 var input = blessed.textbox({
   label: ' My Input ',
   content: '',
-  fg: 'blue',
-  bg: 'default',
-  barBg: 'default',
-  barFg: 'blue',
-  border: {
-    type: 'ascii',
-    fg: 'default',
-    bg: 'default'
+  border: 'line',
+  style: {
+    fg: 'blue',
+    bg: 'default',
+    bar: {
+      bg: 'default',
+      fg: 'blue'
+    },
+    border: {
+      fg: 'default',
+      bg: 'default'
+    }
   },
   width: '30%',
   height: 3,
@@ -207,11 +229,11 @@ var button = blessed.button({
   content: 'Click\nme!',
   shrink: true,
   mouse: true,
-  border: {
-    type: 'ascii'
+  border: 'line',
+  style: {
+    fg: 'red',
+    bg: 'blue'
   },
-  fg: 'red',
-  bg: 'blue',
   //height: 3,
   right: 4,
   //bottom: 6,
