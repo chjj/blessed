@@ -16,7 +16,9 @@ var main = blessed.box({
   //height: '75%',
   width: 115,
   height: 14,
-  bg: 'yellow',
+  style: {
+    bg: 'yellow'
+  },
   top: 2,
   left: 2,
   content: 'Welcome to my program'
@@ -29,7 +31,9 @@ var inner = blessed.box({
   height: '50%',
   //width: 57,
   //height: 7,
-  bg: 'blue',
+  style: {
+    bg: 'blue'
+  },
   top: 2,
   left: 2,
   content: 'Hello'

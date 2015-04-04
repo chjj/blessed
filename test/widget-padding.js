@@ -7,10 +7,10 @@ screen = blessed.screen({
 
 blessed.box({
   parent: screen,
-  border: {
-    type: 'ascii',
+  border: 'line',
+  style: {
+    bg: 'red',
   },
-  bg: 'red',
   content: 'hello world\nhi',
   align: 'center',
   left: 'center',

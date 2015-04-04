@@ -15,7 +15,9 @@ var outer = blessed.box({
   top: 'center',
   padding: 1,
   shrink: true,
-  bg: 'green'
+  style: {
+    bg: 'green'
+  }
 });
 
 var inner = blessed.box({
@@ -28,7 +30,9 @@ var inner = blessed.box({
   content: 'foobar',
   //padding: 1,
   //content: 'f',
-  bg: 'magenta'
+  style: {
+    bg: 'magenta'
+  }
 });
 
 screen.key('q', function() {

@@ -28,7 +28,9 @@ blessed.box({
   top: 'center',
   width: '50%',
   height: 2,
-  bg: 'green',
+  style: {
+    bg: 'green'
+  },
   content: 'This will disallow CSR.'
 });
 expectClean(false);
@@ -40,10 +42,10 @@ blessed.box({
   top: 'center',
   width: '80%',
   height: '80%',
-  bg: 'green',
-  border: {
-    type: 'ascii'
+  style: {
+    bg: 'green'
   },
+  border: 'line',
   content: 'CSR should still work.'
 });
 expectClean(true);
@@ -51,9 +53,7 @@ expectClean(true);
 var text = blessed.scrollabletext({
   parent: screen,
   content: lorem,
-  border: {
-    type: 'ascii'
-  },
+  border: 'line',
   left: 'center',
   top: 'center',
   width: '100%',

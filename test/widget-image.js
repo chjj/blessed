@@ -20,7 +20,9 @@ var image = blessed.image({
   top: 'center',
   width: 'shrink',
   height: 'shrink',
-  bg: 'green'
+  style: {
+    bg: 'green'
+  }
 });
 
 setTimeout(function() {

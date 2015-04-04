@@ -1003,8 +1003,8 @@ hidden).
 ##### Methods:
 
 - inherits all from Box.
-- __input/setInput/readInput(callback)__ - show the prompt and wait for the
-  result of the textbox.
+- __input/setInput/readInput(text, value, callback)__ - show the prompt and
+  wait for the result of the textbox. set text and initial value.
 
 
 #### Question (from Box)

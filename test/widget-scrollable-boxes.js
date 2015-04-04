@@ -14,10 +14,10 @@ var box = blessed.box({
   top: 'center',
   width: '80%',
   height: '80%',
-  bg: 'green',
-  border: {
-    type: 'ascii'
+  style: {
+    bg: 'green'
   },
+  border: 'line',
   content: 'foobar',
   keys: true,
   vi: true,
@@ -63,9 +63,7 @@ var box2 = blessed.box({
   top: 20,
   width: '80%',
   height: 9,
-  border: {
-    type: 'ascii'
-  },
+  border: 'line',
   style: {
     bg: 'magenta',
     focus: {
@@ -74,14 +72,16 @@ var box2 = blessed.box({
     hover: {
       bg: 'red'
     }
+    // scrollbar: {
+    //   inverse: true
+    // }
   },
   keys: true,
   vi: true,
-  alwaysScroll: true,
-  scrollbar_: {
-    ch: ' ',
-    inverse: true
-  }
+  alwaysScroll: true
+  // scrollbar: {
+  //   ch: ' '
+  // }
 });
 
 var box3 = blessed.box({
@@ -97,9 +97,7 @@ var box3 = blessed.box({
   width: 5,
   //width: '80%',
   //height: 5,
-  border: {
-    type: 'ascii'
-  },
+  border: 'line',
   style: {
     bg: 'yellow',
     focus: {
@@ -108,14 +106,16 @@ var box3 = blessed.box({
     hover: {
       bg: 'red'
     }
+    // scrollbar: {
+    //   inverse: true
+    // }
   },
   keys: true,
   vi: true,
-  alwaysScroll: true,
-  scrollbar_: {
-    ch: ' ',
-    inverse: true
-  }
+  alwaysScroll: true
+  // scrollbar: {
+  //   ch: ' '
+  // }
 });
 
 screen.key('q', function() {

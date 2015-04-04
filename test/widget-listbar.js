@@ -26,9 +26,7 @@ var bar = blessed.listbar({
   mouse: true,
   keys: true,
   autoCommandKeys: true,
-  border: {
-    type: 'line'
-  },
+  border: 'line',
   vi: true,
   style: {
     bg: 'green',

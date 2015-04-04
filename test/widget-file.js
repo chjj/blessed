@@ -8,10 +8,12 @@ var screen = blessed.screen({
 
 var fm = blessed.filemanager({
   parent: screen,
-  border: {
-    type: 'ascii'
+  border: 'line',
+  style: {
+    selected: {
+      bg: 'blue'
+    }
   },
-  selectedBg: 'blue',
   height: 'half',
   width: 'half',
   top: 'center',
@@ -28,10 +30,10 @@ var fm = blessed.filemanager({
 
 var box = blessed.box({
   parent: screen,
-  bg: 'green',
-  border: {
-    type: 'ascii'
+  style: {
+    bg: 'green'
   },
+  border: 'line',
   height: 'half',
   width: 'half',
   top: 'center',

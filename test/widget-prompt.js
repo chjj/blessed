@@ -9,9 +9,7 @@ var screen = blessed.screen({
 
 var prompt = blessed.prompt({
   parent: screen,
-  border: {
-    type: 'ascii'
-  },
+  border: 'line',
   height: 'shrink',
   width: 'half',
   top: 'center',
@@ -24,9 +22,7 @@ var prompt = blessed.prompt({
 
 var question = blessed.question({
   parent: screen,
-  border: {
-    type: 'ascii'
-  },
+  border: 'line',
   height: 'shrink',
   width: 'half',
   top: 'center',
@@ -39,9 +35,7 @@ var question = blessed.question({
 
 var msg = blessed.message({
   parent: screen,
-  border: {
-    type: 'ascii'
-  },
+  border: 'line',
   height: 'shrink',
   width: 'half',
   top: 'center',
@@ -55,9 +49,7 @@ var msg = blessed.message({
 
 var loader = blessed.loading({
   parent: screen,
-  border: {
-    type: 'ascii'
-  },
+  border: 'line',
   height: 'shrink',
   width: 'half',
   top: 'center',
