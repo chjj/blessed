@@ -261,6 +261,24 @@ The screen on which every other node renders.
 - __ignoreLocked__ - Array of keys in their full format (e.g. `C-c`) to ignore
   when keys are locked. Useful for creating a key that will _always_ exit no
   matter whether the keys are locked.
+- __dockBorders__ - automatically "dock" borders with other elements instead of
+  overlapping, depending on position (__experimental__). for example:
+
+These border-overlapped elements:
+
+```
+┌─────────┌─────────┐
+│ box1    │ box2    │
+└─────────└─────────┘
+```
+
+Become:
+
+```
+┌─────────┬─────────┐
+│ box1    │ box2    │
+└─────────┴─────────┘
+```
 
 ##### Properties:
 
@@ -405,6 +423,9 @@ The base element.
 - __scrollable__ - whether the element is scrollable or not.
 - __ch__ - background character (default is whitespace ` `).
 - __draggable__ - allow the element to be dragged with the mouse.
+- __dockBorders__ - automatically "dock" borders with other elements instead of
+  overlapping, depending on position (__experimental__). see Screen
+  documentation of `dockBorders` option.
 
 ##### Properties:
 
