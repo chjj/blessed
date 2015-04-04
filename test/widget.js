@@ -14,13 +14,13 @@ screen = blessed.screen({
   debug: true
 });
 
-screen._debugLog.parseTags = true;
+screen.debugLog.parseTags = true;
 var logs = '';
 require('./tail')(__dirname + '/logs/widget.log').on('line', function(line) {
-  if (!screen._debugLog.hidden) return;
+  if (!screen.debugLog.hidden) return;
   logs += line + '\n';
 });
-screen._debugLog.on('show', function() {
+screen.debugLog.on('show', function() {
   if (logs) {
     screen.debug(logs);
     logs = '';
