@@ -1179,7 +1179,7 @@ A stylized table of text elements with a list.
 
 ##### Methods:
 
-- inherits all from Box.
+- inherits all from List.
 - __setRows/setData(rows)__ - set rows in table. array of arrays of strings.
 ``` js
   table.setData([
