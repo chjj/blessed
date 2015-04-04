@@ -101,7 +101,8 @@ var icon = blessed.image({
   left: 0,
   width: 'shrink',
   height: 'shrink',
-  file: __dirname + '/my-program-icon.png'
+  file: __dirname + '/my-program-icon.png',
+  search: false
 });
 
 // If our box is clicked, change the content.
