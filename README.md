@@ -501,7 +501,8 @@ The base element.
 - __setLabel(text/options)__ - set the label text for the top-left corner.
   example options: `{text:'foo',side:'left'}`
 - __removeLabel()__ - remove the label completely.
-- __setHover(text/options)__ - set the hover text for the bottom-right corner.
+- __setHover(text/options)__ - set a hover text box to follow the cursor.
+  similar to the "title" DOM attribute in the browser.
   example options: `{text:'foo'}`
 - __removeHover()__ - remove the hover label completely.
 - __enableMouse()__ - enable mouse events for the element (automatically called when a form of on('mouse') is bound).
