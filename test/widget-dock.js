@@ -107,6 +107,7 @@ var over = blessed.box({
   top: 'center',
   width: '50%',
   height: '50%',
+  draggable: true,
   border: {
     type: 'line',
     left: false,
