@@ -5,6 +5,7 @@ screen = blessed.screen({
   dump: __dirname + '/logs/widget.log',
   title: 'widget test',
   resizeTimeout: 300,
+  dockBorders: true,
   cursor: {
     artificial: true,
     shape: 'line',
