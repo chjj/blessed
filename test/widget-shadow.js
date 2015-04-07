@@ -28,13 +28,9 @@ var over = blessed.box({
   width: '50%',
   height: '50%',
   style: {
-    bg: 'red',
-    transparent: true
+    bg: 'red'
   },
-  border: 'line',
-  draggable: true,
-  tags: true,
-  content: '{yellow-fg}{bold} --Foo-- {/}'
+  content: 'Foo'
 });
 
 screen.key('q', function() {
