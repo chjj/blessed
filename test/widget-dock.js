@@ -7,43 +7,71 @@ screen = blessed.screen({
   dockBorders: true
 });
 
-blessed.box({
+var topleft = blessed.box({
   parent: screen,
   left: 0,
   top: 0,
   width: '50%',
   height: '50%',
-  border: 'line',
+  border: {
+    type: 'line',
+    left: false,
+    top: false,
+    right: true,
+    bottom: false
+  },
+  // border: 'line',
   content: 'Foo'
 });
 
-blessed.box({
+var topright = blessed.box({
   parent: screen,
   left: '50%-1',
   top: 0,
   width: '50%+1',
   height: '50%',
-  content: 'Bar',
-  border: 'line'
+  border: {
+    type: 'line',
+    left: true,
+    top: false,
+    right: false,
+    bottom: false
+  },
+  // border: 'line',
+  content: 'Bar'
 });
 
-blessed.box({
+var bottomleft = blessed.box({
   parent: screen,
   left: 0,
   top: '50%-1',
   width: '50%',
   height: '50%+1',
+  border: {
+    type: 'line',
+    left: false,
+    top: true,
+    right: false,
+    bottom: false
+  },
   border: 'line',
   content: 'Foo'
 });
 
-blessed.listtable({
+var bottomright = blessed.listtable({
   parent: screen,
   left: '50%-1',
   top: '50%-1',
   width: '50%+1',
   height: '50%+1',
-  border: 'line',
+  border: {
+    type: 'line',
+    left: true,
+    top: true,
+    right: false,
+    bottom: false
+  },
+  // border: 'line',
   align: 'center',
   tags: true,
   keys: true,
@@ -68,17 +96,36 @@ blessed.listtable({
     [ 'T-Rex',    'Taco',   '8:45am',  'Three'   ],
     [ 'Mouse',    'Cheese', '9:05am',  'Four'    ]
   ]
-}).focus();
+});
 
-// blessed.box({
-//   parent: screen,
-//   left: '50%-1',
-//   top: '50%-1',
-//   width: '50%+1',
-//   height: '50%+1',
-//   border: 'line',
-//   content: 'Bar'
-// });
+bottomright.focus();
+
+var over = blessed.box({
+  parent: screen,
+  hidden: true,
+  left: 'center',
+  top: 'center',
+  width: '50%',
+  height: '50%',
+  border: {
+    type: 'line',
+    left: false,
+    top: true,
+    right: true,
+    bottom: true
+  },
+  content: 'Foo'
+});
+
+screen.on('keypress', function() {
+  over.toggle();
+  screen.render();
+});
+
+screen.key('escape', function() {
+  over.hide();
+  screen.render();
+});
 
 screen.key('q', function() {
   return process.exit(0);
