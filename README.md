@@ -426,9 +426,7 @@ The base element.
 - __scrollable__ - whether the element is scrollable or not.
 - __ch__ - background character (default is whitespace ` `).
 - __draggable__ - allow the element to be dragged with the mouse.
-- __dockBorders__ - automatically "dock" borders with other elements instead of
-  overlapping, depending on position (__experimental__). see Screen
-  documentation of `dockBorders` option.
+- __shadow__ - draw a translucent offset shadow behind the element.
 
 ##### Properties:
 
