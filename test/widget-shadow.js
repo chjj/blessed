@@ -20,6 +20,20 @@ var bg = blessed.box({
   content: 'Foo'
 });
 
+var under = blessed.box({
+  parent: screen,
+  shadow: true,
+  left: 2,
+  top: 2,
+  width: '30%',
+  height: '20%',
+  style: {
+    bg: 'yellow'
+  },
+  border: 'line',
+  tags: true
+});
+
 var over = blessed.box({
   parent: screen,
   shadow: true,
@@ -28,9 +42,13 @@ var over = blessed.box({
   width: '50%',
   height: '50%',
   style: {
-    bg: 'red'
+    bg: 'red',
+    transparent: true
   },
-  content: 'Foo'
+  border: 'line',
+  draggable: true,
+  tags: true,
+  content: '{green-bg}{red-fg}{bold} --Drag Me-- {/}'
 });
 
 screen.key('q', function() {
