@@ -102,7 +102,6 @@ bottomright.focus();
 
 var over = blessed.box({
   parent: screen,
-  hidden: true,
   left: 'center',
   top: 'center',
   width: '50%',
@@ -115,17 +114,7 @@ var over = blessed.box({
     right: true,
     bottom: true
   },
-  content: 'Foo'
-});
-
-screen.on('keypress', function() {
-  over.toggle();
-  screen.render();
-});
-
-screen.key('escape', function() {
-  over.hide();
-  screen.render();
+  content: 'Drag Me'
 });
 
 screen.key('q', function() {
