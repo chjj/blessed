@@ -507,6 +507,7 @@ The base element.
 - __enableKeys()__ - enable keypress events for the element (automatically called when a form of on('keypress') is bound).
 - __enableInput()__ - enable key and mouse events. calls bot enableMouse and enableKeys.
 - __enableDrag()__ - enable dragging of the element.
+- __disableDrag()__ - disable dragging of the element.
 
 ###### Content Methods
 
