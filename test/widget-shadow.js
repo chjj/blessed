@@ -23,10 +23,10 @@ var bg = blessed.box({
 var under = blessed.box({
   parent: screen,
   shadow: true,
-  left: 2,
-  top: 2,
-  width: '30%',
-  height: '20%',
+  left: 10,
+  top: 4,
+  width: '40%',
+  height: '30%',
   style: {
     bg: 'yellow'
   },
