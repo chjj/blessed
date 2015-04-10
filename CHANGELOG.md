@@ -1,6 +1,6 @@
 # Blessed v0.1.0 - new terminal goodies for node.js
 
-![blessed](https://raw.githubusercontent.com/chjj/blessed/master/img/v0.1.0.gif)
+![blessed](https://raw.githubusercontent.com/chjj/blessed/master/img/v0.1.0-3.gif)
 
 The features demonstrated in the above gif __element transparency/shadow__ and
 __border docking__.
