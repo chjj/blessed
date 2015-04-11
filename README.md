@@ -2,7 +2,7 @@
 
 A curses-like library with a high level terminal interface API for node.js.
 
-![blessed](https://raw.github.com/chjj/blessed/master/img/screenshot.png)
+![blessed](https://raw.githubusercontent.com/chjj/blessed/master/img/v0.1.0-1.gif)
 
 Blessed is over 16,000 lines of code and terminal goodness. It's completely
 implemented in javascript, and its goal consists of two things:
