@@ -264,6 +264,8 @@ The screen on which every other node renders.
   matter whether the keys are locked.
 - __dockBorders__ - automatically "dock" borders with other elements instead of
   overlapping, depending on position (__experimental__). for example:
+- __doubleWidth__ - allow for rendering of East Asian double-width characters.
+  this is behind an option because it may affect performance negatively.
 
 These border-overlapped elements:
 
