@@ -265,14 +265,17 @@ The screen on which every other node renders.
 - __dockBorders__ - automatically "dock" borders with other elements instead of
   overlapping, depending on position (__experimental__). for example:
   These border-overlapped elements:
-      ┌─────────┌─────────┐
-      │ box1    │ box2    │
-      └─────────└─────────┘
+```
+┌─────────┌─────────┐
+│ box1    │ box2    │
+└─────────└─────────┘
+```
   Become:
-      ┌─────────┬─────────┐
-      │ box1    │ box2    │
-      └─────────┴─────────┘
-
+```
+┌─────────┬─────────┐
+│ box1    │ box2    │
+└─────────┴─────────┘
+```
 - __fullUnicode__ - allow for rendering of East Asian double-width characters.
   also enable proper rendering of utf-16 surrogate pairs. this allows you to
   display text above the basic multilingual plane. this is behind an option
