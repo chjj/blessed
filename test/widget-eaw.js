@@ -5,7 +5,7 @@ screen = blessed.screen({
   dump: __dirname + '/logs/eaw.log',
   smartCSR: true,
   dockBorders: true,
-  fullUnicode: true
+  fullUnicode: process.argv[2] === '-' ? false : true
 });
 
 // screen.options.fullUnicode = false;
