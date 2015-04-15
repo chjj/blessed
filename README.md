@@ -264,6 +264,15 @@ The screen on which every other node renders.
   matter whether the keys are locked.
 - __dockBorders__ - automatically "dock" borders with other elements instead of
   overlapping, depending on position (__experimental__). for example:
+  These border-overlapped elements:
+      ┌─────────┌─────────┐
+      │ box1    │ box2    │
+      └─────────└─────────┘
+  Become:
+      ┌─────────┬─────────┐
+      │ box1    │ box2    │
+      └─────────┴─────────┘
+
 - __fullUnicode__ - allow for rendering of East Asian double-width characters.
   also enable proper rendering of utf-16 surrogate pairs. this allows you to
   display text above the basic multilingual plane. this is behind an option
@@ -272,22 +281,6 @@ The screen on which every other node renders.
   `??` and `?` respectively. (NOTE: libvte (e.g. gnome-terminal) cannot display
   characters that are both surrogate pairs _and_ double-width properly. there
   is no way for blessed to fix this unfortunately).
-
-These border-overlapped elements:
-
-```
-┌─────────┌─────────┐
-│ box1    │ box2    │
-└─────────└─────────┘
-```
-
-Become:
-
-```
-┌─────────┬─────────┐
-│ box1    │ box2    │
-└─────────┴─────────┘
-```
 
 ##### Properties:
 
