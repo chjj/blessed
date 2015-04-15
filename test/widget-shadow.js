@@ -51,6 +51,28 @@ var over = blessed.box({
   content: '{green-bg}{red-fg}{bold} --Drag Me-- {/}'
 });
 
+over.key('left', function() {
+  over.left -= 2;
+  screen.render();
+});
+
+over.key('up', function() {
+  over.top -= 1;
+  screen.render();
+});
+
+over.key('right', function() {
+  over.left += 2;
+  screen.render();
+});
+
+over.key('down', function() {
+  over.top += 1;
+  screen.render();
+});
+
+over.focus();
+
 screen.key('q', function() {
   return process.exit(0);
 });
