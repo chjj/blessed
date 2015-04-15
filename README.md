@@ -264,11 +264,12 @@ The screen on which every other node renders.
   matter whether the keys are locked.
 - __dockBorders__ - automatically "dock" borders with other elements instead of
   overlapping, depending on position (__experimental__). for example:
-- __doubleWidth__ - allow for rendering of East Asian double-width characters.
-  this is behind an option because it may affect performance negatively.
-- __doubleWidthPerfect__ - handle high code point double-width characters,
-  without this option, high code point double width characters just show up as
-  `?`. that being said, this option will slow content parsing a fair amount.
+- __fullUnicode__ - allow for rendering of East Asian double-width characters.
+  also enable proper rendering of utf-16 surrogate pairs. this allows you to
+  display text above the basic multilingual plane. this is behind an option
+  because it may affect performance slightly negatively. without this option
+  enabled, all double-width and surrogate pair characters will be replaced by
+  `??` and `?` respectively.
 
 These border-overlapped elements:
 

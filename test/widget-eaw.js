@@ -5,12 +5,30 @@ screen = blessed.screen({
   dump: __dirname + '/logs/eaw.log',
   smartCSR: true,
   dockBorders: true,
-  doubleWidth: true,
-  doubleWidthPerfect: true
+  fullUnicode: true
 });
 
-var DW = '杜';
-var DW2 = String.fromCodePoint ? String.fromCodePoint(0x30000) : 'a';
+// screen.options.fullUnicode = false;
+// screen.fullUnicode = false;
+// screen._unicode = false;
+// screen.tput.unicode = false;
+// screen.tput.numbers.U8 = -1;
+// screen.tput.strings.enter_alt_charset_mode = false;
+
+// var DOUBLE = '杜';
+var DOUBLE = String.fromCodePoint
+  ? String.fromCodePoint(0x675c)
+  : String.fromCharCode(0x675c);
+
+// var SURROGATE_DOUBLE = '𰀀';
+var SURROGATE_DOUBLE = String.fromCodePoint
+  ? String.fromCodePoint(0x30000)
+  : String.fromCharCode(0xD880, 0xDC00);
+
+// var SURROGATE_SINGLE = '𝌆';
+var SURROGATE_SINGLE = String.fromCodePoint
+  ? String.fromCodePoint(0x1D306)
+  : String.fromCharCode(0xD834, 0xDF06);
 
 // At cols=44, the bug that is avoided by this occurs:
 // || angles[line[x + 1][1]]) {
@@ -60,8 +78,9 @@ var lorem = 'Non eram nescius Brute cum quae summis ingeniis exquisitaque'
 + ' isdem de rebus alia ratione compositis quid est cur nostri a nostris non'
 + ' legantur';
 
-lorem = lorem.replace(/e/gi, DW);
-lorem = lorem.replace(/a/gi, DW2);
+lorem = lorem.replace(/e/gi, DOUBLE);
+lorem = lorem.replace(/a/gi, SURROGATE_DOUBLE);
+lorem = lorem.replace(/o/gi, SURROGATE_SINGLE);
 
 var main = blessed.box({
   parent: screen,
