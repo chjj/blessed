@@ -266,6 +266,9 @@ The screen on which every other node renders.
   overlapping, depending on position (__experimental__). for example:
 - __doubleWidth__ - allow for rendering of East Asian double-width characters.
   this is behind an option because it may affect performance negatively.
+- __doubleWidthPerfect__ - handle high code point double-width characters,
+  without this option, high code point double width characters just show up as
+  `?`. that being said, this option will slow content parsing a fair amount.
 
 These border-overlapped elements:
 
