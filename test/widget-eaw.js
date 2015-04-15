@@ -5,10 +5,12 @@ screen = blessed.screen({
   dump: __dirname + '/logs/eaw.log',
   smartCSR: true,
   dockBorders: true,
-  doubleWidth: true
+  doubleWidth: true,
+  doubleWidthPerfect: true
 });
 
 var DW = '杜';
+var DW2 = String.fromCodePoint ? String.fromCodePoint(0x30000) : 'a';
 
 // At cols=44, the bug that is avoided by this occurs:
 // || angles[line[x + 1][1]]) {
@@ -59,6 +61,7 @@ var lorem = 'Non eram nescius Brute cum quae summis ingeniis exquisitaque'
 + ' legantur';
 
 lorem = lorem.replace(/e/gi, DW);
+lorem = lorem.replace(/a/gi, DW2);
 
 var main = blessed.box({
   parent: screen,
