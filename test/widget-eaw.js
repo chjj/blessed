@@ -79,7 +79,11 @@ var lorem = 'Non eram nescius Brute cum quae summis ingeniis exquisitaque'
 + ' legantur';
 
 lorem = lorem.replace(/e/gi, DOUBLE);
-lorem = lorem.replace(/a/gi, SURROGATE_DOUBLE);
+// NOTE: libvte breaks when trying to display
+// this surrogate pair double width character:
+if (process.argv[2] !== 'vte') {
+  lorem = lorem.replace(/a/gi, SURROGATE_DOUBLE);
+}
 lorem = lorem.replace(/o/gi, SURROGATE_SINGLE);
 
 var main = blessed.box({
