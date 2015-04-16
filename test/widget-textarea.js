@@ -2,7 +2,8 @@ var blessed = require('../')
   , screen;
 
 screen = blessed.screen({
-  dump: __dirname + '/logs/textarea.log'
+  dump: __dirname + '/logs/textarea.log',
+  fullUnicode: true
 });
 
 var box = blessed.textarea({
