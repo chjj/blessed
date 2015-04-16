@@ -31,10 +31,16 @@ var SURROGATE_SINGLE = String.fromCodePoint
   ? String.fromCodePoint(0x1D306)
   : String.fromCharCode(0xD834, 0xDF06);
 
+var COMBINE = String.fromCodePoint
+  ? String.fromCodePoint(0x0300)
+  : String.fromCharCode(0x0300);
+
+var COMBINE = blessed.unicode.fromCodePoint(0x10A01);
+
 // At cols=44, the bug that is avoided by this occurs:
 // || angles[line[x + 1][1]]) {
 
-var lorem = 'Non eram nescius Brute cum quae summis ingeniis exquisitaque'
+var lorem = 'Non eram nes' + COMBINE + 'cius Brute cum quae summis ingeniis exquisitaque'
 + ' doctrina philosophi Graeco sermone tractavissent ea Latinis litteris mandaremus'
 + ' fore ut hic noster labor in varias reprehensiones incurreret nam quibusdam et'
 + ' iis quidem non admodum indoctis totum hoc displicet philosophari quidam autem'
