@@ -695,6 +695,8 @@ A scrollable list which can display selectable items.
   item that is found in `items`.
 - __interactive__ - whether the list is interactive and can have items selected
   (default: true).
+- __invertSelected__ - whether to automatically override tags and invert fg of
+  item when selected (default: `true`).
 
 ##### Properties:
 
