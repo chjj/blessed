@@ -5,7 +5,7 @@ screen = blessed.screen({
   dump: __dirname + '/logs/eaw.log',
   smartCSR: true,
   dockBorders: true,
-  fullUnicode: process.argv[2] === '-' ? false : true
+  fullUnicode: ~process.argv.indexOf('-') ? false : true
 });
 
 // screen.options.fullUnicode = false;
@@ -40,7 +40,8 @@ var COMBINE = blessed.unicode.fromCodePoint(0x10A01);
 // At cols=44, the bug that is avoided by this occurs:
 // || angles[line[x + 1][1]]) {
 
-var lorem = 'Non eram nes' + COMBINE + 'cius Brute cum quae summis ingeniis exquisitaque'
+var lorem = 'Non eram nes' + (!~process.argv.indexOf('s') ? COMBINE : '')
++ 'cius Brute cum quae summis ingeniis exquisitaque'
 + ' doctrina philosophi Graeco sermone tractavissent ea Latinis litteris mandaremus'
 + ' fore ut hic noster labor in varias reprehensiones incurreret nam quibusdam et'
 + ' iis quidem non admodum indoctis totum hoc displicet philosophari quidam autem'
@@ -88,10 +89,13 @@ var lorem = 'Non eram nes' + COMBINE + 'cius Brute cum quae summis ingeniis exqu
 lorem = lorem.replace(/e/gi, DOUBLE);
 // NOTE: libvte breaks when trying to display
 // this surrogate pair double width character:
-if (process.argv[2] !== 'vte') {
+if (~process.argv.indexOf('vte')) {
   lorem = lorem.replace(/a/gi, SURROGATE_DOUBLE);
 }
 lorem = lorem.replace(/o/gi, SURROGATE_SINGLE);
+if (~process.argv.indexOf('s')) {
+  lorem = lorem.replace(/s/gi, 's' + COMBINE);
+}
 
 var main = blessed.box({
   parent: screen,
