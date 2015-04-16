@@ -69,9 +69,11 @@ var list = blessed.list({
   height: '50%',
   top: 'center',
   left: 'center',
+  tags: true,
+  invertSelected: false,
   items: [
     'one',
-    'two',
+    '{red-fg}two{/red-fg}',
     'three',
     'four',
     'five',
