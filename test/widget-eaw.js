@@ -17,6 +17,7 @@ screen = blessed.screen({
 // screen.tput.strings.enter_alt_charset_mode = false;
 
 // var DOUBLE = '杜';
+// '杜'
 var DOUBLE = String.fromCodePoint
   ? String.fromCodePoint(0x675c)
   : String.fromCharCode(0x675c);
