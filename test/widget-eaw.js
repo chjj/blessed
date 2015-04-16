@@ -19,6 +19,7 @@ screen = blessed.screen({
 var DOUBLE = String.fromCodePoint
   ? String.fromCodePoint(0x675c)
   : String.fromCharCode(0x675c);
+// var DOUBLE = String.fromCodePoint(0x1F250);
 
 // var SURROGATE_DOUBLE = '𰀀';
 var SURROGATE_DOUBLE = String.fromCodePoint
