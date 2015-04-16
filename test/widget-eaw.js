@@ -5,6 +5,7 @@ screen = blessed.screen({
   dump: __dirname + '/logs/eaw.log',
   smartCSR: true,
   dockBorders: true,
+  useBCE: true,
   fullUnicode: ~process.argv.indexOf('-') ? false : true
 });
 
