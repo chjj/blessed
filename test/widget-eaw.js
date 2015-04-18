@@ -16,12 +16,19 @@ screen = blessed.screen({
 // screen.tput.numbers.U8 = -1;
 // screen.tput.strings.enter_alt_charset_mode = false;
 
-// var DOUBLE = '杜';
-// '杜'
-var DOUBLE = String.fromCodePoint
-  ? String.fromCodePoint(0x675c)
-  : String.fromCharCode(0x675c);
+// du juan (dou gyun?)
+var DU = '杜';
+var JUAN = '鹃';
+
+// var DU = String.fromCodePoint
+//   ? String.fromCodePoint(0x675c)
+//   : String.fromCharCode(0x675c);
+
+// var DOUBLE = DU;
 // var DOUBLE = String.fromCodePoint(0x1F250);
+
+// one flew over the 杜鹃's nest.
+var DOUBLE = DU + JUAN;
 
 // var SURROGATE_DOUBLE = '𰀀';
 var SURROGATE_DOUBLE = String.fromCodePoint
@@ -89,6 +96,8 @@ var lorem = 'Non eram nes' + (!~process.argv.indexOf('s') ? COMBINE : '')
 + ' legantur';
 
 lorem = lorem.replace(/e/gi, DOUBLE);
+//lorem = lorem.replace(/e/gi, DU);
+//lorem = lorem.replace(/r/gi, JUAN);
 // NOTE: libvte breaks when trying to display
 // this surrogate pair double width character:
 if (~process.argv.indexOf('vte')) {
