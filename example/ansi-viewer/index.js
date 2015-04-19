@@ -70,7 +70,7 @@ var list = blessed.list({
   search: function(callback) {
     prompt.input('Search:', '', function(err, value) {
       if (err) return;
-      return callback(value);
+      return callback(null, value);
     });
   }
 });
