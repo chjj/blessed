@@ -1,5 +1,5 @@
 /**
- * ansi-art-viewer
+ * ansi-viewer
  * ANSI art viewer for node.
  * Copyright (c) 2015, Christopher Jeffrey and contributors (MIT License).
  * https://github.com/chjj/blessed
@@ -19,6 +19,10 @@ var map = urls.reduce(function(map, url) {
   map[/([^.\/]+\/[^.\/]+)\.ans$/.exec(url)[1]] = url;
   return map;
 }, {});
+
+var max = Object.keys(map).reduce(function(out, text) {
+  return Math.max(out, text.length);
+}, 0) + 6;
 
 screen = blessed.screen({
   smartCSR: true,
@@ -41,8 +45,8 @@ var list = blessed.list({
   draggable: true,
   top: 0,
   right: 0,
-  width: '40%',
-  height: '40%',
+  width: max,
+  height: '50%',
   keys: true,
   vi: true,
   mouse: true,
