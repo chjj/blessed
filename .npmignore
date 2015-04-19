@@ -1,3 +1,4 @@
 .git*
 test/
 img/
+node_modules/
