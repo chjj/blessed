@@ -10,5 +10,10 @@
   "homepage": "https://github.com/chjj/blessed",
   "bugs": { "url": "http://github.com/chjj/blessed/issues" },
   "keywords": ["ansi", "art"],
-  "tags": ["ansi", "art"]
+  "tags": ["ansi", "art"],
+  "dependencies": {
+    "blessed": ">=0.1.4",
+    "term.js": "0.0.4",
+    "request": "2.55.0"
+  }
 }
