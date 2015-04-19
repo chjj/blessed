@@ -154,7 +154,7 @@ list.on('select', function(url, selected) {
     }
 
     // Remove MCI codes:
-    body = body.replace(/%[A-Z]{2}/g, '');
+    body = body.replace(/%[A-Z0-9]{2}/g, '');
 
     // Reset and write the art:
     art.term.reset();
