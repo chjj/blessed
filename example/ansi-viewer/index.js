@@ -11,7 +11,7 @@ var blessed = require('../../')
   , screen;
 
 // $ wget -r -o log --tries=10 'http://artscene.textfiles.com/ansi/'
-// $ grep 'http.*\.ans$' log | awk '{ print $3 }' > blessed/ansi-art.list
+// $ grep 'http.*\.ans$' log | awk '{ print $3 }' > ansi-art.list
 
 var urls = fs.readFileSync(__dirname + '/ansi-art.list', 'utf8').trim().split('\n');
 
@@ -57,7 +57,6 @@ var list = blessed.list({
     }
   },
   style: {
-    //transparent: true,
     item: {
       hover: {
         bg: 'blue'
@@ -67,6 +66,12 @@ var list = blessed.list({
       bg: 'blue',
       bold: true
     }
+  },
+  search: function(callback) {
+    prompt.input('Search:', '', function(err, value) {
+      if (err) return;
+      return callback(value);
+    });
   }
 });
 
@@ -78,24 +83,84 @@ var status = blessed.box({
   width: 'shrink',
   style: {
     bg: 'blue'
-  }
+  },
+  content: 'Select your piece of ANSI art (`/` to search).'
+});
+
+var loader = blessed.loading({
+  parent: screen,
+  top: 'center',
+  left: 'center',
+  height: 5,
+  align: 'center',
+  width: '50%',
+  tags: true,
+  hidden: true,
+  border: 'line'
+});
+
+var msg = blessed.message({
+  parent: screen,
+  top: 'center',
+  left: 'center',
+  height: 'shrink',
+  width: '50%',
+  align: 'center',
+  tags: true,
+  hidden: true,
+  border: 'line'
+});
+
+var prompt = blessed.prompt({
+  parent: screen,
+  top: 'center',
+  left: 'center',
+  height: 'shrink',
+  width: 'shrink',
+  keys: true,
+  vi: true,
+  mouse: true,
+  tags: true,
+  content: 'Label:',
+  border: 'line',
+  hidden: true
 });
 
 list.setItems(Object.keys(map));
 
 list.on('select', function(url, selected) {
+  if (list._.rendering) return;
+
   url = map[url.getText()];
   status.setContent(url);
+
+  list._.rendering = true;
+  loader.load('Loading...');
+
   request(url, function(err, res, body) {
-    if (err || !body) return;
+    list._.rendering = false;
+    loader.stop();
+
+    if (err) {
+      return msg.error(err.message);
+    }
+
+    if (!body) {
+      return msg.error('No body.');
+    }
+
+    // Remove MCI codes:
+    body = body.replace(/%[A-Z]{2}/g, '');
+
+    // Reset and write the art:
     art.term.reset();
     art.term.write(body);
     art.term.cursorHidden = true;
+
     screen.render();
   });
 });
 
-list.select(0);
 list.focus();
 
 screen.key('q', function() {
