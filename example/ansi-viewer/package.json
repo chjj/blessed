@@ -1,0 +1,14 @@
+{
+  "name": "ansi-viewer",
+  "description": "ANSI art viewer for node",
+  "author": "Christopher Jeffrey",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "bin": "./index.js",
+  "preferGlobal": false,
+  "repository": "git://github.com/chjj/blessed.git",
+  "homepage": "https://github.com/chjj/blessed",
+  "bugs": { "url": "http://github.com/chjj/blessed/issues" },
+  "keywords": ["ansi", "art"],
+  "tags": ["ansi", "art"]
+}
