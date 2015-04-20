@@ -8,7 +8,8 @@
 var blessed = require('blessed')
   , request = require('request')
   , fs = require('fs')
-  , screen;
+  , cp = require('child_process')
+  , singlebyte = require('./singlebyte');
 
 // $ wget -r -o log --tries=10 'http://artscene.textfiles.com/ansi/'
 // $ grep 'http.*\.ans$' log | awk '{ print $3 }' > ansi-art.list
@@ -24,7 +25,7 @@ var max = Object.keys(map).reduce(function(out, text) {
   return Math.max(out, text.length);
 }, 0) + 6;
 
-screen = blessed.screen({
+var screen = blessed.screen({
   smartCSR: true,
   dockBorders: true
 });
@@ -140,7 +141,10 @@ list.on('select', function(url, selected) {
   list._.rendering = true;
   loader.load('Loading...');
 
-  request(url, function(err, res, body) {
+  request({
+    uri: url,
+    encoding: null
+  }, function(err, res, body) {
     list._.rendering = false;
     loader.stop();
 
@@ -152,15 +156,21 @@ list.on('select', function(url, selected) {
       return msg.error('No body.');
     }
 
-    // Remove MCI codes:
-    body = body.replace(/%[A-Z0-9]{2}/g, '');
+    return cp437ToUtf8(body, function(err, body) {
+      if (err) {
+        return msg.error(err.message);
+      }
 
-    // Reset and write the art:
-    art.term.reset();
-    art.term.write(body);
-    art.term.cursorHidden = true;
+      // Remove MCI codes:
+      //body = body.replace(/%[A-Z0-9]{2}/g, '');
 
-    screen.render();
+      // Reset and write the art:
+      art.term.reset();
+      art.term.write(body);
+      art.term.cursorHidden = true;
+
+      screen.render();
+    });
   });
 });
 
@@ -176,3 +186,18 @@ screen.key('h', function() {
 });
 
 screen.render();
+
+/**
+ * Helpers
+ */
+
+// https://github.com/chjj/blessed/issues/127
+// https://github.com/Mithgol/node-singlebyte
+
+function cp437ToUtf8(buf, callback) {
+  try {
+    return callback(null, singlebyte.bufToStr(buf, 'cp437'));
+  } catch (e) {
+    return callback(e);
+  }
+}
