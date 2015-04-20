@@ -161,8 +161,18 @@ list.on('select', function(url, selected) {
         return msg.error(err.message);
       }
 
+      if (process.argv[2] === '--debug') {
+        fs.writeFileSync(__dirname + '/../../output.ans', body);
+      }
+
+      // Remove text:
+      body = body.replace('Downloaded From P-80 International Information Systems 304-744-2253', '');
+
       // Remove MCI codes:
-      //body = body.replace(/%[A-Z0-9]{2}/g, '');
+      body = body.replace(/%[A-Z0-9]{2}/g, '');
+
+      // ^A (SOH) seems to need to produce CRLF in some cases:
+      body = body.replace(/\x01/g, '\r\n');
 
       // Reset and write the art:
       art.term.reset();
