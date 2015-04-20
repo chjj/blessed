@@ -125,7 +125,6 @@ var prompt = blessed.prompt({
   vi: true,
   mouse: true,
   tags: true,
-  content: 'Label:',
   border: 'line',
   hidden: true
 });
