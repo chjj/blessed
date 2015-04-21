@@ -227,18 +227,18 @@ function cp437ToUtf8(buf, callback) {
 }
 
 blessed.Element.prototype.screenshot = function(xi, xl, yi, yl) {
-  if (xi == null) xi = this.lpos.xi + this.ileft;
-  if (xl == null) xl = this.lpos.xl - this.iright;
-  if (yi == null) yi = this.lpos.yi + this.itop;
-  if (yl == null) yl = this.lpos.yl - this.ibottom;
+  xi = this.lpos.xi + this.ileft + (xi || 0);
+  xl = this.lpos.xl - this.iright + (xl || 0);
+  yi = this.lpos.yi + this.itop + (yi || 0);
+  yl = this.lpos.yl - this.ibottom + (yl || 0);
   return this.screen.screenshot(xi, xl, yi, yl);
 };
 
 blessed.Terminal.prototype.screenshot = function(xi, xl, yi, yl) {
-  if (xi == null) xi = 0;
-  if (xl == null) xl = this.term.lines[0].length;
-  if (yi == null) yi = 0;
-  if (yl == null) yl = this.term.lines.length;
+  xi = 0 + (xi || 0);
+  xl = this.term.lines[0].length + (xl || 0);
+  yi = 0 + (yi || 0);
+  yl = this.term.lines.length + (yl || 0);
   return this.screen.screenshot(xi, xl, yi, yl, this.term);
 };
 
