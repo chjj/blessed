@@ -228,17 +228,33 @@ function cp437ToUtf8(buf, callback) {
 
 blessed.Element.prototype.screenshot = function(xi, xl, yi, yl) {
   xi = this.lpos.xi + this.ileft + (xi || 0);
-  xl = this.lpos.xl - this.iright + (xl || 0);
+  if (xl != null) {
+    xl = this.lpos.xi + this.ileft + (xl || 0);
+  } else {
+    xl = this.lpos.xl - this.iright;
+  }
   yi = this.lpos.yi + this.itop + (yi || 0);
-  yl = this.lpos.yl - this.ibottom + (yl || 0);
+  if (yl != null) {
+    yl = this.lpos.yi + this.itop + (yl || 0);
+  } else {
+    yl = this.lpos.yl - this.ibottom;
+  }
   return this.screen.screenshot(xi, xl, yi, yl);
 };
 
 blessed.Terminal.prototype.screenshot = function(xi, xl, yi, yl) {
   xi = 0 + (xi || 0);
-  xl = this.term.lines[0].length + (xl || 0);
+  if (xl != null) {
+    xl = 0 + (xl || 0);
+  } else {
+    xl = this.term.lines[0].length;
+  }
   yi = 0 + (yi || 0);
-  yl = this.term.lines.length + (yl || 0);
+  if (yl != null) {
+    yl = 0 + (yl || 0);
+  } else {
+    yl = this.term.lines.length;
+  }
   return this.screen.screenshot(xi, xl, yi, yl, this.term);
 };
 
