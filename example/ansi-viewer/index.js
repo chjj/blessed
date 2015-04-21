@@ -190,7 +190,9 @@ list.on('select', function(el, selected) {
       screen.render();
 
       if (process.argv[2] === '--debug' || process.argv[2] === '--save') {
-        // var sgr = blessed.element.prototype.screenshot.call(art);
+        //var sgr = blessed.element.prototype.screenshot.call(art,
+        //  0 - art.ileft, art.width - art.iright,
+        //  0 - art.itop, art.height - art.ibottom);
         var sgr = art.screenshot();
         fs.writeFileSync(__dirname + '/' + filename + '.sgr', sgr);
       }
