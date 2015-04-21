@@ -190,14 +190,15 @@ list.on('select', function(el, selected) {
       screen.render();
 
       if (process.argv[2] === '--debug' || process.argv[2] === '--save') {
-        // XXX Could just save from terminal, that way the image doesn't get
-        // cut off. Add a `lines` param and convert special fg and bg values
-        // used in term.js.
+        // var sgr = screen.sgrRegion(
+        //   art.lpos.xi + art.ileft,
+        //   art.lpos.xl - art.iright,
+        //   art.lpos.yi + art.itop,
+        //   art.lpos.yl - art.ibottom);
         var sgr = screen.sgrRegion(
-          art.lpos.xi + art.ileft,
-          art.lpos.xl - art.iright,
-          art.lpos.yi + art.itop,
-          art.lpos.yl - art.ibottom);
+          0, art.term.lines[0].length,
+          0, art.term.lines.length,
+          art.term);
         fs.writeFileSync(__dirname + '/' + filename + '.sgr', sgr);
       }
     });
@@ -232,7 +233,7 @@ function cp437ToUtf8(buf, callback) {
   }
 }
 
-screen.__proto__.sgrRegion = function(xi, xl, yi, yl) {
+screen.__proto__.sgrRegion = function(xi, xl, yi, yl, term) {
   var x
     , y
     , line
@@ -243,33 +244,53 @@ screen.__proto__.sgrRegion = function(xi, xl, yi, yl) {
     , cwid
     , point;
 
+  var sdattr = this.dattr;
+  if (term) {
+    this.dattr = term.defAttr;
+    // default foreground = 257
+    if (((this.dattr >> 9) & 0x1ff) === 257) {
+      this.dattr &= ~(0x1ff << 9);
+      this.dattr |= ((sdattr >> 9) & 0x1ff) << 9;
+    }
+    // default background = 256
+    if ((this.dattr & 0x1ff) === 256) {
+      this.dattr &= ~0x1ff;
+      this.dattr |= sdattr & 0x1ff;
+    }
+  }
+
   var main = '';
 
   var acs;
 
-  var angles = {
-    '\u2518': true, // '┘'
-    '\u2510': true, // '┐'
-    '\u250c': true, // '┌'
-    '\u2514': true, // '└'
-    '\u253c': true, // '┼'
-    '\u251c': true, // '├'
-    '\u2524': true, // '┤'
-    '\u2534': true, // '┴'
-    '\u252c': true, // '┬'
-    '\u2502': true, // '│'
-    '\u2500': true  // '─'
-  };
-
   for (y = yi; y < yl; y++) {
-    line = this.lines[y];
+    line = term
+      ? term.lines[y]
+      : this.lines[y];
+
+    if (!line) break;
 
     out = '';
     attr = this.dattr;
 
     for (x = xi; x < xl; x++) {
+      if (!line[x]) break;
+
       data = line[x][0];
       ch = line[x][1];
+
+      if (term) {
+        // default foreground = 257
+        if (((data >> 9) & 0x1ff) === 257) {
+          data &= ~(0x1ff << 9);
+          data |= ((sdattr >> 9) & 0x1ff) << 9;
+        }
+        // default background = 256
+        if ((data & 0x1ff) === 256) {
+          data &= ~0x1ff;
+          data |= sdattr & 0x1ff;
+        }
+      }
 
       if (data !== attr) {
         if (attr !== this.dattr) {
@@ -285,10 +306,10 @@ screen.__proto__.sgrRegion = function(xi, xl, yi, yl) {
         if (point <= 0x00ffff) {
           cwid = blessed.unicode.charWidth(point);
           if (cwid === 2) {
-            if (x === line.length - 1 || angles[line[x + 1][1]]) {
+            if (x === xl - 1) {
               ch = ' ';
             } else {
-              ++x;
+              x++;
             }
           }
         }
@@ -337,6 +358,10 @@ screen.__proto__.sgrRegion = function(xi, xl, yi, yl) {
   */
 
   main = main.replace(/(?:\s*\x1b\[40m\s*\x1b\[m\s*)*$/, '') + '\n';
+
+  if (term) {
+    this.dattr = sdattr;
+  }
 
   return main;
 };
