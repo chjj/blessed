@@ -137,10 +137,12 @@ var prompt = blessed.prompt({
 
 list.setItems(Object.keys(map));
 
-list.on('select', function(url, selected) {
+list.on('select', function(el, selected) {
   if (list._.rendering) return;
 
-  url = map[url.getText()];
+  var name = el.getText();
+  var url = map[name];
+
   status.setContent(url);
 
   list._.rendering = true;
@@ -167,7 +169,8 @@ list.on('select', function(url, selected) {
       }
 
       if (process.argv[2] === '--debug') {
-        fs.writeFileSync(__dirname + '/../../output.ans', body);
+        var filename = name.replace(/\//g, '.') + '.ans';
+        fs.writeFileSync(__dirname + '/' + filename, body);
       }
 
       // Remove text:
@@ -185,6 +188,18 @@ list.on('select', function(url, selected) {
       art.term.cursorHidden = true;
 
       screen.render();
+
+      if (process.argv[2] === '--debug' || process.argv[2] === '--save') {
+        // XXX Could just save from terminal, that way the image doesn't get
+        // cut off. Add a `lines` param and convert special fg and bg values
+        // used in term.js.
+        var sgr = screen.sgrRegion(
+          art.lpos.xi + art.ileft,
+          art.lpos.xl - art.iright,
+          art.lpos.yi + art.itop,
+          art.lpos.yl - art.ibottom);
+        fs.writeFileSync(__dirname + '/' + filename + '.sgr', sgr);
+      }
     });
   });
 });
@@ -216,3 +231,112 @@ function cp437ToUtf8(buf, callback) {
     return callback(e);
   }
 }
+
+screen.__proto__.sgrRegion = function(xi, xl, yi, yl) {
+  var x
+    , y
+    , line
+    , out
+    , ch
+    , data
+    , attr
+    , cwid
+    , point;
+
+  var main = '';
+
+  var acs;
+
+  var angles = {
+    '\u2518': true, // '┘'
+    '\u2510': true, // '┐'
+    '\u250c': true, // '┌'
+    '\u2514': true, // '└'
+    '\u253c': true, // '┼'
+    '\u251c': true, // '├'
+    '\u2524': true, // '┤'
+    '\u2534': true, // '┴'
+    '\u252c': true, // '┬'
+    '\u2502': true, // '│'
+    '\u2500': true  // '─'
+  };
+
+  for (y = yi; y < yl; y++) {
+    line = this.lines[y];
+
+    out = '';
+    attr = this.dattr;
+
+    for (x = xi; x < xl; x++) {
+      data = line[x][0];
+      ch = line[x][1];
+
+      if (data !== attr) {
+        if (attr !== this.dattr) {
+          out += '\x1b[m';
+        }
+        if (data !== this.dattr) {
+          out += screen.codeAttr(data);
+        }
+      }
+
+      if (this.fullUnicode) {
+        point = blessed.unicode.codePointAt(line[x][1], 0);
+        if (point <= 0x00ffff) {
+          cwid = blessed.unicode.charWidth(point);
+          if (cwid === 2) {
+            if (x === line.length - 1 || angles[line[x + 1][1]]) {
+              ch = ' ';
+            } else {
+              ++x;
+            }
+          }
+        }
+      }
+
+      /*
+      if (this.tput.strings.enter_alt_charset_mode
+          && !this.tput.brokenACS && (this.tput.acscr[ch] || acs)) {
+        if (this.tput.acscr[ch]) {
+          if (acs) {
+            ch = this.tput.acscr[ch];
+          } else {
+            ch = this.tput.smacs()
+              + this.tput.acscr[ch];
+            acs = true;
+          }
+        } else if (acs) {
+          ch = this.tput.rmacs() + ch;
+          acs = false;
+        }
+      } else {
+        if (!this.tput.unicode && this.tput.numbers.U8 !== 1 && ch > '~') {
+          ch = this.tput.utoa[ch] || '?';
+        }
+      }
+      */
+
+      out += ch;
+      attr = data;
+    }
+
+    if (attr !== this.dattr) {
+      out += '\x1b[m';
+    }
+
+    if (out) {
+      main += (y > 0 ? '\n' : '') + out;
+    }
+  }
+
+  /*
+  if (acs) {
+    main += this.tput.rmacs();
+    acs = false;
+  }
+  */
+
+  main = main.replace(/(?:\s*\x1b\[40m\s*\x1b\[m\s*)*$/, '') + '\n';
+
+  return main;
+};
