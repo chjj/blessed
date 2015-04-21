@@ -377,6 +377,9 @@ The screen on which every other node renders.
 - __cursorColor(color)__ - attempt to change cursor color. returns true if
   successful.
 - __cursorReset()__ - attempt to reset cursor. returns true if successful.
+- __screenshot([xi, xl, yi, yl])__ - take an SGR screenshot of the screen
+  within the region. returns a string containing only characters and SGR codes.
+  can be displayed by simply echoing it in a terminal.
 
 
 #### Element (from Node)
@@ -512,6 +515,9 @@ The base element.
 - __enableInput()__ - enable key and mouse events. calls bot enableMouse and enableKeys.
 - __enableDrag()__ - enable dragging of the element.
 - __disableDrag()__ - disable dragging of the element.
+- __screenshot([xi, xl, yi, yl])__ - take an SGR screenshot of the element
+  within the region. returns a string containing only characters and SGR codes.
+  can be displayed by simply echoing it in a terminal.
 
 ###### Content Methods
 
@@ -1252,6 +1258,9 @@ manager. Requires term.js and pty.js to be installed. See
 
 - inherits all from Box.
 - __write(data)__ - write data to the terminal.
+- __screenshot([xi, xl, yi, xl])__ - nearly identical to `element.screenshot`,
+  however, the specified region includes the terminal's _entire_ scrollback,
+  rather than just what is visible on the screen.
 - Other methods similar to ScrollableBox.
 
 
