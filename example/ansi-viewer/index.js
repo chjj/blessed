@@ -190,15 +190,8 @@ list.on('select', function(el, selected) {
       screen.render();
 
       if (process.argv[2] === '--debug' || process.argv[2] === '--save') {
-        // var sgr = screen.screenshot(
-        //   art.lpos.xi + art.ileft,
-        //   art.lpos.xl - art.iright,
-        //   art.lpos.yi + art.itop,
-        //   art.lpos.yl - art.ibottom);
-        var sgr = screen.screenshot(
-          0, art.term.lines[0].length,
-          0, art.term.lines.length,
-          art.term);
+        // var sgr = blessed.element.prototype.screenshot.call(art);
+        var sgr = art.screenshot();
         fs.writeFileSync(__dirname + '/' + filename + '.sgr', sgr);
       }
     });
@@ -233,7 +226,28 @@ function cp437ToUtf8(buf, callback) {
   }
 }
 
-screen.__proto__.screenshot = function(xi, xl, yi, yl, term) {
+blessed.Element.prototype.screenshot = function(xi, xl, yi, yl) {
+  if (xi == null) xi = this.lpos.xi + this.ileft;
+  if (xl == null) xl = this.lpos.xl - this.iright;
+  if (yi == null) yi = this.lpos.yi + this.itop;
+  if (yl == null) yl = this.lpos.yl - this.ibottom;
+  return this.screen.screenshot(xi, xl, yi, yl);
+};
+
+blessed.Terminal.prototype.screenshot = function(xi, xl, yi, yl) {
+  if (xi == null) xi = 0;
+  if (xl == null) xl = this.term.lines[0].length;
+  if (yi == null) yi = 0;
+  if (yl == null) yl = this.term.lines.length;
+  return this.screen.screenshot(xi, xl, yi, yl, this.term);
+};
+
+blessed.Screen.prototype.screenshot = function(xi, xl, yi, yl, term) {
+  if (xi == null) xi = 0;
+  if (xl == null) xl = this.lpos.xl;
+  if (yi == null) yi = 0;
+  if (yl == null) yl = this.lpos.yl;
+
   var x
     , y
     , line
