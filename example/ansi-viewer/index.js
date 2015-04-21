@@ -190,12 +190,12 @@ list.on('select', function(el, selected) {
       screen.render();
 
       if (process.argv[2] === '--debug' || process.argv[2] === '--save') {
-        // var sgr = screen.sgrRegion(
+        // var sgr = screen.sgrImage(
         //   art.lpos.xi + art.ileft,
         //   art.lpos.xl - art.iright,
         //   art.lpos.yi + art.itop,
         //   art.lpos.yl - art.ibottom);
-        var sgr = screen.sgrRegion(
+        var sgr = screen.sgrImage(
           0, art.term.lines[0].length,
           0, art.term.lines.length,
           art.term);
@@ -233,7 +233,7 @@ function cp437ToUtf8(buf, callback) {
   }
 }
 
-screen.__proto__.sgrRegion = function(xi, xl, yi, yl, term) {
+screen.__proto__.sgrImage = function(xi, xl, yi, yl, term) {
   var x
     , y
     , line
