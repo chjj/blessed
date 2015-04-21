@@ -34,14 +34,19 @@ var art = blessed.terminal({
   parent: screen,
   left: 0,
   top: 0,
-  right: 0,
-  bottom: 0,
-  handler: function() {}
+  height: 60,
+  // some are 78/80, some are 80/82
+  width: 82,
+  border: 'line',
+  tags: true,
+  label: ' {bold}{cyan-fg}ANSI Art{/cyan-fg}{/bold} (Drag Me) ',
+  handler: function() {},
+  draggable: true
 });
 
 var list = blessed.list({
   parent: screen,
-  label: ' {bold}{cyan-fg}ANSI Art{/cyan-fg}{/bold} (Drag Me) ',
+  label: ' {bold}{cyan-fg}Art List{/cyan-fg}{/bold} (Drag Me) ',
   tags: true,
   draggable: true,
   top: 0,
@@ -171,8 +176,8 @@ list.on('select', function(url, selected) {
       // Remove MCI codes:
       body = body.replace(/%[A-Z0-9]{2}/g, '');
 
-      // ^A (SOH) seems to need to produce CRLF in some cases:
-      body = body.replace(/\x01/g, '\r\n');
+      // ^A (SOH) seems to need to produce CRLF in some cases??
+      // body = body.replace(/\x01/g, '\r\n');
 
       // Reset and write the art:
       art.term.reset();
