@@ -7,9 +7,8 @@
 
 var blessed = require('blessed')
   , request = require('request')
-  , fs = require('fs')
-  , cp = require('child_process')
-  , singlebyte = require('./singlebyte');
+  , singlebyte = require('./singlebyte')
+  , fs = require('fs');
 
 // $ wget -r -o log --tries=10 'http://artscene.textfiles.com/ansi/'
 // $ grep 'http.*\.ans$' log | awk '{ print $3 }' > ansi-art.list
@@ -24,16 +23,6 @@ var map = urls.reduce(function(map, url) {
 var max = Object.keys(map).reduce(function(out, text) {
   return Math.max(out, text.length);
 }, 0) + 6;
-
-// Animating ANSI art doesn't work for screenshots.
-var ANIMATING = [
-  'bbs/void3',
-  'holiday/xmasfwks',
-  'unsorted/diver',
-  'unsorted/mash-chp',
-  'unsorted/ryans47',
-  'unsorted/xmasfwks'
-];
 
 var screen = blessed.screen({
   smartCSR: true,
@@ -200,29 +189,34 @@ list.on('select', function(el, selected) {
       screen.render();
 
       if (process.argv[2] === '--debug' || process.argv[2] === '--save') {
-        // Animating art hangs terminal during screenshot as of right now.
-        if (~ANIMATING.indexOf(name)) {
-          var sgr = blessed.element.prototype.screenshot.call(art,
-            0 - art.ileft, art.width - art.iright,
-            0 - art.itop, art.height - art.ibottom);
-        } else {
-          var sgr = art.screenshot();
-        }
-        fs.writeFileSync(__dirname + '/' + filename + '.sgr', sgr);
+        takeScreenshot(name);
       }
     });
   });
 });
 
 list.focus();
-
-screen.key('q', function() {
-  return process.exit(0);
-});
+list.enterSelected(0);
 
 screen.key('h', function() {
   list.toggle();
   if (list.visible) list.focus();
+});
+
+screen.key('r', function() {
+  shuffle();
+});
+
+screen.key('S-s', function() {
+  takeScreenshot(list.ritems[list.selected]);
+});
+
+screen.key('s', function() {
+  slideshow();
+});
+
+screen.key('q', function() {
+  return process.exit(0);
 });
 
 screen.render();
@@ -240,4 +234,49 @@ function cp437ToUtf8(buf, callback) {
   } catch (e) {
     return callback(e);
   }
+}
+
+// Animating ANSI art doesn't work for screenshots.
+var ANIMATING = [
+  'bbs/void3',
+  'holiday/xmasfwks',
+  'unsorted/diver',
+  'unsorted/mash-chp',
+  'unsorted/ryans47',
+  'unsorted/xmasfwks'
+];
+
+function takeScreenshot(name) {
+  var filename = name.replace(/\//g, '.') + '.ans.sgr';
+  // Animating art hangs terminal during screenshot as of right now.
+  if (~ANIMATING.indexOf(name)) {
+    var sgr = blessed.element.prototype.screenshot.call(art,
+      0 - art.ileft, art.width - art.iright,
+      0 - art.itop, art.height - art.ibottom);
+  } else {
+    var sgr = art.screenshot();
+  }
+  fs.writeFileSync(__dirname + '/' + filename, sgr);
+}
+
+function slideshow() {
+  if (!screen._.slideshow) {
+    screen._.slideshow = setInterval(function slide() {
+      if (screen.lockKeys) return;
+      var i = (list.items.length - 1) * Math.random() | 0;
+      list.enterSelected(i);
+      return slide;
+    }(), 3000);
+  } else {
+    clearInterval(screen._.slideshow);
+    delete screen._.slideshow;
+  }
+}
+
+function shuffle() {
+  var items = Object.keys(map).sort(function(key) {
+    return Math.random() > 0.5 ? 1 : -1;
+  });
+  list.setItems(items);
+  screen.render();
 }
