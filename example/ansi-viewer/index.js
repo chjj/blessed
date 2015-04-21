@@ -25,6 +25,16 @@ var max = Object.keys(map).reduce(function(out, text) {
   return Math.max(out, text.length);
 }, 0) + 6;
 
+// Animating ANSI art doesn't work for screenshots.
+var ANIMATING = [
+  'bbs/void3',
+  'holiday/xmasfwks',
+  'unsorted/diver',
+  'unsorted/mash-chp',
+  'unsorted/ryans47',
+  'unsorted/xmasfwks'
+];
+
 var screen = blessed.screen({
   smartCSR: true,
   dockBorders: true
@@ -190,10 +200,14 @@ list.on('select', function(el, selected) {
       screen.render();
 
       if (process.argv[2] === '--debug' || process.argv[2] === '--save') {
-        //var sgr = blessed.element.prototype.screenshot.call(art,
-        //  0 - art.ileft, art.width - art.iright,
-        //  0 - art.itop, art.height - art.ibottom);
-        var sgr = art.screenshot();
+        // Animating art hangs terminal during screenshot as of right now.
+        if (~ANIMATING.indexOf(name)) {
+          var sgr = blessed.element.prototype.screenshot.call(art,
+            0 - art.ileft, art.width - art.iright,
+            0 - art.itop, art.height - art.ibottom);
+        } else {
+          var sgr = art.screenshot();
+        }
         fs.writeFileSync(__dirname + '/' + filename + '.sgr', sgr);
       }
     });
