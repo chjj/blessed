@@ -114,7 +114,8 @@ list.on('keypress', function(ch, key) {
 });
 
 list.on('select', function(item, select) {
-  list.setLabel(' ' + item.getText() + ' ');
+  //list.setLabel(' ' + item.getText() + ' ');
+  list.setLabel(' ' + list.ritems[select] + ' ');
   screen.render();
 });
 
