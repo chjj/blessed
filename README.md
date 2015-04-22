@@ -733,6 +733,8 @@ A scrollable list which can display selectable items.
 - __down(amount)__ - select item below selected.
 - __pick(callback)__ - show/focus list and pick an item. the callback is
   executed with the result.
+- __fuzzyFind([string/regex/callback])__ - find an item based on its text
+  content.
 
 
 #### Form (from Box)
