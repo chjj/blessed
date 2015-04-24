@@ -18,7 +18,7 @@ screen = blessed.screen({
 screen.debugLog.parseTags = true;
 var logs = '';
 require('./tail')(__dirname + '/logs/widget.log').on('line', function(line) {
-  if (!screen.debugLog.hidden) return;
+  // if (!screen.debugLog.hidden) return;
   logs += line + '\n';
 });
 screen.debugLog.on('show', function() {
@@ -26,6 +26,7 @@ screen.debugLog.on('show', function() {
     screen.debug(logs);
     logs = '';
   }
+  screen.render();
 });
 
 screen.append(blessed.text({
