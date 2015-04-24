@@ -248,15 +248,17 @@ var ANIMATING = [
 
 function takeScreenshot(name) {
   var filename = name.replace(/\//g, '.') + '.ans.sgr';
+  var image;
   // Animating art hangs terminal during screenshot as of right now.
   if (~ANIMATING.indexOf(name)) {
-    var sgr = blessed.element.prototype.screenshot.call(art,
+    image = blessed.element.prototype.screenshot.call(art,
       0 - art.ileft, art.width - art.iright,
       0 - art.itop, art.height - art.ibottom);
   } else {
-    var sgr = art.screenshot();
+    image = art.screenshot();
   }
-  fs.writeFileSync(__dirname + '/' + filename, sgr);
+  fs.writeFileSync(__dirname + '/' + filename, image);
+  msg.display('Screenshot taken.');
 }
 
 function slideshow() {
@@ -267,9 +269,11 @@ function slideshow() {
       list.enterSelected(i);
       return slide;
     }(), 3000);
+    msg.display('Slideshow started.');
   } else {
     clearInterval(screen._.slideshow);
     delete screen._.slideshow;
+    msg.display('Slideshow stopped.');
   }
 }
 
@@ -279,4 +283,5 @@ function shuffle() {
   });
   list.setItems(items);
   screen.render();
+  msg.display('Shuffled items.');
 }
