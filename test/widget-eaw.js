@@ -19,33 +19,47 @@ screen = blessed.screen({
 
 // du juan (dou gyun?)
 var DU = '杜';
+// NOTE: JUAN is not displayed correctly in rxvt-unicode from
+// blessed, but normally from any other node program.
 var JUAN = '鹃';
 
+// var DU = '杜';
 // var DU = String.fromCodePoint
-//   ? String.fromCodePoint(0x675c)
-//   : String.fromCharCode(0x675c);
-
-var DOUBLE = DU;
-// var DOUBLE = String.fromCodePoint(0x1F250);
+//   ? String.fromCodePoint(0x675C)
+//   : String.fromCharCode(0x675C);
+// var JUAN = '鹃';
+// var JUAN = String.fromCodePoint
+//   ? String.fromCodePoint(0x9E43)
+//   : String.fromCharCode(0x9E43);
 
 // one flew over the 杜鹃's nest.
-// var DOUBLE = DU + JUAN;
+// var DOUBLE = '杜鹃';
+var DOUBLE = DU + JUAN;
 
 // var SURROGATE_DOUBLE = '𰀀';
 var SURROGATE_DOUBLE = String.fromCodePoint
   ? String.fromCodePoint(0x30000)
   : String.fromCharCode(0xD880, 0xDC00);
 
+// var SURROGATE_DOUBLE_OTHER = '🉐';
+var SURROGATE_DOUBLE_OTHER = String.fromCodePoint
+  ? String.fromCodePoint(0x1F250)
+  : String.fromCharCode(0xD83C, 0xDE50);
+
 // var SURROGATE_SINGLE = '𝌆';
 var SURROGATE_SINGLE = String.fromCodePoint
   ? String.fromCodePoint(0x1D306)
   : String.fromCharCode(0xD834, 0xDF06);
 
-var COMBINE = String.fromCodePoint
+// var COMBINE_NONSURROGATE = 's̀'.substring(1); // s + combining
+var COMBINE_NONSURROGATE = String.fromCodePoint
   ? String.fromCodePoint(0x0300)
   : String.fromCharCode(0x0300);
 
-var COMBINE = unicode.fromCodePoint(0x10A01);
+// var COMBINE = 's𐨁'.substring(1); // s + combining
+var COMBINE = String.fromCodePoint
+  ? String.fromCodePoint(0x10A01)
+  : String.fromCharCode(0xD802, 0xDE01);
 
 // At cols=44, the bug that is avoided by this occurs:
 // || angles[line[x + 1][1]]) {
