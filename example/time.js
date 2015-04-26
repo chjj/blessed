@@ -25,6 +25,8 @@ var screen = blessed.screen({
   autoPadding: true
 });
 
+var lastTime;
+
 var positions = {};
 
 var container = blessed.box({
@@ -1004,6 +1006,9 @@ function updateTime() {
   time = ~argv.indexOf('-s')
     ? h + ':' + m + ':' + s + im
     : h + ':' + m + im;
+
+  if (time === lastTime) return;
+  lastTime = time;
 
   time = time.split('');
 
