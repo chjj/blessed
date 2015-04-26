@@ -93,6 +93,7 @@ lorem = lorem.replace(/e/gi, DOUBLE);
 //lorem = lorem.replace(/r/gi, JUAN);
 // NOTE: libvte breaks when trying to display
 // this surrogate pair double width character:
+// if (!~process.argv.indexOf('vte') && !screen.program.isVTE) {
 if (!~process.argv.indexOf('vte')) {
   lorem = lorem.replace(/a/gi, SURROGATE_DOUBLE);
 }
