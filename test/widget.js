@@ -252,6 +252,12 @@ button.on('press', function() {
 
 screen.append(button);
 
+screen.key('S-s', function() {
+  stext.wrap = false;
+  stext.setContent(screen.screenshot());
+  screen.render();
+});
+
 screen.on('keypress', function(ch, key) {
   if (key.name === 'tab') {
     return key.shift
