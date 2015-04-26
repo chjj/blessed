@@ -24,11 +24,11 @@ var JUAN = '鹃';
 //   ? String.fromCodePoint(0x675c)
 //   : String.fromCharCode(0x675c);
 
-// var DOUBLE = DU;
+var DOUBLE = DU;
 // var DOUBLE = String.fromCodePoint(0x1F250);
 
 // one flew over the 杜鹃's nest.
-var DOUBLE = DU + JUAN;
+// var DOUBLE = DU + JUAN;
 
 // var SURROGATE_DOUBLE = '𰀀';
 var SURROGATE_DOUBLE = String.fromCodePoint
