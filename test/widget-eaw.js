@@ -19,8 +19,8 @@ screen = blessed.screen({
 
 // du juan (dou gyun?)
 var DU = '杜';
-// NOTE: JUAN is not displayed correctly in rxvt-unicode from
-// blessed, but normally from any other node program.
+// NOTE: {bold} breaks JUAN in rxvt-unicode!!
+// BREAKS: console.log('\x1b[1m杜鹃\x1b[m');
 var JUAN = '鹃';
 
 // var DU = '杜';
@@ -135,7 +135,9 @@ var main = blessed.box({
   border: 'line',
   draggable: true,
   tags: true,
-  content: '{black-bg}{blue-fg}{bold}' + lorem + '{/}',
+  // content: '{black-bg}{blue-fg}{bold}' + lorem + '{/}',
+  // XXX {bold} breaks JUAN!
+  content: '{black-bg}{light-blue-fg}' + lorem + '{/}',
   scrollable: true,
   alwaysScroll: true,
   keys: true,
