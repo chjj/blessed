@@ -253,8 +253,15 @@ button.on('press', function() {
 screen.append(button);
 
 screen.key('S-s', function() {
+  var rand = function(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
+  var xi = rand(0, screen.cols - (stext.width - stext.iwidth));
+  var xl = xi + stext.width - stext.iwidth;
+  var yi = rand(0, screen.rows - (stext.height - stext.iheight));
+  var yl = yi + stext.height - stext.iheight;
   stext.wrap = false;
-  stext.setContent(screen.screenshot());
+  stext.setContent(screen.screenshot(xi, xl, yi, xl));
   screen.render();
 });
 
