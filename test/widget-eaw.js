@@ -10,20 +10,9 @@ screen = blessed.screen({
   fullUnicode: ~process.argv.indexOf('-') ? false : true
 });
 
-// screen.options.fullUnicode = false;
-// screen.fullUnicode = false;
-// screen._unicode = false;
-// screen.tput.unicode = false;
-// screen.tput.numbers.U8 = -1;
-// screen.tput.strings.enter_alt_charset_mode = false;
-
-// du juan (dou gyun?)
-
 // var DU = '杜';
 var DU = unicode.fromCodePoint(0x675C);
 
-// NOTE: {bold} breaks JUAN in rxvt-unicode!!
-// BREAKS: console.log('\x1b[1m杜鹃\x1b[m');
 // var JUAN = '鹃';
 var JUAN = unicode.fromCodePoint(0x9E43);
 
