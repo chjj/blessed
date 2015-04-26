@@ -1038,7 +1038,7 @@ function updateTime() {
   screen.render();
 }
 
-setInterval(updateTime, 950);
+setInterval(updateTime, ~argv.indexOf('-s') ? 100 : 950);
 
 updateTime();
 
