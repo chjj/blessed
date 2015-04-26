@@ -1,4 +1,5 @@
 var blessed = require('../')
+  , unicode = blessed.unicode
   , screen;
 
 screen = blessed.screen({
@@ -44,7 +45,7 @@ var COMBINE = String.fromCodePoint
   ? String.fromCodePoint(0x0300)
   : String.fromCharCode(0x0300);
 
-var COMBINE = blessed.unicode.fromCodePoint(0x10A01);
+var COMBINE = unicode.fromCodePoint(0x10A01);
 
 // At cols=44, the bug that is avoided by this occurs:
 // || angles[line[x + 1][1]]) {
