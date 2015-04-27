@@ -22,11 +22,15 @@ var DOUBLE = DU + JUAN;
 
 // var SURROGATE_DOUBLE = '𰀀';
 // var SURROGATE_DOUBLE = String.fromCharCode(0xD880, 0xDC00);
-var SURROGATE_DOUBLE = unicode.fromCodePoint(0x30000);
+// var SURROGATE_DOUBLE = unicode.fromCodePoint(0x30000);
 
-// var SURROGATE_DOUBLE_OTHER = '🉐';
-// var SURROGATE_DOUBLE_OTHER = String.fromCharCode(0xD83C, 0xDE50);
-var SURROGATE_DOUBLE_OTHER = unicode.fromCodePoint(0x1F250);
+// var SURROGATE_DOUBLE = '𠀀';
+// var SURROGATE_DOUBLE = String.fromCharCode(0xd840, 0xdc00);
+var SURROGATE_DOUBLE = unicode.fromCodePoint(0x20000);
+
+// var SURROGATE_DOUBLE = '🉐';
+// var SURROGATE_DOUBLE = String.fromCharCode(0xD83C, 0xDE50);
+// var SURROGATE_DOUBLE = unicode.fromCodePoint(0x1F250);
 
 // var SURROGATE_SINGLE = '𝌆';
 // var SURROGATE_SINGLE = String.fromCharCode(0xD834, 0xDF06);
