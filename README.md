@@ -281,9 +281,9 @@ The screen on which every other node renders.
   display text above the basic multilingual plane. this is behind an option
   because it may affect performance slightly negatively. without this option
   enabled, all double-width, surrogate pair, and combining characters will be
-  replaced by `??`, `?`, `` respectively. (NOTE: libvte (e.g. gnome-terminal)
-  cannot display characters that are both surrogate pairs _and_ double-width
-  properly. there is no way for blessed to fix this unfortunately).
+  replaced by `'??'`, `'?'`, `''` respectively. (NOTE: iTerm2 cannot display
+  combining characters properly. blessed simply removes them from an element's
+  content if iTerm2 is detected).
 
 ##### Properties:
 
