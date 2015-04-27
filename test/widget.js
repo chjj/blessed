@@ -175,6 +175,33 @@ var stext = blessed.scrollabletext({
   }
 });
 
+setTimeout(function() {
+  stext.width = 0;
+  screen.render();
+  setTimeout(function() {
+    stext.width = '50%';
+    screen.render();
+    setTimeout(function() {
+      stext.height = 0;
+      screen.render();
+      setTimeout(function() {
+        stext.height = 6;
+        screen.render();
+        setTimeout(function() {
+          stext.width = 0;
+          stext.height = 0;
+          screen.render();
+          setTimeout(function() {
+            stext.width = '50%';
+            stext.height = 6;
+            screen.render();
+          }, 1000);
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  }, 1000);
+}, 1000);
+
 screen.append(stext);
 stext.on('keypress', function(ch, key) {
   if (key.name === 'up' || key.name === 'k') {
