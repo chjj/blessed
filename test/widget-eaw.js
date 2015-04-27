@@ -95,12 +95,7 @@ var lorem = 'Non eram nes' + (!~process.argv.indexOf('s') ? COMBINE : '')
 lorem = lorem.replace(/e/gi, DOUBLE);
 //lorem = lorem.replace(/e/gi, DU);
 //lorem = lorem.replace(/r/gi, JUAN);
-// NOTE: libvte breaks when trying to display
-// this surrogate pair double width character:
-// if (!~process.argv.indexOf('vte') && !screen.program.isVTE) {
-if (!~process.argv.indexOf('vte')) {
-  lorem = lorem.replace(/a/gi, SURROGATE_DOUBLE);
-}
+lorem = lorem.replace(/a/gi, SURROGATE_DOUBLE);
 lorem = lorem.replace(/o/gi, SURROGATE_SINGLE);
 if (~process.argv.indexOf('s')) {
   lorem = lorem.replace(/s/gi, 's' + COMBINE);
