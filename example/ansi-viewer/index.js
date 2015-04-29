@@ -195,6 +195,11 @@ list.on('select', function(el, selected) {
   });
 });
 
+list.items.forEach(function(item, i) {
+  var text = item.getText();
+  item.setHover(map[text]);
+});
+
 list.focus();
 list.enterSelected(0);
 
