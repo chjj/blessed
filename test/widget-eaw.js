@@ -101,6 +101,17 @@ if (~process.argv.indexOf('s')) {
   lorem = lorem.replace(/s/gi, 's' + COMBINE);
 }
 
+// Surrogate pair emoticons from the SMP:
+lorem += '\n';
+lorem += 'emoticons: ';
+for (var point = 0x1f600; point <= 0x1f64f; point++) {
+  // These are technically single-width,
+  // but they _look_ like they should be
+  // double-width in gnome-terminal (they overlap).
+  var emoticon = unicode.fromCodePoint(point);
+  lorem += emoticon + ' ';
+}
+
 var main = blessed.box({
   parent: screen,
   left: 'center',
