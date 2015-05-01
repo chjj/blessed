@@ -3,8 +3,12 @@ var blessed = require('../')
 
 screen = blessed.screen({
   dump: __dirname + '/logs/table.log',
-  autoPadding: false
+  autoPadding: false,
+  fullUnicode: true
 });
+
+var DU = '杜';
+var JUAN = '鹃';
 
 var table = blessed.table({
   parent: screen,
@@ -46,6 +50,7 @@ var data = [
 ];
 
 data[1][0] = '{red-fg}' + data[1][0] + '{/red-fg}';
+data[2][0] += ' (' + DU + JUAN + ')';
 
 table.setData(data);
 

@@ -561,7 +561,9 @@ parameter must be a string.
 - __getLines()__ - an array containing the content lines.
 - __getScreenLines()__ - an array containing the lines as they are displayed on
   the screen.
-- __textLength(text)__ - get a string's real length, taking into account tags.
+- __strWidth(text)__ - get a string's displayed width, taking into account
+  double-width, surrogate pairs, combining characters, tags, and SGR escape
+  codes.
 
 
 #### Box (from Element)

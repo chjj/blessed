@@ -16,7 +16,8 @@ var box = blessed.textarea({
   height: 'half',
   width: 'half',
   top: 'center',
-  left: 'center'
+  left: 'center',
+  tags: true
 });
 
 screen.render();
