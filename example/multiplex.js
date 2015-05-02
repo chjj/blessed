@@ -109,7 +109,9 @@ var bottomright = blessed.terminal({
 });
 
 [topleft, topright, bottomleft, bottomright].forEach(function(term) {
-  term.enableDrag();
+  term.enableDrag(function(mouse) {
+    return !!mouse.ctrl;
+  });
   term.on('title', function(title) {
     screen.title = title;
   });
