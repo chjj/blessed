@@ -501,8 +501,19 @@ The base element.
 - __onceKey(name, listener)__ - bind a keypress listener for a specific key
   once.
 - __unkey(name, listener)__ - remove a keypress listener for a specific key.
-- __onScreenEvent(type, listener)__ - same as`el.on('screen', ...)` except this
-  will automatically cleanup listeners after the element is detached.
+- __onScreenEvent(type, handler)__ - same as`el.on('screen', ...)` except this
+  will automatically keep track of which listeners are bound to the screen
+  object. for use with `removeScreenEvent()`, `free()`, and `destroy()`.
+- __removeScreenEvent(type, handler)__ - same as`el.removeListener('screen',
+  ...)` except this will automatically keep track of which listeners are bound
+  to the screen object. for use with `onScreenEvent()`, `free()`, and
+  `destroy()`.
+- __free()__ - free up the element. automatically unbind all events that may
+  have been bound to the screen object. this prevents memory leaks. for use
+  with `onScreenEvent()`, `removeScreenEvent()`, and `destroy()`.
+- __destroy()__ - same as the `detach()` method, except this will automatically
+  call `free()` and unbind any screen events to prevent memory leaks.  for use
+  with `onScreenEvent()`, `removeScreenEvent()`, and `free()`.
 - __setIndex(z)__ - set the z-index of the element (changes rendering order).
 - __setFront()__ - put the element in front of its siblings.
 - __setBack()__ - put the element in back of its siblings.
