@@ -25,6 +25,7 @@ var topleft = blessed.terminal({
   cursor: 'line',
   cursorBlink: true,
   screenKeys: false,
+  label: ' multiplex.js ',
   left: 0,
   top: 0,
   width: '50%',
@@ -50,6 +51,7 @@ var topright = blessed.terminal({
   cursor: 'block',
   cursorBlink: true,
   screenKeys: false,
+  label: ' multiplex.js ',
   left: '50%-1',
   top: 0,
   width: '50%+1',
@@ -71,6 +73,7 @@ var bottomleft = blessed.terminal({
   cursor: 'block',
   cursorBlink: true,
   screenKeys: false,
+  label: ' multiplex.js ',
   left: 0,
   top: '50%-1',
   width: '50%',
@@ -92,6 +95,7 @@ var bottomright = blessed.terminal({
   cursor: 'block',
   cursorBlink: true,
   screenKeys: false,
+  label: ' multiplex.js ',
   left: '50%-1',
   top: '50%-1',
   width: '50%+1',
@@ -114,6 +118,8 @@ var bottomright = blessed.terminal({
   });
   term.on('title', function(title) {
     screen.title = title;
+    term.setLabel(' ' + title + ' ');
+    screen.render();
   });
   term.on('click', term.focus.bind(term));
 });
