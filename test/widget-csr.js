@@ -8,9 +8,9 @@ screen = blessed.screen({
 
 var lorem = require('fs').readFileSync(__dirname + '/git.diff', 'utf8');
 
+var cleanSides = screen.cleanSides;
 function expectClean(value) {
-  var cleanSides = screen.cleanSides;
-  screen.cleanSides = function() {
+  screen.cleanSides = function(el) {
     var ret = cleanSides.apply(this, arguments);
     if (ret !== value) {
       throw new Error('Failed. Expected '
@@ -36,7 +36,7 @@ blessed.box({
 expectClean(false);
 */
 
-blessed.box({
+var btext = blessed.box({
   parent: screen,
   left: 'center',
   top: 'center',
@@ -48,7 +48,11 @@ blessed.box({
   border: 'line',
   content: 'CSR should still work.'
 });
-expectClean(true);
+btext._oscroll = btext.scroll;
+btext.scroll = function(offset, always) {
+  expectClean(true);
+  return btext._oscroll(offset, always);
+};
 
 var text = blessed.scrollabletext({
   parent: screen,
@@ -56,13 +60,25 @@ var text = blessed.scrollabletext({
   border: 'line',
   left: 'center',
   top: 'center',
-  width: '100%',
+  draggable: true,
   width: '50%',
   height: '50%',
   mouse: true,
   keys: true,
   vi: true
 });
+
+text._oscroll = text.scroll;
+text.scroll = function(offset, always) {
+  var el = this;
+  var value = true;
+  if (el.left < 0) value = true;
+  if (el.top < 0) value = false;
+  if (el.left + el.width > screen.width) value = true;
+  if (el.top + el.height > screen.height) value = false;
+  expectClean(value);
+  return text._oscroll(offset, always);
+};
 
 text.focus();
 
