@@ -20,7 +20,7 @@ screen = blessed.screen({
   ignoreDockContrast: true
 });
 
-var left = blessed.terminal({
+var topleft = blessed.terminal({
   parent: screen,
   cursor: 'line',
   cursorBlink: true,
@@ -28,9 +28,8 @@ var left = blessed.terminal({
   left: 0,
   top: 0,
   width: '50%',
-  border: {
-    type: 'line',
-  },
+  height: '50%',
+  border: 'line',
   style: {
     fg: 'default',
     bg: 'default',
@@ -42,11 +41,11 @@ var left = blessed.terminal({
   }
 });
 
-left.pty.on('data', function(data) {
+topleft.pty.on('data', function(data) {
   screen.log(JSON.stringify(data));
 });
 
-var right = blessed.terminal({
+var topright = blessed.terminal({
   parent: screen,
   cursor: 'block',
   cursorBlink: true,
@@ -54,9 +53,8 @@ var right = blessed.terminal({
   left: '50%-1',
   top: 0,
   width: '50%+1',
-  border: {
-    type: 'line',
-  },
+  height: '50%',
+  border: 'line',
   style: {
     fg: 'red',
     bg: 'black',
@@ -68,17 +66,65 @@ var right = blessed.terminal({
   }
 });
 
-[left, right].forEach(function(term) {
+var bottomleft = blessed.terminal({
+  parent: screen,
+  cursor: 'block',
+  cursorBlink: true,
+  screenKeys: false,
+  left: 0,
+  top: '50%-1',
+  width: '50%',
+  height: '50%+1',
+  border: 'line',
+  style: {
+    fg: 'default',
+    bg: 'default',
+    focus: {
+      border: {
+        fg: 'green'
+      }
+    }
+  }
+});
+
+var bottomright = blessed.terminal({
+  parent: screen,
+  cursor: 'block',
+  cursorBlink: true,
+  screenKeys: false,
+  left: '50%-1',
+  top: '50%-1',
+  width: '50%+1',
+  height: '50%+1',
+  border: 'line',
+  style: {
+    fg: 'default',
+    bg: 'default',
+    focus: {
+      border: {
+        fg: 'green'
+      }
+    }
+  }
+});
+
+[topleft, topright, bottomleft, bottomright].forEach(function(term) {
+  term.enableDrag();
   term.on('title', function(title) {
     screen.title = title;
   });
   term.on('click', term.focus.bind(term));
 });
 
-left.focus();
+topleft.focus();
 
-screen.key('C-c', function() {
+screen.key('C-q', function() {
   return process.exit(0);
+});
+
+screen.program.key('S-tab', function() {
+  screen.focusNext();
+  screen.render();
 });
 
 screen.render();
