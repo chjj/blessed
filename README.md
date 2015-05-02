@@ -276,6 +276,9 @@ The screen on which every other node renders.
 │ box1    │ box2    │
 └─────────┴─────────┘
 ```
+- __ignoreDockContrast__ - normally, dockable borders will not dock if the
+  colors or attributes are different. this option will allow them to dock
+  regardless. it may produce some odd looking multi-colored borders though.
 - __fullUnicode__ - allow for rendering of East Asian double-width characters,
   utf-16 surrogate pairs, and unicode combining characters. this allows you to
   display text above the basic multilingual plane. this is behind an option

@@ -14,7 +14,10 @@ var blessed = require('blessed')
 
 screen = blessed.screen({
   smartCSR: true,
-  log: process.env.HOME + '/blessed-terminal.log'
+  log: process.env.HOME + '/blessed-terminal.log',
+  fullUnicode: true,
+  dockBorders: true,
+  ignoreDockContrast: true
 });
 
 var left = blessed.terminal({
@@ -23,10 +26,11 @@ var left = blessed.terminal({
   cursorBlink: true,
   screenKeys: false,
   left: 0,
-  top: 2,
-  bottom: 2,
-  width: '40%',
-  border: 'line',
+  top: 0,
+  width: '50%',
+  border: {
+    type: 'line',
+  },
   style: {
     fg: 'default',
     bg: 'default',
@@ -47,11 +51,12 @@ var right = blessed.terminal({
   cursor: 'block',
   cursorBlink: true,
   screenKeys: false,
-  right: 2,
-  top: 2,
-  bottom: 2,
-  width: '40%',
-  border: 'line',
+  left: '50%-1',
+  top: 0,
+  width: '50%+1',
+  border: {
+    type: 'line',
+  },
   style: {
     fg: 'red',
     bg: 'black',
