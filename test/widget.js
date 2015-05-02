@@ -321,7 +321,7 @@ setInterval(function() {
     progress.reset();
   }
   progress.progress(2);
+  progress.atop -= 2;
   screen.render();
   setTimeout(fill, 300);
-  progress.atop -= 2;
 })();
