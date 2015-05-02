@@ -22,7 +22,8 @@ var image = blessed.image({
   height: 'shrink',
   style: {
     bg: 'green'
-  }
+  },
+  draggable: true
 });
 
 setTimeout(function() {
@@ -45,6 +46,7 @@ setTimeout(function() {
           screen.render();
           setTimeout(function() {
             screen.append(image);
+            image.enableMouse();
             screen.render();
           }, 1000);
         }, 1000);
