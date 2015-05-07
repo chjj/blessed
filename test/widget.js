@@ -102,6 +102,10 @@ list.items.forEach(function(item) {
   item.setHover(item.getText().trim());
 });
 
+var item = list.items[1];
+list.removeItem(list.items[1]);
+list.insertItem(1, item.getContent());
+
 list.on('keypress', function(ch, key) {
   if (key.name === 'up' || key.name === 'k') {
     list.up();

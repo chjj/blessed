@@ -736,14 +736,22 @@ A scrollable list which can display selectable items.
 
 - inherits all from Box.
 - __add/addItem(text)__ - add an item based on a string.
-- __getItemIndex(child)__ - returns the item index from the list. child can be
-  an element, index, or string.
-- __getItem(child)__ - returns the item element. child can be an element,
-  index, or string.
 - __removeItem(child)__ - removes an item from the list. child can be an
   element, index, or string.
+- __pushItem(child)__ - push an item onto the list.
+- __popItem()__ - pop an item off the list.
+- __unshiftItem(child)__ - unshift an item onto the list.
+- __shiftItem()__ - shift an item off the list.
+- __insertItem(i, child)__ - inserts an item to the list. child can be an
+  element, index, or string.
+- __getItem(child)__ - returns the item element. child can be an element,
+  index, or string.
+- __setItem(child, content)__ - set item to content.
+- __spliceItem(i, n, item1, ...)__ - remove and insert items to the list.
 - __clearItems()__ - clears all items from the list.
 - __setItems(items)__ - sets the list items to multiple strings.
+- __getItemIndex(child)__ - returns the item index from the list. child can be
+  an element, index, or string.
 - __select(index)__ - select an index of an item.
 - __move(offset)__ - select item based on current offset.
 - __up(amount)__ - select item above selected.
