@@ -143,17 +143,19 @@ var box12 = blessed.box({
   content: '12'
 });
 
-/*
-for (var i = 0; i < 10; i++) {
-  blessed.box({
-    parent: layout,
-    width: i % 2 === 0 ? 10 : 20,
-    height: i % 2 === 0 ? 5 : 10,
-    border: 'line',
-    content: (i + 1) + ''
-  });
+if (process.argv[2] !== 'grid') {
+  for (var i = 0; i < 10; i++) {
+    blessed.box({
+      parent: layout,
+      // width: i % 2 === 0 ? 10 : 20,
+      // height: i % 2 === 0 ? 5 : 10,
+      width: Math.random() > 0.5 ? 10 : 20,
+      height: Math.random() > 0.5 ? 5 : 10,
+      border: 'line',
+      content: (i + 1 + 12) + ''
+    });
+  }
 }
-*/
 
 screen.key('q', function() {
   return process.exit(0);
