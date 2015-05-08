@@ -1337,6 +1337,10 @@ By default, the Layout element automatically positions children as if they were
 - __renderer__ - a callback which is called right before the children are
   iterated over to be rendered. should return an iterator callback which is
   called on each child element: __iterator(el, i)__.
+- __layout__ - using the default renderer, it provides two layouts: inline, and
+  grid. `inline` is the default and will render akin to `inline-block`. `grid`
+  will create an automatic grid based on element dimensions. the grid cells'
+  width and height are always determined by the largest children in the layout.
 
 ##### Properties:
 

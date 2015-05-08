@@ -14,6 +14,7 @@ var layout = blessed.layout({
   width: '50%',
   height: '50%',
   border: 'line',
+  layout: 'inline',
   style: {
     bg: 'red',
     border: {
@@ -28,7 +29,8 @@ var box1 = blessed.box({
   left: 'center',
   width: 20,
   height: 10,
-  border: 'line'
+  border: 'line',
+  content: '1'
 });
 
 var box2 = blessed.box({
@@ -37,79 +39,108 @@ var box2 = blessed.box({
   left: 0,
   width: 10,
   height: 5,
-  border: 'line'
+  border: 'line',
+  content: '2'
 });
 
-var box2 = blessed.box({
+var box3 = blessed.box({
   parent: layout,
   top: 0,
   left: 0,
   width: 10,
   height: 5,
-  border: 'line'
+  border: 'line',
+  content: '3'
 });
 
-var box2 = blessed.box({
+var box4 = blessed.box({
   parent: layout,
   top: 0,
   left: 0,
   width: 10,
   height: 5,
-  border: 'line'
+  border: 'line',
+  content: '4'
 });
 
-var box2 = blessed.box({
+var box5 = blessed.box({
   parent: layout,
   top: 0,
   left: 0,
   width: 10,
   height: 5,
-  border: 'line'
+  border: 'line',
+  content: '5'
 });
 
-var box2 = blessed.box({
+var box6 = blessed.box({
   parent: layout,
   top: 0,
   left: 0,
   width: 10,
   height: 5,
-  border: 'line'
+  border: 'line',
+  content: '6'
 });
 
-var box2 = blessed.box({
+var box7 = blessed.box({
   parent: layout,
   top: 0,
   left: 0,
   width: 10,
   height: 5,
-  border: 'line'
+  border: 'line',
+  content: '7'
 });
 
-var box1 = blessed.box({
+var box8 = blessed.box({
   parent: layout,
   top: 'center',
   left: 'center',
   width: 20,
   height: 10,
-  border: 'line'
+  border: 'line',
+  content: '8'
 });
 
-var box2 = blessed.box({
+var box9 = blessed.box({
   parent: layout,
   top: 0,
   left: 0,
   width: 10,
   height: 5,
-  border: 'line'
+  border: 'line',
+  content: '9'
 });
 
-var box1 = blessed.box({
+var box10 = blessed.box({
   parent: layout,
   top: 'center',
   left: 'center',
   width: 20,
   height: 10,
-  border: 'line'
+  border: 'line',
+  content: '10'
+});
+
+var box11 = blessed.box({
+  parent: layout,
+  top: 0,
+  left: 0,
+  width: 10,
+  height: 5,
+  border: 'line',
+  content: '11'
+});
+
+var box12 = blessed.box({
+  parent: layout,
+  top: 'center',
+  left: 'center',
+  width: 20,
+  height: 10,
+  border: 'line',
+  content: '12'
 });
 
 /*
@@ -118,7 +149,8 @@ for (var i = 0; i < 10; i++) {
     parent: layout,
     width: i % 2 === 0 ? 10 : 20,
     height: i % 2 === 0 ? 5 : 10,
-    border: 'line'
+    border: 'line',
+    content: (i + 1) + ''
   });
 }
 */
