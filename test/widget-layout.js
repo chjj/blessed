@@ -14,7 +14,7 @@ var layout = blessed.layout({
   width: '50%',
   height: '50%',
   border: 'line',
-  layout: 'inline',
+  layout: process.argv[2] === 'grid' ? 'grid' : 'inline',
   style: {
     bg: 'red',
     border: {
