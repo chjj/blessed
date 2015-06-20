@@ -1591,14 +1591,21 @@ This still needs to be tested a bit, but it should work.
 Every element can have text content via `setContent`. If `tags: true` was
 passed to the element's constructor, the content can contain tags. For example:
 
-```
+``` js
 box.setContent('hello {red-fg}{green-bg}{bold}world{/bold}{/green-bg}{/red-fg}');
 ```
 
 To make this more concise `{/}` cancels all character attributes.
 
-```
+``` js
 box.setContent('hello {red-fg}{green-bg}{bold}world{/}');
+```
+
+Tags can also use hex colors (which will be reduced to the most accurate
+terminal color):
+
+``` js
+box.setContent('{#ff0000-fg}{bold}red and bold{/}');
 ```
 
 Newlines and alignment are also possible in content.
@@ -1606,7 +1613,8 @@ Newlines and alignment are also possible in content.
 ``` js
 box.setContent('hello\n'
   + '{right}world{/right}\n'
-  + '{center}foo{/center}');
+  + '{center}foo{/center}\n');
+  + 'left{|}right');
 ```
 
 This will produce a box that looks like:
@@ -1615,6 +1623,7 @@ This will produce a box that looks like:
 | hello                 |
 |                 world |
 |          foo          |
+| left            right |
 ```
 
 Content can also handle SGR escape codes. This means if you got output from a
@@ -1758,18 +1767,18 @@ program.feed();
   - You need to install the `ncurses-base` package __and__ the `ncurses-term`
     package. (#98)
 2. Why do vertical lines look chopped up in iTerm2?
-  - All ACS vertical lines look this way in iTerm2.
+  - All ACS vertical lines look this way in iTerm2 with the default font.
 3. Why can't I use my mouse in Terminal.app?
   - Terminal.app does not support mouse events.
 4. Why doesn't the Image element appear in my terminal?
   - The Image element uses w3m to display images. This generally only works on
     X11+xterm/urxvt, but it _may_ work on other unix terminals.
-5. Why can't my mouse clicks register beyond 255-287 cells?
+5. Why can't my mouse clicks register beyond 255 cells?
   - Older versions of VTE do not support any modern mouse protocol. On top of
-    that, the old x10 protocol it does implement is bugged. Through several
-    workarounds we've managed to get the cell limit from 127 to 255/287. If
-    you're not happy with this, you may want to look into using xterm or
-    urxvt, or a terminal which uses a modern VTE, like gnome-terminal.
+    that, the old X10 protocol it _does_ implement is bugged. Through several
+    workarounds we've managed to get the cell limit from `127` to `255`. If
+    you're not happy with this, you may want to look into using xterm or urxvt,
+    or a terminal which uses a modern VTE, like gnome-terminal.
 6. Is blessed efficient?
   - Yes. Blessed implements CSR and uses the painter's algorithm to render the
     screen. It maintains two screen buffers so it only needs to render what
@@ -1781,16 +1790,17 @@ program.feed();
     do not hesitate to post an issue.
 8. What is "curses" and "ncurses"?
   - ["curses"][curses] was an old library written in the early days of unix
-    which allowed a programmer to not have to worry about terminal
-    compatibility. ["ncurses"][ncurses] is a free reimplementation of curses.
-    It improved upon it quite a bit and is now the standard library for
-    implementing terminal programs. Blessed uses neither of these, and instead
-    handles terminal compatibility itself.
+    which allowed a programmer to easily manipulate the cursor in order to
+    render the screen. ["ncurses"][ncurses] is a free reimplementation of
+    curses. It improved upon it quite a bit by focusing more on terminal
+    compatibility and is now the standard library for implementing terminal
+    programs. Blessed uses neither of these, and instead handles terminal
+    compatibility itself.
 9. What is the difference between blessed and blessed-contrib?
   - blessed is a major piece of code which reimplements curses from the ground
-    up. A UI API is then layered on top of this. blessed-contrib is a popular
-    library built on top of blessed which makes clever use of modules to
-    implement useful widgets like graphs, ascii art, and so on.
+    up. A UI API is then layered on top of this. [blessed-contrib][contrib] is
+    a popular library built on top of blessed which makes clever use of modules
+    to implement useful widgets like graphs, ascii art, and so on.
 10. Are there blessed-like solutions for non-javascript platforms?
   - Yes. There are some fantastic solutions out there.
     - Perl: [Curses::UI][curses-ui]
