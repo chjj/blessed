@@ -139,36 +139,36 @@ screen.render();
 Blessed comes with a number of high-level widgets so you can avoid all the
 nasty low-level terminal stuff.
 
-- [Node](#node-from-eventemitter)
-- [Screen](#screen-from-node)
-- [Element](#element-from-node)
-- [Box](#box-from-element)
-- [Text](#text-from-element)
-- [Line](#line-from-box)
-- [ScrollableBox](#scrollablebox-from-box)
-- [ScrollableText](#scrollabletext-from-scrollablebox)
-- [List](#list-from-box)
-- [Form](#form-from-box)
-- [Input](#input-from-box)
-- [Textarea](#textarea-from-input)
-- [Textbox](#textbox-from-textarea)
-- [Button](#button-from-input)
-- [ProgressBar](#progressbar-from-input)
-- [FileManager](#filemanager-from-list)
-- [Checkbox](#checkbox-from-input)
-- [RadioSet](#radioset-from-box)
-- [RadioButton](#radiobutton-from-checkbox)
-- [Prompt](#prompt-from-box)
-- [Question](#question-from-box)
-- [Message](#message-from-box)
-- [Loading](#loading-from-box)
-- [Listbar](#listbar-from-box)
-- [Log](#log-from-scrollabletext)
-- [Table](#table-from-box)
-- [ListTable](#listtable-from-list)
-- [Terminal](#terminal-from-box)
-- [Image](#image-from-box)
-- [Layout](#layout-from-element)
+- [Node](#node-from-eventemitter) - abstract
+  - [Screen](#screen-from-node)
+  - [Element](#element-from-node) - abstract
+    - [Box](#box-from-element)
+    - [Text](#text-from-element)
+    - [Line](#line-from-box)
+    - [ScrollableBox](#scrollablebox-from-box) - deprecated
+      - [ScrollableText](#scrollabletext-from-scrollablebox) - deprecated
+        - [Log](#log-from-scrollabletext)
+    - [List](#list-from-box)
+      - [FileManager](#filemanager-from-list)
+      - [ListTable](#listtable-from-list)
+    - [Form](#form-from-box)
+    - [Input](#input-from-box) - abstract
+      - [Textarea](#textarea-from-input)
+        - [Textbox](#textbox-from-textarea)
+      - [Button](#button-from-input)
+      - [ProgressBar](#progressbar-from-input)
+      - [Checkbox](#checkbox-from-input)
+        - [RadioButton](#radiobutton-from-checkbox)
+    - [RadioSet](#radioset-from-box)
+    - [Prompt](#prompt-from-box)
+    - [Question](#question-from-box)
+    - [Message](#message-from-box)
+    - [Loading](#loading-from-box)
+    - [Listbar](#listbar-from-box)
+    - [Table](#table-from-box)
+    - [Terminal](#terminal-from-box)
+    - [Image](#image-from-box)
+    - [Layout](#layout-from-element)
 
 
 #### Node (from EventEmitter)
@@ -698,6 +698,35 @@ pre-existing newlines and escape codes.
 - inherits all from ScrollableBox.
 
 
+#### Log (from ScrollableText)
+
+A log permanently scrolled to the bottom.
+
+##### Options:
+
+- inherits all from ScrollableText.
+- __scrollback__ - amount of scrollback allowed. default: Infinity.
+- __scrollOnInput__ - scroll to bottom on input even if the user has scrolled
+  up. default: false.
+
+##### Properties:
+
+- inherits all from ScrollableText.
+- __scrollback__ - amount of scrollback allowed. default: Infinity.
+- __scrollOnInput__ - scroll to bottom on input even if the user has scrolled
+  up. default: false.
+
+##### Events:
+
+- inherits all from ScrollableText.
+- __log__ - emitted on a log line. passes in line.
+
+##### Methods:
+
+- inherits all from ScrollableText.
+- __log/add(text)__ - add a log line.
+
+
 #### List (from Box)
 
 A scrollable list which can display selectable items.
@@ -760,6 +789,70 @@ A scrollable list which can display selectable items.
   executed with the result.
 - __fuzzyFind([string/regex/callback])__ - find an item based on its text
   content.
+
+
+#### FileManager (from List)
+
+A very simple file manager for selecting files.
+
+##### Options:
+
+- inherits all from List.
+- __cwd__ - current working directory.
+
+##### Properties:
+
+- inherits all from List.
+- __cwd__ - current working directory.
+
+##### Events:
+
+- inherits all from List.
+- __cd__ - directory was selected and navigated to.
+- __file__ - file was selected.
+
+##### Methods:
+
+- inherits all from List.
+- __refresh([cwd], [callback])__ - refresh the file list (perform a `readdir` on `cwd`
+  and update the list items).
+- __pick([cwd], callback)__ - pick a single file and return the path in the callback.
+- __reset([cwd], [callback])__ - reset back to original cwd.
+
+
+#### ListTable (from List)
+
+A stylized table of text elements with a list.
+
+##### Options:
+
+- inherits all from List.
+- __rows/data__ - array of array of strings representing rows.
+- __pad__ - spaces to attempt to pad on the sides of each cell. `2` by default:
+  one space on each side (only useful if the width is shrunken).
+- __noCellBorders__ - do not draw inner cells.
+- __style.header__ - header style.
+- __style.cell__ - cell style.
+
+##### Properties:
+
+- inherits all from List.
+
+##### Events:
+
+- inherits all from List.
+
+##### Methods:
+
+- inherits all from List.
+- __setRows/setData(rows)__ - set rows in table. array of arrays of strings.
+``` js
+  table.setData([
+    [ 'Animals',  'Foods'  ],
+    [ 'Elephant', 'Apple'  ],
+    [ 'Bird',     'Orange' ]
+  ]);
+```
 
 
 #### Form (from Box)
@@ -919,35 +1012,6 @@ A progress bar allowing various styles. This can also be used as a form input.
 - __reset()__ - reset the bar.
 
 
-#### FileManager (from List)
-
-A very simple file manager for selecting files.
-
-##### Options:
-
-- inherits all from List.
-- __cwd__ - current working directory.
-
-##### Properties:
-
-- inherits all from List.
-- __cwd__ - current working directory.
-
-##### Events:
-
-- inherits all from List.
-- __cd__ - directory was selected and navigated to.
-- __file__ - file was selected.
-
-##### Methods:
-
-- inherits all from List.
-- __refresh([cwd], [callback])__ - refresh the file list (perform a `readdir` on `cwd`
-  and update the list items).
-- __pick([cwd], callback)__ - pick a single file and return the path in the callback.
-- __reset([cwd], [callback])__ - reset back to original cwd.
-
-
 #### Checkbox (from Input)
 
 A checkbox which can be used in a form element.
@@ -980,6 +1044,27 @@ A checkbox which can be used in a form element.
 - __toggle()__ - toggle checked state.
 
 
+#### RadioButton (from Checkbox)
+
+A radio button which can be used in a form element.
+
+##### Options:
+
+- inherits all from Checkbox.
+
+##### Properties:
+
+- inherits all from Checkbox.
+
+##### Events:
+
+- inherits all from Checkbox.
+
+##### Methods:
+
+- inherits all from Checkbox.
+
+
 #### RadioSet (from Box)
 
 An element wrapping RadioButtons. RadioButtons within this element will be
@@ -1000,27 +1085,6 @@ mutually exclusive with each other.
 ##### Methods:
 
 - inherits all from Box.
-
-
-#### RadioButton (from Checkbox)
-
-A radio button which can be used in a form element.
-
-##### Options:
-
-- inherits all from Checkbox.
-
-##### Properties:
-
-- inherits all from Checkbox.
-
-##### Events:
-
-- inherits all from Checkbox.
-
-##### Methods:
-
-- inherits all from Checkbox.
 
 
 #### Prompt (from Box)
@@ -1153,35 +1217,6 @@ A horizontal list. Useful for a main menu bar.
 - __selectTab(index)__ - select button and execute its callback.
 
 
-#### Log (from ScrollableText)
-
-A log permanently scrolled to the bottom.
-
-##### Options:
-
-- inherits all from ScrollableText.
-- __scrollback__ - amount of scrollback allowed. default: Infinity.
-- __scrollOnInput__ - scroll to bottom on input even if the user has scrolled
-  up. default: false.
-
-##### Properties:
-
-- inherits all from ScrollableText.
-- __scrollback__ - amount of scrollback allowed. default: Infinity.
-- __scrollOnInput__ - scroll to bottom on input even if the user has scrolled
-  up. default: false.
-
-##### Events:
-
-- inherits all from ScrollableText.
-- __log__ - emitted on a log line. passes in line.
-
-##### Methods:
-
-- inherits all from ScrollableText.
-- __log/add(text)__ - add a log line.
-
-
 #### Table (from Box)
 
 A stylized table of text elements.
@@ -1208,41 +1243,6 @@ A stylized table of text elements.
 ##### Methods:
 
 - inherits all from Box.
-- __setRows/setData(rows)__ - set rows in table. array of arrays of strings.
-``` js
-  table.setData([
-    [ 'Animals',  'Foods'  ],
-    [ 'Elephant', 'Apple'  ],
-    [ 'Bird',     'Orange' ]
-  ]);
-```
-
-
-#### ListTable (from List)
-
-A stylized table of text elements with a list.
-
-##### Options:
-
-- inherits all from List.
-- __rows/data__ - array of array of strings representing rows.
-- __pad__ - spaces to attempt to pad on the sides of each cell. `2` by default:
-  one space on each side (only useful if the width is shrunken).
-- __noCellBorders__ - do not draw inner cells.
-- __style.header__ - header style.
-- __style.cell__ - cell style.
-
-##### Properties:
-
-- inherits all from List.
-
-##### Events:
-
-- inherits all from List.
-
-##### Methods:
-
-- inherits all from List.
 - __setRows/setData(rows)__ - set rows in table. array of arrays of strings.
 ``` js
   table.setData([
