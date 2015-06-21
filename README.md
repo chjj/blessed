@@ -131,44 +131,88 @@ box.focus();
 screen.render();
 ```
 
-
-## API Documentation
+## Documentation
 
 ### Widgets
+
+- [Base Nodes](#base-nodes)
+  - [Node](#node-from-eventemitter) (abstract)
+  - [Screen](#screen-from-node)
+  - [Element](#element-from-node) (abstract)
+- [Boxes](#boxes)
+  - [Box](#box-from-element)
+  - [Text](#text-from-element)
+  - [Line](#line-from-box)
+  - [ScrollableBox](#scrollablebox-from-box) (deprecated)
+  - [ScrollableText](#scrollabletext-from-scrollablebox) (deprecated)
+- [Lists](#lists)
+  - [List](#list-from-box)
+  - [FileManager](#filemanager-from-list)
+  - [ListTable](#listtable-from-list)
+  - [Listbar](#listbar-from-box)
+- [Forms](#forms)
+  - [Form](#form-from-box)
+  - [Input](#input-from-box) (abstract)
+  - [Textarea](#textarea-from-input)
+  - [Textbox](#textbox-from-textarea)
+  - [Button](#button-from-input)
+  - [Checkbox](#checkbox-from-input)
+  - [RadioSet](#radioset-from-box)
+  - [RadioButton](#radiobutton-from-checkbox)
+- [Prompts](#prompts)
+  - [Prompt](#prompt-from-box)
+  - [Question](#question-from-box)
+  - [Message](#message-from-box)
+  - [Loading](#loading-from-box)
+- [Data Display](#data-display)
+  - [ProgressBar](#progressbar-from-input)
+  - [Log](#log-from-scrollabletext)
+  - [Table](#table-from-box)
+- [Special Elements](#special-elements)
+  - [Terminal](#terminal-from-box)
+  - [Image](#image-from-box)
+  - [Layout](#layout-from-element)
+
+### Other
+
+- [Helpers](#helpers)
+
+### Mechanics
+
+- [Content & Tags](#content--tags)
+  - [Colors](#colors)
+  - [Attributes](#attributes)
+  - [Alignment](#alignment)
+  - [Escaping](#escaping)
+  - [SGR Sequences](#sgr-sequences)
+- [Style](#style)
+  - [Colors](#colors-1)
+  - [Attributes](#attributes-1)
+  - [Transparency](#transparency)
+  - [Shadow](#shadow)
+  - [Effects](#effects)
+- [Events](#events)
+  - [Event Bubbling](#event-bubbling)
+- [Poisitioning](#positioning)
+- [Rendering](#rendering)
+- [Artificial Cursors](#artificial-cursors)
+
+### Notes
+
+- [Windows Compatibility](#windows-compatibility)
+- [Low-level Usage](#low-level-usage)
+- [Testing](#testing)
+- [Examples](#examples)
+- [FAQ](#faq)
+
+
+## Widgets
 
 Blessed comes with a number of high-level widgets so you can avoid all the
 nasty low-level terminal stuff.
 
-- [Node](#node-from-eventemitter)
-- [Screen](#screen-from-node)
-- [Element](#element-from-node)
-- [Box](#box-from-element)
-- [Text](#text-from-element)
-- [Line](#line-from-box)
-- [ScrollableBox](#scrollablebox-from-box)
-- [ScrollableText](#scrollabletext-from-scrollablebox)
-- [List](#list-from-box)
-- [Form](#form-from-box)
-- [Input](#input-from-box)
-- [Textarea](#textarea-from-input)
-- [Textbox](#textbox-from-textarea)
-- [Button](#button-from-input)
-- [ProgressBar](#progressbar-from-input)
-- [FileManager](#filemanager-from-list)
-- [Checkbox](#checkbox-from-input)
-- [RadioSet](#radioset-from-box)
-- [RadioButton](#radiobutton-from-checkbox)
-- [Prompt](#prompt-from-box)
-- [Question](#question-from-box)
-- [Message](#message-from-box)
-- [Loading](#loading-from-box)
-- [Listbar](#listbar-from-box)
-- [Log](#log-from-scrollabletext)
-- [Table](#table-from-box)
-- [ListTable](#listtable-from-list)
-- [Terminal](#terminal-from-box)
-- [Image](#image-from-box)
-- [Layout](#layout-from-element)
+
+### Base Nodes
 
 
 #### Node (from EventEmitter)
@@ -247,13 +291,12 @@ The screen on which every other node renders.
 - __autoPadding__ - automatically position child elements with border and
   padding in mind (__NOTE__: this is a recommended option. it may become
   default in the future).
-- __artificialCursor__ - have blessed draw a custom cursor and hide the
+- __cursor.artificial__ - have blessed draw a custom cursor and hide the
   terminal cursor (__experimental__).
-- __cursorShape__ - shape of the artificial cursor. can be: block, underline,
-  or line.
-- __cursorBlink__ - whether the artificial cursor blinks.
-- __cursorColor__ - color of the artificial color. accepts any valid color
-  value (`null` is default).
+- __cursor.shape__ - shape of the cursor. can be: block, underline, or line.
+- __cursor.blink__ - whether the cursor blinks.
+- __cursor.color__ - color of the color. accepts any valid color value (`null`
+  is default).
 - __log__ - create a log file. see `log` method.
 - __dump__ - dump all output and input to desired file. can be used together
   with `log` option if set as a boolean.
@@ -370,9 +413,12 @@ The screen on which every other node renders.
 - __insertTop(top, bottom)__ - insert a line at the top of the screen.
 - __deleteBottom(top, bottom)__ - delete a line at the bottom of the screen.
 - __deleteTop(top, bottom)__ - delete a line at the top of the screen.
-- __enableMouse([el])__ - enable mouse events for the screen and optionally an element (automatically called when a form of on('mouse') is bound).
-- __enableKeys([el])__ - enable keypress events for the screen and optionally an element (automatically called when a form of on('keypress') is bound).
-- __enableInput([el])__ - enable key and mouse events. calls bot enableMouse and enableKeys.
+- __enableMouse([el])__ - enable mouse events for the screen and optionally an
+  element (automatically called when a form of on('mouse') is bound).
+- __enableKeys([el])__ - enable keypress events for the screen and optionally
+  an element (automatically called when a form of on('keypress') is bound).
+- __enableInput([el])__ - enable key and mouse events. calls bot enableMouse
+  and enableKeys.
 - __copyToClipboard(text)__ - attempt to copy text to clipboard using iTerm2's
   proprietary sequence. returns true if successful.
 - __cursorShape(shape, blink)__ - attempt to change cursor shape. will not work
@@ -525,9 +571,12 @@ The base element.
   similar to the "title" DOM attribute in the browser.
   example options: `{text:'foo'}`
 - __removeHover()__ - remove the hover label completely.
-- __enableMouse()__ - enable mouse events for the element (automatically called when a form of on('mouse') is bound).
-- __enableKeys()__ - enable keypress events for the element (automatically called when a form of on('keypress') is bound).
-- __enableInput()__ - enable key and mouse events. calls bot enableMouse and enableKeys.
+- __enableMouse()__ - enable mouse events for the element (automatically called
+  when a form of on('mouse') is bound).
+- __enableKeys()__ - enable keypress events for the element (automatically
+  called when a form of on('keypress') is bound).
+- __enableInput()__ - enable key and mouse events. calls bot enableMouse and
+  enableKeys.
 - __enableDrag()__ - enable dragging of the element.
 - __disableDrag()__ - disable dragging of the element.
 - __screenshot([xi, xl, yi, yl])__ - take an SGR screenshot of the element
@@ -579,6 +628,9 @@ parameter must be a string.
 - __strWidth(text)__ - get a string's displayed width, taking into account
   double-width, surrogate pairs, combining characters, tags, and SGR escape
   codes.
+
+
+### Boxes
 
 
 #### Box (from Element)
@@ -698,6 +750,9 @@ pre-existing newlines and escape codes.
 - inherits all from ScrollableBox.
 
 
+### Lists
+
+
 #### List (from Box)
 
 A scrollable list which can display selectable items.
@@ -760,6 +815,107 @@ A scrollable list which can display selectable items.
   executed with the result.
 - __fuzzyFind([string/regex/callback])__ - find an item based on its text
   content.
+
+
+#### FileManager (from List)
+
+A very simple file manager for selecting files.
+
+##### Options:
+
+- inherits all from List.
+- __cwd__ - current working directory.
+
+##### Properties:
+
+- inherits all from List.
+- __cwd__ - current working directory.
+
+##### Events:
+
+- inherits all from List.
+- __cd__ - directory was selected and navigated to.
+- __file__ - file was selected.
+
+##### Methods:
+
+- inherits all from List.
+- __refresh([cwd], [callback])__ - refresh the file list (perform a `readdir` on `cwd`
+  and update the list items).
+- __pick([cwd], callback)__ - pick a single file and return the path in the callback.
+- __reset([cwd], [callback])__ - reset back to original cwd.
+
+
+#### ListTable (from List)
+
+A stylized table of text elements with a list.
+
+##### Options:
+
+- inherits all from List.
+- __rows/data__ - array of array of strings representing rows.
+- __pad__ - spaces to attempt to pad on the sides of each cell. `2` by default:
+  one space on each side (only useful if the width is shrunken).
+- __noCellBorders__ - do not draw inner cells.
+- __style.header__ - header style.
+- __style.cell__ - cell style.
+
+##### Properties:
+
+- inherits all from List.
+
+##### Events:
+
+- inherits all from List.
+
+##### Methods:
+
+- inherits all from List.
+- __setRows/setData(rows)__ - set rows in table. array of arrays of strings.
+``` js
+  table.setData([
+    [ 'Animals',  'Foods'  ],
+    [ 'Elephant', 'Apple'  ],
+    [ 'Bird',     'Orange' ]
+  ]);
+```
+
+
+#### Listbar (from Box)
+
+A horizontal list. Useful for a main menu bar.
+
+##### Options:
+
+- inherits all from Box.
+- __style.selected__ - style for a selected item.
+- __style.item__ - style for an unselected item.
+- __commands/items__ - set buttons using an object with keys as titles of
+  buttons, containing of objects containing keys of `keys` and `callback`.
+- __autoCommandKeys__ - automatically bind list buttons to keys 0-9.
+
+##### Properties:
+
+- inherits all from Box.
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+- __setItems(commands)__ - set commands (see `commands` option above).
+- __add/addItem/appendItem(item, callback)__ - append an item to the bar.
+- __select(offset)__ - select an item on the bar.
+- __removeItem(child)__ - remove item from the bar.
+- __move(offset)__ - move relatively across the bar.
+- __moveLeft(offset)__ - move left relatively across the bar.
+- __moveRight(offset)__ - move right relatively across the bar.
+- __selectTab(index)__ - select button and execute its callback.
+
+
+### Forms
 
 
 #### Form (from Box)
@@ -886,68 +1042,6 @@ A button which can be focused and allows key and mouse input.
 - __press()__ - press button. emits `press`.
 
 
-#### ProgressBar (from Input)
-
-A progress bar allowing various styles. This can also be used as a form input.
-
-##### Options:
-
-- inherits all from Input.
-- __orientation__ - can be `horizontal` or `vertical`.
-- __style.bar__ - style of the bar contents itself.
-- __pch__ - the character to fill the bar with (default is space).
-- __filled__ - the amount filled (0 - 100).
-- __value__ - same as `filled`.
-- __keys__ - enable key support.
-- __mouse__ - enable mouse support.
-
-##### Properties:
-
-- inherits all from Input.
-
-##### Events:
-
-- inherits all from Input.
-- __reset__ - bar was reset.
-- __complete__ - bar has completely filled.
-
-##### Methods:
-
-- inherits all from Input.
-- __progress(amount)__ - progress the bar by a fill amount.
-- __setProgress(amount)__ - set progress to specific amount.
-- __reset()__ - reset the bar.
-
-
-#### FileManager (from List)
-
-A very simple file manager for selecting files.
-
-##### Options:
-
-- inherits all from List.
-- __cwd__ - current working directory.
-
-##### Properties:
-
-- inherits all from List.
-- __cwd__ - current working directory.
-
-##### Events:
-
-- inherits all from List.
-- __cd__ - directory was selected and navigated to.
-- __file__ - file was selected.
-
-##### Methods:
-
-- inherits all from List.
-- __refresh([cwd], [callback])__ - refresh the file list (perform a `readdir` on `cwd`
-  and update the list items).
-- __pick([cwd], callback)__ - pick a single file and return the path in the callback.
-- __reset([cwd], [callback])__ - reset back to original cwd.
-
-
 #### Checkbox (from Input)
 
 A checkbox which can be used in a form element.
@@ -1021,6 +1115,9 @@ A radio button which can be used in a form element.
 ##### Methods:
 
 - inherits all from Checkbox.
+
+
+### Prompts
 
 
 #### Prompt (from Box)
@@ -1119,38 +1216,40 @@ A box with a spinning line to denote loading (automatically hidden).
 - __stop()__ - hide loading box. unlock keys.
 
 
-#### Listbar (from Box)
+### Data Display
 
-A horizontal list. Useful for a main menu bar.
+
+#### ProgressBar (from Input)
+
+A progress bar allowing various styles. This can also be used as a form input.
 
 ##### Options:
 
-- inherits all from Box.
-- __style.selected__ - style for a selected item.
-- __style.item__ - style for an unselected item.
-- __commands/items__ - set buttons using an object with keys as titles of
-  buttons, containing of objects containing keys of `keys` and `callback`.
-- __autoCommandKeys__ - automatically bind list buttons to keys 0-9.
+- inherits all from Input.
+- __orientation__ - can be `horizontal` or `vertical`.
+- __style.bar__ - style of the bar contents itself.
+- __pch__ - the character to fill the bar with (default is space).
+- __filled__ - the amount filled (0 - 100).
+- __value__ - same as `filled`.
+- __keys__ - enable key support.
+- __mouse__ - enable mouse support.
 
 ##### Properties:
 
-- inherits all from Box.
+- inherits all from Input.
 
 ##### Events:
 
-- inherits all from Box.
+- inherits all from Input.
+- __reset__ - bar was reset.
+- __complete__ - bar has completely filled.
 
 ##### Methods:
 
-- inherits all from Box.
-- __setItems(commands)__ - set commands (see `commands` option above).
-- __add/addItem/appendItem(item, callback)__ - append an item to the bar.
-- __select(offset)__ - select an item on the bar.
-- __removeItem(child)__ - remove item from the bar.
-- __move(offset)__ - move relatively across the bar.
-- __moveLeft(offset)__ - move left relatively across the bar.
-- __moveRight(offset)__ - move right relatively across the bar.
-- __selectTab(index)__ - select button and execute its callback.
+- inherits all from Input.
+- __progress(amount)__ - progress the bar by a fill amount.
+- __setProgress(amount)__ - set progress to specific amount.
+- __reset()__ - reset the bar.
 
 
 #### Log (from ScrollableText)
@@ -1218,39 +1317,7 @@ A stylized table of text elements.
 ```
 
 
-#### ListTable (from List)
-
-A stylized table of text elements with a list.
-
-##### Options:
-
-- inherits all from List.
-- __rows/data__ - array of array of strings representing rows.
-- __pad__ - spaces to attempt to pad on the sides of each cell. `2` by default:
-  one space on each side (only useful if the width is shrunken).
-- __noCellBorders__ - do not draw inner cells.
-- __style.header__ - header style.
-- __style.cell__ - cell style.
-
-##### Properties:
-
-- inherits all from List.
-
-##### Events:
-
-- inherits all from List.
-
-##### Methods:
-
-- inherits all from List.
-- __setRows/setData(rows)__ - set rows in table. array of arrays of strings.
-``` js
-  table.setData([
-    [ 'Animals',  'Foods'  ],
-    [ 'Elephant', 'Apple'  ],
-    [ 'Bird',     'Orange' ]
-  ]);
-```
+### Special Elements
 
 
 #### Terminal (from Box)
@@ -1496,44 +1563,278 @@ for (var i = 0; i < 10; i++) {
 ```
 
 
-### Artificial Cursors
+### Other
 
-Terminal cursors can be tricky. They all have different custom escape codes to
-alter. As an _experimental_ alternative, blessed can draw a cursor for you,
-allowing you to have a custom cursor that you control.
+
+#### Helpers
+
+All helpers reside on `blessed.helpers` or `blessed`.
+
+- __merge(a, b)__ - Merge objects `a` and `b` into object `a`.
+- __asort(obj)__ - Sort array alphabetically by `name` prop.
+- __hsort(obj)__ - Sort array numerically by `index` prop.
+- __findFile(start, target)__ - Find a file at `start` directory with name
+  `target`.
+- __escape(text)__ - escape content's tags to be passed into `el.setContent()`.
+  Example: `box.setContent('escaped tag: ' + blessed.escape('{bold}{/bold}'));`
+- __parseTags(text)__ - Parse tags into SGR escape codes.
+- __generateTags(style, text)__ - Generate text tags based on `style` object.
+- __attrToBinary(style, element)__ - Convert `style` attributes to binary
+  format.
+- __stripTags(text)__ - Strip text of tags and SGR sequences.
+- __cleanTags(text)__ - Strip text of tags, SGR escape code, and
+  leading/trailing whitespace.
+- __dropUnicode(text)__ - Drop text of any >U+FFFF characters.
+
+
+### Mechanics
+
+
+#### Content & Tags
+
+Every element can have text content via `setContent`. If `tags: true` was
+passed to the element's constructor, the content can contain tags. For example:
 
 ``` js
-var screen = blessed.screen({
-  cursor: {
-    artificial: true,
-    shape: 'line',
-    blink: true,
-    color: null // null for default
-  }
-});
+box.setContent('hello {red-fg}{green-bg}{bold}world{/bold}{/green-bg}{/red-fg}');
 ```
 
-That's it. It's controlled the same way as the regular cursor.
-
-To create a custom cursor:
+To make this more concise `{/}` cancels all character attributes.
 
 ``` js
-var screen = blessed.screen({
-  cursor: {
-    artificial: true,
-    shape: {
-      bg: 'red',
-      fg: 'white',
-      bold: true,
-      ch: '#'
+box.setContent('hello {red-fg}{green-bg}{bold}world{/}');
+```
+
+
+##### Colors
+
+Blessed tags support the basic 16 colors for colors, as well as up to 256
+colors.
+
+``` js
+box.setContent('hello {red-fg}{green-bg}world{/}');
+```
+
+Tags can also use hex colors (which will be reduced to the most accurate
+terminal color):
+
+``` js
+box.setContent('hello {#ff0000-fg}{#00ff00-bg}world{/}');
+```
+
+
+##### Attributes
+
+Blessed supports all terminal attributes, including `bold`, `underline`,
+`blink`, `inverse`, and `invisible`.
+
+``` js
+box.setContent('hello {bold}world{/bold}');
+```
+
+
+##### Alignment
+
+Newlines and alignment are also possible in content.
+
+``` js
+box.setContent('hello\n'
+  + '{right}world{/right}\n'
+  + '{center}foo{/center}\n');
+  + 'left{|}right');
+```
+
+This will produce a box that looks like:
+
+```
+| hello                 |
+|                 world |
+|          foo          |
+| left            right |
+```
+
+
+##### Escaping
+
+Escaping can either be done using `blessed.escape()`
+
+```
+box.setContent('here is an escaped tag: ' + blessed.escape('{bold}{/bold}'));
+```
+
+Or with the special `{open}` and `{close}` tags:
+
+```
+box.setContent('here is an escaped tag: {open}bold{close}{open}/bold{close}');
+```
+
+Either will produce:
+
+```
+here is an escaped tag: {bold}{/bold}
+```
+
+
+##### SGR Sequences
+
+Content can also handle SGR escape codes. This means if you got output from a
+program, say `git log` for example, you can feed it directly to an element's
+content and the colors will be parsed appropriately.
+
+This means that while `{red-fg}foo{/red-fg}` produces `^[[31mfoo^[[39m`, you
+could just feed `^[[31mfoo^[[39m` directly to the content.
+
+
+#### Style
+
+The style option controls most of the visual aspects of an element.
+
+``` js
+  style: {
+    fg: 'blue',
+    bg: 'black',
+    bold: true,
+    underline: false,
+    blink: false,
+    inverse: false,
+    invisible: false,
+    transparent: false,
+    border: {
+      fg: 'blue',
+      bg: 'red'
     },
-    blink: true
+    scrollbar: {
+      bg: 'blue'
+    },
+    focus: {
+      bg: 'red'
+    },
+    hover: {
+      bg: 'red'
+    }
+  }
+```
+
+
+##### Colors
+
+Colors can be the names of any of the 16 basic terminal colors, along with hex
+values (e.g. `#ff0000`) for 256 color terminals. If 256 or 88 colors is not
+supported. Blessed with reduce the color to whatever is available.
+
+
+##### Attributes
+
+Blessed supports all terminal attributes, including `bold`, `underline`,
+`blink`, `inverse`, and `invisible`. Attributes are represented as bools in the
+`style` object.
+
+
+##### Transparency
+
+Blessed can set the opacity of an element to 50% using `style.transparent =
+true;`. While this seems like it normally shouldn't be possible in a terminal,
+blessed will use a color blending algorithm to blend the element of the
+foremost element with the background behind it. Obviously characters cannot be
+blended, but background colors can.
+
+
+##### Shadow
+
+Translucent shadows are also an option when it comes to styling an element.
+This option will create a 50% opacity 2-cell wide, 1-cell high shadow offset to
+the bottom-right.
+
+``` js
+shadow: true
+```
+
+
+##### Effects
+
+Blessed supports hover and focus styles. (Hover is only useful is mouse input
+is enabled).
+
+``` js
+  style: {
+    hover: {
+      bg: 'red'
+    },
+    focus: {
+      border: {
+        fg: 'blue'
+      }
+    }
+  }
+```
+
+
+##### Scrollbar
+
+On scrollable elements, blessed will support style options for the scrollbar,
+such as:
+
+``` js
+style: {
+  scrollbar: {
+    bg: 'red',
+    fg: 'blue'
+  }
+}
+```
+
+As a main option, scrollbar will either take a bool or an object:
+
+``` js
+scrollbar: {
+  ch: ' '
+}
+```
+
+Or:
+
+``` js
+scrollbar: true
+```
+
+
+#### Events
+
+Events in Blessed work similar to the traditional node.js model, with one
+important difference: they have a concept of a tree and event bubbling.
+
+
+##### Event Bubbling
+
+Events can bubble in blessed. For example:
+
+Receiving all click events for `box` (a normal event listener):
+
+``` js
+box.on('click', function(mouse) {
+  box.setContent('You clicked ' + mouse.x + ', ' + mouse.y + '.');
+  screen.render();
+});
+```
+
+Receiving all click events for `box`, as well as all of its children:
+
+``` js
+box.on('element click', function(el, mouse) {
+  box.setContent('You clicked '
+    + el.type + ' at ' + mouse.x + ', ' + mouse.y + '.');
+  screen.render();
+  if (el === box) {
+    return false; // Cancel propagation.
   }
 });
 ```
 
+`el` gets passed in as the first argument. It refers to the target element the
+event occurred on. Returning `false` will cancel propagation up the tree.
 
-### Positioning
+
+#### Positioning
 
 Offsets may be a number, a percentage (e.g. `50%`), or a keyword (e.g.
 `center`).
@@ -1581,90 +1882,13 @@ console.log(box.aleft);
 console.log(box.atop);
 ```
 
-#### Overlapping offsets and dimensions greater than parents'
+
+##### Overlapping offsets and dimensions greater than parents'
 
 This still needs to be tested a bit, but it should work.
 
 
-### Content
-
-Every element can have text content via `setContent`. If `tags: true` was
-passed to the element's constructor, the content can contain tags. For example:
-
-``` js
-box.setContent('hello {red-fg}{green-bg}{bold}world{/bold}{/green-bg}{/red-fg}');
-```
-
-To make this more concise `{/}` cancels all character attributes.
-
-``` js
-box.setContent('hello {red-fg}{green-bg}{bold}world{/}');
-```
-
-Tags can also use hex colors (which will be reduced to the most accurate
-terminal color):
-
-``` js
-box.setContent('{#ff0000-fg}{bold}red and bold{/}');
-```
-
-Newlines and alignment are also possible in content.
-
-``` js
-box.setContent('hello\n'
-  + '{right}world{/right}\n'
-  + '{center}foo{/center}\n');
-  + 'left{|}right');
-```
-
-This will produce a box that looks like:
-
-```
-| hello                 |
-|                 world |
-|          foo          |
-| left            right |
-```
-
-Content can also handle SGR escape codes. This means if you got output from a
-program, say `git log` for example, you can feed it directly to an element's
-content and the colors will be parsed appropriately.
-
-This means that while `{red-fg}foo{/red-fg}` produces `^[[31mfoo^[[39m`, you
-could just feed `^[[31mfoo^[[39m` directly to the content.
-
-
-### Event Bubbling
-
-Events can bubble in blessed. For example:
-
-Receiving all click events for `box`:
-
-``` js
-box.on('click', function(mouse) {
-  box.setContent('You clicked ' + mouse.x + ', ' + mouse.y + '.');
-  screen.render();
-});
-```
-
-Receiving all click events for `box`, as well as all of its children:
-
-``` js
-box.on('element click', function(el, mouse) {
-  box.setContent('You clicked '
-    + el.type + ' at ' + mouse.x + ', ' + mouse.y + '.');
-  screen.render();
-  if (el === box) {
-    return false; // Cancel propagation.
-  }
-});
-```
-
-`el` gets passed in as the first argument. It refers to the target element the
-event occurred on. Returning `false` will cancel propagation up the tree.
-
-
-### Rendering
+#### Rendering
 
 To actually render the screen buffer, you must call `render`.
 
@@ -1678,7 +1902,47 @@ painted first. In terms of the painter's algorithm, the lowest indicies in the
 array are the furthest away, just like in the DOM.
 
 
-### Windows compatibility
+#### Artificial Cursors
+
+Terminal cursors can be tricky. They all have different custom escape codes to
+alter. As an _experimental_ alternative, blessed can draw a cursor for you,
+allowing you to have a custom cursor that you control.
+
+``` js
+var screen = blessed.screen({
+  cursor: {
+    artificial: true,
+    shape: 'line',
+    blink: true,
+    color: null // null for default
+  }
+});
+```
+
+That's it. It's controlled the same way as the regular cursor.
+
+To create a custom cursor:
+
+``` js
+var screen = blessed.screen({
+  cursor: {
+    artificial: true,
+    shape: {
+      bg: 'red',
+      fg: 'white',
+      bold: true,
+      ch: '#'
+    },
+    blink: true
+  }
+});
+```
+
+
+### Notes
+
+
+#### Windows Compatibility
 
 Currently there is no `mouse` or `resize` event support on Windows.
 
@@ -1691,14 +1955,7 @@ var screen = blessed.screen({ term: 'windows-ansi' });
 ```
 
 
-### Testing
-
-Most tests contained in the `test/` directory are interactive. It's up to the
-programmer to determine whether the test is properly displayed. In the future
-it might be better to do something similar to vttest.
-
-
-## Lower-Level Usage
+#### Low-level Usage
 
 This will actually parse the xterm terminfo and compile every
 string capability to a javascript function:
@@ -1761,7 +2018,19 @@ program.feed();
 ```
 
 
-## FAQ
+#### Testing
+
+Most tests contained in the `test/` directory are interactive. It's up to the
+programmer to determine whether the test is properly displayed. In the future
+it might be better to do something similar to vttest.
+
+
+#### Examples
+
+Examples can be found in `examples/`.
+
+
+#### FAQ
 
 1. Why doesn't the Linux console render lines correctly on Ubuntu?
   - You need to install the `ncurses-base` package __and__ the `ncurses-term`
