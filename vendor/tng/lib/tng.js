@@ -891,9 +891,6 @@ PNG.prototype.renderFrame = function(bmp, frame, i) {
     + ~~(fc.width !== first.fctl.width)
     + ~~(fc.height !== first.fctl.height);
 
-  // XXX Disable dispose ops for now.
-  ops -= fc.disposeOp + (last ? last.fctl.disposeOp : 0);
-
   if (!this._curBmp) {
     this._curBmp = [];
     for (y = 0; y < first.fctl.height; y++) {
@@ -907,7 +904,6 @@ PNG.prototype.renderFrame = function(bmp, frame, i) {
   }
 
   if (last && ops) {
-    // XXX Disable dispose ops for now.
     if (last.fctl.disposeOp) {
       lxo = last.fctl.xOffset;
       lyo = last.fctl.yOffset;
