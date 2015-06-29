@@ -172,6 +172,7 @@ screen.render();
   - [Terminal](#terminal-from-box)
   - [Image](#image-from-box)
   - [Layout](#layout-from-element)
+  - [PNG](#png-from-box)
 
 ### Other
 
@@ -1384,11 +1385,13 @@ terminals.
 ##### Methods:
 
 - inherits all from Box.
-- __setImage(img, callback)__ - set the image in the box to a new path.
-- __clearImage(callback)__ - clear the current image.
-- __imageSize(img, callback)__ - get the size of an image file in pixels.
-- __termSize(callback)__ - get the size of the terminal in pixels.
-- __getPixelRatio(callback)__ - get the pixel to cell ratio for the terminal.
+- __setImage(img, [callback])__ - set the image in the box to a new path.
+- __clearImage([callback])__ - clear the current image.
+- __imageSize(img, [callback])__ - get the size of an image file in pixels.
+- __termSize([callback])__ - get the size of the terminal in pixels.
+- __getPixelRatio([callback])__ - get the pixel to cell ratio for the terminal.
+- _Note:_ All methods above can be synchronous as long as the host version of
+  node supports `spawnSync`.
 
 
 #### Layout (from Element)
@@ -1563,6 +1566,68 @@ for (var i = 0; i < 10; i++) {
   });
 }
 ```
+
+
+#### PNG (from Box)
+
+Convert any `.png` file (or `.gif`, see below) to an ANSI image and display it
+as an element. This differs from the `Image` element in that it uses blessed's
+internal PNG parser and does not require external dependencies.
+
+Blessed uses an internal from-scratch PNG reader because no other javascript
+PNG reader supports Adam7 interlaced images (much less pass the png test
+suite).
+
+The blessed PNG reader supports adam7 deinterlacing, animation (APNG), all
+color types, bit depths 1-32, alpha, alpha palettes, and outputs scaled bitmaps
+(cellmaps) in blessed for efficient rendering to the screen buffer. It also
+uses some code from libcaca/libcucul to add density ASCII characters in order
+to give the image more detail in the terminal.
+
+If a corrupt PNG or a non-PNG is passed in, blessed will display error text in
+the element.
+
+`.gif` files are also supported via a javascript implementation (they are
+internally converted to bitmaps and fed to the PNG renderer). Any other image
+format is support only if the user has imagemagick (`convert` and `identify`)
+installed.
+
+##### Options:
+
+- inherits all from Box.
+- __file__ - URL or path to PNG file. can also be a buffer.
+- __scale__ - scale cellmap down (`0-1.0`) from its original pixel width/height
+  (default: `1.0`).
+- __width/height__ - this differs from other element's `width` or `height` in
+  that only one of them is needed: blessed will maintain the aspect ratio of
+  the image as it scales down to the proper number of cells. __NOTE__: PNG's
+  are always automatically shrunken to size (based on scale) if a `width` or
+  `height` is not given.
+- __ascii__ - add various "density" ASCII characters over the rendering to give
+  the image more detail, similar to libcaca/libcucul (the library mplayer uses
+  to display videos in the terminal).
+- __animate__ - whether to animate if the image is an APNG. if false, only
+  display the first frame or IDAT (default: `true`).
+
+##### Properties:
+
+- inherits all from Box.
+- __img__ - image object from the png reader.
+- __img.width__ - pixel width.
+- __img.height__ - pixel height.
+- __img.bmp__ - image bitmap.
+- __img.cellmap__ - image cellmap (bitmap scaled down to cell size).
+
+##### Events:
+
+- inherits all from Box.
+
+##### Methods:
+
+- inherits all from Box.
+- __setImage(file)__ - set the image in the box to a new path. file can be a
+  path, url, or buffer.
+- __clearImage()__ - clear the image.
 
 
 ### Other

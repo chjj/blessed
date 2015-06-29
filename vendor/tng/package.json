@@ -1,0 +1,17 @@
+{
+  "name": "tng",
+  "description": "A full-featured PNG renderer for the terminal.",
+  "author": "Christopher Jeffrey",
+  "version": "0.0.1",
+  "main": "./lib/tng.js",
+  "bin": "./test/index.js",
+  "preferGlobal": false,
+  "repository": "git://github.com/chjj/tng.git",
+  "homepage": "https://github.com/chjj/tng",
+  "bugs": { "url": "http://github.com/chjj/tng/issues" },
+  "keywords": ["png", "gif", "image", "terminal", "term", "tty", "tui"],
+  "tags": ["png", "gif", "image", "terminal", "term", "tty", "tui"],
+  "peerDependencies": {
+    "blessed": ">=0.1.61"
+  }
+}
