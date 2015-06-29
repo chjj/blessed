@@ -328,7 +328,7 @@ PNG.prototype.parseLines = function(data) {
 PNG.prototype.unfilterLine = function(filter, line, prior) {
   for (var x = 0; x < line.length; x++) {
     if (filter === 0) {
-      // line[x] = line[x];
+      break;
     } else if (filter === 1) {
       line[x] = this.filters.sub(x, line, prior, this.bytesPerPixel);
     } else if (filter === 2) {
@@ -551,7 +551,8 @@ PNG.prototype.sampleInterlacedLines = function(raw) {
 };
 
 PNG.prototype.createBitmap = function(pixels) {
-  var bmp = [];
+  var bmp = []
+    , i;
 
   if (this.colorType === 0) {
     pixels = pixels.map(function(sample) {
@@ -576,7 +577,7 @@ PNG.prototype.createBitmap = function(pixels) {
     });
   }
 
-  for (var i = 0; i < pixels.length; i += this.width) {
+  for (i = 0; i < pixels.length; i += this.width) {
     bmp.push(pixels.slice(i, i + this.width));
   }
 
@@ -672,8 +673,8 @@ PNG.prototype.renderScreen = function(bmp, screen, xi, xl, yi, yl) {
   cellLines = bmp.reduce(function(cellLines, line, y) {
     var cellLine = [];
     line.forEach(function(pixel, x) {
-      var outch = self.getOutch(x, y, line, pixel);
-      var cell = self.pixelToCell(pixel, outch);
+      var outch = self.getOutch(x, y, line, pixel)
+        , cell = self.pixelToCell(pixel, outch);
       cellLine.push(cell);
     });
     cellLines.push(cellLine);
@@ -708,8 +709,10 @@ PNG.prototype.renderScreen = function(bmp, screen, xi, xl, yi, yl) {
 };
 
 PNG.prototype.renderElement = function(bmp, el) {
-  var xi = el.aleft + el.ileft, xl = el.aleft + el.width - el.iright
-    , yi = el.atop + el.itop, yl = el.atop + el.height - el.ibottom;
+  var xi = el.aleft + el.ileft
+    , xl = el.aleft + el.width - el.iright
+    , yi = el.atop + el.itop
+    , yl = el.atop + el.height - el.ibottom;
 
   return this.renderScreen(bmp, el.screen, xi, xl, yi, yl);
 };
@@ -882,6 +885,7 @@ PNG.prototype.renderFrame = function(bmp, frame, i) {
     , ops
     , x
     , y
+    , line
     , p;
 
   ops = (xo + yo + fc.blendOp)
@@ -892,7 +896,7 @@ PNG.prototype.renderFrame = function(bmp, frame, i) {
   if (!this._curBmp) {
     this._curBmp = [];
     for (y = 0; y < first.fctl.height; y++) {
-      var line = [];
+      line = [];
       for (x = 0; x < first.fctl.width; x++) {
         p = bmp[y][x];
         line.push({ r: p.r, g: p.g, b: p.b, a: p.a });
@@ -951,6 +955,7 @@ PNG.prototype._animate = function(callback) {
 
   var next_lomem = function() {
     if (!running) return;
+
     var frame = self.frames[++i];
     if (!frame) {
       if (!--numPlays) return callback();
@@ -1027,7 +1032,9 @@ PNG.prototype.toPNG = function() {
     , format = this.format
     , buf
     , img
-    , gif;
+    , gif
+    , i
+    , disposeOp;
 
   if (format !== 'gif') {
     buf = exec('convert',
@@ -1044,11 +1051,11 @@ PNG.prototype.toPNG = function() {
   this.height = gif.height;
   this.frames = [];
 
-  for (var i = 0; i < gif.images.length; i++) {
-    var img = gif.images[i];
+  for (i = 0; i < gif.images.length; i++) {
+    img = gif.images[i];
     // Convert from gif disposal to png disposal. See:
     // http://www.w3.org/Graphics/GIF/spec-gif89a.txt
-    var disposeOp = Math.max(0, (gif.disposeMethod || 0) - 1);
+    disposeOp = Math.max(0, (gif.disposeMethod || 0) - 1);
     if (disposeOp > 2) disposeOp = 0;
     this.frames.push({
       fctl: {
