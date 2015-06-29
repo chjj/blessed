@@ -33,20 +33,27 @@ function PNG(file, options) {
   this.options.optimization = this.options.optimization || 'mem';
 
   if (Buffer.isBuffer(file)) {
-    buf = file;
     this.file = null;
+    this.ext = 'png';
+    buf = file;
   } else {
     this.file = path.resolve(process.cwd(), file);
-    this.format = path.extname(this.file).slice(1).toLowerCase();
-    if (this.format !== 'png') {
-      try {
-        return this.toPNG();
-      } catch (e) {
-        console.error('could not convert ' + this.format + ' to png');
-        throw e;
-      }
-    }
+    this.ext = path.extname(this.file).slice(1).toLowerCase();
     buf = fs.readFileSync(this.file);
+  }
+
+  this.format = buf.readUInt32BE(0) === 0x89504e47 ? 'png'
+    : buf.slice(0, 3).toString('ascii') === 'GIF' ? 'gif'
+    : buf.readUInt16BE(0) === 0xffd8 ? 'jpg'
+    : this.ext;
+
+  if (this.format !== 'png') {
+    try {
+      return this.toPNG(buf);
+    } catch (e) {
+      console.error('could not convert ' + this.format + ' to png');
+      throw e;
+    }
   }
 
   chunks = this.parseRaw(buf);
@@ -1026,7 +1033,7 @@ PNG.prototype.stop = function() {
   this._control(-1);
 };
 
-PNG.prototype.toPNG = function() {
+PNG.prototype.toPNG = function(input) {
   var options = this.options
     , file = this.file
     , format = this.format
@@ -1045,7 +1052,7 @@ PNG.prototype.toPNG = function() {
     return img;
   }
 
-  gif = GIF(file, options);
+  gif = GIF(input || file, options);
 
   this.width = gif.width;
   this.height = gif.height;
