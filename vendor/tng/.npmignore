@@ -1,6 +1,0 @@
-.git*
-test/
-img/
-node_modules/
-debug.log
-png.json
