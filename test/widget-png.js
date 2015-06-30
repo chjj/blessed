@@ -4,10 +4,10 @@ var fs = require('fs');
 var argv = {};
 
 process.argv = process.argv.map(function(arg, i) {
-  if (~arg.indexOf('=')) {
+  if (/^--\w+=/.test(arg)) {
     arg = arg.split('=');
     if (/^[0-9.]+$/.test(arg[1])) arg[1] = +arg[1];
-    argv[arg[0].replace(/^-+/, '')] = arg[1];
+    argv[arg[0].replace(/^--/, '')] = arg[1];
     return;
   }
   if (arg.indexOf('--') === 0) {
