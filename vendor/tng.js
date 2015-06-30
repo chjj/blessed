@@ -30,22 +30,22 @@ function PNG(file, options) {
 
   this.options = options || {};
   this.colors = options.colors || require('blessed/lib/colors');
-  this.options.optimization = this.options.optimization || 'mem';
+  this.optimization = this.options.optimization || 'mem';
+  this.speed = this.options.speed || 1;
 
   if (Buffer.isBuffer(file)) {
-    this.file = null;
-    this.ext = 'png';
+    this.file = this.options.filename || null;
     buf = file;
   } else {
+    this.options.filename = file;
     this.file = path.resolve(process.cwd(), file);
-    this.ext = path.extname(this.file).slice(1).toLowerCase();
     buf = fs.readFileSync(this.file);
   }
 
   this.format = buf.readUInt32BE(0) === 0x89504e47 ? 'png'
     : buf.slice(0, 3).toString('ascii') === 'GIF' ? 'gif'
     : buf.readUInt16BE(0) === 0xffd8 ? 'jpg'
-    : this.ext;
+    : path.extname(this.file).slice(1).toLowerCase() || 'png';
 
   if (this.format !== 'png') {
     try {
@@ -64,8 +64,6 @@ function PNG(file, options) {
   this.cellmap = this.createCellmap(this.bmp);
   this.frames = this.compileFrames(this.frames);
 }
-
-PNG.prototype.defaultScale = 0.20;
 
 PNG.prototype.parseRaw = function(buf) {
   var chunks = []
@@ -595,14 +593,16 @@ PNG.prototype.createCellmap = function(bmp, options) {
   var bmp = bmp || this.bmp
     , options = options || this.options
     , cellmap = []
-    , scale = options.cellmapScale || this.defaultScale
+    , scale = options.scale || 0.20
     , height = bmp.length
     , width = bmp[0].length
-    , cmwidth = options.cellmapWidth
-    , cmheight = options.cellmapHeight
+    , cmwidth = options.width
+    , cmheight = options.height
     , line
     , x
     , y
+    , xx
+    , yy
     , scale
     , xs
     , ys;
@@ -613,21 +613,27 @@ PNG.prototype.createCellmap = function(bmp, options) {
     scale = cmheight / height;
   }
 
-  ys = Math.ceil(height / (height * scale));
-  xs = Math.ceil(width / (width * scale));
+  if (!cmheight) {
+    cmheight = Math.round(height * scale);
+  }
 
-  // ys++;
-  // xs++;
+  if (!cmwidth) {
+    cmwidth = Math.round(width * scale);
+  }
 
-  // add a reducePixels() method here
+  ys = height / cmheight;
+  xs = width / cmwidth;
+
   for (y = 0; y < bmp.length; y += ys) {
     line = [];
-    if (cmheight && cellmap.length === cmheight) break;
-    cellmap.push(line);
-    for (x = 0; x < bmp[y].length; x += xs) {
-      if (cmwidth && line.length === cmwidth) break;
-      line.push(bmp[y][x]);
+    yy = Math.round(y);
+    if (!bmp[yy]) break;
+    for (x = 0; x < bmp[yy].length; x += xs) {
+      xx = Math.round(x);
+      if (!bmp[yy][xx]) break;
+      line.push(bmp[yy][xx]);
     }
+    cellmap.push(line);
   }
 
   return cellmap;
@@ -830,7 +836,7 @@ PNG.prototype.getOutch = (function() {
 })();
 
 PNG.prototype.compileFrames = function(frames) {
-  return this.options.optimization === 'mem'
+  return this.optimization === 'mem'
     ? this.compileFrames_lomem(frames)
     : this.compileFrames_locpu(frames);
 };
@@ -978,7 +984,7 @@ PNG.prototype._animate = function(callback) {
       , cellmap = self.createCellmap(renderBmp);
 
     callback(renderBmp, cellmap);
-    return setTimeout(next, frame.delay);
+    return setTimeout(next, frame.delay / self.speed | 0);
   };
 
   var next_locpu = function() {
@@ -990,10 +996,10 @@ PNG.prototype._animate = function(callback) {
       return setImmediate(next);
     }
     callback(frame.bmp, frame.cellmap);
-    return setTimeout(next, frame.delay);
+    return setTimeout(next, frame.delay / self.speed | 0);
   };
 
-  var next = this.options.optimization === 'mem'
+  var next = this.optimization === 'mem'
     ? next_lomem
     : next_locpu;
 
@@ -1044,15 +1050,14 @@ PNG.prototype.toPNG = function(input) {
     , disposeOp;
 
   if (format !== 'gif') {
-    buf = exec('convert',
-      [format + ':' + file, 'png:-'],
-      { stdio: ['ignore', 'pipe', 'ignore']});
+    buf = exec('convert', [format + ':-', 'png:-'],
+      { stdio: ['pipe', 'pipe', 'ignore'], input: input });
     img = PNG(buf, options);
     img.file = file;
     return img;
   }
 
-  gif = GIF(input || file, options);
+  gif = GIF(input, options);
 
   this.width = gif.width;
   this.height = gif.height;
@@ -1098,7 +1103,7 @@ PNG.prototype.toPNG = function(input) {
 // Convert a gif to an apng using imagemagick. Unfortunately imagemagick
 // doesn't support apngs, so we coalesce the gif frames into one image and then
 // slice them into frames.
-PNG.prototype.gifMagick = function() {
+PNG.prototype.gifMagick = function(input) {
   var options = this.options
     , file = this.file
     , format = this.format
@@ -1118,11 +1123,12 @@ PNG.prototype.gifMagick = function() {
     , y;
 
   buf = exec('convert',
-    [format + ':' + file, '-coalesce', '+append', 'png:-']);
+    [format + ':-', '-coalesce', '+append', 'png:-'],
+    { stdio: ['pipe', 'pipe', 'ignore'], input: input });
 
   fmt = '{"W":%W,"H":%H,"w":%w,"h":%h,"d":%T,"x":"%X","y":"%Y"},'
-  frames = exec('identify', ['-format', fmt, format + ':' + file],
-    { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+  frames = exec('identify', ['-format', fmt, format + ':-'],
+    { encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'], input: input });
   frames = JSON.parse('[' + frames.trim().slice(0, -1) + ']');
 
   img = PNG(buf, options);

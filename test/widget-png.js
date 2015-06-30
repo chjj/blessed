@@ -1,13 +1,30 @@
 var blessed = require('../');
 var fs = require('fs');
 
+var argv = {};
+
+process.argv = process.argv.map(function(arg, i) {
+  if (~arg.indexOf('=')) {
+    arg = arg.split('=');
+    if (/^[0-9.]+$/.test(arg[1])) arg[1] = +arg[1];
+    argv[arg[0].replace(/^-+/, '')] = arg[1];
+    return;
+  }
+  if (arg.indexOf('--') === 0) {
+    arg = arg.slice(2);
+    argv[arg] = true;
+    return;
+  }
+  return arg;
+}).filter(Boolean);
+
 var screen = blessed.screen({
   tput: true,
   smartCSR: true,
   dump: __dirname + '/logs/png.log'
 });
 
-var box = blessed.box({
+var box1 = blessed.box({
   parent: screen,
   left: 4,
   top: 3,
@@ -17,8 +34,20 @@ var box = blessed.box({
   style: {
     bg: 'green'
   },
-  content: 'Lorem ipsum doler',
-  align: 'center'
+  content: fs.readFileSync(__dirname + '/lorem.txt', 'utf8')
+});
+
+var box2 = blessed.box({
+  parent: screen,
+  left: 20,
+  top: 8,
+  width: 40,
+  height: 15,
+  border: 'line',
+  style: {
+    bg: 'green'
+  },
+  content: fs.readFileSync(__dirname + '/lorem.txt', 'utf8')
 });
 
 var file = process.argv[2];
@@ -41,16 +70,23 @@ if (!file) {
   }
 }
 
+if (!argv.width && !argv.height && !argv.scale) {
+  argv.width = 20;
+}
+
 var png = blessed.png({
   parent: screen,
   // border: 'line',
-  width: 20,
-  height: 19,
+  width: argv.width,
+  height: argv.height,
   top: 2,
   left: 0,
   file: file,
-  ascii: false,
-  draggable: true
+  draggable: true,
+  scale: argv.scale,
+  ascii: argv.ascii,
+  optimization: argv.optimization,
+  speed: argv.speed
 });
 
 screen.render();
