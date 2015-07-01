@@ -394,7 +394,7 @@ The screen on which every other node renders.
 - __focusPop()__ - Pop element off the focus stack.
 - __saveFocus()__ - Save the focused element.
 - __restoreFocus()__ - Restore the saved focused element.
-- __rewindFocus()__ - "rewind" focus to the last visible and attached element.
+- __rewindFocus()__ - "Rewind" focus to the last visible and attached element.
 - __key(name, listener)__ - Bind a keypress listener for a specific key.
 - __onceKey(name, listener)__ - Bind a keypress listener for a specific key
   once.
@@ -538,7 +538,7 @@ The base element.
 ##### Methods:
 
 - Inherits all from Node.
-- note: if the `scrollable` option is enabled, Element inherits all methods
+- Note: If the `scrollable` option is enabled, Element inherits all methods
   from ScrollableBox.
 - __render()__ - Write content and children to the screen buffer.
 - __hide()__ - Hide element.
@@ -589,14 +589,14 @@ The base element.
 Methods for dealing with text content, line by line. Useful for writing a
 text editor, irc client, etc.
 
-Note: all of these methods deal with pre-aligned, pre-wrapped text. If you use
+Note: All of these methods deal with pre-aligned, pre-wrapped text. If you use
 deleteTop() on a box with a wrapped line at the top, it may remove 3-4 "real"
 lines (rows) depending on how long the original line was.
 
 The `lines` parameter can be a string or an array of strings. The `line`
 parameter must be a string.
 
-- __setContent(text)__ - Set the content. Note: when text is input, it will be
+- __setContent(text)__ - Set the content. Note: When text is input, it will be
   stripped of all non-SGR escape codes, tabs will be replaced with 8 spaces,
   and tags will be replaced with SGR codes (if enabled).
 - __getContent()__ - Return content, slightly different from `el.content`.
