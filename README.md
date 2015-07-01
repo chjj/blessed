@@ -1612,7 +1612,7 @@ installed.
   it cannot go faster than 1 frame per millisecond, so 1000 is the fastest.
   (default: 1.0)
 - __optimization__ - `mem` or `cpu`. if optimizing for memory, animation frames
-  will be rendered to bitmaps _as the animation plays_, using less cpu.
+  will be rendered to bitmaps _as the animation plays_, using less memory.
   optimizing for cpu will precompile all bitmaps beforehand, which may be
   faster, but might also OOM the process on large images. (default: `mem`).
 
