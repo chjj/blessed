@@ -234,7 +234,7 @@ The base node which everything inherits from.
 - __parent__ - Parent node.
 - __screen__ - Parent screen.
 - __children__ - Array of node's children.
-- __data, _, $__ - an object for any miscellanous user data.
+- __data, _, $__ - An object for any miscellanous user data.
 - __index__ - Render index (document order index) of the last render call.
 
 ##### Events:
