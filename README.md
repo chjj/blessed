@@ -1606,8 +1606,15 @@ installed.
 - __ascii__ - add various "density" ASCII characters over the rendering to give
   the image more detail, similar to libcaca/libcucul (the library mplayer uses
   to display videos in the terminal).
-- __animate__ - whether to animate if the image is an APNG. if false, only
-  display the first frame or IDAT (default: `true`).
+- __animate__ - whether to animate if the image is an APNG/animating GIF. if
+  false, only display the first frame or IDAT (default: `true`).
+- __speed__ - set the speed of animation. slower: `0.0-1.0`. faster: `1-1000`.
+  it cannot go faster than 1 frame per millisecond, so 1000 is the fastest.
+  (default: 1.0)
+- __optimization__ - `mem` or `cpu`. if optimizing for memory, animation frames
+  will be rendered to bitmaps _as the animation plays_, using less cpu.
+  optimizing for cpu will precompile all bitmaps beforehand, which may be
+  faster, but might also OOM the process on large images. (default: `mem`).
 
 ##### Properties:
 

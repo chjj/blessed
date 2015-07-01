@@ -51,7 +51,6 @@ function PNG(file, options) {
     try {
       return this.toPNG(buf);
     } catch (e) {
-      console.error('could not convert ' + this.format + ' to png');
       throw e;
     }
   }
