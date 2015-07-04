@@ -10,6 +10,24 @@ screen = blessed.screen({
 var DU = '杜';
 var JUAN = '鹃';
 
+/*
+var box = blessed.box({
+  parent: screen,
+  top: 'center',
+  left: 'center',
+  data: null,
+  border: 'line',
+  align: 'center',
+  tags: true,
+  keys: true,
+  width: '90%',
+  height: '80%',
+  style: {
+    bg: 'red'
+  }
+});
+*/
+
 var table = blessed.listtable({
   parent: screen,
   top: 'center',
@@ -19,7 +37,8 @@ var table = blessed.listtable({
   align: 'center',
   tags: true,
   keys: true,
-  width: '80%',
+  //width: '80%',
+  width: 'shrink',
   height: '70%',
   vi: true,
   mouse: true,
@@ -40,15 +59,7 @@ var table = blessed.listtable({
   }
 });
 
-var data = [
-  [ 'Animals',  'Foods',  'Times',   'Numbers' ],
-  [ 'Elephant', 'Apple',  '1:00am',  'One'     ],
-  [ 'Bird',     'Orange', '2:15pm',  'Two'     ],
-  [ 'T-Rex',    'Taco',   '8:45am',  'Three'   ],
-  [ 'Mouse',    'Cheese', '9:05am',  'Four'    ]
-];
-
-var data = [
+var data1 = [
   [ 'Animals',  'Foods',  'Times'  ],
   [ 'Elephant', 'Apple',  '1:00am' ],
   [ 'Bird',     'Orange', '2:15pm' ],
@@ -56,15 +67,30 @@ var data = [
   [ 'Mouse',    'Cheese', '9:05am' ]
 ];
 
-data[1][0] = '{red-fg}' + data[1][0] + '{/red-fg}';
-data[2][0] += ' (' + DU + JUAN + ')';
+data1[1][0] = '{red-fg}' + data1[1][0] + '{/red-fg}';
+data1[2][0] += ' (' + DU + JUAN + ')';
 
-table.setData(data);
+var data2 = [
+  [ 'Animals',  'Foods',  'Times',   'Numbers' ],
+  [ 'Elephant', 'Apple',  '1:00am',  'One'     ],
+  [ 'Bird',     'Orange', '2:15pm',  'Two'     ],
+  [ 'T-Rex',    'Taco',   '8:45am',  'Three'   ],
+  [ 'Mouse',    'Cheese', '9:05am',  'Four'    ]
+];
 
-table.focus();
+data2[1][0] = '{red-fg}' + data2[1][0] + '{/red-fg}';
+data2[2][0] += ' (' + DU + JUAN + ')';
 
 screen.key('q', function() {
   return process.exit(0);
 });
 
+table.focus();
+
+table.setData(data2);
 screen.render();
+
+setTimeout(function() {
+  table.setData(data1);
+  screen.render();
+}, 3000);

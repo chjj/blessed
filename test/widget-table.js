@@ -18,7 +18,8 @@ var table = blessed.table({
   border: 'line',
   align: 'center',
   tags: true,
-  width: '80%',
+  //width: '80%',
+  width: 'shrink',
   style: {
     border: {
       fg: 'red'
@@ -33,15 +34,7 @@ var table = blessed.table({
   }
 });
 
-var data = [
-  [ 'Animals',  'Foods',  'Times',   'Numbers' ],
-  [ 'Elephant', 'Apple',  '1:00am',  'One'     ],
-  [ 'Bird',     'Orange', '2:15pm',  'Two'     ],
-  [ 'T-Rex',    'Taco',   '8:45am',  'Three'   ],
-  [ 'Mouse',    'Cheese', '9:05am',  'Four'    ]
-];
-
-var data = [
+var data1 = [
   [ 'Animals',  'Foods',  'Times'  ],
   [ 'Elephant', 'Apple',  '1:00am' ],
   [ 'Bird',     'Orange', '2:15pm' ],
@@ -49,13 +42,28 @@ var data = [
   [ 'Mouse',    'Cheese', '9:05am' ]
 ];
 
-data[1][0] = '{red-fg}' + data[1][0] + '{/red-fg}';
-data[2][0] += ' (' + DU + JUAN + ')';
+data1[1][0] = '{red-fg}' + data1[1][0] + '{/red-fg}';
+data1[2][0] += ' (' + DU + JUAN + ')';
 
-table.setData(data);
+var data2 = [
+  [ 'Animals',  'Foods',  'Times',   'Numbers' ],
+  [ 'Elephant', 'Apple',  '1:00am',  'One'     ],
+  [ 'Bird',     'Orange', '2:15pm',  'Two'     ],
+  [ 'T-Rex',    'Taco',   '8:45am',  'Three'   ],
+  [ 'Mouse',    'Cheese', '9:05am',  'Four'    ]
+];
+
+data2[1][0] = '{red-fg}' + data2[1][0] + '{/red-fg}';
+data2[2][0] += ' (' + DU + JUAN + ')';
 
 screen.key('q', function() {
   return process.exit(0);
 });
 
+table.setData(data2);
 screen.render();
+
+setTimeout(function() {
+  table.setData(data1);
+  screen.render();
+}, 3000);
