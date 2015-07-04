@@ -332,6 +332,7 @@ The screen on which every other node renders.
   replaced by `'??'`, `'?'`, `''` respectively. (NOTE: iTerm2 cannot display
   combining characters properly. Blessed simply removes them from an element's
   content if iTerm2 is detected).
+- __sendFocus__ - send focus events after mouse is enabled.
 
 ##### Properties:
 
