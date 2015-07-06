@@ -1500,7 +1500,7 @@ function GIF(file, options) {
           }
           // Adobe XMP extension
           if (ext.id === 'XMP Data' && ext.auth === 'XMP') {
-            ext.data = ext.data.toString('utf8');
+            ext.xmp = ext.data.toString('utf8');
             this.xmp = ext.xmp;
           }
           // ICC extension
