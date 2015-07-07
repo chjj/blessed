@@ -1336,6 +1336,7 @@ manager. Requires term.js and pty.js to be installed. See
 - __shell__ - Name of shell. `$SHELL` by default.
 - __args__ - Args for shell.
 - __cursor__ - Can be `line`, `underline`, and `block`.
+- __term__ - terminal name (default: `xterm`).
 - Other options similar to term.js'.
 
 ##### Properties:
