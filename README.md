@@ -145,6 +145,7 @@ screen.render();
   - [Line](#line-from-box)
   - [ScrollableBox](#scrollablebox-from-box) (deprecated)
   - [ScrollableText](#scrollabletext-from-scrollablebox) (deprecated)
+  - [BigText](#bigtext-from-box)
 - [Lists](#lists)
   - [List](#list-from-box)
   - [FileManager](#filemanager-from-list)
@@ -752,6 +753,33 @@ pre-existing newlines and escape codes.
 ##### Methods:
 
 - Inherits all from ScrollableBox.
+
+
+#### BigText (from Box)
+
+A box which can render content drawn as 8x14 cell characters using the terminus
+font.
+
+##### Options:
+
+- Inherits all from Box.
+- __font__ - bdf->json font file to use (see [ttystudio][ttystudio] for
+  instructions on compiling BDFs to JSON).
+- __fontBold__ - bdf->json bold font file to use (see [ttystudio][ttystudio]
+  for instructions on compiling BDFs to JSON).
+- __fch__ - foreground character. (default: `' '`)
+
+##### Properties:
+
+- Inherits all from Box.
+
+##### Events:
+
+- Inherits all from Box.
+
+##### Methods:
+
+- Inherits all from Box.
 
 
 ### Lists
@@ -2239,3 +2267,4 @@ See LICENSE for more info.
 [urwid]: http://urwid.org/reference/index.html
 [curses-ui]: http://search.cpan.org/~mdxi/Curses-UI-0.9609/lib/Curses/UI.pm
 [termbox]: https://github.com/nsf/termbox-go
+[ttystudio]: https://github.com/chjj/ttystudio#choosing-a-new-font-for-your-terminal-recording
