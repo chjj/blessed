@@ -74,7 +74,7 @@ if (!argv.width && !argv.height && !argv.scale) {
   argv.width = 20;
 }
 
-var png = blessed.png({
+var png = blessed.image({
   parent: screen,
   // border: 'line',
   width: argv.width,
@@ -83,6 +83,7 @@ var png = blessed.png({
   left: 0,
   file: file,
   draggable: true,
+  itype: 'ansi',
   scale: argv.scale,
   ascii: argv.ascii,
   optimization: argv.optimization,

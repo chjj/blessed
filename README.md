@@ -173,6 +173,7 @@ screen.render();
   - [Image](#image-from-box)
   - [Layout](#layout-from-element)
   - [PNG](#png-from-box)
+  - [Video](#video-from-box)
 
 ### Other
 
@@ -287,7 +288,7 @@ The screen on which every other node renders.
   implementation, it's uncertain how much terminal performance this adds at the
   cost of overhead within node.
 - __resizeTimeout__ - Amount of time (in ms) to redraw the screen after the
-  terminal is resized (default: 300).
+  terminal is resized (Default: 300).
 - __tabSize__ - The width of tabs within an element's content.
 - __autoPadding__ - Automatically position child elements with border and
   padding in mind (__NOTE__: this is a recommended option. It may become
@@ -774,9 +775,9 @@ A scrollable list which can display selectable items.
   called with the search string. The search string is then used to jump to an
   item that is found in `items`.
 - __interactive__ - Whether the list is interactive and can have items selected
-  (default: true).
+  (Default: true).
 - __invertSelected__ - Whether to automatically override tags and invert fg of
-  item when selected (default: `true`).
+  item when selected (Default: `true`).
 
 ##### Properties:
 
@@ -1336,7 +1337,8 @@ manager. Requires term.js and pty.js to be installed. See
 - __shell__ - Name of shell. `$SHELL` by default.
 - __args__ - Args for shell.
 - __cursor__ - Can be `line`, `underline`, and `block`.
-- __term__ - terminal name (default: `xterm`).
+- __term__ - Terminal name (Default: `xterm`).
+- __env__ - Object for process env.
 - Other options similar to term.js'.
 
 ##### Properties:
@@ -1363,6 +1365,39 @@ manager. Requires term.js and pty.js to be installed. See
 
 #### Image (from Box)
 
+Display an image in the terminal (jpeg, png, gif) using either blessed's
+internal png/gif-to-terminal renderer (using a [PNG element](#png-from-box)) or
+using `w3mimgdisplay` (using a [W3MImage element](#w3mimage-from-box)).
+
+##### Options:
+
+- Inherits all from Box.
+- __file__ - Path to image.
+- __itype__ - `ansi` or `w3m`. Whether to render the file as ANSI art or using
+  `w3m` to overlay Internally uses the PNG element. See the [PNG
+  element](#png-from-box) for more information/options. (__default__: `ansi`).
+
+##### Properties:
+
+- Inherits all from Box.
+- See [PNG element](#png-from-box)
+- See [W3MImage element](#w3mimage-from-box)
+
+##### Events:
+
+- Inherits all from Box.
+- See [PNG element](#png-from-box)
+- See [W3MImage element](#w3mimage-from-box)
+
+##### Methods:
+
+- Inherits all from Box.
+- See [PNG element](#png-from-box)
+- See [W3MImage element](#w3mimage-from-box)
+
+
+#### W3MImage (from Box)
+
 Display an image in the terminal (jpeg, png, gif) using w3mimgdisplay. Requires
 w3m to be installed. X11 required: works in xterm, urxvt, and possibly other
 terminals.
@@ -1371,10 +1406,13 @@ terminals.
 
 - Inherits all from Box.
 - __file__ - Path to image.
+- __ansi__ - Render the file as ANSI art instead of using `w3m` to overlay
+  Internally uses the PNG element. See the [PNG element](#png-from-box) for
+  more information/options. (Default: `true`).
 - __w3m__ - Path to w3mimgdisplay. If a proper `w3mimgdisplay` path is not
   given, blessed will search the entire disk for the binary.
 - __search__ - Whether to search `/usr`, `/bin`, and `/lib` for
-  `w3mimgdisplay` (default: `true`).
+  `w3mimgdisplay` (Default: `true`).
 
 ##### Properties:
 
@@ -1599,7 +1637,7 @@ installed.
 - Inherits all from Box.
 - __file__ - URL or path to PNG file. Can also be a buffer.
 - __scale__ - Scale cellmap down (`0-1.0`) from its original pixel width/height
-  (default: `1.0`).
+  (Default: `1.0`).
 - __width/height__ - This differs from other element's `width` or `height` in
   that only one of them is needed: blessed will maintain the aspect ratio of
   the image as it scales down to the proper number of cells. __NOTE__: PNG's
@@ -1609,14 +1647,14 @@ installed.
   the image more detail, similar to libcaca/libcucul (the library mplayer uses
   to display videos in the terminal).
 - __animate__ - Whether to animate if the image is an APNG/animating GIF. If
-  false, only display the first frame or IDAT (default: `true`).
+  false, only display the first frame or IDAT (Default: `true`).
 - __speed__ - Set the speed of animation. Slower: `0.0-1.0`. Faster: `1-1000`.
   It cannot go faster than 1 frame per millisecond, so 1000 is the fastest.
-  (default: 1.0)
+  (Default: 1.0)
 - __optimization__ - `mem` or `cpu`. If optimizing for memory, animation frames
   will be rendered to bitmaps _as the animation plays_, using less memory.
   Optimizing for cpu will precompile all bitmaps beforehand, which may be
-  faster, but might also OOM the process on large images. (default: `mem`).
+  faster, but might also OOM the process on large images. (Default: `mem`).
 
 ##### Properties:
 
@@ -1637,6 +1675,32 @@ installed.
 - __setImage(file)__ - Set the image in the box to a new path. File can be a
   path, url, or buffer.
 - __clearImage()__ - Clear the image.
+
+
+#### Video (from Box)
+
+A box which spins up a pseudo terminal in order to render a video via `mplayer
+-vo caca` or `mpv --vo caca`. Requires `mplayer` or `mpv` to be installed with
+libcaca support.
+
+##### Options:
+
+- Inherits all from Box.
+- __file__ - Video to play.
+- __start__ - Start time in seconds.
+
+##### Properties:
+
+- Inherits all from Box.
+- __tty__ - The terminal element running `mplayer` or `mpv`.
+
+##### Events:
+
+- Inherits all from Box.
+
+##### Methods:
+
+- Inherits all from Box.
 
 
 ### Other
