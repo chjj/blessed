@@ -94,11 +94,12 @@ var box = blessed.box({
 // Append our box to the screen.
 screen.append(box);
 
-// Add a PNG icon to the box (X11 only)
+// Add a png icon to the box
 var icon = blessed.image({
   parent: box,
   top: 0,
   left: 0,
+  itype: 'overlay',
   width: 'shrink',
   height: 'shrink',
   file: __dirname + '/my-program-icon.png',
@@ -172,8 +173,8 @@ screen.render();
 - [Special Elements](#special-elements)
   - [Terminal](#terminal-from-box)
   - [Image](#image-from-box)
-  - [PNG](#png-from-box)
-  - [W3MImage](#w3mimage-from-box)
+  - [ANSIImage](#ansiimage-from-box)
+  - [OverlayImage](#overlayimage-from-box)
   - [Video](#video-from-box)
   - [Layout](#layout-from-element)
 
@@ -1395,43 +1396,43 @@ manager. Requires term.js and pty.js to be installed. See
 #### Image (from Box)
 
 Display an image in the terminal (jpeg, png, gif) using either blessed's
-internal png/gif-to-terminal renderer (using a [PNG element](#png-from-box)) or
-using `w3mimgdisplay` (using a [W3MImage element](#w3mimage-from-box)).
+internal png/gif-to-terminal renderer (using a [ANSIImage element](#ansiimage-from-box)) or
+using `w3mimgdisplay` (using a [OverlayImage element](#overlayimage-from-box)).
 
 ##### Options:
 
 - Inherits all from Box.
 - __file__ - Path to image.
-- __itype__ - `ansi` or `w3m`. Whether to render the file as ANSI art or using
-  `w3m` to overlay Internally uses the PNG element. See the [PNG
-  element](#png-from-box) for more information/options. (__default__: `ansi`).
+- __itype__ - `ansi` or `overlay`. Whether to render the file as ANSI art or
+  using `w3m` to overlay. See the [ANSIImage element](#ansiimage-from-box) for
+  more information/options. (__default__: `ansi`).
 
 ##### Properties:
 
 - Inherits all from Box.
-- See [PNG element](#png-from-box)
-- See [W3MImage element](#w3mimage-from-box)
+- See [ANSIImage element](#ansiimage-from-box)
+- See [OverlayImage element](#overlayimage-from-box)
 
 ##### Events:
 
 - Inherits all from Box.
-- See [PNG element](#png-from-box)
-- See [W3MImage element](#w3mimage-from-box)
+- See [ANSIImage element](#ansiimage-from-box)
+- See [OverlayImage element](#overlayimage-from-box)
 
 ##### Methods:
 
 - Inherits all from Box.
-- See [PNG element](#png-from-box)
-- See [W3MImage element](#w3mimage-from-box)
+- See [ANSIImage element](#ansiimage-from-box)
+- See [OverlayImage element](#overlayimage-from-box)
 
 
-#### PNG (from Box)
+#### ANSIImage (from Box)
 
 Convert any `.png` file (or `.gif`, see below) to an ANSI image and display it
 as an element. This differs from the `Image` element in that it uses blessed's
-internal PNG parser and does not require external dependencies.
+internal PNG/GIF parser and does not require external dependencies.
 
-Blessed uses an internal from-scratch PNG reader because no other javascript
+Blessed uses an internal from-scratch PNG/GIF reader because no other javascript
 PNG reader supports Adam7 interlaced images (much less pass the png test
 suite).
 
@@ -1452,12 +1453,12 @@ installed.
 ##### Options:
 
 - Inherits all from Box.
-- __file__ - URL or path to PNG file. Can also be a buffer.
+- __file__ - URL or path to PNG/GIF file. Can also be a buffer.
 - __scale__ - Scale cellmap down (`0-1.0`) from its original pixel width/height
   (Default: `1.0`).
 - __width/height__ - This differs from other element's `width` or `height` in
   that only one of them is needed: blessed will maintain the aspect ratio of
-  the image as it scales down to the proper number of cells. __NOTE__: PNG's
+  the image as it scales down to the proper number of cells. __NOTE__: PNG/GIF's
   are always automatically shrunken to size (based on scale) if a `width` or
   `height` is not given.
 - __ascii__ - Add various "density" ASCII characters over the rendering to give
@@ -1494,7 +1495,7 @@ installed.
 - __clearImage()__ - Clear the image.
 
 
-#### W3MImage (from Box)
+#### OverlayImage (from Box)
 
 Display an image in the terminal (jpeg, png, gif) using w3mimgdisplay. Requires
 w3m to be installed. X11 required: works in xterm, urxvt, and possibly other
@@ -1505,7 +1506,7 @@ terminals.
 - Inherits all from Box.
 - __file__ - Path to image.
 - __ansi__ - Render the file as ANSI art instead of using `w3m` to overlay
-  Internally uses the PNG element. See the [PNG element](#png-from-box) for
+  Internally uses the ANSIImage element. See the [ANSIImage element](#ansiimage-from-box) for
   more information/options. (Default: `true`).
 - __w3m__ - Path to w3mimgdisplay. If a proper `w3mimgdisplay` path is not
   given, blessed will search the entire disk for the binary.
