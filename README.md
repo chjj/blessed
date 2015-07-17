@@ -2209,9 +2209,9 @@ Examples can be found in `examples/`.
   - All ACS vertical lines look this way in iTerm2 with the default font.
 3. Why can't I use my mouse in Terminal.app?
   - Terminal.app does not support mouse events.
-4. Why doesn't the Image element appear in my terminal?
-  - The Image element uses w3m to display images. This generally only works on
-    X11+xterm/urxvt, but it _may_ work on other unix terminals.
+4. Why doesn't the OverlayImage element appear in my terminal?
+  - The OverlayImage element uses w3m to display images. This generally only
+    works on X11+xterm/urxvt, but it _may_ work on other unix terminals.
 5. Why can't my mouse clicks register beyond 255 cells?
   - Older versions of VTE do not support any modern mouse protocol. On top of
     that, the old X10 protocol it _does_ implement is bugged. Through several
