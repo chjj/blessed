@@ -889,24 +889,17 @@ PNG.prototype.compileFrames_locpu = function(frames) {
 };
 
 PNG.prototype.renderFrame = function(bmp, frame, i) {
-  var renderBmp = bmp
-    , first = this.frames[0]
+  var first = this.frames[0]
     , last = this.frames[i - 1]
     , fc = frame.fctl
     , xo = fc.xOffset
     , yo = fc.yOffset
     , lxo
     , lyo
-    , ops
     , x
     , y
     , line
     , p;
-
-  ops = (xo + yo + fc.blendOp)
-    + (last ? last.fctl.disposeOp : 0)
-    + ~~(fc.width !== first.fctl.width)
-    + ~~(fc.height !== first.fctl.height);
 
   if (!this._curBmp) {
     this._curBmp = [];
@@ -920,39 +913,51 @@ PNG.prototype.renderFrame = function(bmp, frame, i) {
     }
   }
 
-  if (last && ops) {
-    if (last.fctl.disposeOp) {
-      lxo = last.fctl.xOffset;
-      lyo = last.fctl.yOffset;
-      for (y = 0; y < last.fctl.height; y++) {
-        for (x = 0; x < last.fctl.width; x++) {
-          if (last.fctl.disposeOp === 1) {
-            this._curBmp[lyo + y][lxo + x] = { r: 0, g: 0, b: 0, a: 0 };
-          } else if (last.fctl.disposeOp === 2) {
-            p = this._lastBmp[y][x];
-            this._curBmp[lyo + y][lxo + x] = { r: p.r, g: p.g, b: p.b, a: p.a };
-          }
+  if (last && last.fctl.disposeOp !== 0) {
+    lxo = last.fctl.xOffset;
+    lyo = last.fctl.yOffset;
+    for (y = 0; y < last.fctl.height; y++) {
+      for (x = 0; x < last.fctl.width; x++) {
+        if (last.fctl.disposeOp === 0) {
+          // none / keep
+        } else if (last.fctl.disposeOp === 1) {
+          // background / clear
+          this._curBmp[lyo + y][lxo + x] = { r: 0, g: 0, b: 0, a: 0 };
+        } else if (last.fctl.disposeOp === 2) {
+          // previous / restore
+          p = this._lastBmp[y][x];
+          this._curBmp[lyo + y][lxo + x] = { r: p.r, g: p.g, b: p.b, a: p.a };
         }
       }
     }
-    for (y = 0; y < frame.fctl.height; y++) {
-      for (x = 0; x < frame.fctl.width; x++) {
-        p = bmp[y][x];
-        if (fc.blendOp === 0) {
-          this._curBmp[yo + y][xo + x] = { r: p.r, g: p.g, b: p.b, a: p.a };
-        } else if (fc.blendOp === 1) {
-          if (bmp[y][x].a !== 0) {
-            this._curBmp[yo + y][xo + x] = { r: p.r, g: p.g, b: p.b, a: p.a };
-          }
-        }
-      }
-    }
-    renderBmp = this._curBmp;
   }
 
-  this._lastBmp = bmp;
+  this._lastBmp = [];
+  for (y = 0; y < frame.fctl.height; y++) {
+    line = [];
+    for (x = 0; x < frame.fctl.width; x++) {
+      p = this._curBmp[yo + y][xo + x];
+      line.push({ r: p.r, g: p.g, b: p.b, a: p.a });
+    }
+    this._lastBmp.push(line);
+  }
 
-  return renderBmp;
+  for (y = 0; y < frame.fctl.height; y++) {
+    for (x = 0; x < frame.fctl.width; x++) {
+      p = bmp[y][x];
+      if (fc.blendOp === 0) {
+        // source
+        this._curBmp[yo + y][xo + x] = { r: p.r, g: p.g, b: p.b, a: p.a };
+      } else if (fc.blendOp === 1) {
+        // over
+        if (p.a !== 0) {
+          this._curBmp[yo + y][xo + x] = { r: p.r, g: p.g, b: p.b, a: p.a };
+        }
+      }
+    }
+  }
+
+  return this._curBmp;
 };
 
 PNG.prototype._animate = function(callback) {
