@@ -1493,6 +1493,9 @@ installed.
 - __setImage(file)__ - Set the image in the box to a new path. File can be a
   path, url, or buffer.
 - __clearImage()__ - Clear the image.
+- __play()__ - Play animation if it has been paused or stopped.
+- __pause()__ - Pause animation.
+- __stop()__ - Stop animation.
 
 
 #### OverlayImage (from Box)

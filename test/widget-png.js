@@ -61,7 +61,7 @@ var url = 'https://people.mozilla.org/~dolske/apng/spinfox.png';
 if (!file) {
   try {
     if (!fs.existsSync(spinfox)) {
-      var buf = blessed.png.curl(url);
+      var buf = blessed.ansiimage.curl(url);
       fs.writeFileSync(spinfox, buf);
     }
     file = spinfox;
