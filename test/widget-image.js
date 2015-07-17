@@ -16,7 +16,7 @@ var file = process.argv[2] || __dirname + '/test-image.png';
 
 var image = blessed.image({
   parent: screen,
-  itype: 'w3m',
+  itype: 'overlay',
   left: 'center',
   top: 'center',
   width: 'shrink',
