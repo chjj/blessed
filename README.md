@@ -1429,8 +1429,8 @@ using `w3mimgdisplay` (using a [OverlayImage element](#overlayimage-from-box)).
 #### ANSIImage (from Box)
 
 Convert any `.png` file (or `.gif`, see below) to an ANSI image and display it
-as an element. This differs from the `Image` element in that it uses blessed's
-internal PNG/GIF parser and does not require external dependencies.
+as an element. This differs from the `OverlayImage` element in that it uses
+blessed's internal PNG/GIF parser and does not require external dependencies.
 
 Blessed uses an internal from-scratch PNG/GIF reader because no other javascript
 PNG reader supports Adam7 interlaced images (much less pass the png test
