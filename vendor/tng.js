@@ -932,14 +932,18 @@ PNG.prototype.renderFrame = function(bmp, frame, i) {
     }
   }
 
-  this._lastBmp = [];
-  for (y = 0; y < frame.fctl.height; y++) {
-    line = [];
-    for (x = 0; x < frame.fctl.width; x++) {
-      p = this._curBmp[yo + y][xo + x];
-      line.push({ r: p.r, g: p.g, b: p.b, a: p.a });
+  if (frame.fctl.disposeOp === 2) {
+    this._lastBmp = [];
+    for (y = 0; y < frame.fctl.height; y++) {
+      line = [];
+      for (x = 0; x < frame.fctl.width; x++) {
+        p = this._curBmp[yo + y][xo + x];
+        line.push({ r: p.r, g: p.g, b: p.b, a: p.a });
+      }
+      this._lastBmp.push(line);
     }
-    this._lastBmp.push(line);
+  } else {
+    this._lastBmp = null;
   }
 
   for (y = 0; y < frame.fctl.height; y++) {
