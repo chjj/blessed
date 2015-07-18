@@ -18,7 +18,7 @@ var box = blessed.box({
 });
 
 var bar = blessed.listbar({
-  parent: screen,
+  //parent: screen,
   bottom: 0,
   left: 3,
   right: 3,
@@ -109,6 +109,8 @@ var bar = blessed.listbar({
     }
   }
 });
+
+screen.append(bar);
 
 bar.focus();
 
