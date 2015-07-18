@@ -1054,6 +1054,7 @@ PNG.prototype.toPNG = function(input) {
     , img
     , gif
     , i
+    , control
     , disposeOp;
 
   if (format !== 'gif') {
@@ -1074,7 +1075,8 @@ PNG.prototype.toPNG = function(input) {
     img = gif.images[i];
     // Convert from gif disposal to png disposal. See:
     // http://www.w3.org/Graphics/GIF/spec-gif89a.txt
-    disposeOp = Math.max(0, (gif.disposeMethod || 0) - 1);
+    control = img.control || gif;
+    disposeOp = Math.max(0, (control.disposeMethod || 0) - 1);
     if (disposeOp > 2) disposeOp = 0;
     this.frames.push({
       fctl: {
@@ -1083,7 +1085,7 @@ PNG.prototype.toPNG = function(input) {
         height: img.height,
         xOffset: img.left,
         yOffset: img.top,
-        delayNum: gif.delay,
+        delayNum: control.delay,
         delayDen: 100,
         disposeOp: disposeOp,
         blendOp: 1
