@@ -83,7 +83,7 @@ var png = blessed.image({
   left: 0,
   file: file,
   draggable: true,
-  itype: 'ansi',
+  type: 'ansi',
   scale: argv.scale,
   ascii: argv.ascii,
   optimization: argv.optimization,

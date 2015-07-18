@@ -99,7 +99,7 @@ var icon = blessed.image({
   parent: box,
   top: 0,
   left: 0,
-  itype: 'overlay',
+  type: 'overlay',
   width: 'shrink',
   height: 'shrink',
   file: __dirname + '/my-program-icon.png',
@@ -1403,7 +1403,7 @@ using `w3mimgdisplay` (using a [OverlayImage element](#overlayimage-from-box)).
 
 - Inherits all from Box.
 - __file__ - Path to image.
-- __itype__ - `ansi` or `overlay`. Whether to render the file as ANSI art or
+- __type__ - `ansi` or `overlay`. Whether to render the file as ANSI art or
   using `w3m` to overlay. See the [ANSIImage element](#ansiimage-from-box) for
   more information/options. (__default__: `ansi`).
 
