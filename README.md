@@ -467,7 +467,7 @@ The base element.
 - __border__ - Border object, see below.
 - __content__ - Element's text content.
 - __clickable__ - Element is clickable.
-- __input__ - Element is focusable and can receive key input.
+- __input, keyable__ - Element is focusable and can receive key input.
 - __focused__ - Element is focused.
 - __hidden__ - Whether the element is hidden.
 - __label__ - A simple text label for the element.
