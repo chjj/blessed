@@ -4,7 +4,8 @@ var blessed = require('../')
 screen = blessed.screen({
   dump: __dirname + '/logs/listtable.log',
   autoPadding: false,
-  fullUnicode: true
+  fullUnicode: true,
+  warnings: true
 });
 
 var DU = '杜';

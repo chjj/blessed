@@ -4,7 +4,8 @@ var fs = require('fs');
 var screen = blessed.screen({
   tput: true,
   smartCSR: true,
-  dump: __dirname + '/logs/video.log'
+  dump: __dirname + '/logs/video.log',
+  warnings: true
 });
 
 var video = blessed.video({

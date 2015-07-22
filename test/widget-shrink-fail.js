@@ -1,6 +1,7 @@
 var blessed = require('blessed');
 var screen = blessed.screen({
-  autoPadding: true
+  autoPadding: true,
+  warnings: true
 });
 
 var tab = blessed.box({

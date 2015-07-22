@@ -4,7 +4,8 @@ var blessed = require('../')
 screen = blessed.screen({
   dump: __dirname + '/logs/autopad.log',
   smartCSR: true,
-  autoPadding: true
+  autoPadding: true,
+  warnings: true
 });
 
 var box1 = blessed.box({

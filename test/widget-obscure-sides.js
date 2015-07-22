@@ -4,7 +4,8 @@ var screen = blessed.screen({
   tput: true,
   smartCSR: true,
   dump: __dirname + '/logs/obscure-sides.log',
-  autoPadding: true
+  autoPadding: true,
+  warnings: true
 });
 
 var box = blessed.box({

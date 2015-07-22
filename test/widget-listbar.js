@@ -5,7 +5,8 @@ var auto = true;
 
 screen = blessed.screen({
   dump: __dirname + '/logs/listbar.log',
-  autoPadding: auto
+  autoPadding: auto,
+  warnings: true
 });
 
 var box = blessed.box({

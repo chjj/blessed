@@ -6,7 +6,8 @@ var fs = require('fs')
 // xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx {red-bg}xxxx xxxx xxxx{/red-bg}
 
 screen = blessed.screen({
-  dump: __dirname + '/logs/nowrap.log'
+  dump: __dirname + '/logs/nowrap.log',
+  warnings: true
 });
 
 var box = blessed.box({

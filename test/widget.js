@@ -12,7 +12,8 @@ screen = blessed.screen({
     blink: true,
     color: null
   },
-  debug: true
+  debug: true,
+  warnings: true
 });
 
 screen.debugLog.parseTags = true;

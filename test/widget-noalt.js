@@ -4,7 +4,8 @@ var blessed = require('../')
 screen = blessed.screen({
   dump: __dirname + '/logs/noalt.log',
   title: 'widget-noalt test',
-  noAlt: true
+  noAlt: true,
+  warnings: true
 });
 
 var list = blessed.list({

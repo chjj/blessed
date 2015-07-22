@@ -7,7 +7,8 @@ var screen = blessed.screen({
   smartCSR: true,
   dockBorders: true,
   useBCE: true,
-  fullUnicode: ~process.argv.indexOf('-') ? false : true
+  fullUnicode: ~process.argv.indexOf('-') ? false : true,
+  warnings: true
 });
 
 /**

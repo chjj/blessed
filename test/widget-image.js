@@ -3,7 +3,8 @@ var blessed = require('../')
 
 screen = blessed.screen({
   dump: __dirname + '/logs/image.log',
-  smartCSR: true
+  smartCSR: true,
+  warnings: true
 });
 
 // To ensure our w3mimgdisplay search works:

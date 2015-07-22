@@ -2,7 +2,8 @@ var blessed = require('../');
 
 var screen = blessed.screen({
   dump: __dirname + '/logs/play.log',
-  smartCSR: true
+  smartCSR: true,
+  warnings: true
 });
 
 var frames = require(__dirname + '/frames.json');

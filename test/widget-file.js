@@ -3,7 +3,8 @@ var blessed = require('../');
 var screen = blessed.screen({
   tput: true,
   smartCSR: true,
-  dump: __dirname + '/logs/file.log'
+  dump: __dirname + '/logs/file.log',
+  warnings: true
 });
 
 var fm = blessed.filemanager({

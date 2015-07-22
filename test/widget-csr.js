@@ -3,7 +3,8 @@ var blessed = require('../')
 
 screen = blessed.screen({
   dump: __dirname + '/logs/csr.log',
-  smartCSR: true
+  smartCSR: true,
+  warnings: true
 });
 
 var lorem = require('fs').readFileSync(__dirname + '/git.diff', 'utf8');

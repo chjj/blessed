@@ -4,7 +4,8 @@ var blessed = require('../')
 screen = blessed.screen({
   dump: __dirname + '/logs/logger.log',
   smartCSR: true,
-  autoPadding: false
+  autoPadding: false,
+  warnings: true
 });
 
 var logger = blessed.log({

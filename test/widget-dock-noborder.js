@@ -4,7 +4,8 @@ var blessed = require('../')
 screen = blessed.screen({
   dump: __dirname + '/logs/dock.log',
   smartCSR: true,
-  dockBorders: true
+  dockBorders: true,
+  warnings: true
 });
 
 blessed.box({

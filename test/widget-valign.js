@@ -4,7 +4,8 @@ var blessed = require('../')
 screen = blessed.screen({
   dump: __dirname + '/logs/valign.log',
   smartCSR: true,
-  autoPadding: false
+  autoPadding: false,
+  warnings: true
 });
 
 var box = blessed.box({

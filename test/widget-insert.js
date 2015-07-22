@@ -1,7 +1,8 @@
 var blessed = require('../');
 
 var screen = blessed.screen({
-  dump: __dirname + '/logs/insert.log'
+  dump: __dirname + '/logs/insert.log',
+  warnings: true
 });
 
 var box = blessed.box({
