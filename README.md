@@ -379,6 +379,8 @@ The screen on which every other node renders.
 - __render__ - Received on render.
 - __warning__ - Received when blessed notices something untoward (output is not
   a tty, terminfo not found, etc).
+- __destroy__ - Received when the screen is destroyed (only useful when using
+  multiple screens).
 
 ##### Methods:
 
@@ -547,6 +549,9 @@ The base element.
 - __key [name]__ - Received on key event for [name].
 - __prerender__ - Received before a call to render.
 - __render__ - Received after a call to render.
+- __hide__ - Received when element becomes hidden.
+- __show__ - Received when element is shown.
+- __destroy__ - Received when element is destroyed.
 
 ##### Methods:
 
