@@ -337,6 +337,8 @@ The screen on which every other node renders.
   combining characters properly. Blessed simply removes them from an element's
   content if iTerm2 is detected).
 - __sendFocus__ - send focus events after mouse is enabled.
+- __warnings__ - display warnings (such as the output not being a TTY, similar
+  to ncurses).
 
 ##### Properties:
 
