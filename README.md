@@ -436,6 +436,10 @@ The screen on which every other node renders.
 - __screenshot([xi, xl, yi, yl])__ - Take an SGR screenshot of the screen
   within the region. Returns a string containing only characters and SGR codes.
   Can be displayed by simply echoing it in a terminal.
+- __destroy()__ - destroy the screen object and remove it from the global list.
+  only useful if using multiple screens.
+- __program.destroy()__ - destroy the program object and remove it from the
+  global list.  only useful if using multiple programs.
 
 
 #### Element (from Node)
