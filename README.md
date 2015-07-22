@@ -336,8 +336,8 @@ The screen on which every other node renders.
   replaced by `'??'`, `'?'`, `''` respectively. (NOTE: iTerm2 cannot display
   combining characters properly. Blessed simply removes them from an element's
   content if iTerm2 is detected).
-- __sendFocus__ - send focus events after mouse is enabled.
-- __warnings__ - display warnings (such as the output not being a TTY, similar
+- __sendFocus__ - Send focus events after mouse is enabled.
+- __warnings__ - Display warnings (such as the output not being a TTY, similar
   to ncurses).
 
 ##### Properties:
@@ -377,6 +377,8 @@ The screen on which every other node renders.
   program.enableMouse().
 - __prerender__ - Received before render.
 - __render__ - Received on render.
+- __warning__ - Received when blessed notices something untoward (output is not
+  a tty, terminfo not found, etc).
 
 ##### Methods:
 
@@ -438,10 +440,10 @@ The screen on which every other node renders.
 - __screenshot([xi, xl, yi, yl])__ - Take an SGR screenshot of the screen
   within the region. Returns a string containing only characters and SGR codes.
   Can be displayed by simply echoing it in a terminal.
-- __destroy()__ - destroy the screen object and remove it from the global list.
-  only useful if using multiple screens.
-- __program.destroy()__ - destroy the program object and remove it from the
-  global list.  only useful if using multiple programs.
+- __destroy()__ - Destroy the screen object and remove it from the global list.
+  Only useful if using multiple screens.
+- __program.destroy()__ - Destroy the program object and remove it from the
+  global list. Only useful if using multiple programs.
 
 
 #### Element (from Node)
