@@ -1,4 +1,21 @@
-var Transform = require('stream').Transform;
+/**
+ * transform.js - browserify workaround for blessed
+ * Copyright (c) 2013-2015, Christopher Jeffrey and contributors (MIT License).
+ * https://github.com/chjj/blessed
+ */
+
+var Transform = require('stream').Transform
+  , path = require('path')
+  , fs = require('fs');
+
+var requireList = (function() {
+  var out = '';
+  fs.readdirSync(__dirname + '/../lib/widgets').forEach(function(name) {
+    name = path.basename(name, '.js');
+    out += '\nrequire(\'./widgets/' + name + '\');';
+  });
+  return out;
+})();
 
 function transform(target) {
   var data = '';
@@ -14,7 +31,8 @@ function transform(target) {
     if (!target) {
       return callback();
     }
-    tr.push(compile(data));
+    // tr.push(compile(data));
+    tr.push(requireList);
     return callback();
   };
   return tr;
