@@ -10,5 +10,8 @@
   "homepage": "https://github.com/chjj/blessed",
   "bugs": { "url": "http://github.com/chjj/blessed/issues" },
   "keywords": ["curses", "tui", "tput", "terminfo", "termcap"],
-  "tags": ["curses", "tui", "tput", "terminfo", "termcap"]
+  "tags": ["curses", "tui", "tput", "terminfo", "termcap"],
+  "browserify": {
+    "transform": ["./browser/transform.js"]
+  }
 }
