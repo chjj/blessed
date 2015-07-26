@@ -8,14 +8,13 @@ var Transform = require('stream').Transform
   , path = require('path')
   , fs = require('fs');
 
-var requireList = (function() {
-  var out = '';
-  fs.readdirSync(__dirname + '/../lib/widgets').forEach(function(name) {
-    name = path.basename(name, '.js');
-    out += '\nrequire(\'./widgets/' + name + '\');';
-  });
+var widgets = fs.readdirSync(__dirname + '/../lib/widgets');
+
+var requires = widgets.reduce(function(out, name) {
+  name = path.basename(name, '.js');
+  out += '\nrequire(\'./widgets/' + name + '\');';
   return out;
-})();
+}, '');
 
 function transform(target) {
   var tr = new Transform;
@@ -24,7 +23,7 @@ function transform(target) {
   };
   tr._flush = function(callback) {
     if (target) {
-      tr.push(requireList);
+      tr.push(requires);
     }
     return callback();
   };
