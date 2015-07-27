@@ -31,8 +31,8 @@ function transform(target) {
 }
 
 module.exports = function(file) {
-  if (!~file.indexOf('widget.js')) {
-    return transform();
+  if (path.basename(file) === 'widget.js') {
+    return transform(true);
   }
-  return transform(true);
+  return transform();
 };
