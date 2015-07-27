@@ -17,22 +17,21 @@ var requires = widgets.reduce(function(out, name) {
 }, '');
 
 function transform(target) {
-  var tr = new Transform;
-  tr._transform = function(chunk, encoding, callback) {
+  var stream = new Transform;
+  stream._transform = function(chunk, encoding, callback) {
     return callback(null, chunk);
   };
-  tr._flush = function(callback) {
+  stream._flush = function(callback) {
     if (target) {
-      tr.push(requires);
+      stream.push(requires);
     }
     return callback();
   };
-  return tr;
+  return stream;
 }
 
 module.exports = function(file) {
-  if (path.basename(file) === 'widget.js') {
-    return transform(true);
-  }
-  return transform();
+  return path.basename(file) === 'widget.js'
+    ? transform(true)
+    : transform();
 };
