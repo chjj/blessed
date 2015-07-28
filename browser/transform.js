@@ -68,6 +68,10 @@ function readMethods() {
     this.terminal = TERMCAP_NAME;
     return this._readTermcap(this.terminal);
   };
+
+  Tput.prototype.detectUnicode = function() {
+    return true;
+  };
 }
 
 readMethods = readMethods.toString().slice(24, -2)
