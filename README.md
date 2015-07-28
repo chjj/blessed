@@ -339,6 +339,8 @@ The screen on which every other node renders.
 - __sendFocus__ - Send focus events after mouse is enabled.
 - __warnings__ - Display warnings (such as the output not being a TTY, similar
   to ncurses).
+- __forceUnicode__ - Force blessed to use unicode even if it is not detected
+  via terminfo, env variables, or windows code page.
 
 ##### Properties:
 
