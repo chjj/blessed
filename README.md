@@ -309,8 +309,8 @@ The screen on which every other node renders.
   debug console which will display when pressing F12. It will display all log
   and debug messages.
 - __ignoreLocked__ - Array of keys in their full format (e.g. `C-c`) to ignore
-  when keys are locked. Useful for creating a key that will _always_ exit no
-  matter whether the keys are locked.
+  when keys are locked or grabbed. Useful for creating a key that will _always_
+  exit no matter whether the keys are locked.
 - __dockBorders__ - Automatically "dock" borders with other elements instead of
   overlapping, depending on position (__experimental__). For example:
   These border-overlapped elements:
