@@ -342,10 +342,10 @@ The screen on which every other node renders.
 - __forceUnicode__ - Force blessed to use unicode even if it is not detected
   via terminfo, env variables, or windows code page.
 - __input/output__ - Input and output streams. `process.stdin`/`process.stdout`
-  by default, however, it could be a `net.Socket` if you wanted to make a
-  program that ran over telnet or something of that nature.
-- __term__ - `TERM` name used for terminfo parsing. Set to the `$TERM` env
-  variable by default.
+  by default, however, it could be a `net.Socket` if you want to make a program
+  that runs over telnet or something of that nature.
+- __term__ - `TERM` name used for terminfo parsing. The `$TERM` env variable is
+  used by default. This option is unlikely to ever be needed.
 - __title__ - Set the terminal window title if possible. Corresponds to the
   `title` property mentioned below.
 
