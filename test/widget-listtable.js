@@ -30,7 +30,7 @@ var box = blessed.box({
 */
 
 var table = blessed.listtable({
-  parent: screen,
+  //parent: screen,
   top: 'center',
   left: 'center',
   data: null,
@@ -89,6 +89,9 @@ screen.key('q', function() {
 table.focus();
 
 table.setData(data2);
+
+screen.append(table);
+
 screen.render();
 
 setTimeout(function() {
