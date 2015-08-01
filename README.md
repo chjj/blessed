@@ -345,9 +345,8 @@ The screen on which every other node renders.
   by default, however, it could be a `net.Socket` if you want to make a program
   that runs over telnet or something of that nature.
 - __term__ - `TERM` name used for terminfo parsing. The `$TERM` env variable is
-  used by default. This option is unlikely to ever be needed.
-- __title__ - Set the terminal window title if possible. Corresponds to the
-  `title` property mentioned below.
+  used by default.
+- __title__ - Set the terminal window title if possible.
 
 ##### Properties:
 
@@ -452,9 +451,9 @@ The screen on which every other node renders.
   within the region. Returns a string containing only characters and SGR codes.
   Can be displayed by simply echoing it in a terminal.
 - __destroy()__ - Destroy the screen object and remove it from the global list.
-  Only useful if using multiple screens.
-- __program.destroy()__ - Destroy the program object and remove it from the
-  global list. Only useful if using multiple programs.
+  Also remove all global events relevant to the screen object. If all screen
+  objects are destroyed, the node process is essentially reset to its initial
+  state.
 
 
 #### Element (from Node)
