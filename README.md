@@ -30,16 +30,6 @@ Blessed has been used to implement other popular libraries and programs.
 Examples include: the [slap text editor][slap] and [blessed-contrib][contrib].
 The blessed API itself has gone on to inspire [termui][termui] for Go.
 
-## Important Blessed Changes (>0.0.51)
-
-- The absolute `.left` _property_ (not option) has been renamed to `.aleft`.
-  The `.rleft` property has been renamed to `.left`. This should not have much
-  effect on most applications. This includes all other coordinate properties.
-- `autoPadding` is now enabled by default. To revert to the original behavior,
-  pass `autoPadding: false` into the screen object. That being said, it would
-  be wiser to adjust your code to use `autoPadding`. Non-`autoPadding` is now
-  considered deprecated.
-
 ## Install
 
 ``` bash
