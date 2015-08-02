@@ -50,7 +50,6 @@ var blessed = require('blessed');
 
 // Create a screen object.
 var screen = blessed.screen({
-  autoPadding: true,
   smartCSR: true
 });
 
