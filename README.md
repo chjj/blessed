@@ -42,10 +42,8 @@ This will render a box with line borders containing the text `'Hello world!'`,
 perfectly centered horizontally and vertically.
 
 __NOTE__: It is recommend you use either `smartCSR` or `fastCSR` as a
-`blessed.screen` option. `autoPadding` is also recommended; it will
-automatically offset box content within borders instead of on top of them when
-coords are `0`. Non-`autoPadding` _may_ be deprecated in the future. See the
-API documentation for further explanation of these options.
+`blessed.screen` option. This will enable CSR when scrolling text in elements
+or when manipulating lines.
 
 ``` js
 var blessed = require('blessed');
