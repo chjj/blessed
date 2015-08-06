@@ -23,9 +23,7 @@ var server = telnet.createServer(function(client) {
     // https://tools.ietf.org/html/rfc884
     if (data.command === 'sb' && data.buf[3] === 1) {
       var TERM = data.buf.slice(4, -2).toString('ascii');
-      screen.program.terminal = TERM;
-      screen.program.tput.terminal = TERM;
-      screen.program.tput.setup();
+      screen.setTerminal(TERM);
       screen.render();
     }
   });
@@ -61,7 +59,7 @@ var server = telnet.createServer(function(client) {
     smartCSR: true,
     input: client,
     output: client,
-    term: 'xterm-256color'
+    terminal: 'xterm-256color'
   });
 
   client.on('close', function() {

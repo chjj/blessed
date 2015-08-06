@@ -81,7 +81,7 @@ function parseArg() {
 var argv = parseArg();
 
 var tput = blessed.tput({
-  term: argv[0] !== 'all' && argv[0] !== 'rand'
+  terminal: argv[0] !== 'all' && argv[0] !== 'rand'
     ? argv[0] || __dirname + '/../usr/xterm'
     : null,
   extended: true,

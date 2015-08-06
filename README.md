@@ -333,7 +333,7 @@ The screen on which every other node renders.
 - __input/output__ - Input and output streams. `process.stdin`/`process.stdout`
   by default, however, it could be a `net.Socket` if you want to make a program
   that runs over telnet or something of that nature.
-- __term__ - `TERM` name used for terminfo parsing. The `$TERM` env variable is
+- __terminal__ - `TERM` name used for terminfo parsing. The `$TERM` env variable is
   used by default.
 - __title__ - Set the terminal window title if possible.
 
@@ -359,6 +359,7 @@ The screen on which every other node renders.
 - __grabKeys__ - Whether the focused element grabs all keypresses.
 - __lockKeys__ - Prevent keypresses from being received by any element.
 - __hover__ - The currently hovered element. Only set if mouse events are bound.
+- __terminal__ - Get terminal name.
 - __title__ - Set or get window title.
 
 ##### Events:
@@ -443,6 +444,7 @@ The screen on which every other node renders.
   Also remove all global events relevant to the screen object. If all screen
   objects are destroyed, the node process is essentially reset to its initial
   state.
+- __setTerminal(term)__ - Reset the terminal to `term`. Reloads terminfo.
 
 
 #### Element (from Node)
@@ -1377,7 +1379,7 @@ manager. Requires term.js and pty.js to be installed. See
 - __shell__ - Name of shell. `$SHELL` by default.
 - __args__ - Args for shell.
 - __cursor__ - Can be `line`, `underline`, and `block`.
-- __term__ - Terminal name (Default: `xterm`).
+- __terminal__ - Terminal name (Default: `xterm`).
 - __env__ - Object for process env.
 - Other options similar to term.js'.
 
@@ -2143,9 +2145,7 @@ telnet.createServer(function(client) {
     // https://tools.ietf.org/html/rfc884
     if (data.command === 'sb' && data.buf[3] === 1) {
       var TERM = data.buf.slice(4, -2).toString('ascii');
-      screen.program.terminal = TERM;
-      screen.program.tput.terminal = TERM;
-      screen.program.tput.setup();
+      screen.setTerminal(TERM);
       screen.render();
     }
   });
@@ -2181,7 +2181,7 @@ telnet.createServer(function(client) {
     smartCSR: true,
     input: client,
     output: client,
-    term: 'xterm-256color'
+    terminal: 'xterm-256color'
   });
 
   client.on('close', function() {
@@ -2264,7 +2264,7 @@ Windows users will need to explicitly set `term` when creating a screen like so
 This is now handled automatically):
 
 ``` js
-var screen = blessed.screen({ term: 'windows-ansi' });
+var screen = blessed.screen({ terminal: 'windows-ansi' });
 ```
 
 
