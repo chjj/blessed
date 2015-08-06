@@ -23,7 +23,7 @@ var server = telnet.createServer(function(client) {
     // https://tools.ietf.org/html/rfc884
     if (data.command === 'sb' && data.buf[3] === 1) {
       var TERM = data.buf.slice(4, -2).toString('ascii');
-      screen.setTerminal(TERM);
+      screen.terminal = TERM;
       screen.render();
     }
   });

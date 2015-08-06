@@ -359,7 +359,8 @@ The screen on which every other node renders.
 - __grabKeys__ - Whether the focused element grabs all keypresses.
 - __lockKeys__ - Prevent keypresses from being received by any element.
 - __hover__ - The currently hovered element. Only set if mouse events are bound.
-- __terminal__ - Get terminal name.
+- __terminal__ - Set or get terminal name. `Set` calls `screen.setTerminal()`
+  internally.
 - __title__ - Set or get window title.
 
 ##### Events:
@@ -2145,7 +2146,7 @@ telnet.createServer(function(client) {
     // https://tools.ietf.org/html/rfc884
     if (data.command === 'sb' && data.buf[3] === 1) {
       var TERM = data.buf.slice(4, -2).toString('ascii');
-      screen.setTerminal(TERM);
+      screen.terminal = TERM;
       screen.render();
     }
   });
