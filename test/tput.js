@@ -107,17 +107,14 @@ if (argv[0] === 'all') {
     result = result.trim().toLowerCase();
     if (result !== 'y') return process.exit(0);
     console.log('\x1b[32m(You bet your ass I wish to proceed.)\x1b[m');
-    // tput._write('$<1000/>.$<1000/>.$<1000/>.$<100/>Let\'s go...',
-    //   process.stdout.write.bind(process.stdout),
-    //   function() {});
-    setTimeout(function() { process.stdout.write('.'); }, 1000);
-    setTimeout(function() { process.stdout.write('.'); }, 2000);
-    setTimeout(function() { process.stdout.write('.'); }, 3000);
-    setTimeout(function() { console.log('Let\'s go...'); }, 3100);
-    setTimeout(function() {
-      tput.compileAll(argv[1]);
-      process.exit(0);
-    }, 4000);
+    blessed.tput.print(
+      '$<1000/>.$<1000/>.$<1000/>.$<100/>Let\'s go...',
+      process.stdout.write.bind(process.stdout),
+      function() {
+        tput.compileAll(argv[1]);
+        process.exit(0);
+      }
+    );
   });
 
   return;
