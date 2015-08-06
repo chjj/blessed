@@ -33,11 +33,10 @@ var server = telnet.createServer(function(client) {
     }
   });
 
+  // XXX For when termtype is implemented in node-telnet
   client.on('terminal type', function(data) {
-    // https://tools.ietf.org/html/rfc884
-    if (data.command === 'sb' && data.buf[3] === 1) {
-      var TERM = data.buf.slice(4, -2).toString('ascii');
-      screen.terminal = TERM;
+    if (data.command === 'sb' && data.name) {
+      screen.terminal = data.name;
       screen.render();
     }
   });
