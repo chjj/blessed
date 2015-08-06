@@ -14,10 +14,24 @@ var fs = require('fs');
 var blessed = require('blessed');
 var telnet = require('telnet');
 
+process.on('uncaughtException', function(err) {
+  console.error(err ? err.stack : err + '');
+});
+
 var server = telnet.createServer(function(client) {
   client.do.transmit_binary();
   client.do.terminal_type();
   client.do.window_size();
+  client.do.environment_variables();
+
+  client.on('environment variables', function(data) {
+    if (data.command === 'sb') {
+      if (data.name === 'TERM') {
+        screen.terminal = data.value;
+        screen.render();
+      }
+    }
+  });
 
   client.on('terminal type', function(data) {
     // https://tools.ietf.org/html/rfc884
