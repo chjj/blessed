@@ -17,8 +17,10 @@ var box = blessed.bigtext({
   // width: 'shrink',
   border: 'line',
   fch: ' ',
+  ch: '\u2592',
   style: {
     fg: 'red',
+    bg: 'blue',
     bold: false
   }
 });
