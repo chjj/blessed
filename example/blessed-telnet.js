@@ -25,6 +25,10 @@ var server = telnet.createServer(function(client) {
   client.do.window_size();
   client.do.environment_variables();
 
+  client.on('debug', function(msg) {
+    console.error(msg);
+  });
+
   client.on('environment variables', function(data) {
     if (data.command === 'sb' && data.name === 'TERM') {
       screen.terminal = data.value;
