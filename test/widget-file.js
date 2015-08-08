@@ -47,7 +47,7 @@ fm.refresh();
 screen.render();
 
 screen.key('q', function() {
-  process.exit(0);
+  screen.destroy();
 });
 
 screen.key(['s', 'p'], function() {

@@ -127,7 +127,11 @@ var bottomright = blessed.terminal({
 topleft.focus();
 
 screen.key('C-q', function() {
-  return process.exit(0);
+  topleft.kill();
+  topright.kill();
+  bottomleft.kill();
+  bottomright.kill();
+  return screen.destroy();
 });
 
 screen.program.key('S-tab', function() {

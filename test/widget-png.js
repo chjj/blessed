@@ -94,7 +94,7 @@ var png = blessed.image({
 screen.render();
 
 screen.key('q', function() {
-  process.exit(0);
+  screen.destroy();
 });
 
 var timeout = setInterval(function() {

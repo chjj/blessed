@@ -32,5 +32,5 @@ box.input('Input: ', '', function(err, data) {
 });
 
 screen.key('C-q', function(ch, key) {
-  return process.exit(0);
+  return screen.destroy();
 });

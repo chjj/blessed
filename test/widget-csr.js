@@ -84,7 +84,7 @@ text.scroll = function(offset, always) {
 text.focus();
 
 screen.key('q', function() {
-  return process.exit(0);
+  return screen.destroy();
 });
 
 screen.render();

@@ -69,7 +69,7 @@ prompt.input('Question?', '', function(err, value) {
         loader.load('Loading...');
         setTimeout(function() {
           loader.stop();
-          process.exit(0);
+          screen.destroy();
         }, 3000);
       });
     });
@@ -77,7 +77,7 @@ prompt.input('Question?', '', function(err, value) {
 });
 
 screen.key('q', function() {
-  process.exit(0);
+  screen.destroy();
 });
 
 screen.render();

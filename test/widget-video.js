@@ -23,5 +23,5 @@ video.focus();
 screen.render();
 
 screen.key(['q', 'C-q', 'C-c'], function() {
-  process.exit(0);
+  screen.destroy();
 });

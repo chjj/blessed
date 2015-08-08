@@ -68,5 +68,5 @@ box.focus();
 screen.render();
 
 screen.key('q', function() {
-  process.exit(0);
+  screen.destroy();
 });

@@ -27,7 +27,7 @@ var box2 = blessed.box({
 });
 
 screen.key('q', function() {
-  return process.exit(0);
+  return screen.destroy();
 });
 
 screen.render();

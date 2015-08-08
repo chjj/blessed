@@ -33,5 +33,5 @@ setTimeout(function() {
 }, 2000);
 
 screen.key('q', function() {
-  process.exit(0);
+  screen.destroy();
 });

@@ -8,7 +8,10 @@ var screen = blessed.screen({
 
 var frames = require(__dirname + '/frames.json');
 
-setInterval(function() {
-  if (!frames.length) return process.exit(0);
+var timer = setInterval(function() {
+  if (!frames.length) {
+    clearInterval(timer);
+    return screen.destroy();
+  }
   process.stdout.write(frames.shift());
 }, 100);

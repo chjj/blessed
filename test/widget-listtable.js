@@ -83,7 +83,7 @@ data2[1][0] = '{red-fg}' + data2[1][0] + '{/red-fg}';
 data2[2][0] += ' (' + DU + JUAN + ')';
 
 screen.key('q', function() {
-  return process.exit(0);
+  return screen.destroy();
 });
 
 table.focus();

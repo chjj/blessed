@@ -75,7 +75,7 @@ over.key('down', function() {
 over.focus();
 
 screen.key('q', function() {
-  return process.exit(0);
+  return screen.destroy();
 });
 
 var lorem = 'Non eram nescius Brute cum quae summis ingeniis exquisitaque'

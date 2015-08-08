@@ -107,7 +107,7 @@ assert.equal(inner.rtop, 4);
 
 screen.on('keypress', function(ch, key) {
   if (key.name === 'escape' || key.name === 'q') {
-    return process.exit(0);
+    return screen.destroy();
   }
 });
 

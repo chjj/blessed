@@ -243,7 +243,7 @@ var bottom = blessed.line({
 });
 
 screen.key('q', function() {
-  return process.exit(0);
+  return screen.destroy();
 });
 
 form.focus();

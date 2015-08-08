@@ -36,18 +36,16 @@ var text = blessed.scrollabletext({
 
 text.focus();
 
-screen.key('q', function() {
-  return process.exit(0);
-});
-
-screen.render();
-
 var frames = [];
 
-setInterval(function() {
+var timer = setInterval(function() {
   frames.push(screen.screenshot());
 }, 100);
 
-process.on('exit', function() {
+screen.key('C-q', function() {
   fs.writeFileSync(__dirname + '/frames.json', JSON.stringify(frames));
+  clearInterval(timer);
+  return screen.destroy();
 });
+
+screen.render();

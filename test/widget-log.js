@@ -42,7 +42,7 @@ setInterval(function() {
 }, 1000).unref();
 
 screen.key('q', function() {
-  return process.exit(0);
+  return screen.destroy();
 });
 
 screen.render();

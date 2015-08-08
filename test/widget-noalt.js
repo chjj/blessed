@@ -38,11 +38,11 @@ list.select(0);
 
 list.on('select', function(item) {
   console.log(item.getText());
-  process.exit(0);
+  screen.destroy();
 });
 
 screen.key('C-c', function() {
-  process.exit(0);
+  screen.destroy();
 });
 
 list.focus();
