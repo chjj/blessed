@@ -116,7 +116,7 @@ function simpleTest(screen) {
   screen.render();
 }
 
-var test = process.argv[2] || '../test/widget-shadow.js';
+var test = process.argv[2] || path.resolve(__dirname, '../test/widget-shadow.js');
 if (~test.indexOf('widget-png.js')) process.argv.length = 2;
 test = path.resolve(process.cwd(), test);
 
