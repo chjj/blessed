@@ -76,7 +76,8 @@ var server = telnet.createServer(function(client) {
     smartCSR: true,
     input: client,
     output: client,
-    terminal: 'xterm-256color'
+    terminal: 'xterm-256color',
+    fullUnicode: true
   });
 
   client.on('close', function() {
