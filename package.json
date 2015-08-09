@@ -2,7 +2,7 @@
   "name": "blessed",
   "description": "A high-level terminal interface library for node.js.",
   "author": "Christopher Jeffrey",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "license": "MIT",
   "main": "./lib/blessed.js",
   "bin": "./bin/tput.js",
