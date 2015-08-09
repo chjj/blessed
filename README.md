@@ -329,7 +329,8 @@ The screen on which every other node renders.
 - __warnings__ - Display warnings (such as the output not being a TTY, similar
   to ncurses).
 - __forceUnicode__ - Force blessed to use unicode even if it is not detected
-  via terminfo, env variables, or windows code page.
+  via terminfo, env variables, or windows code page. If value is `true` unicode
+  is forced. If value is `false` non-unicode is forced (default: `null`).
 - __input/output__ - Input and output streams. `process.stdin`/`process.stdout`
   by default, however, it could be a `net.Socket` if you want to make a program
   that runs over telnet or something of that nature.
@@ -2137,16 +2138,17 @@ A simple telnet server might look like this (see examples/blessed-telnet.js for
 a full example):
 
 ``` js
+var blessed = require('blessed');
+var telnet = require('telnet');
+
 telnet.createServer(function(client) {
   client.do.transmit_binary();
   client.do.terminal_type();
   client.do.window_size();
 
   client.on('terminal type', function(data) {
-    // https://tools.ietf.org/html/rfc884
-    if (data.command === 'sb' && data.buf[3] === 1) {
-      var TERM = data.buf.slice(4, -2).toString('ascii');
-      screen.terminal = TERM;
+    if (data.command === 'sb' && data.name) {
+      screen.terminal = data.name;
       screen.render();
     }
   });
@@ -2182,7 +2184,8 @@ telnet.createServer(function(client) {
     smartCSR: true,
     input: client,
     output: client,
-    terminal: 'xterm-256color'
+    terminal: 'xterm-256color',
+    fullUnicode: true
   });
 
   client.on('close', function() {
@@ -2224,7 +2227,9 @@ $ telnet localhost 2300
 
 Creating a netcat server would also work as long as you disable line buffering
 and terminal echo on the commandline via `stty`:
-`$ stty -icanon -echo; ncat localhost 3000; stty icanon echo`
+`$ stty -icanon -echo; ncat localhost 2300; stty icanon echo`
+
+Or by using netcat's `-t` option: `$ ncat -t localhost 2300`
 
 Creating a streaming http 1.1 server than runs in the terminal is possible by
 curling it with special arguments: `$ curl -sSNT. localhost:8080`.
