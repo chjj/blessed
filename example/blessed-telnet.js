@@ -15,10 +15,6 @@ var path = require('path');
 var blessed = require('blessed');
 var telnet = require('telnet');
 
-process.on('uncaughtException', function(err) {
-  console.error(err ? err.stack : err + '');
-});
-
 var server = telnet.createServer(function(client) {
   client.do.transmit_binary();
   client.do.terminal_type();
@@ -30,8 +26,14 @@ var server = telnet.createServer(function(client) {
   });
 
   client.on('environment variables', function(data) {
-    if (data.command === 'sb' && data.name === 'TERM') {
-      screen.terminal = data.value;
+    if (data.command === 'sb') {
+      if (data.name === 'TERM') {
+        screen.terminal = data.value;
+      } else {
+        // Clear the screen since they may have used `env send [var]`.
+        screen.alloc();
+        screen.clearRegion(0, screen.width, 0, screen.height, true);
+      }
       screen.render();
     }
   });
