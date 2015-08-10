@@ -390,6 +390,7 @@ The screen on which every other node renders.
   `debug` option was set.
 - __alloc()__ - Allocate a new pending screen buffer and a new output screen
   buffer.
+- __realloc()__ - Reallocate the screen buffers and clear the screen.
 - __draw(start, end)__ - Draw the screen based on the contents of the screen
   buffer.
 - __render()__ - Render all child elements, writing all data to the screen

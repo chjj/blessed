@@ -31,8 +31,7 @@ var server = telnet.createServer(function(client) {
         screen.terminal = data.value;
       } else {
         // Clear the screen since they may have used `env send [var]`.
-        screen.alloc();
-        screen.clearRegion(0, screen.width, 0, screen.height, true);
+        screen.realloc();
       }
       screen.render();
     }
