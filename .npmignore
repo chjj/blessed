@@ -2,3 +2,5 @@
 test/
 img/
 node_modules/
+.jshintrc
+.jscsrc

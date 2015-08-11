@@ -1,0 +1,41 @@
+{
+  "bitwise": false,
+  "curly": false,
+  "eqeqeq": true,
+  "freeze": true,
+  "latedef": "nofunc",
+  "maxparams": 7,
+  "noarg": true,
+  "shadow": "inner",
+  "undef": true,
+  "unused": true,
+
+  "boss": true,
+  "expr": true,
+  "eqnull": true,
+  "evil": true,
+  "loopfunc": true,
+  "proto": true,
+  "supernew": true,
+
+  "-W018": true,
+  "-W064": true,
+  "-W086": true,
+  "+W032": true,
+
+  "browser": false,
+  "browserify": false,
+  "node": true,
+  "nonstandard": true,
+  "typed": true,
+  "worker": false,
+
+  "camelcase": false,
+  "indent": 2,
+  "maxlen": 110,
+  "newcap": true,
+  "quotmark": "single",
+
+  "laxbreak": true,
+  "laxcomma": true
+}
