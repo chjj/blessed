@@ -95,10 +95,10 @@ function end(file, offset) {
  */
 
 module.exports = function(file) {
-  if (end(file, -2) === 'lib/widget.js') {
+  if (end(file, -2) === path.join('lib','widget.js')) {
     return transformer(requireWidgets);
   }
-  if (end(file, -2) === 'lib/tput.js') {
+  if (end(file, -2) === path.join('lib','tput.js')) {
     return transformer(readMethods);
   }
   return transformer();
