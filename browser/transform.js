@@ -43,7 +43,7 @@ var requireWidgets = widgets.reduce(function(out, name) {
  * terminfo or termcap, just use xterm terminfo/cap.
  */
 
-var infoPath = path.resolve(__dirname, '..', 'usr', 'xterm')
+var infoPath = path.resolve(__dirname, '..', 'usr', 'xterm-256color')
   , capPath = path.resolve(__dirname, '..', 'usr', 'xterm.termcap');
 
 var infoPathFake = path.resolve(
@@ -87,7 +87,7 @@ readMethods = readMethods.toString().slice(24, -2)
  */
 
 function end(file, offset) {
-  return file.split(path.sep).slice(offset).join(path.sep);
+  return file.split(path.sep).slice(-offset).join('/');
 }
 
 /**
@@ -95,10 +95,10 @@ function end(file, offset) {
  */
 
 module.exports = function(file) {
-  if (end(file, -2) === 'lib/widget.js') {
+  if (end(file, 2) === 'lib/widget.js') {
     return transformer(requireWidgets);
   }
-  if (end(file, -2) === 'lib/tput.js') {
+  if (end(file, 2) === 'lib/tput.js') {
     return transformer(readMethods);
   }
   return transformer();
