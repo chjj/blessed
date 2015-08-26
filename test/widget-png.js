@@ -94,13 +94,40 @@ var png = blessed.image({
 screen.render();
 
 screen.key('q', function() {
+  clearInterval(timeout);
   screen.destroy();
 });
 
 var timeout = setInterval(function() {
+  if (png.right <= 0) {
+    clearInterval(timeout);
+    return;
+  }
   png.left++;
   screen.render();
 }, 100);
+
+if (timeout.unref) timeout.unref();
+
+screen.key(['h', 'left'], function() {
+  png.left -= 2;
+});
+
+screen.key(['k', 'up'], function() {
+  png.top -= 2;
+});
+
+screen.key(['l', 'right'], function() {
+  png.left += 2;
+});
+
+screen.key(['j', 'down'], function() {
+  png.top += 2;
+});
+
+screen.on('keypress', function() {
+  clearInterval(timeout);
+});
 
 png.on('mousedown', function() {
   clearInterval(timeout);
