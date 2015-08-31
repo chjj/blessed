@@ -30,6 +30,11 @@ screen.debugLog.on('show', function() {
   screen.render();
 });
 
+screen.on('event', function(event, el) {
+  var type = (el && el.type) || Object.prototype.toString.call(el).slice(8, -1);
+  screen.program.log('emit("%s", {%s})', event, type);
+});
+
 screen.append(blessed.text({
   top: 0,
   left: 2,
