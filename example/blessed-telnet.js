@@ -13,63 +13,23 @@ process.title = 'blessed-telnet';
 var fs = require('fs');
 var path = require('path');
 var blessed = require('blessed');
-var telnet = require('telnet');
+var telnet = require('telnet2');
 
-var server = telnet.createServer(function(client) {
-  client.do.transmit_binary();
-  client.do.terminal_type();
-  client.do.window_size();
-  client.do.environment_variables();
-
+var server = telnet({ tty: true }, function(client) {
   client.on('debug', function(msg) {
     console.error(msg);
   });
 
-  client.on('environment variables', function(data) {
-    if (data.command === 'sb') {
-      if (data.name === 'TERM') {
-        screen.terminal = data.value;
-      } else {
-        // Clear the screen since they may have used `env send [var]`.
-        screen.realloc();
-      }
-      screen.render();
-    }
+  client.on('term', function(terminal) {
+    screen.terminal = terminal;
+    screen.render();
   });
 
-  client.on('terminal type', function(data) {
-    if (data.command === 'sb' && data.name) {
-      screen.terminal = data.name;
-      screen.render();
-    }
+  client.on('size', function(width, height) {
+    client.columns = width;
+    client.rows = height;
+    client.emit('resize');
   });
-
-  client.on('window size', function(data) {
-    if (data.command === 'sb') {
-      client.columns = data.columns;
-      client.rows = data.rows;
-      client.emit('resize');
-    }
-  });
-
-  // Make the client look like a tty:
-  client.setRawMode = function(mode) {
-    client.isRaw = mode;
-    if (!client.writable) return;
-    if (mode) {
-      client.do.suppress_go_ahead();
-      client.will.suppress_go_ahead();
-      client.will.echo();
-    } else {
-      client.dont.suppress_go_ahead();
-      client.wont.suppress_go_ahead();
-      client.wont.echo();
-    }
-  };
-  client.isTTY = true;
-  client.isRaw = false;
-  client.columns = 80;
-  client.rows = 24;
 
   var screen = blessed.screen({
     smartCSR: true,
