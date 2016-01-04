@@ -1920,11 +1920,13 @@ Blessed supports all terminal attributes, including `bold`, `underline`,
 
 ##### Transparency
 
-Blessed can set the opacity of an element to 50% using `style.transparent =
-true;`. While this seems like it normally shouldn't be possible in a terminal,
+Blessed can set the opacity of an element using `style.opacity`. While this 
+seems like it normally shouldn't be possible in a terminal,
 blessed will use a color blending algorithm to blend the element of the
 foremost element with the background behind it. Obviously characters cannot be
-blended, but background colors can.
+blended, but background colors can. The `opacity` setting must be a number
+between 0.0 and 1.0. There is also a `style.transparent = true` option that
+will set `style.opacity` to `0.5`. 
 
 
 ##### Shadow
