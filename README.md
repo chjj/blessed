@@ -1384,6 +1384,7 @@ manager. Requires term.js and pty.js to be installed. See
 - __cursor__ - Can be `line`, `underline`, and `block`.
 - __terminal__ - Terminal name (Default: `xterm`).
 - __env__ - Object for process env.
+- __cwd__ - The directory for the shell to start in.  `$HOME` by default.
 - Other options similar to term.js'.
 
 ##### Properties:
