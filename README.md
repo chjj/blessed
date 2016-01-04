@@ -827,6 +827,7 @@ A scrollable list which can display selectable items.
 ##### Properties:
 
 - Inherits all from Box.
+- __scrollStep__ - Sets selection increments for mouse scrolling (Default: `2`)
 
 ##### Events:
 
