@@ -502,6 +502,8 @@ The base element.
 - __ch__ - Background character (default is whitespace ` `).
 - __draggable__ - Allow the element to be dragged with the mouse.
 - __shadow__ - Draw a translucent offset shadow behind the element.
+- __wrap__ - Text content will be wrapped (default: true).
+- __smartWrap__ - Breakpoints for wrapped text will be intelligently determined, based on whitespace and double-width unicode characters (default: true).
 
 ##### Properties:
 
