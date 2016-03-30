@@ -499,6 +499,8 @@ The base element.
   offsets (`50%+1`, `50%-1`).
 - __position__ - Can contain the above options.
 - __scrollable__ - Whether the element is scrollable or not.
+- __alwaysScroll__ - An option which causes the ignoring of `childOffset`. This
+  in turn causes the childBase to change every time the element is scrolled.
 - __ch__ - Background character (default is whitespace ` `).
 - __draggable__ - Allow the element to be dragged with the mouse.
 - __shadow__ - Draw a translucent offset shadow behind the element.
