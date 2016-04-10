@@ -289,7 +289,7 @@ The screen on which every other node renders.
   terminal cursor (__experimental__).
 - __cursor.shape__ - Shape of the cursor. Can be: block, underline, or line.
 - __cursor.blink__ - Whether the cursor blinks.
-- __cursor.color__ - Color of the color. Accepts any valid color value (`null`
+- __cursor.color__ - Color of the cursor. Accepts any valid color value (`null`
   is default).
 - __log__ - Create a log file. See `log` method.
 - __dump__ - Dump all output and input to desired file. Can be used together
