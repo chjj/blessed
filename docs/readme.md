@@ -1,9 +1,9 @@
 # Widgets
 
 ## base nodes
-* [Node](/docs/widgets/baseNodes/node.md) (abstract)
-* [Screen](/docs/widgets/baseNodes/screen.md)
-* [Element](/docs/widgets/baseNodes/element.md) (abstract)
+* [Node](../widgets/baseNodes/node.md) (abstract)
+* [Screen](../widgets/baseNodes/screen.md)
+* [Element](../widgets/baseNodes/element.md) (abstract)
 
 ## boxes
 * [Box](/docs/widgets/boxes/box.md)
