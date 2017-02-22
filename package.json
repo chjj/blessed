@@ -6,6 +6,12 @@
   "license": "MIT",
   "main": "./lib/blessed.js",
   "bin": "./bin/tput.js",
+  "scripts": {
+    "docs:prepare": "gitbook install",
+    "docs:build": "npm run docs:prepare && gitbook build",
+    "docs:watch": "npm run docs:prepare && gitbook serve",
+    "docs:publish": "rm -rf _book && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:blessed-ng/blessed gh-pages --force"
+  },
   "preferGlobal": false,
   "repository": "git://github.com/chjj/blessed.git",
   "homepage": "https://github.com/chjj/blessed",
@@ -17,5 +23,8 @@
   },
   "browserify": {
     "transform": ["./browser/transform.js"]
+  },
+  "devDependencies": {
+   "gitbook-cli": "^2.3.0" 
   }
 }

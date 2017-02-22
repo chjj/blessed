@@ -1,0 +1,9 @@
+bin/*
+example/*
+browser/*
+lib/*
+test/*
+usr/*
+vendor/*
+node_modules/*
+
