@@ -21,6 +21,7 @@ var box = blessed.box({
   border: 'line',
   content: 'foobar',
   keys: true,
+  mouse: true,
   vi: true,
   alwaysScroll: true,
   scrollbar: {
