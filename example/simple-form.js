@@ -23,7 +23,6 @@ var submit = blessed.button({
   },
   left: 10,
   top: 2,
-  shrink: true,
   name: 'submit',
   content: 'submit',
   style: {
@@ -48,7 +47,6 @@ var cancel = blessed.button({
   },
   left: 20,
   top: 2,
-  shrink: true,
   name: 'cancel',
   content: 'cancel',
   style: {
