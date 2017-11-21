@@ -15,7 +15,7 @@ with _any_ terminal.
 
 The blessed renderer makes use of CSR (change-scroll-region), and BCE
 (back-color-erase). It draws the screen using the painter's algorithm and is
-sped up with smart cursor movements and a screen damage buffer. This means
+speed up with smart cursor movements and a screen damage buffer. This means
 rendering of your application will be extremely efficient: blessed only draws
 the changes (damage) to the screen.
 
