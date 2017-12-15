@@ -17,5 +17,8 @@
   },
   "browserify": {
     "transform": ["./browser/transform.js"]
+  },
+  "pkg": {
+    "scripts": "lib/widgets/*.js"
   }
 }
