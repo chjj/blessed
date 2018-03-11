@@ -510,8 +510,8 @@ The base element.
 - __border__ - Border object.
   - __type__ - Type of border (`line` or `bg`). `bg` by default.
   - __ch__ - Character to use if `bg` type, default is space.
-  - __bg, fg__ - Border foreground and background, must be numbers (-1 for
-    default).
+  - __bg, fg__ - Border foreground and background, can be strings or numbers (-1 for
+    default). See [Colors](https://github.com/chjj/blessed#colors-1 "Colors").
   - __bold, underline__ - Border attributes.
 - __style__ - Contains attributes (e.g. `fg/bg/underline`). See above.
 - __position__ - Raw width, height, and offsets.
@@ -520,7 +520,8 @@ The base element.
 - __visible__ - Whether the element is visible or not.
 - __detached__ - Whether the element is attached to a screen in its ancestry
   somewhere.
-- __fg, bg__ - Foreground and background, must be numbers (-1 for default).
+- __fg, bg__ - Foreground and background, can be strings or numbers (-1 for
+    default). See [Colors](https://github.com/chjj/blessed#colors-1 "Colors").
 - __bold, underline__ - Attributes.
 - __width__ - Calculated width.
 - __height__ - Calculated height.
