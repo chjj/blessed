@@ -1,4 +1,6 @@
-# blessed
+# neo-blessed
+
+A fork of the original blessed with bug fixes and maintenance.
 
 A curses-like library with a high level terminal interface API for node.js.
 
@@ -46,7 +48,7 @@ __NOTE__: It is recommend you use either `smartCSR` or `fastCSR` as a
 or when manipulating lines.
 
 ``` js
-var blessed = require('blessed');
+var blessed = require('neo-blessed');
 
 // Create a screen object.
 var screen = blessed.screen({
@@ -2139,7 +2141,7 @@ A simple telnet server might look like this (see examples/blessed-telnet.js for
 a full example):
 
 ``` js
-var blessed = require('blessed');
+var blessed = require('neo-blessed');
 var telnet = require('telnet2');
 
 telnet({ tty: true }, function(client) {
@@ -2254,7 +2256,7 @@ This will actually parse the xterm terminfo and compile every
 string capability to a javascript function:
 
 ``` js
-var blessed = require('blessed');
+var blessed = require('neo-blessed');
 
 var tput = blessed.tput({
   terminal: 'xterm-256color',
@@ -2275,7 +2277,7 @@ $ echo "$(tput.js setaf 2)Hello World$(tput.js sgr0)"
 The main functionality is exposed in the main `blessed` module:
 
 ``` js
-var blessed = require('blessed')
+var blessed = require('neo-blessed')
   , program = blessed.program();
 
 program.key('q', function(ch, key) {
