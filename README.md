@@ -185,7 +185,7 @@ screen.render();
   - [Effects](#effects)
 - [Events](#events)
   - [Event Bubbling](#event-bubbling)
-- [Poisitioning](#positioning)
+- [Positioning](#positioning)
 - [Rendering](#rendering)
 - [Artificial Cursors](#artificial-cursors)
 - [Multiple Screens](#multiple-screens)
@@ -217,7 +217,7 @@ The base node which everything inherits from.
 
 - __screen__ - The screen to be associated with.
 - __parent__ - The desired parent.
-- __children__ - An arrray of children.
+- __children__ - An array of children.
 
 ##### Properties:
 
