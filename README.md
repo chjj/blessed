@@ -81,18 +81,6 @@ var box = blessed.box({
 // Append our box to the screen.
 screen.append(box);
 
-// Add a png icon to the box
-var icon = blessed.image({
-  parent: box,
-  top: 0,
-  left: 0,
-  type: 'overlay',
-  width: 'shrink',
-  height: 'shrink',
-  file: __dirname + '/my-program-icon.png',
-  search: false
-});
-
 // If our box is clicked, change the content.
 box.on('click', function(data) {
   box.setContent('{center}Some different {red-fg}content{/red-fg}.{/center}');
