@@ -831,7 +831,8 @@ A scrollable list which can display selectable items.
 ##### Events:
 
 - Inherits all from Box.
-- __select__ - Received when an item is selected.
+- __select__ - Received when an item is actively selected, by clicking, pressing return, or similar.
+- __select item__ - Received an item is incidentally selected, by using the arrow keys or mouse wheel.
 - __cancel__ - List was canceled (when `esc` is pressed with the `keys` option).
 - __action__ - Either a select or a cancel event was received.
 
