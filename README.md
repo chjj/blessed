@@ -1907,8 +1907,8 @@ The style option controls most of the visual aspects of an element.
 ##### Colors
 
 Colors can be the names of any of the 16 basic terminal colors, along with hex
-values (e.g. `#ff0000`) for 256 color terminals. If 256 or 88 colors is not
-supported. Blessed with reduce the color to whatever is available.
+values (e.g. `#ff0000`) for 256 color terminals. If 256 or 88 colors are not
+supported, Blessed will reduce the color to whatever is available.
 
 
 ##### Attributes
