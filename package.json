@@ -2,14 +2,15 @@
   "name": "blessed",
   "description": "A high-level terminal interface library for node.js.",
   "author": "Christopher Jeffrey",
+  "contributors": ["danikaze <danikaze@gmail.com>"],
   "version": "0.1.81",
   "license": "MIT",
   "main": "./lib/blessed.js",
   "bin": "./bin/tput.js",
   "preferGlobal": false,
-  "repository": "git://github.com/chjj/blessed.git",
-  "homepage": "https://github.com/chjj/blessed",
-  "bugs": { "url": "http://github.com/chjj/blessed/issues" },
+  "repository": "git://github.com/danikaze/blessed.git",
+  "homepage": "https://github.com/danikaze/blessed",
+  "bugs": { "url": "http://github.com/danikaze/blessed/issues" },
   "keywords": ["curses", "tui", "tput", "terminfo", "termcap"],
   "tags": ["curses", "tui", "tput", "terminfo", "termcap"],
   "engines": {
@@ -17,5 +18,9 @@
   },
   "browserify": {
     "transform": ["./browser/transform.js"]
+  },
+  "dependencies": {
+    "node-pty": "^0.9.0",
+    "term.js": "0.0.7"
   }
 }
