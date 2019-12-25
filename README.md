@@ -2,7 +2,10 @@
 
 A curses-like library with a high level terminal interface API for node.js.
 
-![blessed](https://raw.githubusercontent.com/chjj/blessed/master/img/v0.1.0-3.gif)
+Forked from the original [blessed](https://github.com/chjj/blessed) to make it
+work with `node-pty` instead of `pty.js`.
+
+![blessed](https://raw.githubusercontent.com/danikaze/blessed/master/img/v0.1.0-3.gif)
 
 Blessed is over 16,000 lines of code and terminal goodness. It's completely
 implemented in javascript, and its goal consists of two things:
