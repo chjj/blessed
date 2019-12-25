@@ -29,7 +29,7 @@ function PNG(file, options) {
   if (!file) throw new Error('no file');
 
   this.options = options || {};
-  this.colors = options.colors || require('blessed/lib/colors');
+  this.colors = options.colors || require('../lib/colors')
   this.optimization = this.options.optimization || 'mem';
   this.speed = this.options.speed || 1;
 
