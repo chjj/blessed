@@ -217,7 +217,7 @@ The base node which everything inherits from.
 
 - __screen__ - The screen to be associated with.
 - __parent__ - The desired parent.
-- __children__ - An arrray of children.
+- __children__ - An array of children.
 
 ##### Properties:
 
@@ -227,7 +227,7 @@ The base node which everything inherits from.
 - __parent__ - Parent node.
 - __screen__ - Parent screen.
 - __children__ - Array of node's children.
-- __data, _, $__ - An object for any miscellanous user data.
+- __data, _, $__ - An object for any miscellaneous user data.
 - __index__ - Render index (document order index) of the last render call.
 
 ##### Events:
@@ -580,7 +580,7 @@ The base element.
   have been bound to the screen object. This prevents memory leaks. For use
   with `onScreenEvent()`, `removeScreenEvent()`, and `destroy()`.
 - __destroy()__ - Same as the `detach()` method, except this will automatically
-  call `free()` and unbind any screen events to prevent memory leaks.  for use
+  call `free()` and unbind any screen events to prevent memory leaks.  For use
   with `onScreenEvent()`, `removeScreenEvent()`, and `free()`.
 - __setIndex(z)__ - Set the z-index of the element (changes rendering order).
 - __setFront()__ - Put the element in front of its siblings.
@@ -1025,7 +1025,7 @@ A box which allows multiline text input.
 
 - Inherits all from Input.
 - __submit__ - Value is submitted (enter).
-- __cancel__ - Value is discared (escape).
+- __cancel__ - Value is discarded (escape).
 - __action__ - Either submit or cancel.
 
 ##### Methods:
@@ -1613,7 +1613,7 @@ By default, the Layout element automatically positions children as if they were
   called on each child element: __iterator(el, i)__.
 - __isRendered(el)__ - Check to see if a previous child element has been
   rendered and is visible on screen. This is __only__ useful for checking child
-  elements that have already been attempted to be rendered! see the example
+  elements that have already been attempted to be rendered! See the example
   below.
 - __getLast(i)__ - Get the last rendered and visible child element based on an
   index. This is useful for basing the position of the current child element on
@@ -1940,7 +1940,7 @@ shadow: true
 
 ##### Effects
 
-Blessed supports hover and focus styles. (Hover is only useful is mouse input
+Blessed supports hover and focus styles. (Hover is only useful if mouse input
 is enabled).
 
 ``` js
@@ -2359,7 +2359,7 @@ Examples can be found in `examples/`.
     programs. Blessed uses neither of these, and instead handles terminal
     compatibility itself.
 9. What is the difference between blessed and blessed-contrib?
-  - blessed is a major piece of code which reimplements curses from the ground
+  - blessed is a major piece of code which re-implements curses from the ground
     up. A UI API is then layered on top of this. [blessed-contrib][contrib] is
     a popular library built on top of blessed which makes clever use of modules
     to implement useful widgets like graphs, ascii art, and so on.
