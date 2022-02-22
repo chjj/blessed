@@ -1,21 +1,42 @@
 {
-  "name": "blessed",
+  "name": "@farjs/blessed",
   "description": "A high-level terminal interface library for node.js.",
   "author": "Christopher Jeffrey",
-  "version": "0.1.81",
+  "contributors": [
+    {
+      "name": "Viktor Podzigun",
+      "url": "https://github.com/viktor-podzigun"
+    }
+  ],
+  "version": "0.1.0-SNAPSHOT",
   "license": "MIT",
   "main": "./lib/blessed.js",
-  "bin": "./bin/tput.js",
   "preferGlobal": false,
-  "repository": "git://github.com/chjj/blessed.git",
-  "homepage": "https://github.com/chjj/blessed",
-  "bugs": { "url": "http://github.com/chjj/blessed/issues" },
-  "keywords": ["curses", "tui", "tput", "terminfo", "termcap"],
-  "tags": ["curses", "tui", "tput", "terminfo", "termcap"],
+  "repository": "git://github.com/farjs/blessed.git",
+  "homepage": "https://github.com/farjs/blessed",
+  "bugs": {
+    "url": "http://github.com/farjs/blessed/issues"
+  },
+  "keywords": [
+    "curses",
+    "tui",
+    "tput",
+    "terminfo",
+    "termcap"
+  ],
+  "tags": [
+    "curses",
+    "tui",
+    "tput",
+    "terminfo",
+    "termcap"
+  ],
   "engines": {
     "node": ">= 0.8.0"
   },
   "browserify": {
-    "transform": ["./browser/transform.js"]
+    "transform": [
+      "./browser/transform.js"
+    ]
   }
 }

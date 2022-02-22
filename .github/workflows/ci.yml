@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+    tags:
+      - '*'
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Git checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '12'
+
+    - name: Extract Tag Name
+      run: echo "TAG_NAME=$(echo ${GITHUB_REF##*/})" >> $GITHUB_ENV
+      if: ${{ startsWith(github.ref, 'refs/tags') }}
+
+    - name: Publish SNAPSHOT
+      run: npm pack
+      if: ${{ !github.event.pull_request && env.TAG_NAME == '' }}
+
+    - name: Publish RELEASE
+      run: |
+        VERSION="$(echo "$TAG_NAME" | cut -d'v' -f 2)"
+        echo "Publish a release version=$VERSION for tag $TAG_NAME"
+        npm --no-git-tag-version version $VERSION
+        npm pack
+        echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+        npm publish --access public farjs-blessed-${VERSION}.tgz
+      if: ${{ env.TAG_NAME != '' }}
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
