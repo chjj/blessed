@@ -23,7 +23,6 @@ var submit = blessed.button({
   },
   left: 10,
   top: 2,
-  shrink: true,
   name: 'submit',
   content: 'submit',
   style: {
