@@ -47,7 +47,6 @@ var cancel = blessed.button({
   },
   left: 20,
   top: 2,
-  shrink: true,
   name: 'cancel',
   content: 'cancel',
   style: {
