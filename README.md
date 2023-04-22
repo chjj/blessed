@@ -1828,7 +1828,7 @@ Newlines and alignment are also possible in content.
 ``` js
 box.setContent('hello\n'
   + '{right}world{/right}\n'
-  + '{center}foo{/center}\n');
+  + '{center}foo{/center}\n'
   + 'left{|}right');
 ```
 
